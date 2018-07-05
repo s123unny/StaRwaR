@@ -11,7 +11,8 @@ Controller = function(io, model) {
 	var io = io;
 	
 	function chatPlayer(msg,id){
-		io.emit('chat_message', msg ,"PLAYER");
+		io.emit('chatting', msg ,id);
+		console.log(msg);
 	}
 
 	/* Listen new connection */
@@ -30,8 +31,11 @@ Controller = function(io, model) {
 			}
 
 			if(id != 87) {
-				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
-				player.on('chat_message', (msg) => chatPlayer(msg,id));
+				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!","SYSTEM");
+				player.on('chat_message', (msg) => chatPlayer(msg,"PLAYER"+id));
+			}
+			else{
+				player.on('chat_message', (msg) => chatPlayer(msg,"SYSTEM"));
 			}
 		})
 	});
