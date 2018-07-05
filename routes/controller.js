@@ -29,10 +29,13 @@ Controller = function(io, model) {
 				console.log("Wrong login!")
 				return;
 			}
-
+			console.log(player.id);
 			if(id != 87) {
 				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!","SYSTEM");
+				//player.broadcast.to(player.id).emit('chatting', 'for your eyes only');
+				io.sockets.to(player.id).emit('chatting', 'this is only for you',"SYSTEM");
 				player.on('chat_message', (msg) => chatPlayer(msg,"PLAYER"+id));
+
 			}
 			else{
 				player.on('chat_message', (msg) => chatPlayer(msg,"SYSTEM"));
