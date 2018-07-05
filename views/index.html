@@ -2,17 +2,21 @@
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="stylesheets/index.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <!-- <link type="text/css" rel="stylesheet" href="stylesheets/game_index.css" /> -->
 </head>
 <body>
-  <div id="container">
-    <h2>Hello</h2>
-    <div id="chatRoom">
-		<ul tabindex="1" id="messages"></ul>
-		<form action="">
-			<input id="messageForm" autocomplete="off" type="text" /><div id='sendButton' onclick='sendMessage()'>Send</div>
-		</form>
-	</div>
+  <div class="container" id = "container">
+    <div class = "main-window" id = "test">
+      <!-- <img src="img/st_bg.jpg" alt="bg" height=100%> -->
+      <div class = "title">Hello</div>
+      <div id="chatRoom">
+        <ul tabindex="1" id="messages"></ul>
+        <form action="">
+        	<input id="messageForm" autocomplete="off" type="text" />
+            <button id='sendButton' onclick='sendMessage()' type = 'button'>Send</button>
+        </form>
+    	</div>
+    </div>
   </div>
 
   <div id="login" class="popBox">
