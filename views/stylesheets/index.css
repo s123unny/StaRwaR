@@ -48,9 +48,26 @@ body {
     /*color: ;*/
 }
 div.main-window{
-	background-image:url(../img/st_bg.jpg);
+	background-image:url(../img/Background.jpg);
 	height: 100%;
 	background-size: cover;
 	margin: 0px;
 	padding: 0px;
+}
+div.player-info{
+	background-image:url(../img/info-box.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 30%;
+	width: 20%;	
+	position: relative;	
+/*	top: 0px;
+  	left: 0px;*/
+}
+div.inbox-info{
+	position: relative;
+	color: black;
+	top: 10px;
+	left: 25%;
+	font-size: 200%;
 }
