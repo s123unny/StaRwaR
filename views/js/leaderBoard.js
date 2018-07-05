@@ -1,9 +1,7 @@
-function addName(msg,id){
-	var idname = '#player'+id+'name';
-	if( 0 <= Number(id) && Number(id) <= 4)
-		$(idname).text(msg);
+function addName(msg){
+	for (var i = 0; i <= 4; i++) {
+		$('#player'+i+'name').text(msg[i]);
+	}
 	console.log(msg);
-	console.log(id);
-
 }
-socket.on('leaderboardname',(msg,id) => addName(msg,id));
+socket.on('leaderboardname',(msg) => addName(msg));

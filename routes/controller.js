@@ -4,7 +4,7 @@ MAX_PLAYER = 5;
 /*****/
 
 var password = ["meow", "beep", "wang", "woof", "oops"];
-
+var username = ["Player1", "Player2", "Player3", "Player4", "Player5"];
 var fs = require("fs");
 
 Controller = function(io, model) {
@@ -30,9 +30,10 @@ Controller = function(io, model) {
 				return;
 			}
 			console.log(player.id);
-			if(id != 87) {
+			if(id != 87 && id >= 0 && id <= 4) {
 				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!","SYSTEM");
-				io.emit('leaderboardname', name,String(id));
+				username[id] = name;
+				io.emit('leaderboardname', username);
 				io.sockets.to(player.id).emit('chatting', 'this is only for you',"SYSTEM");
 				player.on('chat_message', (msg) => chatPlayer(msg,"PLAYER"+id));
 
