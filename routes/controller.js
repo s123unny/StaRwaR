@@ -30,7 +30,7 @@ Controller = function(io, model) {
 			}
 
 			if(id != 87) {
-				io.emit('chat_message', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
+				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
 				player.on('chat_message', (msg) => chatPlayer(msg,id));
 			}
 		})
