@@ -5,7 +5,6 @@
 body, html {
     height: 100%;
 }
-
 body {
 	font-family: 'Noto Sans TC', sans-serif;
 	font-weight: 300;
@@ -57,49 +56,26 @@ div.main-window{
 	margin: 0px;
 	padding: 0px;
 }
-div.player-info{
+span.player-info{
 	background-image:url(../img/info-box.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 50%;
-	width: 20%;	
+	height: 200px;
+	width: 300px;	
 	position: relative;	
-/*	top: 0px;
-  	left: 0px;*/
+	float:left;
 }
-div.inbox-info{
-	position: relative;
-	color: black;
-	margin: 0px;
-	padding: 0px;
-	top: 10%;
-	left: 25%;
-	height: 50%;
-	width: 50%;
-	font-size: 200%;
-}
+
 span.inner-text{
 
 }
-div.side-form{
+span.side-form{
 	background-image:url(../img/info-box.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 100px;
+	float:right;
+	position: relative;
+	top:200px;
 	width: 200px;
-	position: relative;	
-
-	/*float:right;*/
-	/*left: 1500px;*/
-	 /* animation 參數設定 */
-    animation-name: MoveToRight;    /*動畫名稱，需與 keyframe 名稱對應*/
-    animation-duration: 2s;    /*動畫持續時間，單位為秒*/
-    animation-delay: 0s;    /*動畫延遲開始時間*/
-    animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/    
-}
-
-@keyframes MoveToRight {
-
-    0% { right: 0%; }
-    25% { right: 5%; }
+  	height: 40%;
 }

@@ -1,0 +1,32 @@
+span.planet-orange{
+	background-image:url(../img/red.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
+span.planet-blue{
+	background-image:url(../img/orange.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
+span.planet-red{
+	background-image:url(../img/blue.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
+span.planet-base{
+	background-image:url(../img/base.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
