@@ -1,4 +1,7 @@
-
+*{
+	margin: 0px;
+	padding: 0px;
+}
 body, html {
     height: 100%;
 }
@@ -48,7 +51,7 @@ body {
     /*color: ;*/
 }
 div.main-window{
-	background-image:url(../img/Background.jpg);
+	background-image:url(../img/Background.png);
 	height: 100%;
 	background-size: cover;
 	margin: 0px;
@@ -58,7 +61,7 @@ div.player-info{
 	background-image:url(../img/info-box.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 30%;
+	height: 50%;
 	width: 20%;	
 	position: relative;	
 /*	top: 0px;
@@ -67,7 +70,36 @@ div.player-info{
 div.inbox-info{
 	position: relative;
 	color: black;
-	top: 10px;
+	margin: 0px;
+	padding: 0px;
+	top: 10%;
 	left: 25%;
+	height: 50%;
+	width: 50%;
 	font-size: 200%;
+}
+span.inner-text{
+
+}
+div.side-form{
+	background-image:url(../img/info-box.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 100px;
+	width: 200px;
+	position: relative;	
+
+	/*float:right;*/
+	/*left: 1500px;*/
+	 /* animation 參數設定 */
+    animation-name: MoveToRight;    /*動畫名稱，需與 keyframe 名稱對應*/
+    animation-duration: 2s;    /*動畫持續時間，單位為秒*/
+    animation-delay: 0s;    /*動畫延遲開始時間*/
+    animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/    
+}
+
+@keyframes MoveToRight {
+
+    0% { right: 0%; }
+    25% { right: 5%; }
 }

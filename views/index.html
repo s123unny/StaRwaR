@@ -1,6 +1,11 @@
 <!-- bg picture will be update to a clean one and some planet, so no need to worried about size -->
 
 <!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/view.js"></script>
+<script src="js/chatRoom.js"></script>
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="stylesheets/index.css">
@@ -9,18 +14,12 @@
 <body>
   <div class="container" id = "container">
     <div class = "main-window" id = "test">
-      <div class = "player-info">
-        <div class = "inbox-info" id = 'player-name'>NAME</div>
-        <!-- <img src="img/info-box.gif" alt="info-bg" width="20%" > -->
+      <div class = "player-info" id = "player-info-box">
+        
       </div>
-     <!--  
-      <div id="chatRoom">
-        <ul tabindex="1" id="messages"></ul>
-        <form action="">
-        	<input id="messageForm" autocomplete="off" type="text" />
-            <button id='sendButton' onclick='sendMessage()' type = 'button'>Send</button>
-        </form>
-    	</div> -->
+      <!-- <div class = "side-form" id = "side-form"> -->
+        
+      </div>
     </div>
   </div>
 
@@ -34,8 +33,4 @@
 </body>
 </html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/view.js"></script>
-<script src="js/chatRoom.js"></script>
+
