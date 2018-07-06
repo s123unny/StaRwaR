@@ -14,7 +14,11 @@ player = function(id) {
 			ship(0, id), ship(1, id), ship(2, id), ship(3, id), ship(4, id)
 			},
 		x_pos: x_POS[id],
-		y_pos: y_POS[id]
+		y_pos: y_POS[id],
+		dataset: {
+			image: 0, text: 0, sound: 0},
+		AImodel: {},
+		AImodelIdx: 0
 	}
 }
 
@@ -26,7 +30,10 @@ ship = function(id, user_id) {
 		num_of_trainer: 0,
 		num_of_haker: 0,
 		day_left: null,
-		target_id: null
+		target_id: null,
+		datasetType: null,
+		datasetAmount: 0,
+		AimodelIdx: null
 	}
 }
 module.exports = player;
