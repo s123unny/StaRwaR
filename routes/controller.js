@@ -121,12 +121,16 @@ Controller = function(io, model) {
 							player.ships[star.player_here[j]].num_of_miner = 0;
 							player.ships[star.player_here[j]].num_of_trainer = 0;
 							player.ships[star.player_here[j]].num_of_haker = 0;
+							player.ships[star.player_here[j]].targetId = null;
+							//notify
+							var msg = "你誤闖黑洞"+i+"，船員們遇難了，飛船已修復好回到基地";
+							Update.Notify(playerIO[j], msg);
+							Update.Worker(playerIO[j], player.num_of_miner, player.num_of_trainer, player.num_of_haker);
+							//message
+							var msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
+							Update.Chatting(msg, "SYSTEM");
 						}
 					}
-					Update.Worker(playerIO, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
-					//message
-					var msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
-					Update.Chatting(msg, "SYSTEM");
 					//update map
 					io.emit("blackHole");
 					break;
@@ -135,20 +139,93 @@ Controller = function(io, model) {
 					//desert
 					var msg = "邊緣星球感謝玩家拜訪";
 					Update.Chatting(msg, "SYSTEM");
+					//notify
 					break;
 				case "a3":
 					//ML
+					for (var j = 0; j < 5; j++) {
+						if (star.player_here[j] != null) {
+							player = model.players[j];
+							if (player.ships[star.player_here[j]].num_of_trainer == 0) {
+								//notify
+								msg = "你未達成"+i+"星球的觸發條件喔";
+								Update.Notify(playerIO[j], msg);
+							} else {
+								if (!star.trigger[j]) {
+									if (star.GPU > 0) {
+										//event
+										//notify
+										msg = "你觸發了"+i+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
+										Update.Notify(playerIO[j], msg);
+									} else {
+										msg = i+"上的GPU已經被拿走了QQ";
+										Update.Notify(playerIO[j], msg);
+									}
+									star.trigger[j] == true;
+								} else {
+									msg = "你已經觸發過"+i+"星球事件囉";
+									Update.Notify(playerIO[j], msg);
+								}
+							}
+						}
+					}
+					star.GPU -= 1;
 					break;
 				case "a4":
 					//Mine
+					for (var j = 0; j < 5; j++) {
+						if (star.player_here[j] != null) {
+							player = model.players[j];
+							if (player.ships[star.player_here[j]].num_of_miner < 4) {
+								//ship cannot call back
+								//notify
+								msg = "你未達成"+i+"星球的觸發條件，將被扣留兩天XD";
+								Update.Notify(playerIO[j], msg);
+							} else {
+								if (!star.trigger[j]) {
+									player.money += 200;
+									star.trigger[j] == true;
+									//notify
+									msg = "你觸發了"+i+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
+									Update.Notify(playerIO[j], msg);
+								 } else {
+									msg = "你已經觸發過"+i+"星球事件囉";
+									Update.Notify(playerIO[j], msg);
+								}
+							}
+						}
+					}
 					break;
 				case "a5":
 					//Haker
+					for (var j = 0; j < 5; j++) {
+						if (star.player_here[j] != null) {
+							player = model.players[j];
+							if (player.ships[star.player_here[j]].num_of_haker == 0) {
+								//event
+								//notify
+								msg = "你未達成"+i+"星球的觸發條件，惡意程式已植入XD";
+								Update.Notify(playerIO[j], msg);
+							} else {
+								if (!star.trigger[j]) {
+									//event
+									star.trigger[j] == true;
+									//notify
+									msg = "你觸發了"+i+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
+									Update.Notify(playerIO[j], msg);
+								} else {
+									msg = "你已經觸發過"+i+"星球事件囉";
+									Update.Notify(playerIO[j], msg);
+								}
+							}
+						}
+					}
 					break;
 				case "a6":
 				case "a7":
 					//option
 					//pop box: question
+					//notify
 					break;
 				case "a8":
 				case "a9":
@@ -162,6 +239,9 @@ Controller = function(io, model) {
 							Update.Chatting(msg, "SYSTEM");
 							//update player
 							Update.Money(playerIO[j], model.players[j].money);
+							//notify
+							msg = "你在" + i + "碰到命運";
+							Update.Notify(playerIO[j], msg);
 						}
 					}
 					//update board
@@ -187,6 +267,7 @@ Controller = function(io, model) {
 							var msg = "玩家" + model.players[j] + "在廢棄星球收集到 "+ amount + "dataset";
 							Update.Chatting(msg, "SYSTEM");
 							//update player: bag
+							//notify
 						}
 					}
 					break;

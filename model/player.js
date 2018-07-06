@@ -29,8 +29,8 @@ ship = function(id, user_id) {
 		num_of_miner: 0,
 		num_of_trainer: 0,
 		num_of_haker: 0,
-		day_left: null,
-		target_id: null,
+		dayLeft: null,
+		targetId: null,
 		datasetType: null,
 		datasetAmount: 0,
 		AimodelIdx: null

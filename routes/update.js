@@ -33,6 +33,9 @@ class Updateutil{
 		console.log(name);
 		this.io.emit('chatting', msg, name);
 	}
+	Notify(playerIO, msg) {
+		this.io.socket.to(playerIO).emit("notify", msg);
+	}
 }
 
 module.exports = Updateutil;
