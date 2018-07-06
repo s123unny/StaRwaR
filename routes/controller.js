@@ -11,10 +11,13 @@ var datasetAmount = {11:60, 5:30, 1:5};
 /*****/
 
 var password = ["meow", "beep", "wang", "woof", "oops"];
-
+var username = ["Player1", "Player2", "Player3", "Player4", "Player5"];
+var playerid = [0, 0, 0, 0, 0]
+var money = [0, 0, 0, 0, 0];
 var fs = require("fs");
 var player = require("../model/player.js");
 var stars = require("../model/stars.js");
+var updateFunction = require("./update")
 
 
 Controller = function(io, model) {
@@ -31,6 +34,9 @@ Controller = function(io, model) {
 		day: 0
 	}
 	var count = 0;
+	
+	var Update = new updateFunction(io)
+	
 	function chatPlayer(msg,id){
 		io.emit('chat_message', msg ,"PLAYER");
 	}
@@ -201,12 +207,14 @@ Controller = function(io, model) {
 
 	}
 
+
 	/* Listen new connection */
 	io.on("connection", (player) => {
 
 	console.log("New connection.");
 
 		player.on("login", (id, name, psw) => {
+			// login password check
 			if (id == 87 && psw == "csie") {
 				console.log("admin login!");
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
@@ -216,10 +224,20 @@ Controller = function(io, model) {
 				console.log("Wrong login!")
 				return;
 			}
-
-			if(id != 87) {
-				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
-				player.on('chat_message', (msg) => chatPlayer(msg,id));
+			console.log(player.id);
+			// socket io start
+			if(id != 87 && id >= 0 && id <= 4) {
+				username[id] = name;
+				playerid[id] = player.id;
+				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
+				Update.Chatting(login_msg, "SYSTEM");
+				Update.Leaderboard(username, money)
+				console.log(player.id)
+				io.sockets.to(player.id).emit('chatting', 'this is only for you' + username[id],"SYSTEM");
+				player.on('chat_message', (msg) => Update.Chatting(msg, username[id])); // listen to chatting msg
+			}
+			else{
+				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg
 			}
 		})
 	});
