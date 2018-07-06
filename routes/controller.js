@@ -11,9 +11,6 @@ var datasetAmount = {11:60, 5:30, 1:5};
 /*****/
 
 var password = ["meow", "beep", "wang", "woof", "oops"];
-var username = ["Player1", "Player2", "Player3", "Player4", "Player5"];
-var playerid = [0, 0, 0, 0, 0]
-var money = [0, 0, 0, 0, 0];
 var fs = require("fs");
 var player = require("../model/player.js");
 var stars = require("../model/stars.js");
@@ -35,7 +32,7 @@ Controller = function(io, model) {
 	}
 	var count = 0;
 	
-	var Update = new updateFunction(io)
+	var Update = new updateFunction(io);
 	
 	function chatPlayer(msg,id){
 		io.emit('chat_message', msg ,"PLAYER");
@@ -57,6 +54,8 @@ Controller = function(io, model) {
 		//mine event
 		if (model.day == 11 || model.day == 23 || model.day == 43) {
 			//message
+			var msg = "礦場事件發生 待補";
+			Update.Chatting(msg, "SYSTEM");
 			console.log("[Event] mine" + model.day);
 			for (let key in mine) {
 				model.stars[mine[key]].mine = mine_change[model.day][key]; 
@@ -67,8 +66,9 @@ Controller = function(io, model) {
 			if (star.num > 0 && stars[i].num <= 2) {
 				if (!star.found) {
 					star.found = true;
-					/*update map (light up)*/
-					/*chat message : star found*/
+					Update.star(i);
+					var msg = "新的礦場被發現了!";
+					Update.Chatting(msg, "SYSTEM");
 				}
 				var total = 0
 				for (var j = 0; j < 5; j++) {
@@ -82,15 +82,20 @@ Controller = function(io, model) {
 						add = add / total * star.mine;
 						model.players[j].money += add;
 						/*chat message*/
+						var msg = "玩家" + model.players[j].name + "挖礦獲得 " + add + "幣";
+						Update.Chatting(msg, "SYSTEM");
 						/*update player*/
+						Update.Money(playerIO[j], model.players[j].money);
 					}
 				}
 				/*update board*/
+				Update.Leaderboard(model.players);
 			} else if (star.num > 2) {
 				if (!star.found) {
 					star.found = true;
-					/*update map (light up)*/
-					/*chat message : star found*/
+					Update.star(i);
+					var msg = "新的礦場被發現了!";
+					Update.Chatting(msg, "SYSTEM");
 				}
 				/*pop box: question*/
 			}
@@ -100,28 +105,36 @@ Controller = function(io, model) {
 			if (star.num > 0) {
 				if (!star.found) {
 					star.found = true;
-					/*update map (light up)*/
-					/*chat message: star found*/
+					Update.star(i);
+					var msg = "新的星球被發現了!";
+					Update.Chatting(msg, "SYSTEM");
 				}
 				switch(i):
 				case "a0":
 					//black hole
 					for (var j = 0; j < 5; j++) {
 						if (star.player_here[j] != null) {
-							model.player[j].num_of_miner -= model.player[j].ships[star.player_here[j]].num_of_miner;
-							model.player[j].num_of_trainer -= model.player[j].ships[star.player_here[j]].num_of_trainer;
-							model.player[j].num_of_haker -= model.player[j].ships[star.player_here[j]].num_of_haker;
-							model.player[j].ships[star.player_here[j]].num_of_miner = 0;
-							model.player[j].ships[star.player_here[j]].num_of_trainer = 0;
-							model.player[j].ships[star.player_here[j]].num_of_haker = 0;
+							player = model.players[j];
+							player.num_of_miner -= player.ships[star.player_here[j]].num_of_miner;
+							player.num_of_trainer -= player.ships[star.player_here[j]].num_of_trainer;
+							player.num_of_haker -= player.ships[star.player_here[j]].num_of_haker;
+							player.ships[star.player_here[j]].num_of_miner = 0;
+							player.ships[star.player_here[j]].num_of_trainer = 0;
+							player.ships[star.player_here[j]].num_of_haker = 0;
 						}
 					}
+					Update.Worker(playerIO, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 					//message
+					var msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
+					Update.Chatting(msg, "SYSTEM");
 					//update map
+					io.emit("blackHole");
 					break;
 				case "a1":
 				case "a2":
 					//desert
+					var msg = "邊緣星球感謝玩家拜訪";
+					Update.Chatting(msg, "SYSTEM");
 					break;
 				case "a3":
 					//ML
@@ -145,10 +158,14 @@ Controller = function(io, model) {
 						if (star.player_here[j] != null) {
 							model.player[j].money += randomMoney;
 							//chat message
+							var msg = "玩家" + model.players[j].name + "在命運星球抽到的命運是: " + randomMoney + "幣";
+							Update.Chatting(msg, "SYSTEM");
 							//update player
+							Update.Money(playerIO[j], model.players[j].money);
 						}
 					}
 					//update board
+					Update.Leaderboard(model.players);
 					break;
 				case "a10":
 				case "a11":
@@ -167,6 +184,8 @@ Controller = function(io, model) {
 						if (star.player_here[j] != null) {
 							model.player[j].dataset[starDatasetType[i]] += amount;
 							//chat message
+							var msg = "玩家" + model.players[j] + "在廢棄星球收集到 "+ amount + "dataset";
+							Update.Chatting(msg, "SYSTEM");
 							//update player: bag
 						}
 					}
@@ -179,8 +198,9 @@ Controller = function(io, model) {
 			if (star.num > 0) {
 				if (!star.found) {
 					star.found = true;
-					/*update map (light up)*/
-					/*message*/
+					Update.star(i);
+					var msg = "新的雲端運算中心被發現了!";
+					Update.Chatting(msg, "SYSTEM");
 				}
 				for (var j = 0; j < 5; j++) {
 					if (star.player_here[j] != null) {
@@ -196,6 +216,7 @@ Controller = function(io, model) {
 							player.AImodelIdx += 1;
 							player.ships[shipId].datasetType = null;
 							player.ships[shipId].datasetAmount = 0;
+							//update player: bag
 						}
 					}
 				}
@@ -219,7 +240,7 @@ Controller = function(io, model) {
 				console.log("admin login!");
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login.");
-				playerIO[id] = player;
+				playerIO[id] = player.id;
 			} else {
 				console.log("Wrong login!")
 				return;
@@ -227,13 +248,10 @@ Controller = function(io, model) {
 			console.log(player.id);
 			// socket io start
 			if(id != 87 && id >= 0 && id <= 4) {
-				username[id] = name;
-				playerid[id] = player.id;
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
 				Update.Chatting(login_msg, "SYSTEM");
-				Update.Leaderboard(username, money)
-				console.log(player.id)
-				io.sockets.to(player.id).emit('chatting', 'this is only for you' + username[id],"SYSTEM");
+				Update.Leaderboard(model.players);
+				io.sockets.to(playerIO[id]).emit('chatting', 'this is only for you',"SYSTEM");
 				player.on('chat_message', (msg) => Update.Chatting(msg, username[id])); // listen to chatting msg
 			}
 			else{

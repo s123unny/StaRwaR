@@ -2,19 +2,31 @@ class Updateutil{
 	constructor(io){
 		this.io = io;
 	}
-	Leaderboard(username, money){
+	Leaderboard(players){
+		username = [];
+		money = [];
+		for (var i = 0; i < 5; i++) {
+			username.push(players[i].username);
+			money.push(players[i].money);
+		}
 		console.log(username)
 		console.log(money)
 		this.io.emit('leaderboard', username, money);
 	}
-	Skill(username, skill){
+	Skill(playerIO, skill){
 	
 	}
 	Star(star){
-		
+		this.io.emit('lightupStar', star);	
 	}
-	People(username){
-		
+	Worker(playerIO, miner, trainer, haker) {
+		this.io.socket.to(playerIO).emit("worker", miner, trainer, haker);
+	}
+	Money(playerIO, money) {
+		this.io.socket.to(playerIO).emit("money", money);
+	}
+	Item(playerIO, item, amount) { 
+		this.io.socket.to(playerIO).emit();	
 	}
 	Chatting(msg, name){
 		console.log(msg);
