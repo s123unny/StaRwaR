@@ -1,6 +1,6 @@
 var stars = {
-	m0: {id: "m0", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m1: {id: "m1", x_pos: 1, y_pos: 1, type: 'mine'}, 
+	m0: {id: "m0", x_pos: 1, y_pos: 1, type: 'mine', mine: 5}, 
+	m1: {id: "m1", x_pos: 1, y_pos: 1, type: 'mine', mine: 5}, 
 	m2: {id: "m2", x_pos: 1, y_pos: 1, type: 'mine'}, 
 	m3: {id: "m3", x_pos: 1, y_pos: 1, type: 'mine'}, 
 	m4: {id: "m4", x_pos: 1, y_pos: 1, type: 'mine'}, 
@@ -37,13 +37,15 @@ var stars = {
 };
 
 for (var id in stars) {
-	var node = stars.id;
-	node[found] = false;
-	node[num] = 0;
-	node[player_here] = [null, null, null, null, null];
+	var node = stars[id];
+	node.found = false;
+	node.num = 0;
+	node.player_here = [null, null, null, null, null];
 	if (id == "a4" || id == "a5") {
-		node[trigger] = [false, false, false, false, false];
+		node.trigger = [false, false, false, false, false];
 	} else if (id == "a3") {
-		node[GPU] == 2;
+		node.GPU == 2;
 	}
 }
+//console.log(stars);
+module.exports = stars;

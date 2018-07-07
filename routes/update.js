@@ -3,10 +3,10 @@ class Updateutil{
 		this.io = io;
 	}
 	Leaderboard(players){
-		username = [];
-		money = [];
+		var username = [];
+		var money = [];
 		for (var i = 0; i < 5; i++) {
-			username.push(players[i].username);
+			username.push(players[i].name);
 			money.push(players[i].money);
 		}
 		console.log(username)
@@ -20,21 +20,20 @@ class Updateutil{
 		this.io.emit('lightupStar', star);	
 	}
 	Worker(playerIO, miner, trainer, haker) {
-		this.io.socket.to(playerIO).emit("worker", miner, trainer, haker);
+		this.io.sockets.to(playerIO).emit("worker", miner, trainer, haker);
 	}
 	Money(playerIO, money) {
-		this.io.socket.to(playerIO).emit("money", money);
+		this.io.sockets.to(playerIO).emit("money", money);
 	}
 	Item(playerIO, item, amount) { 
-		this.io.socket.to(playerIO).emit();	
+		this.io.sockets.to(playerIO).emit();	
 	}
 	Chatting(msg, name){
-		console.log(msg);
-		console.log(name);
+		console.log(name, msg);
 		this.io.emit('chatting', msg, name);
 	}
 	Notify(playerIO, msg) {
-		this.io.socket.to(playerIO).emit("notify", msg);
+		this.io.sockets.to(playerIO).emit("notify", msg);
 	}
 }
 

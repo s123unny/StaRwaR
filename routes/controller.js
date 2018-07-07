@@ -20,16 +20,17 @@ var updateFunction = require("./update")
 Controller = function(io, model) {
 	var io = io;
 	var playerIO = [];
-	var mine = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9];
-	var abandon = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14];
-	var starDatasetType = {a10: image, a11: image, a12: text, a13: text, a14: sound};
-	var computer = [c0, c1, c2, c3, c4];
+	var mine = ["m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9"];
+	var abandon = ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14"];
+	var starDatasetType = {a10: "image", a11: "image", a12: "text", a13: "text", a14: "sound"};
+	var computer = ["c0", "c1", "c2", "c3", "c4"];
 	var model = {
 		stars: stars,
 		players: [
 			player(0), player(1), player(2), player(3), player(4) ],
 		day: 0
 	}
+	console.log(model.stars);
 	var count = 0;
 	
 	var Update = new updateFunction(io);
@@ -38,15 +39,23 @@ Controller = function(io, model) {
 		io.emit('chat_message', msg ,"PLAYER");
 	}
 	
-	function collectPlayerSetting() {
+	function collectPlayerSetting(id) {
 		count += 1;
 		// todo
-		if (count == 5) {
+		// for testing
+		console.log(model.stars.m1);
+		console.log(model.players[id]);
+		model.stars.m1.player_here[id] = 0;
+		model.players[id].ships[0].num_of_miner = 2;
+		model.stars.m1.num = 2;
+		//-------------
+		if (count == 2) {
 			day();
 		}
 	}
 
 	function day() {
+		console.log("run day function");
 		count = 0;
 		//update day
 		model.day += 1;
@@ -66,7 +75,7 @@ Controller = function(io, model) {
 			if (star.num > 0 && stars[i].num <= 2) {
 				if (!star.found) {
 					star.found = true;
-					Update.star(i);
+					Update.Star(i);
 					var msg = "新的礦場被發現了!";
 					Update.Chatting(msg, "SYSTEM");
 				}
@@ -93,7 +102,7 @@ Controller = function(io, model) {
 			} else if (star.num > 2) {
 				if (!star.found) {
 					star.found = true;
-					Update.star(i);
+					Update.Star(i);
 					var msg = "新的礦場被發現了!";
 					Update.Chatting(msg, "SYSTEM");
 				}
@@ -105,7 +114,7 @@ Controller = function(io, model) {
 			if (star.num > 0) {
 				if (!star.found) {
 					star.found = true;
-					Update.star(i);
+					Update.Star(i);
 					var msg = "新的星球被發現了!";
 					Update.Chatting(msg, "SYSTEM");
 				}
@@ -275,11 +284,11 @@ Controller = function(io, model) {
 			}
 		}
 		for (let i of computer) {
-			star = moel.stars[i];
+			star = model.stars[i];
 			if (star.num > 0) {
 				if (!star.found) {
 					star.found = true;
-					Update.star(i);
+					Update.Star(i);
 					var msg = "新的雲端運算中心被發現了!";
 					Update.Chatting(msg, "SYSTEM");
 				}
@@ -304,6 +313,7 @@ Controller = function(io, model) {
 			}
 		}
 		if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
+			console.log("AImodel event");
 			/*pop box: event*/
 		}
 
@@ -329,11 +339,13 @@ Controller = function(io, model) {
 			console.log(player.id);
 			// socket io start
 			if(id != 87 && id >= 0 && id <= 4) {
+				model.players[id].name = name;
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
 				Update.Chatting(login_msg, "SYSTEM");
 				Update.Leaderboard(model.players);
 				io.sockets.to(playerIO[id]).emit('chatting', 'this is only for you',"SYSTEM");
 				player.on('chat_message', (msg) => Update.Chatting(msg, username[id])); // listen to chatting msg
+				collectPlayerSetting(id);
 			}
 			else{
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg
