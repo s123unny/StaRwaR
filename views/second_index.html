@@ -10,6 +10,9 @@
 <div class="wrapper">
 	<div class="character">
 		<img src="char1.png" width="389" height="457"></img>
+		<div id="Money" class="title">
+			Money : 100000 BTC
+		</div>
 	</div>
 	<div class="Resources">
 		<div class="Workers">
@@ -20,21 +23,10 @@
 					</div>
 				</div>
 				<div class="workers_type">Trainer</div>
-				<div class="worker_num">Current :</div>
-				<button class="add_minus_button">+</button>
-				<button class="add_minus_button">-</button>
-<!-- 				<div class="Add_worker_wrapper">
-					<div class="worker_class">
-						Cutrrent: <div>0</div>
-					</div>
-					<div class="worker_class">
-						Append: <div>3</div>
-					</div>
-					<div class="worker_class">
-						Minus: <div>2</div>
-					</div>
-				</div>
- -->			</div>
+				<div class="worker_num" id="trainer_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_trainer()">+</button>
+				<button class="add_minus_button" onclick="minus_trainer()">-</button>
+			</div>
 			<div class="workers_frame">
 				<div class="worker_img_slot">
 					<div class="workers_img">
@@ -42,9 +34,9 @@
 					</div>
 				</div>
 				<div class="workers_type">Miner</div>
-				<div class="worker_num">Current :</div>
-				<button class="add_minus_button">+</button>
-				<button class="add_minus_button">-</button>
+				<div class="worker_num" id="miner_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_miner()">+</button>
+				<button class="add_minus_button" onclick="minus_miner()">-</button>
 			</div>
 			<div class="workers_frame">
 				<div class="worker_img_slot">
@@ -53,25 +45,28 @@
 					</div>
 				</div>
 				<div class="workers_type">Hacker</div>
-				<div class="worker_num">Current :</div>
-				<button class="add_minus_button">+</button>
-				<button class="add_minus_button">-</button>
+				<div class="worker_num" id="hacker_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_hacker()">+</button>
+				<button class="add_minus_button" onclick="minus_hacker()">-</button>
 			</div>
 		</div>
 		<div class="Items">
 			<div class="items_block">
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="audio.png" width="30" height="30"></img>
 					</div>
 					<div class="items_type">Melodious Flutesong</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="image.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Surreal Landscape</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="text.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Sentimental Letter</div>
 				</div>
@@ -79,16 +74,19 @@
 			<div class="items__block">
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="audio_m.png" width="50" height="50"></img>
 					</div>
 					<div class="items_type">Phoney Tunes</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="image_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Alien Drawings</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
+						<img class="worker_png" src="text_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Forged Notes</div>
 				</div>
@@ -113,12 +111,12 @@
 			<div id="ongoing_mblock_slot1_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot1_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot1_M" class="content">0</div>
-			<div id="ongoing_mblock_slot1_T" class="content">0</div>
-			<div id="ongoing_mblock_slot1_A" class="content">0</div>
+			<div id="ongoing_mblock_slot1_T" class="content">1</div>
+			<div id="ongoing_mblock_slot1_H" class="content">0</div>
 			<div id="ongoing_mblock_slot1_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot1_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -130,11 +128,11 @@
 			<div id="ongoing_mblock_slot2_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot2_M" class="content">0</div>
 			<div id="ongoing_mblock_slot2_T" class="content">0</div>
-			<div id="ongoing_mblock_slot2_A" class="content">0</div>
+			<div id="ongoing_mblock_slot2_H" class="content">0</div>
 			<div id="ongoing_mblock_slot2_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot2_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -146,11 +144,11 @@
 			<div id="ongoing_mblock_slot3_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot3_M" class="content">0</div>
 			<div id="ongoing_mblock_slot3_T" class="content">0</div>
-			<div id="ongoing_mblock_slot3_A" class="content">0</div>
+			<div id="ongoing_mblock_slot3_H" class="content">0</div>
 			<div id="ongoing_mblock_slot3_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot3_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -162,7 +160,7 @@
 			<div id="ongoing_mblock_slot4_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot4_M" class="content">0</div>
 			<div id="ongoing_mblock_slot4_T" class="content">0</div>
-			<div id="ongoing_mblock_slot4_A" class="content">0</div>
+			<div id="ongoing_mblock_slot4_H" class="content">0</div>
 			<div id="ongoing_mblock_slot4_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot4_back" class="content">
 				<label class="rest">
@@ -178,7 +176,7 @@
 			<div id="ongoing_mblock_slot5_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot5_M" class="content">0</div>
 			<div id="ongoing_mblock_slot5_T" class="content">0</div>
-			<div id="ongoing_mblock_slot5_A" class="content">0</div>
+			<div id="ongoing_mblock_slot5_H" class="content">0</div>
 			<div id="ongoing_mblock_slot5_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot5_back" class="content">
 				<label class="rest">
@@ -219,7 +217,7 @@
 			<div id="assign_mblock_slot1_T" class="content">
 				<input type="number" name="# of minor" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot1_A" class="content">
+			<div id="assign_mblock_slot1_H" class="content">
 				<input type="number" name="# of minor" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot1_State" class="content">
@@ -246,7 +244,7 @@
 			<div id="assign_mblock_slot2_location" class="content">Alpha</div>
 			<div id="assign_mblock_slot2_M" class="content">0</div>
 			<div id="assign_mblock_slot2_T" class="content">0</div>
-			<div id="assign_mblock_slot2_A" class="content">0</div>
+			<div id="assign_mblock_slot2_H" class="content">0</div>
 			<div id="assign_mblock_slot2_State" class="content">OAO</div>
 			<div id="assign_mblock_slot2_back" class="content">
 				<label class="rest">
@@ -262,7 +260,7 @@
 			<div id="assign_mblock_slot3_location" class="content">Alpha</div>
 			<div id="assign_mblock_slot3_M" class="content">0</div>
 			<div id="assign_mblock_slot3_T" class="content">0</div>
-			<div id="assign_mblock_slot3_A" class="content">0</div>
+			<div id="assign_mblock_slot3_H" class="content">0</div>
 			<div id="assign_mblock_slot3_State" class="content">OAO</div>
 			<div id="assign_mblock_slot3_back" class="content">
 				<label class="rest">
@@ -278,7 +276,7 @@
 			<div id="assign_mblock_slot4_location" class="content">Alpha</div>
 			<div id="assign_mblock_slot4_M" class="content">0</div>
 			<div id="assign_mblock_slot4_T" class="content">0</div>
-			<div id="assign_mblock_slot4_A" class="content">0</div>
+			<div id="assign_mblock_slot4_H" class="content">0</div>
 			<div id="assign_mblock_slot4_State" class="content">OAO</div>
 			<div id="assign_mblock_slot4_back" class="content">
 				<label class="rest">
@@ -294,7 +292,7 @@
 			<div id="assign_mblock_slot5_location" class="content">Alpha</div>
 			<div id="assign_mblock_slot5_M" class="content">0</div>
 			<div id="assign_mblock_slot5_T" class="content">0</div>
-			<div id="assign_mblock_slot5_A" class="content">0</div>
+			<div id="assign_mblock_slot5_H" class="content">0</div>
 			<div id="assign_mblock_slot5_State" class="content">OAO</div>
 			<div id="assign_mblock_slot5_back" class="content">
 				<label class="rest">
@@ -322,7 +320,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/view.js"></script>
-<script src="js/chatRoom.js"></script>
-<script src="js/leaderBoard.js"></script>
+<!-- <script src="/socket.io/socket.io.js"></script> -->
+<script src="js/update_worker.js"></script>
+<script src="js/assign_work.js"></script>
+<!-- <script src="js/chatRoom.js"></script> -->
+<!-- <script src="js/leaderBoard.js"></script> -->
