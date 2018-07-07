@@ -389,6 +389,7 @@ Controller = function(io, model) {
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
 				Update.Chatting(login_msg, "SYSTEM");
 				Update.Leaderboard(model.players);
+				Update.Notify(playerIO[id].first,login_msg);
 				player.on('chat_message', (msg) => Update.Chatting(msg, name)); // listen to chatting msg
 				// Question.Init(player);
 
