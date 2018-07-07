@@ -9,3 +9,10 @@ function login() {
 	$('#login').hide();
 	socket.emit("login", playerId, playerName, password);
 }
+
+socket.on("adminStartButton", function() {
+	$('#StartButton').show();
+});
+function start() {
+	socket.emit('gameStart');
+}
