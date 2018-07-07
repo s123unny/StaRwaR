@@ -109,7 +109,7 @@ Controller = function(io, model) {
 					var msg = "新的星球被發現了!";
 					Update.Chatting(msg, "SYSTEM");
 				}
-				switch(i):
+				switch(i) {
 				case "a0":
 					//black hole
 					for (var j = 0; j < 5; j++) {
