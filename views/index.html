@@ -2,6 +2,7 @@
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="stylesheets/index.css">
+  <link type="text/css" rel="stylesheet" href="stylesheets/question.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body>
@@ -12,6 +13,73 @@
 		<form action="">
 			<input id="messageForm" autocomplete="off" type="text" /><div id='sendButton' onclick='sendMessage()'>Send</div>
 		</form>
+     </div>
+	
+     <div class="popBox eventBox" id="questionBox">
+	     <input type=button class="closeButton" value="close" onclick="closeQuestion()">
+	     	<div class="title">
+			<h1>題目名稱</h1>
+			<div class="timer" id="timeLeft"></div>
+		</div>
+		<div class="qDes">
+			<p>default.</p>
+		</div>
+		<form>
+			<div class="options" id="multiOptions">
+				<div class="opBox" id="mop0">
+					<input type="checkbox" name="mq" value=0> 
+					<label>選項一</label>
+				</div>
+				<div class="opBox" id="mop1">
+					<input type="checkbox" name="mq" value=1> 
+					<label>選項二</label>
+				</div>
+				<div class="opBox" id="mop2">
+					<input type="checkbox" name="mq" value=2> 
+					<label>選項三</label>
+				</div>
+				<div class="opBox" id="mop3">
+					<input type="checkbox" name="mq" value=3> 
+					<label>選項四</label>
+				</div>
+				<div class="opBox" id="mop4">
+					<input type="checkbox" name="mq" value=4> 
+					<label>選項五</label>
+				</div>
+			</div>
+			<div class="options" id="singleOptions">
+				<div class="opBox" id="sop0">
+					<input type="radio" name="qq" value=0> 
+					<label>選項一</label>
+				</div>
+				<div class="opBox" id="sop1">
+					<input type="radio" name="qq" value=1> 
+					<label>選項二</label>
+				</div>
+				<div class="opBox" id="sop2">
+					<input type="radio" name="qq" value=2> 
+					<label>選項三</label>
+				</div>
+				<div class="opBox" id="sop3">
+					<input type="radio" name="qq" value=3> 
+					<label>選項四</label>
+				</div>
+				<div class="opBox" id="sop4">
+					<input type="radio" name="qq" value=4> 
+					<label>選項五</label>
+				</div>
+			</div>
+			<br><br>
+			<input type="button" id="submitButton" value="Submit" onclick="submitAnswer()">
+		</form>
+		
+		<div id="answerResult">
+			<h1 class="title">答對/錯了<h1>
+			<p></p>
+		</div>
+		
+		
+		
 	</div>
   </div>
 
@@ -30,3 +98,4 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/view.js"></script>
 <script src="js/chatRoom.js"></script>
+<script src="js/question.js"></script>

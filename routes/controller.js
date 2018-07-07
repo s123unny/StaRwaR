@@ -6,6 +6,8 @@ MAX_PLAYER = 5;
 var password = ["meow", "beep", "wang", "woof", "oops"];
 
 var fs = require("fs");
+var questionEvent = require("./questionlist.js");
+var showanswerEvent = require("./question.js");
 
 Controller = function(io, model) {
 	var io = io;
@@ -13,7 +15,7 @@ Controller = function(io, model) {
 	function chatPlayer(msg,id){
 		io.emit('chat_message', msg ,"PLAYER");
 	}
-
+	
 	/* Listen new connection */
 	io.on("connection", (player) => {
 
@@ -24,16 +26,23 @@ Controller = function(io, model) {
 				console.log("admin login!");
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login.");
+				questionEvent(io);
+				
+				showanswerEvent(io,player);
+				
 			} else {
 				console.log("Wrong login!")
 				return;
 			}
 
 			if(id != 87) {
-				io.emit('chatting', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
+				io.emit('chat_message', "玩家 " + name + " 上線了! 大家跟他打聲招呼吧!");
 				player.on('chat_message', (msg) => chatPlayer(msg,id));
 			}
 		})
+		
+
+	
 	});
 }
 module.exports = Controller;
