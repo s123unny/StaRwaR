@@ -2,17 +2,19 @@
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	       -box-sizing: border-box;
-	position: relative;
+	//position: relative;
 }
 
 
 body {
+	position: relative;
 	font-family: 'Noto Sans TC', sans-serif;
 	font-weight: 300;
 	background: linear-gradient(to bottom ,#223F47, #081319, #223F47) fixed;
 }
 
 .title {
+	position: relative;
 	color: white;
 	font-weight: 500;
 	font-size: 20px;
@@ -21,7 +23,16 @@ body {
 	left: 0px;
 }
 
+.title span {
+	position: relative;
+	color: #80f1dc;
+	font-weight: 500;
+	font-size: 20px;
+}
+	
+
 .subtitle {
+	position: relative;
 	margin: 0px 0px 0px 300px;
 	color: white;
 	font-weight: 500;
@@ -33,6 +44,7 @@ body {
 
 
 .skilltitle {
+	position: relative;
 	margin: 0px 0px 0px 235px;
 	color: white;
 	font-weight: 500;
@@ -43,26 +55,31 @@ body {
 }
 
 .character {
+	position: relative;
 	float: left;
 	right: 100%;
 	left: 3%;
 }
 
 .Resources{
+	position: relative;
 	float: left;
 	overflow: hidden;
 }
 
 .Workers{
+	position: relative;
 	height: 250px;
 }
 
 .workers_frame{
+	position: relative;
 	margin: 10px 0px 0px 100px;
 	float: left;
 }
 
 .worker_img_slot{
+	position: relative;
 	width: 105px;
 	height: 105px;
 	border-style: inset;
@@ -72,6 +89,9 @@ body {
 }
 
 .workers_img {
+	position: relative;
+	//left: 30%;
+	//right: 50%;
 	border-style: outset;
 	background-color: #FFFFFF; //20 39 46
 	border-width: 5px;
@@ -81,45 +101,65 @@ body {
 }
 
 .add_minus_button {
-    background-color: #4CAF50;
-    border: none;
+    position: relative;
+    background-color: #142630; //20 38 48
+    border-style: solid;
+    border-color: #80f1dc;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     color: white;
-    padding: 20px;
-    text-align: center;
+    //text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 6px;
+    font-size: 10px;
+    padding: 0px 0px 5px 0px;
+    margin: 20px 10px 0px 0px;
+    float: left;
 }
 
 
 .AI_png {
+	position: relative;
 	display: block;
 	margin-top: auto;
 }
 
 .worker_png {
+	position: relative;
 	display: block;
 	margin-top: 1px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
+.Worker_num {
+	position: relative;
+	float: left;	
+	margin: 10px 10px 0px 0px;
+	overflow: hidden;
+}
+
 .worker_num {
-	margin: 10px 0px 0px 10px;
-	color: white;
+	position: relative;
+	//margin: 10px 0px 0px 10px;
+	color: #FFFFFF;
+	font-size: 10px;
+}
+
+.worker_num span {
+	position: relative;
+	color: #80F1DC;
 	font-size: 10px;
 }
 
 /*.Add_worker_wrapper {
+	position: relative;
 	margin: 0px 0px 0px 5px;
 	overflow: hidden;
 }
 
 .worker_class {
+	position: relative;
 	margin: 0px 0px 10px 0px;
 	background-color: #142630; //20 38 48
 	right: 100%;
@@ -134,9 +174,11 @@ body {
 */
 
 .round-button {
+  position: relative;
   width:25%;
 }
 .round-button-circle {
+  position: relative;
   width: 100%;
   height:0;
   padding-bottom: 100%;
@@ -148,33 +190,40 @@ body {
   box-shadow: 0 0 3px gray;
 }
 .round-button-circle:hover {
+  position: relative;
   background:#30588e;
 }
 
 
 
 .workers_type {
+	position: relative;
 	margin: 10px 0px 0px 10px;
 	color: white;
 	font-size: 25px;
 }
 
 .Items{
+	position: relative;
 	height: 250px;
 }
 
 .items_block{
-	margin: 0px 85px 0px 0px;
+	position: relative;
+	margin: 0px 0px 0px 0px;
 	float: left;
+	width: 380px;
 	overflow: hidden;
 }
 
 .items_frame{
+	position: relative;
 	margin: 0px 0px 20px 100px;
 	overflow: hidden;
 }
 
 .items_img {
+	position: relative;
 	float: left;
 	width: 50px;
 	height: 50px;
@@ -185,32 +234,41 @@ body {
 }
 
 .items_type {
+	position: relative;
 	margin: 10px 0px 0px 10px;
 	color: white;
-	font-size: 18px;
+	font-size: 16px;
 	float: left;
 }
 
+.items_type span {
+	position: relative;
+	color: #80f1dc;
+}
 
 .wrapper {
+	position: relative;
 	overflow: hidden;
 }
 
 img {
+	position: relative;
 	object-fit: cover;
 }
 
 .Mission_Status {
+	position: relative;
 	float: left;
 }
 
 .Mission_Block {
-	margin: 0px 0px 10px 0px;
+	position: relative;
+	margin: 0px 0px 15px 0px;
 	background-color: #142630; //20 38 48
 	right: 100%;
 	left: 3%;
 	width: 730px;
-	height: 40px;
+	height: 35px;
 	border-style: inset;
 	border-width: 5px;
 	border-radius:12px;
@@ -218,16 +276,19 @@ img {
 }
 
 .content_wrapper {
+	position: relative;
 	margin: 0px 0px 0px 27px;
 	overflow: hidden;
 }
 
 .slot_wrapper {
+	position: relative;
 	margin: 0px 0px 0px 0px;
 	overflow: hidden;
 }
 
 .content {
+	position: relative;
 	float: left;
 	margin: 0px 5px 0px 0px;
 	color: #80f1dc;
@@ -239,9 +300,19 @@ img {
 	//border-color: #142630; //11 28 36
 }
 
+.category {
+	position: relative;
+	float: left;
+	margin: 0px 5px 0px 0px;
+	color: #FFDE8F;
+	display: block;
+	width: 95px;
+	text-align: center;
+}
+
 .rest {
-    display: block;
     position: relative;
+    display: block;
     padding-left: 25px;
     margin-bottom: 0px;
     cursor: pointer;
@@ -266,17 +337,20 @@ img {
     width: 15px;
     background-color: #3E3E3E;
     border-style: outset;
+    border-color: #7C7C7C;
     border-width: 2px;
     border-radius: 5px;
 }
 
 /* On mouse-over, add a grey background color
 .rest:hover input ~ .checkmark {
+    position: relative;
     background-color: #3E3E3E;
 }
 */
 /* When the checkbox is checked, add a blue background
 .rest input:checked ~ .checkmark {
+    position: relative;
     background-color: #3E3E3E;
 }
 */
@@ -290,45 +364,46 @@ img {
 
 /* Show the checkmark when checked */
 .rest input:checked ~ .checkmark:after {
+    position: relative;
     display: block;
 }
 
 /* Style the checkmark/indicator */
 .rest .checkmark:after {
+    position: relative;
     left: 4px;
     top: 1px;
     width: 4px;
     height: 8px;
     border-style: inset;
     border-color: #80F1DC;
-    border-width: 0 2px 2px 0;
+    //border-radius: 4px;
+    border-width: 0 1px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-/*.Mission_Assign {
-	background-color: #142630; //20 38 48
-	right: 100%;
-	left: 3%;
-	width: 700px;
-	height: 100px;
-	border-style: inset;
-	border-width: 5px;
-	border-radius:12px;
-	border-color: #142630; //11 28 36
+
+.choosetype {
+	position: relative;
+	cursor : pointer;
+	text-align: center;
+	background-color: #142630;
+	border-style: none;
+	border-color: #7C7C7C;
+	border-width: 2px;
+	border-radius: 5px;
 }
 
-.Standby_Workers {
-	background-color: #142630; //20 38 48
-	right: 100%;
-	left: 3%;
-	width: 700px;
-	height: 100px;
-	border-style: inset;
-	border-width: 5px;
-	border-radius:12px;
-	border-color: #142630; //11 28 36
-}*/
+.minion_num {
+	position: relative;
+	text-align: center;
+	background-color: #0A1318; //#142630
+	border: outset;
+	border-color: #0A1318;
+	border-width: 2px;
+	border-radius: 5px;
+}
 
 .Skill_Status {
 	float: left;
@@ -347,4 +422,3 @@ img {
 	border-radius:12px;
 	border-color: #142630; //11 28 36
 }
-
