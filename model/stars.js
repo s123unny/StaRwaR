@@ -1,19 +1,19 @@
 var stars = {
 	m0: {id: "m0", x_pos: 1, y_pos: 1, type: 'mine', mine: 5}, 
 	m1: {id: "m1", x_pos: 1, y_pos: 1, type: 'mine', mine: 5}, 
-	m2: {id: "m2", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m3: {id: "m3", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m4: {id: "m4", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m5: {id: "m5", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m6: {id: "m6", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m7: {id: "m7", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m8: {id: "m8", x_pos: 1, y_pos: 1, type: 'mine'}, 
-	m9: {id: "m9", x_pos: 1, y_pos: 1, type: 'mine'},
-	c0: {id: "c0", x_pos: 1, y_pos: 1, type: 'computer'},
-	c1: {id: "c1", x_pos: 1, y_pos: 1, type: 'computer'},
-	c2: {id: "c2", x_pos: 1, y_pos: 1, type: 'computer'},
-	c3: {id: "c3", x_pos: 1, y_pos: 1, type: 'computer'},
-	c4: {id: "c4", x_pos: 1, y_pos: 1, type: 'computer'},
+	m2: {id: "m2", x_pos: 1, y_pos: 1, type: 'mine', mine: 5}, 
+	m3: {id: "m3", x_pos: 1, y_pos: 1, type: 'mine', mine: 10}, 
+	m4: {id: "m4", x_pos: 1, y_pos: 1, type: 'mine', mine: 10}, 
+	m5: {id: "m5", x_pos: 1, y_pos: 1, type: 'mine', mine: 10}, 
+	m6: {id: "m6", x_pos: 1, y_pos: 1, type: 'mine', mine: 20}, 
+	m7: {id: "m7", x_pos: 1, y_pos: 1, type: 'mine', mine: 20}, 
+	m8: {id: "m8", x_pos: 1, y_pos: 1, type: 'mine', mine: 20}, 
+	m9: {id: "m9", x_pos: 1, y_pos: 1, type: 'mine', mine: 40},
+	c0: {id: "c0", x_pos: 1, y_pos: 1, type: 'computer', day: 3},
+	c1: {id: "c1", x_pos: 1, y_pos: 1, type: 'computer', day: 3},
+	c2: {id: "c2", x_pos: 1, y_pos: 1, type: 'computer', day: 2},
+	c3: {id: "c3", x_pos: 1, y_pos: 1, type: 'computer', day: 2},
+	c4: {id: "c4", x_pos: 1, y_pos: 1, type: 'computer', day: 1},
 	a0: {id: "a0", x_pos: 1, y_pos: 1, type: 'abandon', subtype: 'black'},
 	a1: {id: "a1", x_pos: 1, y_pos: 1, type: 'abandon', subtype: 'desert'},
 	a2: {id: "a2", x_pos: 1, y_pos: 1, type: 'abandon', subtype: 'desert'},
@@ -45,6 +45,8 @@ for (var id in stars) {
 		node.trigger = [false, false, false, false, false];
 	} else if (id == "a3") {
 		node.GPU == 2;
+	} else if (node.type == 'computer') {
+		node.dayLeft = [null, null, null, null, null];
 	}
 }
 //console.log(stars);
