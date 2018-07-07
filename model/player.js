@@ -9,8 +9,8 @@ ship = function(id, user_id) {
 		num_of_miner: 0,
 		num_of_trainer: 0,
 		num_of_haker: 0,
-		dayLeft: null,
-		targetId: null,
+		dayLeft: null, //init: =requiredDay, 0: arrive , !=0: going
+		targetId: null, //null: free, else: targetStarId
 		datasetType: null,
 		datasetAmount: 0,
 	}

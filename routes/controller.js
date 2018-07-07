@@ -4,7 +4,7 @@ MAX_PLAYER = 5;
 var ai_day = {7:17, 19:27, 31:37, 53:56};
 var ai_ratio = {7:[10,10,15], 19:[25,10,30], 31:[10,35,20], 53:[40,30,20]};
 /*mine event*/
-var mine_day = [11,23,43];
+var mine_msg = {11:"因應電費大漲，部分礦場利潤下降",23:"技術革新，礦場產量暴增",43:"金融海嘯發生，部分礦場無預警崩盤倒閉"];
 var mine_change = {11:[0,5,5,5,10,10,10,20,20,40], 23:[0,5,5,5,10,10,20,40,40,80], 43:[0,5,5,5,10,10,20,0,0,0]};
 /*dataset amount*/
 var datasetAmount = {11:60, 5:30, 1:5};
@@ -42,9 +42,19 @@ Controller = function(io, model) {
 		io.emit('chat_message', msg ,"PLAYER");
 	}
 	
-	function collectPlayerSetting(id) {
+	function collectPlayerSetting(player) {
 		count += 1;
 		// todo
+		for (var i = 0; i < 5; i++) {
+			if (player.ships[i].targetId != null) {
+				if (player.ships[i].dayLeft == 1) {
+					player.ships[i].dayLeft = 0;
+					model.stars[player.ships[i].targetId].player_here[id] = i;
+				} else if (player.ships[i].dayLeft > 0){
+					player.ships[i].dayLeft -= 1;
+				}
+			}
+		}
 		// for testing
 		//console.log(model.stars.m1);
 		//console.log(model.players[id]);
@@ -52,7 +62,7 @@ Controller = function(io, model) {
 		model.players[id].ships[0].num_of_miner = 2;
 		model.stars.m1.num = 2;
 		//-------------
-		if (count == 2) {
+		if (count == 5) {
 			day();
 		}
 	}
@@ -66,7 +76,7 @@ Controller = function(io, model) {
 		//mine event
 		if (model.day == 11 || model.day == 23 || model.day == 43) {
 			//message
-			var msg = "礦場事件發生 待補";
+			var msg = "Event: " + mine_msg[model.day];
 			Update.Chatting(msg, "SYSTEM");
 			console.log("[Event] mine" + model.day);
 			for (let key in mine) {
@@ -415,7 +425,7 @@ Controller = function(io, model) {
 
 			// socket io start
 			if(id >= 0 && id <= 4) {
-
+				player.on("collectData", (player) => collectPlayerSetting(player));
 
 			}
 		});
