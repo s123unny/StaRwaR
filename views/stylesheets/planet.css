@@ -1,12 +1,5 @@
 span.planet-orange{
-	background-image:url(../img/red.png);
-	background-size:contain;
-	background-repeat: no-repeat; 
-	height: 50px;
-	width: 50px;
-	position: fixed;
-}
-span.planet-blue{
+	/*display: none;*/
 	background-image:url(../img/orange.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
@@ -14,8 +7,18 @@ span.planet-blue{
 	width: 50px;
 	position: fixed;
 }
-span.planet-red{
+span.planet-blue{
+	/*display: none;*/
 	background-image:url(../img/blue.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
+span.planet-red{
+	/*display: none;*/
+	background-image:url(../img/red.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
 	height: 50px;
@@ -25,6 +28,14 @@ span.planet-red{
 span.planet-base{
 	background-image:url(../img/base.png);
 	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
+span.planet-unreached{
+	background-image:url(../img/gray.png);
+		background-size:contain;
 	background-repeat: no-repeat; 
 	height: 50px;
 	width: 50px;
