@@ -89,6 +89,7 @@ Controller = function(io, model) {
 				console.log(player.id)
 				io.sockets.to(player.id).emit('chatting', 'this is only for you' + username[id],"SYSTEM");
 				player.on('chat_message', (msg) => Update.Chatting(msg, username[id])); // listen to chatting msg
+				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
 			}
 			else{
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg

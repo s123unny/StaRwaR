@@ -313,7 +313,25 @@
 <div class="Skill_Status">
 	<h2 class="skilltitle">Skills</h2>
 	<div class="Skill_Tree">
-		<button class="add_minus_button" onclick="add_trainer()">+</button>
+		<button class="add_minus_button" onclick=add_skill("old_king") id="old_king">1</button>
+		<button class="add_minus_button" onclick=add_skill("validation") id="validation">2</button>
+		<button class="add_minus_button" onclick=add_skill("ensemble") id="ensemble">3</button>
+		<button class="add_minus_button" onclick=add_skill("deep_learning") id="deep_learning">4</button>
+		<button class="add_minus_button" onclick=add_skill("laplas") id="laplas">+</button>
+		<button class="add_minus_button" onclick=add_skill("oil_gas") id="oil_gas">+</button>
+		<button class="add_minus_button" onclick=add_skill("ssh") id="ssh">+</button>
+		<button class="add_minus_button" onclick=add_skill("ADMIN") id="ADMIN">+</button>
+		<button class="add_minus_button" onclick=add_skill("no_people") id="no_people">+</button>
+		<button class="add_minus_button" onclick=add_skill("AUTO_DEBUGGER") id="AUTO_DEBUGGER">+</button>
+		<button class="add_minus_button" onclick=add_skill("employment") id="employment">+</button>
+		<button class="add_minus_button" onclick=add_skill("people_consumer") id="people_consumer">+</button>
+		<button class="add_minus_button" onclick=add_skill("god_of_crypto") id="god_of_crypto">+</button>
+		<button class="add_minus_button" onclick=add_skill("attack") id="attack">+</button>
+		<button class="add_minus_button" onclick=add_skill("quantum") id="quantum">+</button>
+		<button class="add_minus_button" onclick=add_skill("fiftyone") id="fiftyone">+</button>
+		<button class="add_minus_button" onclick=add_skill("DDOS") id="DDOS">+</button>
+		<button class="add_minus_button" onclick=add_skill("GPU") id="GPU">+</button>
+
 	</div>
 </div>
 </body>
@@ -322,8 +340,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<!-- <script src="/socket.io/socket.io.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/update_worker.js"></script>
 <script src="js/assign_work.js"></script>
+<script src="js/skillTree.js"></script>
+<script src="js/view.js"></script>
 <!-- <script src="js/chatRoom.js"></script> -->
 <!-- <script src="js/leaderBoard.js"></script> -->
