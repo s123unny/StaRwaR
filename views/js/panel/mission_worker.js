@@ -74,6 +74,30 @@ function submit_mission(row){
 	});
 }
 
+function update_value(miner, trainer, hacker){
+	var standby_trainer_num = Number($('#standby_trainer_num').text());
+	var standby_miner_num = Number($('#standby_miner_num').text());
+	var standby_hacker_num = Number($('#standby_hacker_num').text());
+	var working_trainer_num = Number($('#working_trainer_num').text());
+	var working_miner_num = Number($('#working_miner_num').text());
+	var working_hacker_num = Number($('#working_hacker_num').text());
+
+	standby_trainer_num -= trainer;
+	standby_miner_num -= miner;
+	standby_hacker_num -= hacker;
+
+	working_trainer_num += trainer;
+	working_miner_num += miner;
+	working_hacker_num += hacker;
+	$('#standby_trainer_num').text(standby_trainer_num);
+	$('#standby_miner_num').text(standby_miner_num);
+	$('#standby_hacker_num').text(standby_hacker_num);
+	$('#working_trainer_num').text(working_trainer_num);
+	$('#working_miner_num').text(working_miner_num);
+	$('#working_hacker_num').text(working_hacker_num);
+	return;
+}
+
 function freeze_submit_block(row){
 
 	console.log("Sure to assign work");
@@ -116,7 +140,8 @@ function freeze_submit_block(row){
 		myalert("Prepare some Datasets before training !");
 		return;
 	}
-	
+	// update value / text
+	update_value(miner, trainer, hacker);	// carry item ?
 	// fixed 
 	$('#assign_mblock_slot'+row+'_submit').attr('disabled', true);
 	$('#assign_mblock_slot'+row+'_type').attr('disabled', true);
@@ -148,7 +173,8 @@ function comeback(row){
 	console.log(state);
 	if (state == "Ongoing"){
 		document.getElementById('ongoing_mblock_slot'+row+'_withdraw').checked = false;
-		alert("You can't call ongoing workers back !");
+		myalert("You can't call ongoing workers back !");
+		// myalert("Why Web is FUCKING HARD ?????");
 		return;
 	}
 	else{

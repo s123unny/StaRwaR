@@ -4,6 +4,11 @@
   <link type="text/css" rel="stylesheet" href="stylesheets/index2.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="js/panel/skills/style.css"/>
+  <script type="text/javascript" src="js/panel/skills/skills.js"></script>
+  <script type="text/javascript" src="js/panel/skills/skills_layout.js"></script>
+  <script type="text/javascript" src="js/panel/skills/skills_fromJSON.js"></script>
+  <script type="text/javascript" src="js/panel/skills/tree.js"></script>
 </head>
 <body>
 <h1 class="title" id="big_title">Control Panel</h1>
@@ -435,8 +440,12 @@
 	<h2 class="skilltitle">Skills</h2>
 	<div class="Skill_Tree">
 		<!-- Skill starts here -->
-		<div class="title"> OAO</div>	
-
+    	<div id="tree" class="skilltree">
+        	<div class="skill" current="1" max="3" skillid="king" sprite="3x3" id="king">
+            	<div>The skill :3</div>
+            	<p>XDDDD</p>
+        	</div>
+    	</div>
 	</div>
 </div>
 </body>
@@ -453,6 +462,7 @@
 <script src="js/panel/mission_worker.js"></script>
 <script src="js/panel/jquery.confirm.js"></script>
 <script src="js/panel/jquery.alert.js"></script>
+
 <!-- <script src="js/popup.js"></script> -->
 <!-- <script src="js/chatRoom.js"></script> -->
 <!-- <script src="js/leaderBoard.js"></script> -->
