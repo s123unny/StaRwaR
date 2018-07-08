@@ -46,12 +46,12 @@ Skill_ability = {
 };
 var password = ["meow", "beep", "wang", "woof", "oops"];
 var fs = require("fs");
+var url = require("url");
 var player = require("../model/player.js");
 var stars = require("../model/stars.js");
 var updateFunction = require("./update");
 var timer = require("./timer");
 // var questionFuntion = require("./questionEvent");
-var updateFunction = require("./update")
 var Skill = require("./skill")
 
 
@@ -440,16 +440,16 @@ Controller = function(io, model) {
 		}
 		Player_skill.push(single_user_skill);
 	}
-	console.log(Player_skill[0])
+	//console.log(Player_skill[0])
 	// use method
-	var pay = 10;
+	var pay = 20;
 	Player_skill[0]['validation'].learned = true;
-	console.log(Player_skill[0]['validation'].method(pay));
+	//console.log(Player_skill[0]['validation'].method(pay));
 	
 	/* Listen new connection */
 	io.on("connection", (player) => {
 
-	console.log("New connection.");
+		console.log("New connection.");
 
 		player.on("login", (id, name, psw) => {
 			// login password check
@@ -468,7 +468,6 @@ Controller = function(io, model) {
 				model.players[id].name = name;
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
 				Update.Chatting(login_msg, "SYSTEM");
-<<<<<<< HEAD
 				Update.Leaderboard(model.players);
 				Update.Notify(playerIO[id].first,login_msg);
 				player.on('chat_message', (msg) => Update.Chatting(msg, name)); // listen to chatting msg
@@ -477,13 +476,7 @@ Controller = function(io, model) {
 				test = model.players[id];
 				collectPlayerSetting(id, test); //for testing
 
-=======
-				Update.Leaderboard(username, money)
-				console.log(player.id)
-				io.sockets.to(player.id).emit('chatting', 'this is only for you' + username[id],"SYSTEM");
-				player.on('chat_message', (msg) => Update.Chatting(msg, username[id])); // listen to chatting msg
 				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
->>>>>>> origin/mergeSkillTree
 			}
 			else{
 				player.on('adminSayStart', night());
@@ -492,7 +485,12 @@ Controller = function(io, model) {
 			}
 		});
 
-		player.on("secondLogin", (id, name, psw) => {
+		var connectUrl = url.parse(player.handshake.headers.referer);
+
+		if (connectUrl.query != null) {
+			var id = connectUrl.query[3];
+			var psw = connectUrl.pathname.split("/")[2];
+			console.log(id, psw);
 			// login password check
 			if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login --2.");
@@ -506,7 +504,7 @@ Controller = function(io, model) {
 			if(id >= 0 && id <= 4) {
 				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
 			}
-		});
+		}
 	});
 }
 module.exports = Controller;

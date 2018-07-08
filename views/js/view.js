@@ -8,6 +8,8 @@ function login() {
 	$('#container').show();
 	$('#login').hide();
 	socket.emit("login", playerId, playerName, password);
+	var url = "/controlPanel/"+password+"/?id="+playerId;
+	window.open(url);
 }
 
 socket.on("adminStartButton", function() {
@@ -16,3 +18,5 @@ socket.on("adminStartButton", function() {
 function start() {
 	socket.emit('gameStart');
 }
+
+
