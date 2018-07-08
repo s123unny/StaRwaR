@@ -1,6 +1,7 @@
 var q;
+var array;
 
-function showQuestion(questions){
+function showQuestion(questions,flag){
 	
 	q=questions;
 
@@ -12,11 +13,11 @@ function showQuestion(questions){
 	$('#questionBox .title h1').text(q.subject);
 	$('#questionBox .qDes p').html(q.description);
 	
-	//if (playerId == model.nowPlaying) {
+	if(flag)
 		$("#submitButton").show();
-	//} else {
-	//	$("#submitButton").hide();
-	//}
+	else {
+		$("#submitButton").hide();
+	}
 
 	if( q.multi ) {
 		$('#questionBox #multiOptions').show();
@@ -77,15 +78,21 @@ function submitAnswer() {
 	$('#questionBox form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 }
 
-function showAnswer( q,correct ) {
+function showAnswer( q,flag ,id ) {
 
-	if (correct) {
+	if (correct==1) {
 		$('#answerResult  .title').text("答對了！");
 		//$('#answerResult img').attr( 'src', "img/correct.png" );
+		console.log(id+" answer correct");
 	}
-	else {
+	else if(correct==0){
 		$('#answerResult  .title ').text("答錯了QQ");
 		//$('#answerResult img').attr( 'src', "img/wrong.png" );
+		
+		console.log(id+" answer wrong");
+	}
+	else{
+		console.log(id+" no need answer");
 	}
 
 	var correctAns = '正確答案：';
@@ -98,13 +105,14 @@ function showAnswer( q,correct ) {
 
 	$('#questionBox #answerResult p').text(correctAns);
 	$('#questionBox form').hide();
-	$('#questionBox .closeButton').show();
+	if(id==9)//admin
+		$('#questionBox .closeButton').show();
 	$('#questionBox #answerResult').show();
 }
-socket.on('show_answer',(q,correct)=>showAnswer(q,correct));
+socket.on('show_answer',(q,flag,id)=>showAnswer(q,flag,id));
 
 function closeQuestion() {
 	$('#questionBox').hide();
 //	showTurnOver();
 }
-socket.on('needQuestion',(questions)=> showQuestion(questions));
+socket.on('needQuestion',(questions,flag)=> showQuestion(questions,flag));

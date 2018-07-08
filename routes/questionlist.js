@@ -469,7 +469,7 @@ module.exports = function(io) {
 		questions[j] = x;
 	}
 	console.log("get a Question : " + questions[0].id);
-	io.emit("needQuestion", questions[0]);
-	console.log("end to get a question");
+	return question[0];
+	//console.log("end to get a question");
 //	io.emit("show_answer",questions[0],"1");
 };

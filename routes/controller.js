@@ -6,8 +6,8 @@ MAX_PLAYER = 5;
 var password = ["meow", "beep", "wang", "woof", "oops"];
 
 var fs = require("fs");
-var questionEvent = require("./questionlist.js");
-var showanswerEvent = require("./question.js");
+
+
 
 Controller = function(io, model) {
 	var io = io;
@@ -26,10 +26,9 @@ Controller = function(io, model) {
 				console.log("admin login!");
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login.");
-				questionEvent(io);
+			//`	questionEvent(io);
 				
-				showanswerEvent(io,player);
-				
+							
 			} else {
 				console.log("Wrong login!")
 				return;
