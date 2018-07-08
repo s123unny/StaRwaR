@@ -14,11 +14,7 @@ app.use('/controlPanel', controlPanel);
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'views')));
-app.use('/controlPanel/meow', express.static(path.join(__dirname, 'views')));
-app.use('/controlPanel/beep', express.static(path.join(__dirname, 'views')));
-app.use('/controlPanel/wang', express.static(path.join(__dirname, 'views')));
-app.use('/controlPanel/woof', express.static(path.join(__dirname, 'views')));
-app.use('/controlPanel/oops', express.static(path.join(__dirname, 'views')));
+app.use('/controlPanel', express.static(path.join(__dirname, 'views')));
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname, '/views/index.html');

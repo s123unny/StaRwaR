@@ -8,7 +8,7 @@ function login() {
 	$('#container').show();
 	$('#login').hide();
 	socket.emit("login", playerId, playerName, password);
-	var url = "/controlPanel/"+password+"/?id="+playerId;
+	var url = "/controlPanel/"+password+"?id="+playerId;
 	window.open(url);
 }
 
