@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="stylesheets/index2.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<a href="./index.html" title="NOT COOL">NOT COOL</a>
+<h1 class="title">Control Pane</h1>
+<div class="wrapper">
+	<div class="character">
+		<img src="char1.png" width="389" height="457"></img>
+		<div id="Money" class="title">
+			Money : 100000 BTC
+		</div>
+	</div>
+	<div class="Resources">
+		<div class="Workers">
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="AI_png" src="AI3.png" width="92.5" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Trainer</div>
+				<div class="worker_num" id="trainer_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_trainer()">+</button>
+				<button class="add_minus_button" onclick="minus_trainer()">-</button>
+			</div>
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="worker_png" src="MINER.png" width="100" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Miner</div>
+				<div class="worker_num" id="miner_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_miner()">+</button>
+				<button class="add_minus_button" onclick="minus_miner()">-</button>
+			</div>
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="worker_png" src="HACKER.png" width="90" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Hacker</div>
+				<div class="worker_num" id="hacker_num">Number : 0</div>
+				<button class="add_minus_button" onclick="add_hacker()">+</button>
+				<button class="add_minus_button" onclick="minus_hacker()">-</button>
+			</div>
+		</div>
+		<div class="Items">
+			<div class="items_block">
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="audio.png" width="30" height="30"></img>
+					</div>
+					<div class="items_type">Melodious Flutesong</div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="image.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Surreal Landscape</div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="text.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Sentimental Letter</div>
+				</div>
+			</div>
+			<div class="items__block">
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="audio_m.png" width="50" height="50"></img>
+					</div>
+					<div class="items_type">Phoney Tunes</div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="image_m.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Alien Drawings</div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="text_m.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Forged Notes</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="Mission_Status">
+	<h2 class="subtitle">Ongoing_Mission</h2>
+	<div class="content_wrapper">
+		<div class="content">Type</div>
+		<div class="content">Location / Skill</div>
+		<div class="content"># of Minor</div>
+		<div class="content"># of Trainer</div>
+		<div class="content"># of Hacker</div>
+		<div class="content">State</div>
+		<div class="content">Back to Home</div>
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="ongoing_mblock_slot1_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot1_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot1_M" class="content">0</div>
+			<div id="ongoing_mblock_slot1_T" class="content">1</div>
+			<div id="ongoing_mblock_slot1_H" class="content">0</div>
+			<div id="ongoing_mblock_slot1_State" class="content">Working</div>
+			<div id="ongoing_mblock_slot1_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="ongoing_mblock_slot2_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot2_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot2_M" class="content">0</div>
+			<div id="ongoing_mblock_slot2_T" class="content">0</div>
+			<div id="ongoing_mblock_slot2_H" class="content">0</div>
+			<div id="ongoing_mblock_slot2_State" class="content">Working</div>
+			<div id="ongoing_mblock_slot2_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="ongoing_mblock_slot3_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot3_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot3_M" class="content">0</div>
+			<div id="ongoing_mblock_slot3_T" class="content">0</div>
+			<div id="ongoing_mblock_slot3_H" class="content">0</div>
+			<div id="ongoing_mblock_slot3_State" class="content">Working</div>
+			<div id="ongoing_mblock_slot3_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked" onclick="comeback(1)">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="ongoing_mblock_slot4_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot4_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot4_M" class="content">0</div>
+			<div id="ongoing_mblock_slot4_T" class="content">0</div>
+			<div id="ongoing_mblock_slot4_H" class="content">0</div>
+			<div id="ongoing_mblock_slot4_State" class="content">Working</div>
+			<div id="ongoing_mblock_slot4_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="ongoing_mblock_slot5_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot5_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot5_M" class="content">0</div>
+			<div id="ongoing_mblock_slot5_T" class="content">0</div>
+			<div id="ongoing_mblock_slot5_H" class="content">0</div>
+			<div id="ongoing_mblock_slot5_State" class="content">Working</div>
+			<div id="ongoing_mblock_slot5_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<!-- Mission Assign  -->
+	<h2 class="subtitle">Mission_Assign</h2>
+	<div class="content_wrapper">
+		<div class="content">Type</div>
+		<div class="content">Location / Skill</div>
+		<div class="content"># of Minor</div>
+		<div class="content"># of Trainer</div>
+		<div class="content"># of Hacker</div>
+		<div class="content">Carry Item</div>
+		<div class="content">Confirm</div>
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="assign_mblock_type" class="content ">
+				<form>
+					<select name="YourLocation">
+						<option value="Mine Planet">Mine</option>
+						<option value="AI Center">AI Center</option>
+						<option value="Abandoned Planet">Abandoned</option>
+						<option value="Learn Skill">Unknown</option>
+						<option value="Learn Skill">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div id="assign_mblock_slot1_location" class="content">Alpha</div>
+			<div id="assign_mblock_slot1_M" class="content">
+				<input type="number" name="# of minor" style="width: 50px";>
+			</div>
+			<div id="assign_mblock_slot1_T" class="content">
+				<input type="number" name="# of minor" style="width: 50px";>
+			</div>
+			<div id="assign_mblock_slot1_H" class="content">
+				<input type="number" name="# of minor" style="width: 50px";>
+			</div>
+			<div id="assign_mblock_slot1_State" class="content">
+				<form >
+					<select name="YourItem" style="width: 80px";>
+						<option value="Mine Planet">Phoney Tunes</option>
+						<option value="AI Center">Alien Drawings</option>
+						<option value="Abandoned Planet">Forged Notes</option>
+						<option value="Abandoned Planet">Nothing</option>
+					</select>
+				</form>
+			</div>
+			<div id="assign_mblock_slot1_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Submit</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="assign_mblock_slot2_type" class="content">Mine</div>
+			<div id="assign_mblock_slot2_location" class="content">Alpha</div>
+			<div id="assign_mblock_slot2_M" class="content">0</div>
+			<div id="assign_mblock_slot2_T" class="content">0</div>
+			<div id="assign_mblock_slot2_H" class="content">0</div>
+			<div id="assign_mblock_slot2_State" class="content">OAO</div>
+			<div id="assign_mblock_slot2_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="assign_mblock_slot3_type" class="content">Mine</div>
+			<div id="assign_mblock_slot3_location" class="content">Alpha</div>
+			<div id="assign_mblock_slot3_M" class="content">0</div>
+			<div id="assign_mblock_slot3_T" class="content">0</div>
+			<div id="assign_mblock_slot3_H" class="content">0</div>
+			<div id="assign_mblock_slot3_State" class="content">OAO</div>
+			<div id="assign_mblock_slot3_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="assign_mblock_slot4_type" class="content">Mine</div>
+			<div id="assign_mblock_slot4_location" class="content">Alpha</div>
+			<div id="assign_mblock_slot4_M" class="content">0</div>
+			<div id="assign_mblock_slot4_T" class="content">0</div>
+			<div id="assign_mblock_slot4_H" class="content">0</div>
+			<div id="assign_mblock_slot4_State" class="content">OAO</div>
+			<div id="assign_mblock_slot4_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper">
+			<div id="assign_mblock_slot5_type" class="content">Mine</div>
+			<div id="assign_mblock_slot5_location" class="content">Alpha</div>
+			<div id="assign_mblock_slot5_M" class="content">0</div>
+			<div id="assign_mblock_slot5_T" class="content">0</div>
+			<div id="assign_mblock_slot5_H" class="content">0</div>
+			<div id="assign_mblock_slot5_State" class="content">OAO</div>
+			<div id="assign_mblock_slot5_back" class="content">
+				<label class="rest">
+  					<input type="checkbox" checked="checked">
+  					<span class="checkmark"></span>
+				Callback</label>
+			</div>
+		</div>	
+	</div>
+<!-- 	<h2 class="subtitle">Standby_Workers</h2>
+	<div class="Mission_Block">
+			Trainer: </br>
+			Miner: </br>
+			Hacker: </br>
+	</div> -->
+</div>
+<div class="Skill_Status">
+	<h2 class="skilltitle">Skills</h2>
+	<div class="Skill_Tree">
+		<button class="add_minus_button" onclick=add_skill("old_king") id="old_king">1</button>
+		<button class="add_minus_button" onclick=add_skill("validation") id="validation">2</button>
+		<button class="add_minus_button" onclick=add_skill("ensemble") id="ensemble">3</button>
+		<button class="add_minus_button" onclick=add_skill("deep_learning") id="deep_learning">4</button>
+		<button class="add_minus_button" onclick=add_skill("laplas") id="laplas">+</button>
+		<button class="add_minus_button" onclick=add_skill("oil_gas") id="oil_gas">+</button>
+		<button class="add_minus_button" onclick=add_skill("ssh") id="ssh">+</button>
+		<button class="add_minus_button" onclick=add_skill("ADMIN") id="ADMIN">+</button>
+		<button class="add_minus_button" onclick=add_skill("no_people") id="no_people">+</button>
+		<button class="add_minus_button" onclick=add_skill("AUTO_DEBUGGER") id="AUTO_DEBUGGER">+</button>
+		<button class="add_minus_button" onclick=add_skill("employment") id="employment">+</button>
+		<button class="add_minus_button" onclick=add_skill("people_consumer") id="people_consumer">+</button>
+		<button class="add_minus_button" onclick=add_skill("god_of_crypto") id="god_of_crypto">+</button>
+		<button class="add_minus_button" onclick=add_skill("attack") id="attack">+</button>
+		<button class="add_minus_button" onclick=add_skill("quantum") id="quantum">+</button>
+		<button class="add_minus_button" onclick=add_skill("fiftyone") id="fiftyone">+</button>
+		<button class="add_minus_button" onclick=add_skill("DDOS") id="DDOS">+</button>
+		<button class="add_minus_button" onclick=add_skill("GPU") id="GPU">+</button>
+
+	</div>
+</div>
+</body>
+</html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/update_worker.js"></script>
+<script src="js/assign_work.js"></script>
+<script src="js/skillTree.js"></script>
+<script src="js/view.js"></script>
+<!-- <script src="js/chatRoom.js"></script> -->
+<!-- <script src="js/leaderBoard.js"></script> -->

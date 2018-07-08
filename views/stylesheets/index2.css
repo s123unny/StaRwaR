@@ -1,0 +1,350 @@
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	       -box-sizing: border-box;
+	position: relative;
+}
+
+
+body {
+	font-family: 'Noto Sans TC', sans-serif;
+	font-weight: 300;
+	background: linear-gradient(to bottom ,#223F47, #081319, #223F47) fixed;
+}
+
+.title {
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+.subtitle {
+	margin: 0px 0px 0px 300px;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+
+.skilltitle {
+	margin: 0px 0px 0px 235px;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+.character {
+	float: left;
+	right: 100%;
+	left: 3%;
+}
+
+.Resources{
+	float: left;
+	overflow: hidden;
+}
+
+.Workers{
+	height: 250px;
+}
+
+.workers_frame{
+	margin: 10px 0px 0px 100px;
+	float: left;
+}
+
+.worker_img_slot{
+	width: 105px;
+	height: 105px;
+	border-style: inset;
+	border-color: #5E6C73; //A8 B1 B8  14   7 
+	border-width:5px;
+	border-radius:14px;
+}
+
+.workers_img {
+	border-style: outset;
+	background-color: #FFFFFF; //20 39 46
+	border-width: 5px;
+	border-radius:12px;
+	width: 100px;
+	height: 100px;
+}
+
+.add_minus_button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 6px;
+}
+
+
+.AI_png {
+	display: block;
+	margin-top: auto;
+}
+
+.worker_png {
+	display: block;
+	margin-top: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.worker_num {
+	margin: 10px 0px 0px 10px;
+	color: white;
+	font-size: 10px;
+}
+
+/*.Add_worker_wrapper {
+	margin: 0px 0px 0px 5px;
+	overflow: hidden;
+}
+
+.worker_class {
+	margin: 0px 0px 10px 0px;
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 90px;
+	height: 30px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+*/
+
+.round-button {
+  width:25%;
+}
+.round-button-circle {
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  border:10px solid #cfdcec;
+  overflow:hidden;
+        
+  background: #4679BD; 
+  box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+  background:#30588e;
+}
+
+
+
+.workers_type {
+	margin: 10px 0px 0px 10px;
+	color: white;
+	font-size: 25px;
+}
+
+.Items{
+	height: 250px;
+}
+
+.items_block{
+	margin: 0px 85px 0px 0px;
+	float: left;
+	overflow: hidden;
+}
+
+.items_frame{
+	margin: 0px 0px 20px 100px;
+	overflow: hidden;
+}
+
+.items_img {
+	float: left;
+	width: 50px;
+	height: 50px;
+	border-style: outset;
+	border-width: 5px solid transparent;
+	border-radius:8px;
+	background-color: #FFFFFF; //20 39 46
+}
+
+.items_type {
+	margin: 10px 0px 0px 10px;
+	color: white;
+	font-size: 18px;
+	float: left;
+}
+
+
+.wrapper {
+	overflow: hidden;
+}
+
+img {
+	object-fit: cover;
+}
+
+.Mission_Status {
+	float: left;
+}
+
+.Mission_Block {
+	margin: 0px 0px 10px 0px;
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 730px;
+	height: 40px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+
+.content_wrapper {
+	margin: 0px 0px 0px 27px;
+	overflow: hidden;
+}
+
+.slot_wrapper {
+	margin: 0px 0px 0px 0px;
+	overflow: hidden;
+}
+
+.content {
+	float: left;
+	margin: 0px 5px 0px 0px;
+	color: #80f1dc;
+	display: block;
+	width: 95px;
+	text-align: center;
+	//border-style: inset;
+	//border-width: 5px;
+	//border-color: #142630; //11 28 36
+}
+
+.rest {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 300;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.rest input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    height: 15px;
+    width: 15px;
+    background-color: #3E3E3E;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color
+.rest:hover input ~ .checkmark {
+    background-color: #3E3E3E;
+}
+*/
+/* When the checkbox is checked, add a blue background
+.rest input:checked ~ .checkmark {
+    background-color: #3E3E3E;
+}
+*/
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.rest input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.rest .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border-style: inset;
+    border-color: #80F1DC;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*.Mission_Assign {
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 700px;
+	height: 100px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+
+.Standby_Workers {
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 700px;
+	height: 100px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}*/
+
+.Skill_Status {
+	float: left;
+}
+
+.Skill_Tree {
+	margin: 0px 0px 0px 50px;
+	float: left;
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 400px;
+	height: 623px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+

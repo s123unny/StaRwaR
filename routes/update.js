@@ -13,8 +13,15 @@ class Updateutil{
 		console.log(money)
 		this.io.emit('leaderboard', username, money);
 	}
-	Skill(playerIO, skill){
-	
+	Skill(skillname, playerIO, Player_skill){
+		if(Player_skill[skillname].learned)
+			return Player_skill;
+		Player_skill[skillname].current+=1;
+		if(Player_skill[skillname].current == Player_skill[skillname].required)
+			Player_skill[skillname].learned = true;
+		this.io.sockets.to(playerIO).emit('skilltree', Player_skill[skillname],skillname);
+		console.log(skillname);
+		return Player_skill;
 	}
 	Star(star){
 		this.io.emit('lightupStar', star);	
