@@ -9,15 +9,16 @@
 <h1 class="title">Control Panel</h1>
 <div class="wrapper">
 	<div class="character">
-		<img src="char1.png" width="389" height="457"></img>
-		<div class="title">Money : <span id="Money">100000</span> BTC</div>
+		<img src="./pic/char1.png" width="389" height="457"></img>
+		<div class="title">Money : <span id="Money">10</span> BTC</div>
+		<div class="title">Available Ships : <span id="Ship">5</span> </div>
 	</div>
 	<div class="Resources">
 		<div class="Workers">
 			<div class="workers_frame">
 				<div class="worker_img_slot">
 					<div class="workers_img">
-						<img class="AI_png" src="AI3.png" width="92.5" height="92.5"></img>
+						<img class="AI_png" src="./pic/AI3.png" width="92.5" height="92.5"></img>
 					</div>
 				</div>
 				<div class="workers_type">Trainer</div>
@@ -31,7 +32,7 @@
 			<div class="workers_frame">
 				<div class="worker_img_slot">
 					<div class="workers_img">
-						<img class="worker_png" src="MINER.png" width="100" height="92.5"></img>
+						<img class="worker_png" src="./pic/MINER.png" width="100" height="92.5"></img>
 					</div>
 				</div>
 				<div class="workers_type">Miner</div>
@@ -45,7 +46,7 @@
 			<div class="workers_frame">
 				<div class="worker_img_slot">
 					<div class="workers_img">
-						<img class="worker_png" src="HACKER.png" width="90" height="92.5"></img>
+						<img class="worker_png" src="./pic/HACKER.png" width="90" height="92.5"></img>
 					</div>
 				</div>
 				<div class="workers_type">Hacker</div>
@@ -61,19 +62,19 @@
 			<div class="items_block">
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="audio.png" width="30" height="30"></img>
+						<img class="worker_png" src="./pic/audio.png" width="30" height="30"></img>
 					</div>
 					<div class="items_type">Endearing Flutesong <span id:"audio_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="image.png" width="42" height="42"></img>
+						<img class="worker_png" src="./pic/image.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Surreal Landscape &nbsp&nbsp <span id:"image_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="text.png" width="42" height="42"></img>
+						<img class="worker_png" src="./pic/text.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Sentimental Letter &nbsp&nbsp <span id:"text_num">0</span></div>
 				</div>
@@ -81,19 +82,19 @@
 			<div class="items_block">
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="audio_m.png" width="40" height="40"></img>
+						<img class="worker_png" src="./pic/audio_m.png" width="40" height="40"></img>
 					</div>
 					<div class="items_type">Phoney Tunes &nbsp <span id:"audioM_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="image_m.png" width="42" height="42"></img>
+						<img class="worker_png" src="./pic/image_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Alien Drawings&nbsp <span id:"imageM_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
-						<img class="worker_png" src="text_m.png" width="42" height="42"></img>
+						<img class="worker_png" src="./pic/text_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">Forged Notes &nbsp&nbsp <span id:"textM_num">0</span></div>
 				</div>
@@ -123,8 +124,8 @@
 			<div id="ongoing_mblock_slot1_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot1_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="comeback(1)">
-  					<span class="checkmark"></span>
+  					<input type="checkbox" checked="checked" id="debug" onclick="comeback(1)">
+  					<span class="checkmark" ></span>
 				Callback</label>
 			</div>
 		</div>	
@@ -139,7 +140,7 @@
 			<div id="ongoing_mblock_slot2_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot2_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="comeback(1)">
+  					<input type="checkbox" checked="checked" onclick="comeback(2)">
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -155,7 +156,7 @@
 			<div id="ongoing_mblock_slot3_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot3_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="comeback(1)">
+  					<input type="checkbox" checked="checked" onclick="comeback(3)">
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -171,7 +172,7 @@
 			<div id="ongoing_mblock_slot4_State" class="content">Working</div>
 			<div id="ongoing_mblock_slot4_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
+  					<input type="checkbox" checked="checked" >
   					<span class="checkmark"></span>
 				Callback</label>
 			</div>
@@ -206,9 +207,9 @@
 	</div>
 	<div class="Mission_Block">
 		<div class="slot_wrapper">
-			<div id="assign_mblock_slot1_type" class="content ">
+			<div class="content ">
 				<form>
-					<select class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot1_type" class="choosetype" name="YourLocation">
 						<option value="none">Job Choice</option>
 						<option value="Mine Planet">Mine</option>
 						<option value="AI Center">AI Center</option>
@@ -219,14 +220,14 @@
 				</form>
 			</div>
 			<div id="assign_mblock_slot1_location" class="content">Alpha</div>
-			<div id="assign_mblock_slot1_M" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot1_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot1_T" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot1_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot1_H" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot1_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot1_State" class="content">
 				<form >
@@ -240,7 +241,7 @@
 			</div>
 			<div id="assign_mblock_slot1_back" class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
+  					<input type="checkbox" checked="checked" onclick="submit_mission(1)">
   					<span class="checkmark"></span>
 				Submit</label>
 			</div>
@@ -248,9 +249,9 @@
 	</div>
 	<div class="Mission_Block">
 		<div class="slot_wrapper">
-			<div id="assign_mblock_slot2_type" class="content ">
+			<div class="content ">
 				<form>
-					<select class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot2_type" class="choosetype" name="YourLocation">
 						<option value="none">Job Choice</option>
 						<option value="Mine Planet">Mine</option>
 						<option value="AI Center">AI Center</option>
@@ -261,14 +262,14 @@
 				</form>
 			</div>
 			<div id="assign_mblock_slot2_location" class="content">Alpha</div>
-			<div id="assign_mblock_slot2_M" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot2_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot2_T" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot2_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot2_H" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot2_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot2_State" class="content">
 				<form >
@@ -290,9 +291,9 @@
 	</div>
 	<div class="Mission_Block">
 		<div class="slot_wrapper">
-			<div id="assign_mblock_slot3_type" class="content ">
+			<div class="content ">
 				<form>
-					<select class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot3_type" class="choosetype" name="YourLocation">
 						<option value="none">Job Choice</option>
 						<option value="Mine Planet">Mine</option>
 						<option value="AI Center">AI Center</option>
@@ -303,14 +304,14 @@
 				</form>
 			</div>
 			<div id="assign_mblock_slot3_location" class="content">Alpha</div>
-			<div id="assign_mblock_slot3_M" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot3_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot3_T" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot3_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot3_H" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot3_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot3_State" class="content">
 				<form >
@@ -332,9 +333,9 @@
 	</div>
 	<div class="Mission_Block">
 		<div class="slot_wrapper">
-			<div id="assign_mblock_slot4_type" class="content ">
+			<div class="content ">
 				<form>
-					<select class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot4_type" class="choosetype" name="YourLocation">
 						<option value="none">Job Choice</option>
 						<option value="Mine Planet">Mine</option>
 						<option value="AI Center">AI Center</option>
@@ -345,14 +346,14 @@
 				</form>
 			</div>
 			<div id="assign_mblock_slot4_location" class="content">Alpha</div>
-			<div id="assign_mblock_slot4_M" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot4_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot4_T" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot4_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot4_H" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot4_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot4_State" class="content">
 				<form >
@@ -374,9 +375,9 @@
 	</div>
 	<div class="Mission_Block">
 		<div class="slot_wrapper">
-			<div id="assign_mblock_slot5_type" class="content ">
+			<div class="content">
 				<form>
-					<select class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot5_type" class="choosetype" name="YourLocation">
 						<option value="none">Job Choice</option>
 						<option value="Mine Planet">Mine</option>
 						<option value="AI Center">AI Center</option>
@@ -387,14 +388,14 @@
 				</form>
 			</div>
 			<div id="assign_mblock_slot5_location" class="content">Alpha</div>
-			<div id="assign_mblock_slot5_M" class="content">
+			<div class="content">
 				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot5_T" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot5_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot5_H" class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+			<div class="content">
+				<input id="assign_mblock_slot5_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot5_State" class="content">
 				<form >
@@ -427,8 +428,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <!-- <script src="/socket.io/socket.io.js"></script> -->
-<script src="js/update_worker.js"></script>
-<script src="js/assign_work.js"></script>
-<script src="js/popup.js"></script>
+<script src="js/panel/update_worker.js"></script>
+<script src="js/panel/mission_worker.js"></script>
+<!-- <script src="js/popup.js"></script> -->
 <!-- <script src="js/chatRoom.js"></script> -->
 <!-- <script src="js/leaderBoard.js"></script> -->

@@ -157,7 +157,6 @@ body {
 	margin: 0px 0px 0px 5px;
 	overflow: hidden;
 }
-
 .worker_class {
 	position: relative;
 	margin: 0px 0px 10px 0px;
@@ -359,13 +358,13 @@ img {
 .checkmark:after {
     content: "";
     position: absolute;
-    display: none;
+    display: block;
 }
 
 /* Show the checkmark when checked */
 .rest input:checked ~ .checkmark:after {
     position: relative;
-    display: block;
+    display: none;
 }
 
 /* Style the checkmark/indicator */
@@ -410,13 +409,13 @@ img {
 }
 
 .Skill_Tree {
-	margin: 0px 0px 0px 50px;
+	margin: 18px 0px 0px 50px;
 	float: left;
 	background-color: #142630; //20 38 48
 	right: 100%;
 	left: 3%;
 	width: 400px;
-	height: 623px;
+	height: 560px;
 	border-style: inset;
 	border-width: 5px;
 	border-radius:12px;

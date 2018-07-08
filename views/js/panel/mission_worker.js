@@ -7,8 +7,13 @@ function submit_mission(row){
 	if (confirm("Sure to assign work ?")){
 		console.log("Sure to assing work");
 		// if checked ok 
-		var miner =  Number($('#assign_mblock_slot'+row+'_T').val());
-		console.log(miner);
+		var type = document.getElementById('assign_mblock_slot'+row+'_type');
+		var assing_obj = {
+			miner:  Number($('#assign_mblock_slot'+row+'_M').val()),
+			trainer: Number($('#assign_mblock_slot'+row+'_T').val()),
+			hacker: Number($('#assign_mblock_slot'+row+'_H').val()),
+			type: type.options[type.selectedIndex].value,
+		}
 		// var assing_obj = {
 		// 	type: document.getElementById('assign_mblock_slot'+row+'_type').textContent,
 		// 	location: document.getElementById('assign_mblock_slot'+row+'_location').textContent,
@@ -17,7 +22,7 @@ function submit_mission(row){
 		// 	hacker: document.getElementById('assign_mblock_slot'+row+'_T').textContent,
 		// 	carry: document.getElementById('assign_mblock_slot'+row+'_T').textContent,
 		// };
-		// console.log(assing_obj);
+		console.log(assing_obj);
 	}
 	else{ 
 		console.log("Cancel");
