@@ -6,12 +6,12 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<h1 class="title">Control Panel</h1>
+<h1 class="title" id="big_title">Control Panel</h1>
 <div class="wrapper">
 	<div class="character">
 		<img src="./pic/char1.png" width="389" height="457"></img>
-		<div class="title">Money : <span id="Money">10</span> BTC</div>
-		<div class="title">Available Ships : <span id="Ship">5</span> </div>
+		<div class="title">Money : <span id="Money">1000</span> BTC</div>
+		<div class="title">Available Ships : <span id="Ship">10</span> </div>
 	</div>
 	<div class="Resources">
 		<div class="Workers">
@@ -115,82 +115,77 @@
 		<div class="category">Return</div>
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="going_mblock_slot1">
 			<div id="ongoing_mblock_slot1_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot1_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot1_M" class="content">0</div>
-			<div id="ongoing_mblock_slot1_T" class="content">1</div>
+			<div id="ongoing_mblock_slot1_T" class="content">0</div>
 			<div id="ongoing_mblock_slot1_H" class="content">0</div>
 			<div id="ongoing_mblock_slot1_State" class="content">Working</div>
-			<div id="ongoing_mblock_slot1_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" id="debug" onclick="comeback(1)">
-  					<span class="checkmark" ></span>
-				Callback</label>
+  					<span class="submitter" onclick="comeback(1)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="going_mblock_slot2">
 			<div id="ongoing_mblock_slot2_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot2_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot2_M" class="content">0</div>
 			<div id="ongoing_mblock_slot2_T" class="content">0</div>
 			<div id="ongoing_mblock_slot2_H" class="content">0</div>
 			<div id="ongoing_mblock_slot2_State" class="content">Working</div>
-			<div id="ongoing_mblock_slot2_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="comeback(2)">
-  					<span class="checkmark"></span>
-				Callback</label>
+  					<span class="submitter" onclick="comeback(2)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="going_mblock_slot3">
 			<div id="ongoing_mblock_slot3_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot3_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot3_M" class="content">0</div>
 			<div id="ongoing_mblock_slot3_T" class="content">0</div>
 			<div id="ongoing_mblock_slot3_H" class="content">0</div>
 			<div id="ongoing_mblock_slot3_State" class="content">Working</div>
-			<div id="ongoing_mblock_slot3_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="comeback(3)">
-  					<span class="checkmark"></span>
-				Callback</label>
+  					<span class="submitter" onclick="comeback(3)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="going_mblock_slot4">
 			<div id="ongoing_mblock_slot4_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot4_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot4_M" class="content">0</div>
 			<div id="ongoing_mblock_slot4_T" class="content">0</div>
 			<div id="ongoing_mblock_slot4_H" class="content">0</div>
 			<div id="ongoing_mblock_slot4_State" class="content">Working</div>
-			<div id="ongoing_mblock_slot4_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" >
-  					<span class="checkmark"></span>
-				Callback</label>
+  					<span class="submitter" onclick="comeback(4)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="going_mblock_slot5">
 			<div id="ongoing_mblock_slot5_type" class="content">Mine</div>
 			<div id="ongoing_mblock_slot5_location" class="content">Alpha</div>
 			<div id="ongoing_mblock_slot5_M" class="content">0</div>
 			<div id="ongoing_mblock_slot5_T" class="content">0</div>
 			<div id="ongoing_mblock_slot5_H" class="content">0</div>
 			<div id="ongoing_mblock_slot5_State" class="content">Working</div>
-			<div id="ongoing_mblock_slot5_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
-  					<span class="checkmark"></span>
-				Callback</label>
+  					<span class="submitter" onclick="comeback(5)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
@@ -206,212 +201,227 @@
 		<div class="category">Confirm</div>
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="assign_mblock_slot1">
 			<div class="content ">
 				<form>
-					<select id="assign_mblock_slot1_type" class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot1_type" class="choosetype" name="YourType" onchange="render_target(1)">
 						<option value="none">Job Choice</option>
-						<option value="Mine Planet">Mine</option>
-						<option value="AI Center">AI Center</option>
-						<option value="Abandoned Planet">Abandoned</option>
-						<option value="Learn Skill">Unknown</option>
-						<option value="Learn Skill">Learn Skill</option>
+						<option value="mine">Mine</option>
+						<option value="computer">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot1_location" class="content">Alpha</div>
 			<div class="content">
-				<input id="assign_mblock_slot1_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<select id="assign_mblock_slot1_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot1_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot1_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot1_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot1_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot1_State" class="content">
+			<div class="content">
+				<input id="assign_mblock_slot1_H" class="minion_num" type="number" min="0" step="1" name="# of hacker" style="width: 50px";>
+			</div>
+			<div class="content">
 				<form >
-					<select class="choosetype" name="YourItem" style="width: 80px";>
-						<option value="Mine Planet">Phoney Tunes</option>
-						<option value="AI Center">Alien Drawings</option>
-						<option value="Abandoned Planet">Forged Notes</option>
-						<option value="Abandoned Planet">Nothing</option>
+					<select id="assign_mblock_slot1_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>						
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot1_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked" onclick="submit_mission(1)">
-  					<span class="checkmark"></span>
-				Submit</label>
+  					<span class="submitter" onclick="submit_mission(1)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="assign_mblock_slot2">
 			<div class="content ">
 				<form>
-					<select id="assign_mblock_slot2_type" class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot2_type" class="choosetype" name="YourLocation" onchange="render_target(2)">
 						<option value="none">Job Choice</option>
-						<option value="Mine Planet">Mine</option>
-						<option value="AI Center">AI Center</option>
-						<option value="Abandoned Planet">Abandoned</option>
-						<option value="Learn Skill">Unknown</option>
-						<option value="Learn Skill">Learn Skill</option>
+						<option value="mine">Mine</option>
+						<option value="computer">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot2_location" class="content">Alpha</div>
 			<div class="content">
-				<input id="assign_mblock_slot2_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<select id="assign_mblock_slot2_target" class="choosetype" name="YourTarget" style="width: 67px">
+					<option value="none">None</option>
+				</select>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot2_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot2_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot2_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot2_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot2_State" class="content">
+			<div class="content">
+				<input id="assign_mblock_slot2_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
 				<form >
-					<select class="choosetype" name="YourItem" style="width: 80px";>
-						<option value="Mine Planet">Phoney Tunes</option>
-						<option value="AI Center">Alien Drawings</option>
-						<option value="Abandoned Planet">Forged Notes</option>
-						<option value="Abandoned Planet">Nothing</option>
+					<select id="assign_mblock_slot2_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>						
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot2_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
-  					<span class="checkmark"></span>
-				Submit</label>
+  					<span class="submitter" onclick="submit_mission(2)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="assign_mblock_slot3">
 			<div class="content ">
 				<form>
-					<select id="assign_mblock_slot3_type" class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot3_type" class="choosetype" name="YourLocation" onchange="render_target(3)">
 						<option value="none">Job Choice</option>
-						<option value="Mine Planet">Mine</option>
-						<option value="AI Center">AI Center</option>
-						<option value="Abandoned Planet">Abandoned</option>
-						<option value="Learn Skill">Unknown</option>
-						<option value="Learn Skill">Learn Skill</option>
+						<option value="mine">Mine</option>
+						<option value="computer">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot3_location" class="content">Alpha</div>
 			<div class="content">
-				<input id="assign_mblock_slot3_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<select id="assign_mblock_slot3_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot3_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot3_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot3_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot3_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot3_State" class="content">
+			<div class="content">
+				<input id="assign_mblock_slot3_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
 				<form >
-					<select class="choosetype" name="YourItem" style="width: 80px";>
-						<option value="Mine Planet">Phoney Tunes</option>
-						<option value="AI Center">Alien Drawings</option>
-						<option value="Abandoned Planet">Forged Notes</option>
-						<option value="Abandoned Planet">Nothing</option>
+					<select id="assign_mblock_slot3_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot3_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
-  					<span class="checkmark"></span>
-				Submit</label>
+  					<span class="submitter" onclick="submit_mission(3)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="assign_mblock_slot4">
 			<div class="content ">
 				<form>
-					<select id="assign_mblock_slot4_type" class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot4_type" class="choosetype" name="YourLocation" onchange="render_target(4)">
 						<option value="none">Job Choice</option>
-						<option value="Mine Planet">Mine</option>
-						<option value="AI Center">AI Center</option>
-						<option value="Abandoned Planet">Abandoned</option>
-						<option value="Learn Skill">Unknown</option>
-						<option value="Learn Skill">Learn Skill</option>
+						<option value="mine">Mine</option>
+						<option value="computer">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot4_location" class="content">Alpha</div>
 			<div class="content">
-				<input id="assign_mblock_slot4_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<select id="assign_mblock_slot4_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot4_T" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot4_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot4_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot4_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot4_State" class="content">
+			<div class="content">
+				<input id="assign_mblock_slot4_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
 				<form >
-					<select class="choosetype" name="YourItem" style="width: 80px";>
-						<option value="Mine Planet">Phoney Tunes</option>
-						<option value="AI Center">Alien Drawings</option>
-						<option value="Abandoned Planet">Forged Notes</option>
-						<option value="Abandoned Planet">Nothing</option>
+					<select id="assign_mblock_slot4_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot4_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
-  					<span class="checkmark"></span>
-				Submit</label>
+  					<span class="submitter" onclick="submit_mission(4)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
 	<div class="Mission_Block">
-		<div class="slot_wrapper">
+		<div class="slot_wrapper" id="assign_mblock_slot5">
 			<div class="content">
 				<form>
-					<select id="assign_mblock_slot5_type" class="choosetype" name="YourLocation">
+					<select id="assign_mblock_slot5_type" class="choosetype" name="YourLocation" onchange="render_target(5)">
 						<option value="none">Job Choice</option>
-						<option value="Mine Planet">Mine</option>
-						<option value="AI Center">AI Center</option>
-						<option value="Abandoned Planet">Abandoned</option>
-						<option value="Learn Skill">Unknown</option>
-						<option value="Learn Skill">Learn Skill</option>
+						<option value="mine">Mine</option>
+						<option value="computer">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot5_location" class="content">Alpha</div>
 			<div class="content">
-				<input class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<select id="assign_mblock_slot5_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div id="assign_mblock_slot5_T" class="content">
-				<input id="assign_mblock_slot5_M" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot5_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
 			<div class="content">
-				<input id="assign_mblock_slot5_H" class="minion_num" type="number" name="# of miner" style="width: 50px";>
+				<input id="assign_mblock_slot5_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 			</div>
-			<div id="assign_mblock_slot5_State" class="content">
-				<form >
-					<select class="choosetype" name="YourItem" style="width: 80px";>
-						<option value="Mine Planet">Phoney Tunes</option>
-						<option value="AI Center">Alien Drawings</option>
-						<option value="Abandoned Planet">Forged Notes</option>
-						<option value="Abandoned Planet">Nothing</option>
+			<div class="content">
+				<form>
+					<select id="assign_mblock_slot5_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
 					</select>
 				</form>
 			</div>
-			<div id="assign_mblock_slot5_back" class="content">
+			<div class="content">
 				<label class="rest">
-  					<input type="checkbox" checked="checked">
-  					<span class="checkmark"></span>
-				Submit</label>
+  					<span class="submitter" onclick="submit_mission(5)">Submit</span>
+				</label>
 			</div>
 		</div>	
 	</div>
@@ -419,6 +429,9 @@
 <div class="Skill_Status">
 	<h2 class="skilltitle">Skills</h2>
 	<div class="Skill_Tree">
+		<!-- Skill starts here -->
+		<div class="title"> OAO</div>	
+
 	</div>
 </div>
 </body>
@@ -427,6 +440,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- <script type="text/javascript" src="js/panel/skills/skills.js"></script>
+<script type="text/javascript" src="js/panel/skills/skills_layout.js"></script>
+<script type="text/javascript" src="js/panel/skills/skills_fromJSON.js"></script> -->
 <!-- <script src="/socket.io/socket.io.js"></script> -->
 <script src="js/panel/update_worker.js"></script>
 <script src="js/panel/mission_worker.js"></script>
