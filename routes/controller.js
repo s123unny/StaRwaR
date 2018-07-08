@@ -4,7 +4,7 @@ MAX_PLAYER = 5;
 var ai_day = {7:17, 19:27, 31:37, 53:56};
 var ai_ratio = {7:[10,10,15], 19:[25,10,30], 31:[10,35,20], 53:[40,30,20]};
 /*mine event*/
-var mine_msg = {11:"因應電費大漲，部分礦場利潤下降",23:"技術革新，礦場產量暴增",43:"金融海嘯發生，部分礦場無預警崩盤倒閉"];
+var mine_msg = {11:"因應電費大漲，部分礦場利潤下降",23:"技術革新，礦場產量暴增",43:"金融海嘯發生，部分礦場無預警崩盤倒閉"};
 var mine_change = {11:[0,5,5,5,10,10,10,20,20,40], 23:[0,5,5,5,10,10,20,40,40,80], 43:[0,5,5,5,10,10,20,0,0,0]};
 /*dataset amount*/
 var datasetAmount = {11:60, 5:30, 1:5};
@@ -16,6 +16,7 @@ var fs = require("fs");
 var player = require("../model/player.js");
 var stars = require("../model/stars.js");
 var updateFunction = require("./update");
+var timer = require("./timer");
 // var questionFuntion = require("./questionEvent");
 
 
@@ -42,7 +43,20 @@ Controller = function(io, model) {
 		io.emit('chat_message', msg ,"PLAYER");
 	}
 	
-	function collectPlayerSetting(player) {
+	function night() {
+		for (var i = 0; i < 5; i++) {
+			io.sockets.to(playerIO[i].second).emit("night_start", i, model.players[i], model.stars);
+		}
+		var Time = 30;
+		var timer = new timer(Time * 1000, io);
+		timer.tick();
+	}
+	function nightTimeUp() {
+		io.emit("nightTimeUp");
+	}
+
+	function collectPlayerSetting(id, player) {
+		console.log("collectPlayerSetting", id);
 		count += 1;
 		// todo
 		for (var i = 0; i < 5; i++) {
@@ -62,7 +76,7 @@ Controller = function(io, model) {
 		model.players[id].ships[0].num_of_miner = 2;
 		model.stars.m1.num = 2;
 		//-------------
-		if (count == 5) {
+		if (count == 2) {
 			day();
 		}
 	}
@@ -119,7 +133,7 @@ Controller = function(io, model) {
 						add = add / total * star.mine;
 						model.players[j].money += add;
 						/*chat message*/
-						var msg = "玩家" + model.players[j].name + "挖礦獲得 " + add + "幣";
+						var msg = "玩家" + model.players[j].name + "挖礦獲得 " + add + "BTC";
 						Update.Chatting(msg, "SYSTEM");
 						/*update player*/
 						Update.Money(playerIO[j].first, model.players[j].money);
@@ -274,7 +288,7 @@ Controller = function(io, model) {
 						if (getRewardPlayer[j] != null) {
 							//todo
 							model.players[j].money += optionReward;
-							msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+"幣";
+							msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+"BTC";
 							Update.Chatting(msg, "SYSTEM");
 						}
 					}
@@ -288,12 +302,12 @@ Controller = function(io, model) {
 						if (star.player_here[j] != null) {
 							model.player[j].money += randomMoney;
 							//chat message
-							msg = "玩家" + model.players[j].name + "在命運星球"+i+"抽到的命運是: " + randomMoney + "幣";
+							msg = "玩家" + model.players[j].name + "在命運星球"+i+"抽到的命運是: " + randomMoney + "BTC";
 							Update.Chatting(msg, "SYSTEM");
 							//update player
 							Update.Money(playerIO[j].first, model.players[j].money);
 							//notify
-							msg = "你在" + i + "碰到命運";
+							msg = "你在" + i + "觸發命運";
 							Update.Notify(playerIO[j].first, msg);
 						}
 					}
@@ -372,7 +386,10 @@ Controller = function(io, model) {
 			console.log("AImodel event");
 			/*pop box: event*/
 		}
+		
 
+		//finish => start night
+		io.emit("adminStartButton");
 	}
 
 
@@ -402,12 +419,13 @@ Controller = function(io, model) {
 				Update.Notify(playerIO[id].first,login_msg);
 				player.on('chat_message', (msg) => Update.Chatting(msg, name)); // listen to chatting msg
 				// Question.Init(player);
-
-				collectPlayerSetting(id); //for testing
+				
+				test = model.players[id];
+				collectPlayerSetting(id, test); //for testing
 
 			}
 			else{
-				player.on('gameStart', night());
+				player.on('adminSayStart', night());
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg
 				io.emit("adminStartButton");
 			}
@@ -425,8 +443,7 @@ Controller = function(io, model) {
 
 			// socket io start
 			if(id >= 0 && id <= 4) {
-				player.on("collectData", (player) => collectPlayerSetting(player));
-
+				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
 			}
 		});
 	});
