@@ -1,0 +1,241 @@
+﻿{
+    "angular":{
+        "name":"Angular",
+        "max":1,
+        "pos":[500,500],
+		"abbr": "Anlr",
+        "hint":[
+			{"text":"Angular"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "backbone":{
+        "name":"Backbone",
+        "max":1,
+        "pos":[400,500],
+		"abbr": "BkBe",
+        "hint":[
+			{"text":"Backbone"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "bootstrap":{
+        "name":"Bootstrap 3",
+        "max":1,
+        "pos":[200,500],
+		"abbr": "BS3",
+        "hint":[
+			{"text":"Bootstrap 3"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "css":{
+        "name":"CSS",
+        "sprite":[7,6],
+        "max":2,
+        "pos":[300,200],
+		"abbr": "CSS",
+        "hint":[
+            {"level":"0-2", "text":"Cascade Styling Stuff"},
+			{"level":"1-2", "text":"CSS3 features"}
+        ],
+        "dependency":{
+            "2":{
+                "html":1
+            }
+        }
+    },
+    "emberjs":{
+        "name":"EmberJS",
+        "max":1,
+        "pos":[700,500],
+		"abbr": "EmJS",
+        "hint":[
+			{"text":"EmberJS"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "extjs":{
+        "name":"ExtJS",
+        "max":1,
+        "pos":[600,500],
+		"abbr": "ExJS",
+        "hint":[
+			{"text":"ExtJS"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "foundation":{
+        "name":"Foundation",
+        "max":1,
+        "pos":[300,500],
+		"abbr": "Foun",
+        "hint":[
+			{"text":"Foundation"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "handlebarsjs":{
+        "name":"HandlebarsJS",
+        "max":1,
+        "pos":[300,400],
+		"abbr": "HaJS",
+        "hint":[
+			{"text":"HandlebarsJS"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "html":{
+        "name":"HTML",
+        "max":2,
+        "pos":[200,200],
+        "sprites":{
+            "1":[1,0],
+            "2":[2,0]
+        },
+        "hint":[
+            {"level":"0-2", "text":"Basic HTML"},
+            {"level":"1-2", "text":"HTML5 features, responsive layouts"}
+        ],
+        "className":["test","test2"],
+        "param":{"param1":"value"},
+        "dependency":{
+            "2":{
+                "css":1
+            }
+        }
+    },
+    "javascript":{
+        "name":"JavaScript",
+        "max":2,
+        "pos":[200,300],
+		"abbr": "JS",
+        "hint":[
+            {"text":"JavaScript"}
+        ],
+        "dependency":{
+            "1":{
+                "html":1,
+				"css":1
+            },
+            "2":{
+                "html":2,
+				"css":2
+            }
+        }
+    },
+    "jquery":{
+        "name":"jQuery",
+        "max":1,
+        "pos":[300,300],
+		"abbr": "jQ",
+        "hint":[
+            {"text":"jQuery + jQuery UI"}
+        ],
+        "dependency":{
+            "1":{
+                "javascript":1
+            }
+        }
+    },
+    "less":{
+        "name":"LESS",
+        "max":1,
+        "pos":[500,200],
+		"abbr": "LESS",
+        "hint":[
+            {"text":"LESS"}
+        ],
+        "dependency":{
+            "1":{
+                "css":2
+            }
+        }
+    },
+    "sass":{
+        "name":"SASS",
+        "max":1,
+        "pos":[400,200],
+		"abbr": "SASS",
+        "hint":[
+            {"text":"SASS"}
+        ],
+        "dependency":{
+            "1":{
+                "css":2
+            }
+        }
+    },
+    "underscorejs":{
+        "name":"UnderscoreJS",
+        "max":1,
+        "pos":[200,400],
+		"abbr": "_JS",
+        "hint":[
+			{"text":"UnderscoreJS"}
+        ],
+        "dependency":{
+            "1":{
+			    "css":1,
+                "html":1,
+				"javascript":1
+            }
+        }
+    },
+    "websocket":{
+        "name":"Websockets",
+        "max":1,
+        "pos":[400,300],
+		"abbr": "WbSk",
+        "hint":[
+            {"text":"Websockets"}
+        ],
+        "dependency":{
+            "1":{
+                "javascript":2
+            }
+        }
+    }
+}

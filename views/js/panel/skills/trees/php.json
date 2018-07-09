@@ -1,0 +1,401 @@
+{
+    "blade":{
+        "name":"Blade",
+        "max":1,
+        "pos":[300,300],
+		"abbr": "Blad",
+        "hint":[
+			{"text":"Blade"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "doctrine":{
+        "name":"Doctrine",
+        "max":1,
+        "pos":[700,600],
+		"abbr": "Doct",
+        "hint":[
+			{"text":"Doctrine"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "drupal":{
+        "name":"Drupal",
+        "max":1,
+        "pos":[100,400],
+		"abbr": "Drpl",
+        "hint":[
+			{"text":"Drupal"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "joomla":{
+        "name":"Joomla",
+        "max":1,
+        "pos":[200,400],
+		"abbr": "Joom",
+        "hint":[
+			{"text":"Joomla"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "laravel4":{
+        "name":"Laravel 4",
+        "max":1,
+        "pos":[300,500],
+		"abbr": "Lrvl",
+        "hint":[
+			{"text":"Laravel 4"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "magento":{
+        "name":"Magento",
+        "max":1,
+        "pos":[400,400],
+		"abbr": "Mgnt",
+        "hint":[
+			{"text":"Magento"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "memcache":{
+        "name":"Memcache",
+        "max":1,
+        "pos":[100,700],
+		"abbr": "MemC",
+        "hint":[
+			{"text":"Memcache, Memcached"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "mongodb":{
+        "name":"MongoDB",
+        "max":1,
+        "pos":[600,600],
+		"abbr": "Mong",
+        "hint":[
+			{"text":"MongoDB"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "mongodbodm":{
+        "name":"MongoDB ODM",
+        "max":1,
+        "pos":[800,600],
+		"abbr": "MODM",
+        "hint":[
+			{"text":"MongoDB ODM"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "mustache":{
+        "name":"Mustache",
+        "max":1,
+        "pos":[400,300],
+		"abbr": "Must",
+        "hint":[
+			{"text":"Mustache"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "mvc":{
+        "name":"MVC",
+		"alias":"basics",
+        "max":1,
+        "pos":[300,100],
+		"abbr": "MVC",
+        "hint":[
+			{"text":"MVC"}
+        ]
+    },
+    "mysqli":{
+        "name":"MySQLi",
+        "max":1,
+        "pos":[300,600],
+		"abbr": "SQLi",
+        "hint":[
+			{"text":"MySQLi"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "new":{
+        "name":"New Features",
+		"alias":"basics",
+        "max":1,
+        "pos":[400,100],
+		"abbr": "New",
+        "hint":[
+			{"text":"New features: namespaces, iterators, traits, closures"}
+        ]
+    },
+    "nosql":{
+        "name":"NoSQL",
+        "max":2,
+        "pos":[200,600],
+		"abbr": "NSQL",
+        "hint":[
+			{"text":"NoSQL"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "oop":{
+        "name":"OOP",
+		"alias":"basics",
+        "max":1,
+        "pos":[200,100],
+		"abbr": "OOP",
+        "hint":[
+			{"text":"OOP"}
+        ]
+    },
+    "opcache":{
+        "name":"OPcache",
+        "max":1,
+        "pos":[300,700],
+		"abbr": "OPca",
+        "hint":[
+			{"text":"OPcache"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "patterns":{
+        "name":"Patterns",
+        "max":1,
+        "pos":[200,200],
+		"abbr": "Ptrn",
+        "hint":[
+			{"text":"Design Patterns"}
+        ]
+    },
+    "pdo":{
+        "name":"PDO",
+        "max":1,
+        "pos":[400,600],
+		"abbr": "PDO",
+        "hint":[
+			{"text":"PDO"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "postgresql":{
+        "name":"PostgreSQL",
+        "max":1,
+        "pos":[500,600],
+		"abbr": "PSQL",
+        "hint":[
+			{"text":"PostgreSQL"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "psr":{
+        "name":"PSR standards",
+		"alias":"basics",
+        "max":1,
+        "pos":[100,100],
+		"abbr": "PSR",
+        "hint":[
+			{"text":"PSR standards"}
+        ]
+    },
+    "redis":{
+        "name":"Redis",
+        "max":1,
+        "pos":[200,700],
+		"abbr": "Reds",
+        "hint":[
+			{"text":"Redis"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "rest":{
+        "name":"RESTful API",
+        "max":1,
+        "pos":[100,200],
+		"abbr": "REST",
+        "hint":[
+			{"text":"RESTful API"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "smarty":{
+        "name":"Smarty",
+        "max":1,
+        "pos":[200,300],
+		"abbr": "Smrt",
+        "hint":[
+			{"text":"Smarty"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "sql":{
+        "name":"SQL",
+        "max":2,
+        "pos":[100,600],
+		"abbr": "SQL",
+        "hint":[
+			{"text":"SQL"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "symfony2":{
+        "name":"Symfony 2",
+        "max":1,
+        "pos":[400,500],
+		"abbr": "Symf",
+        "hint":[
+			{"text":"Symfony 2"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "twig":{
+        "name":"Twig",
+        "max":1,
+        "pos":[100,300],
+		"abbr": "Twig",
+        "hint":[
+			{"text":"Twig"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "varnish":{
+        "name":"Varnish",
+        "max":1,
+        "pos":[400,700],
+		"abbr": "Varn",
+        "hint":[
+			{"text":"Varnish"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "wordpress":{
+        "name":"WordPress",
+        "max":1,
+        "pos":[300,400],
+		"abbr": "WrdP",
+        "hint":[
+			{"text":"WordPress"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "yii1":{
+        "name":"Yii 1.1",
+        "max":1,
+        "pos":[200,500],
+		"abbr": "Yii",
+        "hint":[
+			{"text":"Yii 1.1"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    },
+    "zf2":{
+        "name":"Zend 2",
+        "max":1,
+        "pos":[100,500],
+		"abbr": "ZF2",
+        "hint":[
+			{"text":"Zend 2"}
+        ],
+        "dependency":{
+            "1":{
+			    "basics":1
+            }
+        }
+    }
+}

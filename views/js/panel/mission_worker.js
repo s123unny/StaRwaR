@@ -33,6 +33,30 @@ var stars = {
 	star29: {name: "m0", type: 'mine'}, 
 	star30: {name: "m0", type: 'mine'}, 
 };
+
+var skill = {
+	skill1: {name:"old_king", state: "know"},
+	skill2: {name:"oil_gas", state: "know"},
+	skill3: {name:"ssh", state: "unknown"},
+	skill4: {name:"validation", state: "learnable"},
+	skill5: {name:"employment", state: "know"},
+	skill6: {name:"old_king", state: "know"},
+	skill7: {name:"old_king", state: "know"},
+	skill8: {name:"old_king", state: "know"},
+	skill9: {name:"old_king", state: "know"},
+	skill10: {name:"old_king", state: "know"},
+	skill11: {name:"old_king", state: "know"},
+	skill12: {name:"old_king", state: "know"},
+	skill13: {name:"old_king", state: "know"},
+	skill14: {name:"old_king", state: "know"},
+	skill14: {name:"old_king", state: "know"},
+}
+
+/* Learn the skill */
+function learn(name){
+	$('#'+name+'.skill').click();
+
+}
 /* After choosing type */
 function render_target(row){
 	var type = $('#assign_mblock_slot'+row+'_type').val();
@@ -51,7 +75,16 @@ function render_target(row){
 		return;
 	}
 	else{	// query skill-tree
-
+		var flag = true;
+		for (var key in skill){
+			if (skill[key].state == "learnable"){
+				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+skill[key].name+"</option>");
+				flag = false;
+			}
+		}
+		if (flag == false){
+			$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>None</option>");
+		}
 	}
 }
 
@@ -81,11 +114,11 @@ function update_value(miner, trainer, hacker){
 	var working_trainer_num = Number($('#working_trainer_num').text());
 	var working_miner_num = Number($('#working_miner_num').text());
 	var working_hacker_num = Number($('#working_hacker_num').text());
-
+	var ship = Number($('#Ship').text());
 	standby_trainer_num -= trainer;
 	standby_miner_num -= miner;
 	standby_hacker_num -= hacker;
-
+	ship -= 1;
 	working_trainer_num += trainer;
 	working_miner_num += miner;
 	working_hacker_num += hacker;
@@ -95,6 +128,7 @@ function update_value(miner, trainer, hacker){
 	$('#working_trainer_num').text(working_trainer_num);
 	$('#working_miner_num').text(working_miner_num);
 	$('#working_hacker_num').text(working_hacker_num);
+	$('#Ship').text(ship);
 	return;
 }
 
@@ -174,7 +208,7 @@ function comeback(row){
 	if (state == "Ongoing"){
 		document.getElementById('ongoing_mblock_slot'+row+'_withdraw').checked = false;
 		myalert("You can't call ongoing workers back !");
-		// myalert("Why Web is FUCKING HARD ?????");
+		// myalert("Just Monika");
 		return;
 	}
 	else{

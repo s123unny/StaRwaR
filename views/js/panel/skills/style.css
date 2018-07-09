@@ -1,0 +1,180 @@
+/*
+style.css file is generated from style.less file. Do not modify it directly - rarther install yourself
+the LESS CSSS preprocessor.
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+.clear {
+  clear: both;
+}
+
+.wrap {
+  width: 320px;
+  margin: auto;
+}
+.skillpoints_content {
+  background-color: #444;
+  color: #fff;
+  margin: 10px;
+  padding: 10px;
+}
+#skillpoints {
+  color: #ffffff;
+}
+.mainSkillTreeContener {
+  display: block;
+  margin: auto;
+  /*width: 100%;*/
+}
+.skill_group {
+  float: left;
+  width: 350px;
+}
+.skill {
+  position: relative;
+  text-align: center;
+  user-select: none;
+  cursor: default;
+  margin: 18px 0px 38px 25px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 3px;
+  background-image: url('sprite.jpg');
+  background-size: 1000% auto;
+}
+.skill.sm .abbr {
+  font-size: 28px;
+}
+.skill.sm2 .abbr {
+  font-size: 20px;
+}
+.skill.sm3 .abbr {
+  font-size: 14px;
+}
+.skill .abbr {
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.8), 0 -1px #000000;
+  overflow: hidden;
+  font: bold 48px Arial, Helvetica, sans-serif;
+  text-align: center;
+  line-height: 80px;
+  background: #888;
+  color: #444;
+}
+.skill.nosprite .abbr {
+  display: block;
+}
+.skill .status {
+  font: bold 8px Arial, Helvetica, sans-serif;
+  display: block;
+  position: absolute;
+  color: #fff;
+  bottom: 3px;
+  right: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.75px 1.5px;
+  border-radius: 3px;
+  z-index: 2;
+  user-select: none;
+}
+.skill div {
+  display: none;
+}
+.skill:after {
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+  content: '';
+  top: -3px;
+  bottom: -3px;
+  left: -3px;
+  right: -3px;
+  position: absolute;
+  border-radius: 5px;
+  border: 3px solid #888888;
+  box-shadow: inset 0 0 0 1px #ffffff, 0 0 0 1px #ffffff, inset 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 3px, 0 0 3px;
+}
+.skill.available {
+  cursor: pointer;
+}
+.skill.available:after {
+  border-color: #cc5;
+  box-shadow: inset 0 0 0 1px #ffffff, 0 0 0 1px #ffffff, inset 0 0 9px 0 #000000, 0 0 15px -3px #ffff55, inset 0 0 3px 1.5px rgba(255, 255, 255, 0.5), inset 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 3px, 0 0 3px;
+}
+.skill.active:after {
+  background: none;
+}
+.skillHint {
+  font: normal 12px Arial, Helvetica, sans-serif;
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+  border-radius: 3px;
+  padding: 6px 12px 24px 12px;
+  background: rgba(0, 0, 0, 0.9);
+  max-width: 400px;
+  color: #ccc;
+  text-shadow: 0 1px 1px #000;
+  box-shadow: 0 0 0 1px #000000, 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+.skillHint .alias {
+  display: none;
+}
+.skillHint h1,
+.skillHint h3,
+.skillHint h3,
+.skillHint h4 {
+  color: #ffcc00;
+  margin-bottom: 3px;
+}
+.skillHint p,
+.skillHint ul {
+  margin-bottom: 9px;
+}
+.skillHint p + h1,
+.skillHint ul + h1,
+.skillHint p + h2,
+.skillHint ul + h2,
+.skillHint p + h3,
+.skillHint ul + h3,
+.skillHint p + h4,
+.skillHint ul + h4 {
+  margin-top: 9px;
+}
+.skillHint i {
+  color: #0A0;
+}
+.skillHint b {
+  color: #88F;
+  font-weight: normal;
+}
+.skillHint li {
+  list-style-type: none;
+}
+.skillHint .commamenu li {
+  float: left;
+  list-style-type: none;
+}
+.skillHint .commamenu li:before {
+  content: '';
+}
+.skillHint .commamenu li + li:before {
+  content: ', ';
+}
+.skillHint .commamenu:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+.skillHint .reqs {
+  color: #A00;
+}
+.skillHint .met {
+  color: #0a0;
+}

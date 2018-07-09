@@ -408,7 +408,7 @@ img {
 	background-color: #142630; //20 38 48
 	right: 100%;
 	left: 3%;
-	width: 400px;
+	width: 438px;
 	height: 560px;
 	border-style: inset;
 	border-width: 5px;
@@ -416,6 +416,9 @@ img {
 	border-color: #142630; //11 28 36
 }
 
+#st:active{
+	pointer-events: none;
+}
 
 
 #confirmOverlay{
@@ -502,3 +505,46 @@ img {
 #confirmBox .gray span{         background-position:-395px 0;}
 #confirmBox .gray:hover{        background-position:-200px bottom;}
 #confirmBox .gray:hover span{   background-position:-395px bottom;}
+
+
+/* Skill Tree */
+/*i {
+    border: solid #FFDE8F;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+    
+}*/
+
+.arrow {
+	position: relative;
+	/*border:#FFDE8F solid;*/
+	border: gray dashed;
+	border-width:2px 2px 0 0;
+	display: inline-block;
+	width:15px;
+	height:15px;
+/*	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);*/
+}
+
+
+.right {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}

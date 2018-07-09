@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SkillTree Editor</title>
+
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="editor.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="interface.css"/>
+
+    <script type="text/javascript" src="../skills.js"></script>
+    <script type="text/javascript" src="../skills_layout.js"></script>
+    <script type="text/javascript" src="../skills_fromJSON.js"></script>
+</head>
+<body>
+
+    <div id="grid"></div>
+
+
+    <div id="copypaste" style="display:none;"><textarea name="copypaste" id="values"></textarea></div>
+
+    <div id="propanel" style="display:none;">
+        <div class="interface">
+
+            <div class="panel">
+                <div class="title">Name and description</div>
+                <label for="elid">Element ID</label>
+                <input type="text" id="elid">
+                <label for="title">Name</label>
+                <input type="text" id="title">
+                <div id="hints"></div>
+            </div>
+
+            <div class="panel">
+
+                <div class="title">Sprite</div>
+                <label for="abbr">Image (all levels)</label>
+                <div id="sprite_image"></div>
+
+                <label for="abbr">Abbreviation</label>
+                <input type="text" id="abbr">
+
+                <label for="sprites">Level-specific</label>
+                <div id="sprites" class="group">No level-specific sprites <a href="#">(Add New)</a></div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="sprite_selector" style="display:none;">
+        <div class="area">
+            <div class="selector"></div>
+        </div>
+        <a href="#">Ok</a>
+    </div>
+
+    <div id="setpanel">
+        <label for="showgrid">Align to grid </label>
+        <input type="checkbox" id="showgrid"/> |
+        <a href="#" id="jsonimport">Import from JSON</a> |
+        <a href="#" id="jsonexport">Export as JSON</a> |
+        <a href="#" id="creanode">Create node |</a>
+        <a href="#" id="creacon">Create connection</a>
+        <a href="#" id="delnode">| Delete node</a>
+    </div>
+
+    <div id="creanode_dialog" class="dialog">
+        <label for="new_node_id">Node id (as short as possible, alpha and unique)</label>
+        <input type="text" id="new_node_id"/>
+        <label for="new_node_name">Node title</label>
+        <input type="text" id="new_node_name"/><br/>
+        <button id="new_node_create">Create</button><button id="new_node_cancel">Cancel</button>
+        <div class="err"></div>
+    </div>
+
+    <div id="tree"></div>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+    skilltree.editorMode = true;
+
+    $(document).on('skillsAfterInit',function() {
+        skilltree.buttons.each(function () {
+            $(this).attr('draggable', 'draggable')
+        });
+        skillsEditor.init();
+    });
+
+    $(function(){
+        skilltree.buildFromJSON('../trees/web_saved.json',$('#tree'));
+    });
+
+</script>

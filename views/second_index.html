@@ -5,12 +5,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="js/panel/skills/style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   <script type="text/javascript" src="js/panel/skills/skills.js"></script>
   <script type="text/javascript" src="js/panel/skills/skills_layout.js"></script>
   <script type="text/javascript" src="js/panel/skills/skills_fromJSON.js"></script>
-  <script type="text/javascript" src="js/panel/skills/tree.js"></script>
 </head>
-<body>
+<!-- <body onload="render_skill_tree()"> -->
+<body >
 <h1 class="title" id="big_title">Control Panel</h1>
 <div class="wrapper">
 	<div class="character">
@@ -438,31 +440,129 @@
 </div>
 <div class="Skill_Status">
 	<h2 class="skilltitle">Skills</h2>
-	<div class="Skill_Tree">
-		<!-- Skill starts here -->
-    	<div id="tree" class="skilltree">
-        	<div class="skill" current="1" max="3" skillid="king" sprite="3x3" id="king">
-            	<div>The skill :3</div>
-            	<p>XDDDD</p>
-        	</div>
-    	</div>
+	<div class="Skill_Tree" id="st" >
+		<!-- skill * 1 -->
+		<div class="skill skill angel" current="0" max="1" skillid="old_king" sprite="1x1" id="old_king" >
+			<div>
+				<h3>Late King’s Relic</h3>	<!-- skill name-->
+				<p>Start of journey !</p> <!-- discription name-->
+				<p>A ship left over my the old king to help you on your way</p>
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 2 -->
+		<div class="skill skill angel" current="0" max="1" skillid="oil_gas" sprite="1x1" id="oil_gas" musthave="old_king" ">
+			<div>
+				<h3>Tax Collector</h3>	<!-- skill name-->
+				<p>Need more money?</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 3 -->
+		<div class="skill skill angel" current="0" max="1" skillid="ssh" sprite="1x1" id="ssh" musthave="oil_gas">
+			<div>
+				<h3>Telepathy</h3>	<!-- skill name-->
+				<p>Controls things remotely. Also refered to as ssh among warlocks called computer scientists.</p> 
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 4 -->
+		<div class="skill skill angel" current="0" max="1" skillid="validation" sprite="1x1" id="validation" musthave="old_king">
+			<div>
+				<h3>Advisor Val</h3>	<!-- skill name-->
+				<p>A sober advisor may be useful. So does validation sets in machine learning !</p> 
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 5 -->
+		<div class="skill skill angel" current="0" max="1" skillid="employment" sprite="1x1" id="employment" musthave="oil_gas" musthave="validation">
+			<div>
+				<h3>Prestiged Prince</h3>	<!-- skill name-->
+				<p>Subjects come not because of high wage, but to work under the celebrated prince</p> 
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 6 -->
+		<div class="skill skill angel" current="0" max="1" skillid="DDOS" sprite="1x1" id="DDOS" musthave="employment">
+			<div>
+				<h3>Colossus</h3>	<!-- skill name-->
+				<p>Fear the legendary DDOS.</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 7 -->
+		<div class="skill skill angel" current="0" max="1" skillid="rainbow" sprite="1x1" id="rainbow" musthave="validation">
+			<div>
+				<h3>Rainbow</h3>	<!-- skill name-->
+				<p>Sometimes you need to try something new XD</p> <!-- discription name-->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 8 -->
+		<div class="skill skill angel" current="0" max="1" skillid="deep_learning" sprite="1x1" id="deep_learning" musthave="rainbow" ">
+			<div>
+				<h3>Deep Learning</h3>	<!-- skill name-->
+				<p>I think the hint is enough =)</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 9 -->
+		<div class="skill skill angel" current="0" max="1" skillid="monika" sprite="1x1" id="attack" musthave="deep_learning">
+			<div>
+				<h3>Just Monika</h3>	<!-- skill name-->
+				<p>Just Monika</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 10 -->
+		<div class="skill skill angel" current="0" max="1" skillid="csie" sprite="1x1" id="csie" musthave="rainbow">
+			<div>
+				<h3>Make CSIE Great Again</h3>	<!-- skill name-->
+				<p>Forgive others is to be kind to yourself !</p> <!-- discription name-->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 11 -->
+		<div class="skill skill angel" current="0" max="1" skillid="quantum" sprite="1x1" id="quantum" musthave="csie">
+			<div>
+				<h3>Quantum Engine</h3>	<!-- skill name-->
+				<p>Faster than light =) </p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 12 -->
+		<div class="skill skill angel" current="0" max="1" skillid="fiftyone" sprite="1x1" id="fiftyone" musthave="monika" musthave="quantum">
+			<div>
+				<h3>Mob Lynch</h3>	<!-- skill name-->
+				<p>No one can stand the mob. Not even Blockchains under 51% of angry nodes.</p>
+			</div>
+		</div>		
 	</div>
+<!-- 	<button onclick="learn('old_king')">test</button> -->
+<!-- 	<div><i class="arrow right" style=" position:absolute; left: 892px; top: 712px;"></i></div>
+	<div><i class="arrow right" style=" position:absolute; left: 1032px; top: 712px;"></i></div>
+	<div><i class="arrow down" style=" position:absolute; left: 825px; top: 788px;"></i></div> -->
+
 </div>
+<script type="text/javascript">
+    skilltree.init($('#st'));
+</script>
 </body>
 </html>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<!-- <script type="text/javascript" src="js/panel/skills/skills.js"></script>
-<script type="text/javascript" src="js/panel/skills/skills_layout.js"></script>
-<script type="text/javascript" src="js/panel/skills/skills_fromJSON.js"></script> -->
 <!-- <script src="/socket.io/socket.io.js"></script> -->
 <script src="js/panel/update_worker.js"></script>
 <script src="js/panel/mission_worker.js"></script>
 <script src="js/panel/jquery.confirm.js"></script>
 <script src="js/panel/jquery.alert.js"></script>
-
-<!-- <script src="js/popup.js"></script> -->
-<!-- <script src="js/chatRoom.js"></script> -->
-<!-- <script src="js/leaderBoard.js"></script> -->
