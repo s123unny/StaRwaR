@@ -17,7 +17,7 @@
 <div class="wrapper">
 	<div class="character">
 		<img src="./pic/char1.png" width="389" height="457"></img>
-		<div class="title">Money : <span id="Money">1000</span> BTC</div>
+		<div class="title">Money : <span id="Money"><%= money %></span> BTC</div>
 		<div class="title">Available Ships : <span id="Ship">10</span> </div>
 	</div>
 	<div class="Resources">
@@ -586,7 +586,8 @@
 </body>
 </html>
 
-<!-- <script src="/socket.io/socket.io.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/panel/get_pannel.js"></script>
 <script src="js/panel/update_worker.js"></script>
 <script src="js/panel/mission_worker.js"></script>
 <script src="js/panel/jquery.confirm.js"></script>
