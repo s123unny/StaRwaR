@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="stylesheets/index2.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="js/panel/skills/style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/panel/skills/skills.js"></script>
+  <script type="text/javascript" src="js/panel/skills/skills_layout.js"></script>
+  <script type="text/javascript" src="js/panel/skills/skills_fromJSON.js"></script>
+</head>
+<!-- <body onload="render_skill_tree()"> -->
+<body >
+<h1 class="title" id="big_title">Control Panel</h1>
+<div class="wrapper">
+	<div class="character">
+		<img src="./pic/char1.png" width="389" height="457"></img>
+		<div class="title">Money : <span id="Money">1000</span> BTC</div>
+		<div class="title">Available Ships : <span id="Ship">10</span> </div>
+	</div>
+	<div class="Resources">
+		<div class="Workers">
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="AI_png" src="./pic/AI3.png" width="92.5" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Trainer</div>
+				<button class="add_minus_button" onclick="minus_trainer()">-</button>
+				<div class="Worker_num">
+					<div class="worker_num">Working : <span id="working_trainer_num">0</span></div>
+					<div class="worker_num">Standby : <span id="standby_trainer_num">0</span></div>
+				</div>
+				<button class="add_minus_button" onclick="add_trainer()">+</button>
+			</div>
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="worker_png" src="./pic/MINER.png" width="100" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Miner</div>
+				<button class="add_minus_button" onclick="minus_miner()">-</button>
+				<div class="Worker_num">
+					<div class="worker_num">Working :  <span id="working_miner_num">0</span></div>
+					<div class="worker_num">Standby :  <span id="standby_miner_num">0</span></div>
+				</div>
+				<button class="add_minus_button" onclick="add_miner()">+</button>
+			</div>
+			<div class="workers_frame">
+				<div class="worker_img_slot">
+					<div class="workers_img">
+						<img class="worker_png" src="./pic/HACKER.png" width="90" height="92.5"></img>
+					</div>
+				</div>
+				<div class="workers_type">Hacker</div>
+				<button class="add_minus_button" onclick="minus_hacker()">-</button>
+				<div class="Worker_num">
+					<div class="worker_num">Working : <span id="working_hacker_num">0</span></div>
+					<div class="worker_num">Standby : <span id="standby_hacker_num">0</span></div>
+				</div>
+				<button class="add_minus_button" onclick="add_hacker()">+</button>
+			</div>
+		</div>
+		<div class="Items">
+			<div class="items_block">
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/audio.png" width="30" height="30"></img>
+					</div>
+					<div class="items_type">Endearing Flutesong <span id:"audio_num">0</span></div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/image.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Surreal Landscape &nbsp&nbsp <span id:"image_num">0</span></div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/text.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Sentimental Letter &nbsp&nbsp <span id:"text_num">0</span></div>
+				</div>
+			</div>
+			<div class="items_block">
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/audio_m.png" width="40" height="40"></img>
+					</div>
+					<div class="items_type">Phoney Tunes &nbsp <span id:"audioM_num">0</span></div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/image_m.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Alien Drawings&nbsp <span id:"imageM_num">0</span></div>
+				</div>
+				<div class="items_frame">
+					<div class="items_img">
+						<img class="worker_png" src="./pic/text_m.png" width="42" height="42"></img>
+					</div>
+					<div class="items_type">Forged Notes &nbsp&nbsp <span id:"textM_num">0</span></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="Mission_Status">
+	<h2 class="subtitle">Ongoing_Mission</h2>
+	<div class="content_wrapper">
+		<div class="category">Type</div>
+		<div class="category">Target</div>
+		<div class="category"># of Miner</div>
+		<div class="category"># of Trainer</div>
+		<div class="category"># of Hacker</div>
+		<div class="category">State</div>
+		<div class="category">Return</div>
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="going_mblock_slot1">
+			<div id="ongoing_mblock_slot1_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot1_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot1_M" class="content">0</div>
+			<div id="ongoing_mblock_slot1_T" class="content">0</div>
+			<div id="ongoing_mblock_slot1_H" class="content">0</div>
+			<div id="ongoing_mblock_slot1_State" class="content">Ongoing</div>
+			<div class="content">
+				<label class="rest">
+					<input id="ongoing_mblock_slot1_withdraw" type="checkbox" checked:false onclick="comeback(1)">
+  					<span class="checkmark"></span>
+				Return</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="going_mblock_slot2">
+			<div id="ongoing_mblock_slot2_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot2_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot2_M" class="content">0</div>
+			<div id="ongoing_mblock_slot2_T" class="content">0</div>
+			<div id="ongoing_mblock_slot2_H" class="content">0</div>
+			<div id="ongoing_mblock_slot2_State" class="content">Working</div>
+			<div class="content">
+				<label class="rest">
+					<input id="ongoing_mblock_slot2_withdraw" type="checkbox" checked:false onclick="comeback(2)">
+  					<span class="checkmark"></span>
+				Return</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="going_mblock_slot3">
+			<div id="ongoing_mblock_slot3_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot3_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot3_M" class="content">0</div>
+			<div id="ongoing_mblock_slot3_T" class="content">0</div>
+			<div id="ongoing_mblock_slot3_H" class="content">0</div>
+			<div id="ongoing_mblock_slot3_State" class="content">Working</div>
+			<div class="content">
+				<label class="rest">
+					<input id="ongoing_mblock_slot3_withdraw" type="checkbox" checked:false onclick="comeback(3)">
+  					<span class="checkmark"></span>
+				Return</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="going_mblock_slot4">
+			<div id="ongoing_mblock_slot4_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot4_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot4_M" class="content">0</div>
+			<div id="ongoing_mblock_slot4_T" class="content">0</div>
+			<div id="ongoing_mblock_slot4_H" class="content">0</div>
+			<div id="ongoing_mblock_slot4_State" class="content">Working</div>
+			<div class="content">
+				<label class="rest">
+					<input id="ongoing_mblock_slot4_withdraw" type="checkbox" checked:false onclick="comeback(4)">
+  					<span class="checkmark"></span>
+				Return</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="going_mblock_slot5">
+			<div id="ongoing_mblock_slot5_type" class="content">Mine</div>
+			<div id="ongoing_mblock_slot5_location" class="content">Alpha</div>
+			<div id="ongoing_mblock_slot5_M" class="content">0</div>
+			<div id="ongoing_mblock_slot5_T" class="content">0</div>
+			<div id="ongoing_mblock_slot5_H" class="content">0</div>
+			<div id="ongoing_mblock_slot5_State" class="content">Working</div>
+			<div class="content">
+				<label class="rest">
+					<input id="ongoing_mblock_slot5_withdraw" type="checkbox" checked:false onclick="comeback(5)">
+  					<span class="checkmark"></span>
+				Return</label>
+			</div>
+		</div>	
+	</div>
+	<!-- Mission Assign  -->
+	<h2 class="subtitle">Mission_Assign</h2>
+	<div class="content_wrapper">
+		<div class="category">Type</div>
+		<div class="category">Target</div>
+		<div class="category"># of Miner</div>
+		<div class="category"># of Trainer</div>
+		<div class="category"># of Hacker</div>
+		<div class="category">Carry Item</div>
+		<div class="category">Confirm</div>
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="assign_mblock_slot1">
+			<div class="content ">
+				<form>
+					<select id="assign_mblock_slot1_type" class="choosetype" name="YourType" onchange="render_target(1)">
+						<option value="none">Job Choice</option>
+						<option value="mine">Mine</option>
+						<option value="ai_center">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<select id="assign_mblock_slot1_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot1_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot1_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot1_H" class="minion_num" type="number" min="0" step="1" name="# of hacker" style="width: 50px";>
+			</div>
+			<div class="content">
+				<form >
+					<select id="assign_mblock_slot1_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>						
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<label class="rest">
+  					<span class="submitter" onclick="submit_mission(1)">Submit</span>
+				</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="assign_mblock_slot2">
+			<div class="content ">
+				<form>
+					<select id="assign_mblock_slot2_type" class="choosetype" name="YourLocation" onchange="render_target(2)">
+						<option value="none">Job Choice</option>
+						<option value="mine">Mine</option>
+						<option value="ai_center">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<select id="assign_mblock_slot2_target" class="choosetype" name="YourTarget" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot2_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot2_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot2_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<form >
+					<select id="assign_mblock_slot2_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>						
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<label class="rest">
+  					<span class="submitter" onclick="submit_mission(2)">Submit</span>
+				</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="assign_mblock_slot3">
+			<div class="content ">
+				<form>
+					<select id="assign_mblock_slot3_type" class="choosetype" name="YourLocation" onchange="render_target(3)">
+						<option value="none">Job Choice</option>
+						<option value="mine">Mine</option>
+						<option value="ai_center">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<select id="assign_mblock_slot3_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot3_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot3_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot3_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<form >
+					<select id="assign_mblock_slot3_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<label class="rest">
+  					<span class="submitter" onclick="submit_mission(3)">Submit</span>
+				</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="assign_mblock_slot4">
+			<div class="content ">
+				<form>
+					<select id="assign_mblock_slot4_type" class="choosetype" name="YourLocation" onchange="render_target(4)">
+						<option value="none">Job Choice</option>
+						<option value="mine">Mine</option>
+						<option value="ai_center">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<select id="assign_mblock_slot4_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot4_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot4_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot4_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<form >
+					<select id="assign_mblock_slot4_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<label class="rest">
+  					<span class="submitter" onclick="submit_mission(4)">Submit</span>
+				</label>
+			</div>
+		</div>	
+	</div>
+	<div class="Mission_Block">
+		<div class="slot_wrapper" id="assign_mblock_slot5">
+			<div class="content">
+				<form>
+					<select id="assign_mblock_slot5_type" class="choosetype" name="YourLocation" onchange="render_target(5)">
+						<option value="none">Job Choice</option>
+						<option value="mine">Mine</option>
+						<option value="ai_center">AI Center</option>
+						<option value="abandon">Abandon</option>
+						<option value="unknown">Unknown</option>
+						<option value="learn">Learn Skill</option>
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<select id="assign_mblock_slot5_target" class="choosetype" name="YourLocation" style="width: 67px">
+					<option value="none">None</option>
+				</select>
+			</div>
+			<div class="content">
+				<input class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div id="assign_mblock_slot5_T" class="content">
+				<input id="assign_mblock_slot5_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<input id="assign_mblock_slot5_H" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+			</div>
+			<div class="content">
+				<form>
+					<select id="assign_mblock_slot5_carry" class="choosetype" name="YourItem" style="width: 81px";>
+						<option value="nothing">Nothing</option>
+						<option value="audio">Phoney Tunes</option>
+						<option value="image">Alien Drawings</option>
+						<option value="text">Forged Notes</option>	
+					</select>
+				</form>
+			</div>
+			<div class="content">
+				<label class="rest">
+  					<span class="submitter" onclick="submit_mission(5)">Submit</span>
+				</label>
+			</div>
+		</div>	
+	</div>
+</div>
+<div class="Skill_Status">
+	<h2 class="skilltitle">Skills</h2>
+	<div class="Skill_Tree" id="st" >
+		<!-- skill * 1 -->
+		<div class="skill skill angel" current="0" max="1" skillid="old_king" sprite="1x1" id="old_king" >
+			<div>
+				<h3>Legacy of Acient God</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: Start of journey !</p> <!-- discription name-->
+				<p><i showlevel="1">Get: Obtain five ship in the begining !</i></p>
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 2 -->
+		<div class="skill skill angel" current="0" max="1" skillid="oil_gas" sprite="1x1" id="oil_gas" musthave="old_king" ">
+			<div>
+				<h3>Tax Collector</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: Want more money?</p> <!-- discription name-->
+				<p showlevel="1"><i>Get: 20% more bonus in one day</i></p>
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 3 -->
+		<div class="skill skill angel" current="0" max="2" skillid="ssh" sprite="1x1" id="ssh" musthave="oil_gas">
+			<div>
+				<h3>Adventure trip</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: A chance to take adventure</p>
+				<p showlevel="2"><i>Get: Chances to make money =)</i></p> 
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 4 -->
+		<div class="skill skill angel" current="0" max="1" skillid="validation" sprite="1x1" id="validation" musthave="old_king">
+			<div>
+				<h3>GPU</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: Better performance on ...</p>
+				<p showlevel="1"><i>Get: 20% more reward when mining</i></p> 
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 5 -->
+		<div class="skill skill angel" current="0" max="1" skillid="employment" sprite="1x1" id="employment" musthave="oil_gas" dependency="XD">
+			<div>
+				<h3>Deep Learning</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: I think the hint is too much for you XD</p> 
+				<p showlevel="1"><i>Get: 20% more reward when training model</i></p> 
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 6 -->
+		<div class="skill skill angel" current="0" max="2" skillid="DDOS" sprite="1x1" id="DDOS" musthave="employment">
+			<div>
+				<h3>Colossus</h3>	<!-- skill name-->
+				<p>Hint: Fear the legendary DDOS. Have you heard of it?</p> <!-- discription name-->
+				<p showlevel="2"><i>Get: Choose one team and nake it unable to move.</i></p>
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 7 -->
+		<div class="skill skill angel" current="0" max="1" skillid="rainbow" sprite="1x1" id="rainbow" musthave="validation">
+			<div>
+				<h3>Rainbow</h3>	<!-- skill name-->
+				<p style="color:red;">Hint: Colorful is powerful !</p>
+				<p showlevel="1"><i>Get: Change the color of your chatting room</i></p>
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 8 -->
+		<div class="skill skill angel" current="0" max="1" skillid="deep_learning" sprite="1x1" id="deep_learning" musthave="rainbow" ">
+			<div>
+				<h3>Deep Learning</h3>	<!-- skill name-->
+				<p>I think the hint is enough =)</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 9 -->
+		<div class="skill skill angel" current="0" max="1" skillid="monika" sprite="1x1" id="attack" musthave="deep_learning">
+			<div>
+				<h3>Just Monika</h3>	<!-- skill name-->
+				<p>Just Monika</p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow down" style="left: -315px; top: 0px;"></div>
+		<div class="arrow down" style="left: -204px; top: 0px;"></div>
+		<div class="arrow down" style="left: -94px; top: 0px;"></div>
+		<!-- skill * 10 -->
+		<div class="skill skill angel" current="0" max="1" skillid="csie" sprite="1x1" id="csie" musthave="rainbow">
+			<div>
+				<h3>Make CSIE Great Again</h3>	<!-- skill name-->
+				<p>Forgive others is to be kind to yourself !</p> <!-- discription name-->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 11 -->
+		<div class="skill skill angel" current="0" max="1" skillid="quantum" sprite="1x1" id="quantum" musthave="csie">
+			<div>
+				<h3>Quantum Engine</h3>	<!-- skill name-->
+				<p>Faster than light =) </p> <!-- discription name-->
+				<!-- <p><i></i></p> -->
+			</div>
+		</div>
+		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<!-- skill * 12 -->
+		<div class="skill skill angel" current="0" max="1" skillid="fiftyone" sprite="1x1" id="fiftyone" musthave="monika" musthave="quantum">
+			<div>
+				<h3>Mob Lynch</h3>	<!-- skill name-->
+				<p>No one can stand the mob. Not even Blockchains under 51% of angry nodes.</p>
+			</div>
+		</div>		
+	</div>
+<!-- 	<button onclick="learn('old_king')">test</button> -->
+<!-- 	<div><i class="arrow right" style=" position:absolute; left: 892px; top: 712px;"></i></div>
+	<div><i class="arrow right" style=" position:absolute; left: 1032px; top: 712px;"></i></div>
+	<div><i class="arrow down" style=" position:absolute; left: 825px; top: 788px;"></i></div> -->
+
+</div>
+<script type="text/javascript">
+    skilltree.init($('#st'));
+</script>
+</body>
+</html>
+
+<!-- <script src="/socket.io/socket.io.js"></script> -->
+<script src="js/panel/update_worker.js"></script>
+<script src="js/panel/mission_worker.js"></script>
+<script src="js/panel/jquery.confirm.js"></script>
+<script src="js/panel/jquery.alert.js"></script>

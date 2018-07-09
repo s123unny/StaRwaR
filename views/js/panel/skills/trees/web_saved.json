@@ -1,0 +1,276 @@
+{"angular": {
+    "name": "Angular",
+    "max": "1",
+    "current": "0",
+    "abbr": "Anlr",
+    "hint": [
+        {
+            "text": "Angular"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [200, 230]
+}, "backbone": {
+    "name": "Backbone",
+    "max": "1",
+    "current": "0",
+    "abbr": "BkBe",
+    "hint": [
+        {
+            "text": "Backbone"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [300, 230]
+}, "bootstrap": {
+    "name": "Bootstrap 3",
+    "max": "1",
+    "current": "0",
+    "abbr": "BS3",
+    "hint": [
+        {
+            "text": "Bootstrap 3"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [840, 370]
+}, "css": {
+    "name": "CSS",
+    "max": "2",
+    "current": "0",
+    "abbr": "CSS",
+    "sprite":[7,6],
+    "hint": [
+        {
+            "text": "Cascade Styling Stuff",
+            "level": "0-2"
+        },
+        {
+            "text": "CSS3 features",
+            "level": "1-2"
+        }
+    ],
+    "dependency": {
+        "2": {
+            "html": 1
+        }
+    },
+    "pos": [640, 190]
+}, "emberjs": {
+    "name": "EmberJS",
+    "max": "1",
+    "current": "0",
+    "abbr": "EmJS",
+    "hint": [
+        {
+            "text": "EmberJS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [100, 230]
+}, "extjs": {
+    "name": "ExtJS",
+    "max": "1",
+    "current": "0",
+    "abbr": "ExJS",
+    "hint": [
+        {
+            "text": "ExtJS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [400, 230]
+}, "foundation": {
+    "name": "Foundation",
+    "max": "1",
+    "current": "0",
+    "abbr": "Foun",
+    "hint": [
+        {
+            "text": "Foundation"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [950, 370]
+}, "handlebarsjs": {
+    "name": "HandlebarsJS",
+    "max": "1",
+    "current": "0",
+    "abbr": "HaJS",
+    "hint": [
+        {
+            "text": "HandlebarsJS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [1220, 190]
+}, "html": {
+    "name": "HTML",
+    "max": "2",
+    "sprites": {
+        "1": [1, 0],
+        "2": [2, 0]
+    },
+    "current": "0",
+    "hint": [
+        {
+            "text": "Basic HTML",
+            "level": "0-2"
+        },
+        {
+            "text": "HTML5 features, responsive layouts",
+            "level": "1-2"
+        }
+    ],
+    "dependency": {
+        "2": {
+            "css": 1
+        }
+    },
+    "pos": [640, 90]
+}, "javascript": {
+    "name": "JavaScript",
+    "max": "2",
+    "current": "0",
+    "abbr": "JS",
+    "hint": [
+        {
+            "text": "JavaScript"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "html": 1,
+            "css": 1
+        },
+        "2": {
+            "html": 2,
+            "css": 2
+        }
+    },
+    "pos": [1020, 90]
+}, "jquery": {
+    "name": "jQuery",
+    "max": "1",
+    "current": "0",
+    "abbr": "jQ",
+    "hint": [
+        {
+            "text": "jQuery + jQuery UI"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "javascript": 1
+        }
+    },
+    "pos": [1020, 190]
+}, "less": {
+    "name": "LESS",
+    "max": "1",
+    "current": "0",
+    "abbr": "LESS",
+    "hint": [
+        {
+            "text": "LESS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 2
+        }
+    },
+    "pos": [840, 190]
+}, "sass": {
+    "name": "SASS",
+    "max": "1",
+    "current": "0",
+    "abbr": "SASS",
+    "hint": [
+        {
+            "text": "SASS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 2
+        }
+    },
+    "pos": [740, 190]
+}, "underscorejs": {
+    "name": "UnderscoreJS",
+    "max": "1",
+    "current": "0",
+    "abbr": "_JS",
+    "hint": [
+        {
+            "text": "UnderscoreJS"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "css": 1,
+            "html": 1,
+            "javascript": 1
+        }
+    },
+    "pos": [1120, 190]
+}, "websocket": {
+    "name": "Websockets",
+    "max": "1",
+    "current": "0",
+    "abbr": "WbSk",
+    "hint": [
+        {
+            "text": "Websockets"
+        }
+    ],
+    "dependency": {
+        "1": {
+            "javascript": 2
+        }
+    },
+    "pos": [1140, 90]
+}}

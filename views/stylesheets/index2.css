@@ -1,0 +1,551 @@
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	       -box-sizing: border-box;
+	//position: relative;
+}
+
+
+body {
+	position: relative;
+	font-family: 'Noto Sans TC', sans-serif;
+	font-weight: 300;
+	background: linear-gradient(to bottom ,#223F47, #081319, #223F47) fixed;
+}
+
+#big_title {
+	left: 20px;
+	top: 5px;
+	font-size: 23px;
+}
+
+.title {
+	position: relative;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+.title span {
+	position: relative;
+	color: #80f1dc;
+	font-weight: 500;
+	font-size: 20px;
+}
+	
+
+.subtitle {
+	position: relative;
+	margin: 0px 0px 0px 300px;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+
+.skilltitle {
+	position: relative;
+	margin: 0px 0px 0px 235px;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 45px;
+	height: 45px;
+	left: 0px;
+}
+
+.character {
+	position: relative;
+	float: left;
+	right: 100%;
+	left: 3%;
+}
+
+.Resources{
+	position: relative;
+	float: left;
+	overflow: hidden;
+}
+
+.Workers{
+	position: relative;
+	height: 250px;
+}
+
+.workers_frame{
+	position: relative;
+	margin: 10px 0px 0px 100px;
+	float: left;
+}
+
+.worker_img_slot{
+	position: relative;
+	width: 105px;
+	height: 105px;
+	border-style: inset;
+	border-color: #5E6C73; //A8 B1 B8  14   7 
+	border-width:5px;
+	border-radius:14px;
+}
+
+.workers_img {
+	position: relative;
+	//left: 30%;
+	//right: 50%;
+	border-style: outset;
+	background-color: #FFFFFF; //20 39 46
+	border-width: 5px;
+	border-radius:12px;
+	width: 100px;
+	height: 100px;
+}
+
+.add_minus_button {
+    position: relative;
+    background-color: #142630; //20 38 48
+    border-style: solid;
+    border-color: #80f1dc;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    color: white;
+    //text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    padding: 0px 0px 5px 0px;
+    margin: 20px 10px 0px 0px;
+    float: left;
+}
+
+
+.AI_png {
+	position: relative;
+	display: block;
+	margin-top: auto;
+}
+
+.worker_png {
+	position: relative;
+	display: block;
+	margin-top: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.Worker_num {
+	position: relative;
+	float: left;	
+	margin: 10px 10px 0px 0px;
+	overflow: hidden;
+}
+
+.worker_num {
+	position: relative;
+	//margin: 10px 0px 0px 10px;
+	color: #FFFFFF;
+	font-size: 10px;
+}
+
+.worker_num span {
+	position: relative;
+	color: #80F1DC;
+	font-size: 10px;
+}
+
+/* for button */
+.round-button {
+  position: relative;
+  width:25%;
+}
+.round-button-circle {
+  position: relative;
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  border:10px solid #cfdcec;
+  overflow:hidden;
+        
+  background: #4679BD; 
+  box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+  position: relative;
+  background:#30588e;
+}
+
+
+
+.workers_type {
+	position: relative;
+	margin: 10px 0px 0px 10px;
+	color: white;
+	font-size: 25px;
+}
+
+.Items{
+	position: relative;
+	height: 250px;
+}
+
+.items_block{
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	float: left;
+	width: 380px;
+	overflow: hidden;
+}
+
+.items_frame{
+	position: relative;
+	margin: 0px 0px 20px 100px;
+	overflow: hidden;
+}
+
+.items_img {
+	position: relative;
+	float: left;
+	width: 50px;
+	height: 50px;
+	border-style: outset;
+	border-width: 5px solid transparent;
+	border-radius:8px;
+	background-color: #FFFFFF; //20 39 46
+}
+
+.items_type {
+	position: relative;
+	margin: 10px 0px 0px 10px;
+	color: white;
+	font-size: 16px;
+	float: left;
+}
+
+.items_type span {
+	position: relative;
+	color: #80f1dc;
+}
+
+.wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+img {
+	position: relative;
+	object-fit: cover;
+}
+
+.Mission_Status {
+	position: relative;
+	float: left;
+}
+
+.Mission_Block {
+	position: relative;
+	margin: 0px 0px 15px 0px;
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 730px;
+	height: 35px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+
+.content_wrapper {
+	position: relative;
+	margin: 0px 0px 0px 27px;
+	overflow: hidden;
+}
+
+.slot_wrapper {
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	overflow: hidden;
+}
+
+.content {
+	position: relative;
+	float: left;
+	margin: 0px 5px 0px 0px;
+	color: #80f1dc;
+	display: block;
+	width: 95px;
+	text-align: center;
+	//border-style: inset;
+	//border-width: 5px;
+	//border-color: #142630; //11 28 36
+}
+
+.category {
+	position: relative;
+	float: left;
+	margin: 0px 5px 0px 0px;
+	color: #FFDE8F;
+	display: block;
+	width: 95px;
+	text-align: center;
+}
+
+.rest {
+    position: relative;
+    display: block;
+    padding-left: 25px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 300;
+    user-select: none;
+}
+
+.submitter {
+    position: absolute;
+    top: 0.5px;
+    left: 16px;
+    /*height: 24px;*/
+    width: 65px;
+    background-color: #3E3E3E;
+    border-style: outset;
+    border-color: #7C7C7C;
+    border-width: 2px;
+    border-radius: 8px;
+}
+
+/* Hide the browser's default checkbox */
+.rest input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    height: 15px;
+    width: 15px;
+    border-color: #7C7C7C;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color
+.rest:hover input ~ .checkmark {
+    background-color: #3E3E3E;
+}
+*/
+/* When the checkbox is checked, add a blue background
+.rest input:checked ~ .checkmark {
+    background-color: #3E3E3E;
+}
+*/
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.rest input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.rest .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border-style: inset;
+    border-color: #80F1DC;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.choosetype {
+	position: relative;
+	cursor : pointer;
+	text-align: center;
+	background-color: #142630;
+	border-style: none;
+	border-color: #7C7C7C;
+	border-width: 2px;
+	border-radius: 5px;
+}
+
+.minion_num {
+	position: relative;
+	text-align: center;
+	background-color: #0A1318; //#142630
+	border: outset;
+	border-color: #0A1318;
+	border-width: 2px;
+	border-radius: 5px;
+}
+
+.Skill_Status {
+	float: left;
+}
+
+.Skill_Tree {
+	margin: 18px 0px 0px 50px;
+	float: left;
+	background-color: #142630; //20 38 48
+	right: 100%;
+	left: 3%;
+	width: 438px;
+	/*width: 550px;*/
+	height: 560px;
+	border-style: inset;
+	border-width: 5px;
+	border-radius:12px;
+	border-color: #142630; //11 28 36
+}
+
+/*#st:active{
+	pointer-events: none;
+}*/
+
+
+#confirmOverlay{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+    z-index:100000;
+}
+
+#confirmBox{
+    background-color: #142630;
+    border-style: solid;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #80f1dc;
+    width:460px;
+    position:fixed;
+    left:50%;
+    top:50%;
+    margin:-130px 0 0 -230px;
+
+}
+
+#confirmBox h1,
+#confirmBox p{
+    font:26px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #80f1dc;
+    padding: 18px 25px;
+}
+
+#confirmBox h1{
+    letter-spacing:0.3px;
+    text-align:center;
+}
+
+#confirmBox p{
+    background:none;
+    font-size:16px;
+    line-height:1.4;
+    padding-top: 35px;
+    text-align:center;
+}
+
+#confirmButtons{
+    padding:15px 0 25px;
+    text-align:center;
+}
+
+#confirmBox .button{
+    display:inline-block;
+    background-color: #142630;
+    color:white;
+    position:relative;
+    height: 33px;
+
+    font:17px/33px 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+
+    margin-right: 15px;
+    padding: 0 35px 0 40px;
+    text-decoration:none;
+    border:none;
+}
+
+#confirmBox .button:last-child{ margin-right:0;}
+
+#confirmBox .button span{
+    position:absolute;
+    top:0;
+    right:-5px;
+    width:5px;
+    height:33px
+}
+
+#confirmBox .blue{              background-position:left top;text-shadow:1px 1px 0 #5889a2;}
+#confirmBox .blue span{         background-position:-195px 0;}
+#confirmBox .blue:hover{        background-position:left bottom;}
+#confirmBox .blue:hover span{   background-position:-195px bottom;}
+
+#confirmBox .gray{              background-position:-200px top;text-shadow:1px 1px 0 #707070;}
+#confirmBox .gray span{         background-position:-395px 0;}
+#confirmBox .gray:hover{        background-position:-200px bottom;}
+#confirmBox .gray:hover span{   background-position:-395px bottom;}
+
+
+/* Skill Tree */
+/*i {
+    border: solid #FFDE8F;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+    
+}*/
+
+.arrow {
+	position: relative;
+	/*border:#FFDE8F solid;*/
+	border: gray dashed;
+	border-width:2px 2px 0 0;
+	display: inline-block;
+	width:15px;
+	height:15px;
+/*	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);*/
+}
+
+
+.right {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}

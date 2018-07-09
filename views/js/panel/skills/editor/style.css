@@ -1,0 +1,207 @@
+#grid {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  display: none;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 10px 10px,10px 10px;
+}
+#propanel {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 300px;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 10000000;
+}
+#sprite_selector {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: #fff;
+  margin: auto;
+  position: fixed;
+  z-index: 2323232;
+  border-radius: 5px;
+  width: 580px;
+  height: 610px;
+  box-shadow: 0 2px 5px #000;
+}
+#sprite_selector a {
+  display: block;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+#sprite_selector .area {
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 600px;
+  height: 600px;
+  margin-bottom: 100px;
+  background: url('../sprite.jpg') no-repeat;
+  background-size: 100% auto;
+  overflow: hidden;
+}
+#sprite_selector .area .selector {
+  transition: all 0.3s;
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: inset 0 0 0 1px #fff,
+        inset 0 0 5px 2px #fff,
+        0 0 5px #fff;
+}
+#sprite_selector .area .selector:before,
+#sprite_selector .area .selector:after {
+  content: '';
+  display: block;
+  box-shadow: inset 0 0 0 1px #ffffff, inset 0 0 15px rgba(0, 0, 255, 0.5), 0 0 5px rgba(0, 0, 255, 0.5);
+  position: absolute;
+}
+#sprite_selector .area .selector:before {
+  left: -1000%;
+  top: 0;
+  height: 100%;
+  width: 2000%;
+}
+#sprite_selector .area .selector:after {
+  top: -1000%;
+  left: 0;
+  width: 100%;
+  height: 2000%;
+}
+#setpanel {
+  position: fixed;
+  padding: 5px 10px;
+  border-top-right-radius: 5px;
+  bottom: 0;
+  left: 0;
+  z-index: 10000000;
+  background: rgba(255, 255, 255, 0.3);
+}
+#setpanel a {
+  color: #000;
+  text-decoration: none;
+}
+#setpanel a:hover {
+  color: #fff;
+}
+#setpanel input {
+  margin: 0 5px;
+  vertical-align: middle;
+}
+.skill {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default !important;
+}
+/*@keyframes shake {
+  33%{transform:rotate(2deg);}
+  66%{transform:rotate(-2deg);}
+}
+
+.selected{
+  animation: shake ease-in-out 0.12s infinite;
+}*/
+#copypaste {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  z-index: 200000000;
+  border-radius: 10px;
+  box-shadow: 0 0 50px;
+}
+#copypaste textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+.selected:before {
+  display: block;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  content: '';
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 15px #0000ff, 0 0 10px rgba(255, 255, 255, 0.5), 0 0 30px #0000ff;
+}
+.group {
+  background: #ddd;
+  padding: 5px;
+  margin-bottom: 5px !important;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.group textarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+}
+#sprite_image {
+  width: 80px;
+  height: 80px;
+  background: #888;
+  box-shadow: inset 0 0 0 2px #666;
+  background-image: linear-gradient(45deg, transparent 49%, #666666 49%, #666666 51%, transparent 51%), linear-gradient(135deg, transparent 49%, #666666 49%, #666666 51%, transparent 51%);
+  margin-bottom: 5px !important;
+}
+#creanode_dialog {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  margin: auto;
+  position: fixed;
+  z-index: 2323232;
+  border-radius: 5px;
+  width: 360px;
+  height: 140px;
+  box-shadow: 0 2px 5px #000;
+  background: #fff;
+}
+.dialog {
+  display: none;
+}
+.dialog .err {
+  color: #C00;
+  font-weight: bold;
+}
+.dialog label {
+  display: block;
+}
+.dialog input {
+  margin-bottom: 10px;
+}
+.dialog button {
+  margin-right: 5px;
+}

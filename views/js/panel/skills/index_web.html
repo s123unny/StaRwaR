@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SkillTree</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="skills.js"></script>
+    <script type="text/javascript" src="skills_layout.js"></script>
+	<script type="text/javascript" src="skills_fromJSON.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+
+<div id="st"></div>
+
+</body>
+
+<script type="text/javascript">
+
+    $(function(){
+        skilltree.buildFromJSON('trees/web.json');
+        skilltree.language.reqTitle = "For level {0} you would need:";
+        skilltree.language.req = '<h4>{1}</h4><ul class="reqs commamenu">{0}</ul>',
+        skilltree.language.levelTitle = "Level {1} {0}";
+        skilltree.init($('#st'));
+    });
+
+</script>
+
+</html>

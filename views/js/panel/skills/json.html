@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SkillTree</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="skills.js"></script>
+    <script type="text/javascript" src="skills_layout.js"></script>
+    <script type="text/javascript" src="skills_fromJSON.js"></script>
+    <script type="text/javascript" src="skills_toURL.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+
+<div id="st"></div>
+
+</body>
+
+<script type="text/javascript">
+
+    $(function(){
+        skilltree.buildFromJSON('trees/web.json',$('#st'));
+    })
+
+</script>
+
+</html>

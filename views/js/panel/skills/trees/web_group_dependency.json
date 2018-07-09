@@ -1,0 +1,146 @@
+{
+    "html": {
+        "name": "HTML",
+        "group": "basic",
+        "max": 1,
+        "pos": [200, 200],
+        "abbr": "HTML",
+        "sprites": {
+            "1": [1, 0],
+            "2": [2, 0]
+        },
+        "hint": [
+            {
+                "level": "0-2",
+                "text": "Basic HTML"
+            },
+            {
+                "level": "1-2",
+                "text": "HTML5 features, responsive layouts"
+            }
+        ],
+        "className": ["test", "test2"],
+        "param": {
+            "param1": "value"
+        }
+    },
+    "css": {
+        "name": "CSS",
+        "group": "basic",
+        "sprite": [7, 6],
+        "max": 1,
+        "pos": [300, 200],
+        "abbr": "CSS",
+        "hint": [
+            {
+                "level": "0-2",
+                "text": "Cascade Styling Stuff"
+            },
+            {
+                "level": "1-2",
+                "text": "CSS3 features"
+            }
+        ]
+    },
+    "sass": {
+        "name": "SASS",
+        "group": "basic",
+        "max": 1,
+        "pos": [400, 200],
+        "abbr": "SASS",
+        "hint": [
+            {
+                "text": "SASS"
+            }
+        ]
+    },
+    "less": {
+        "name": "LESS",
+        "group": "advanced",
+        "max": 1,
+        "pos": [500, 200],
+        "abbr": "LESS",
+        "hint": [
+            {
+                "text": "LESS"
+            }
+        ],
+        "mustNotHave": {
+            "1": {
+                "backbone": 1,
+                "bootstrap": 1
+            }
+        }
+    },
+    "backbone": {
+        "name": "Backbone",
+        "group": "advanced",
+        "max": 1,
+        "pos": [600, 200],
+        "abbr": "BkBe",
+        "hint": [
+            {
+                "text": "Backbone"
+            }
+        ],
+        "mustNotHave": {
+            "1": {
+                "less": 1,
+                "bootstrap": 1
+            }
+        }
+    },
+    "bootstrap": {
+        "name": "Bootstrap 3",
+        "group": "advanced",
+        "max": 1,
+        "pos": [700, 200],
+        "abbr": "BS3",
+        "hint": [
+            {
+                "text": "Bootstrap 3"
+            }
+        ],
+        "mustNotHave": {
+            "1": {
+                "less": 1,
+                "backbone": 1
+            }
+        }
+    },
+    "javascript": {
+        "name": "JavaScript",
+        "group": "basic",
+        "max": 1,
+        "pos": [200, 300],
+        "abbr": "JS",
+        "hint": [
+            {
+                "text": "JavaScript"
+            }
+        ],
+        "group_dependency": {
+            "1": {
+                "basic": 1
+            }
+        }
+    },
+    "jquery": {
+        "name": "jQuery",
+        "group": "basic",
+        "max": 1,
+        "pos": [300, 300],
+        "abbr": "jQ",
+        "hint": [
+            {
+                "text": "jQuery + jQuery UI"
+            }
+        ],
+        "group_dependency": {
+            "1": {
+                "advanced": 1,
+                "basic": 2
+            }
+        }
+    }
+}
