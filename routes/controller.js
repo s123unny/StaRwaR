@@ -80,8 +80,12 @@ Controller = function(io, model) {
 	}
 	
 	function night() {
+		console.log("night start emit");
 		model.players[0].money = 200;
 		for (var i = 0; i < 5; i++) {
+			if (playerIO[i].second != undefined) {
+				console.log("emit", i);
+			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
 		var Time = 30;
