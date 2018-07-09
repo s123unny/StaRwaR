@@ -13,6 +13,15 @@ ship = function(id, user_id) {
 		targetId: null, //null: free, else: targetStarId
 		datasetType: null,
 		datasetAmount: 0,
+		status: function() {
+			if (this.targetId == null) {
+				return "free";
+			} else if (this.dayLeft == 0) {
+				return "arrive";
+			} else {
+				return "going";
+			}
+		},
 	}
 }
 player = function(id) {
@@ -31,8 +40,31 @@ player = function(id) {
 		dataset: {
 			image: 0, text: 0, sound: 0},
 		AImodel: {},
-		AImodelIdx: 0
+		AImodelIdx: 0,
+		num_of_working_miner: function() {
+			sum = 0;
+			for (var i = 0; i < 5; i++) {
+				sum += this.ships[i].num_of_miner;
+			}
+			return sum;
+		},
+		num_of_working_trainer: function() {
+			sum = 0;
+			for (var i = 0; i < 5; i++) {
+				sum += this.ships[i].num_of_trainer;
+			}
+			return sum;
+		},
+		num_of_working_haker: function() {
+			sum = 0;
+			for (var i = 0; i < 5; i++) {
+				sum += this.ships[i].num_of_haker;
+			}
+			return sum;
+		},
 	}
 }
+
+
 
 module.exports = player;

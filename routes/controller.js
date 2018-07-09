@@ -80,10 +80,15 @@ Controller = function(io, model) {
 	}
 	
 	function night() {
+		console.log("night start emit");
+		model.players[0].money = 200;
 		for (var i = 0; i < 5; i++) {
-			io.sockets.to(playerIO[i].second).emit("night_start", i, model.players[i], model.stars);
+			if (playerIO[i].second != undefined) {
+				console.log("emit", i);
+			}
+			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 10;
+		var Time = 30;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp);
 		mytimer.tick();
 	}

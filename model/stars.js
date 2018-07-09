@@ -33,7 +33,24 @@ var stars = {
 	b1: {id: "b1", x_pos: 1, y_pos: 1, type: 'base'},
 	b2: {id: "b2", x_pos: 1, y_pos: 1, type: 'base'},
 	b3: {id: "b3", x_pos: 1, y_pos: 1, type: 'base'},
-	b4: {id: "b4", x_pos: 1, y_pos: 1, type: 'base'}
+	b4: {id: "b4", x_pos: 1, y_pos: 1, type: 'base'},
+	list_from_type: function(type) {
+		var list = [];
+		if (type == "unknown") {
+			for (var id in this) {
+				if (this[id].found == false && this[id].id != undefined) {
+			 		list.push(id);
+				}
+			}
+		} else {
+			for (var id in this) {
+				if (this[id].type == type && this[id].found == true) {
+					list.push(id);
+				}
+			}
+		}
+		return list;
+	}
 };
 
 for (var id in stars) {
