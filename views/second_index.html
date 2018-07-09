@@ -444,9 +444,9 @@
 		<!-- skill * 1 -->
 		<div class="skill skill angel" current="0" max="1" skillid="old_king" sprite="1x1" id="old_king" >
 			<div>
-				<h3>Late King’s Relic</h3>	<!-- skill name-->
-				<p>Start of journey !</p> <!-- discription name-->
-				<p>A ship left over my the old king to help you on your way</p>
+				<h3>Legacy of Acient God</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: Start of journey !</p> <!-- discription name-->
+				<p><i showlevel="1">Get: Obtain five ship in the begining !</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -454,16 +454,17 @@
 		<div class="skill skill angel" current="0" max="1" skillid="oil_gas" sprite="1x1" id="oil_gas" musthave="old_king" ">
 			<div>
 				<h3>Tax Collector</h3>	<!-- skill name-->
-				<p>Need more money?</p> <!-- discription name-->
-				<!-- <p><i></i></p> -->
+				<p style="color: red;">Hint: Want more money?</p> <!-- discription name-->
+				<p showlevel="1"><i>Get: 20% more bonus in one day</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 3 -->
-		<div class="skill skill angel" current="0" max="1" skillid="ssh" sprite="1x1" id="ssh" musthave="oil_gas">
+		<div class="skill skill angel" current="0" max="2" skillid="ssh" sprite="1x1" id="ssh" musthave="oil_gas">
 			<div>
-				<h3>Telepathy</h3>	<!-- skill name-->
-				<p>Controls things remotely. Also refered to as ssh among warlocks called computer scientists.</p> 
+				<h3>Adventure trip</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: A chance to take adventure</p>
+				<p showlevel="2"><i>Get: Chances to make money =)</i></p> 
 			</div>
 		</div>
 		<div class="arrow down" style="left: -315px; top: 0px;"></div>
@@ -472,25 +473,27 @@
 		<!-- skill * 4 -->
 		<div class="skill skill angel" current="0" max="1" skillid="validation" sprite="1x1" id="validation" musthave="old_king">
 			<div>
-				<h3>Advisor Val</h3>	<!-- skill name-->
-				<p>A sober advisor may be useful. So does validation sets in machine learning !</p> 
+				<h3>GPU</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: Better performance on ...</p>
+				<p showlevel="1"><i>Get: 20% more reward when mining</i></p> 
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 5 -->
-		<div class="skill skill angel" current="0" max="1" skillid="employment" sprite="1x1" id="employment" musthave="oil_gas" musthave="validation">
+		<div class="skill skill angel" current="0" max="1" skillid="employment" sprite="1x1" id="employment" musthave="oil_gas" dependency="XD">
 			<div>
-				<h3>Prestiged Prince</h3>	<!-- skill name-->
-				<p>Subjects come not because of high wage, but to work under the celebrated prince</p> 
+				<h3>Deep Learning</h3>	<!-- skill name-->
+				<p style="color: red;">Hint: I think the hint is too much for you XD</p> 
+				<p showlevel="1"><i>Get: 20% more reward when training model</i></p> 
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 6 -->
-		<div class="skill skill angel" current="0" max="1" skillid="DDOS" sprite="1x1" id="DDOS" musthave="employment">
+		<div class="skill skill angel" current="0" max="2" skillid="DDOS" sprite="1x1" id="DDOS" musthave="employment">
 			<div>
 				<h3>Colossus</h3>	<!-- skill name-->
-				<p>Fear the legendary DDOS.</p> <!-- discription name-->
-				<!-- <p><i></i></p> -->
+				<p>Hint: Fear the legendary DDOS. Have you heard of it?</p> <!-- discription name-->
+				<p showlevel="2"><i>Get: Choose one team and nake it unable to move.</i></p>
 			</div>
 		</div>
 		<div class="arrow down" style="left: -315px; top: 0px;"></div>
@@ -500,7 +503,8 @@
 		<div class="skill skill angel" current="0" max="1" skillid="rainbow" sprite="1x1" id="rainbow" musthave="validation">
 			<div>
 				<h3>Rainbow</h3>	<!-- skill name-->
-				<p>Sometimes you need to try something new XD</p> <!-- discription name-->
+				<p style="color:red;">Hint: Colorful is powerful !</p>
+				<p showlevel="1"><i>Get: Change the color of your chatting room</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>

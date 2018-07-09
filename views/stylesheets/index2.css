@@ -409,6 +409,7 @@ img {
 	right: 100%;
 	left: 3%;
 	width: 438px;
+	/*width: 550px;*/
 	height: 560px;
 	border-style: inset;
 	border-width: 5px;
@@ -416,9 +417,9 @@ img {
 	border-color: #142630; //11 28 36
 }
 
-#st:active{
+/*#st:active{
 	pointer-events: none;
-}
+}*/
 
 
 #confirmOverlay{

@@ -2,36 +2,36 @@
 
 // This is the api what i define (type is the same as ms. Xiao )
 var stars = { 
-	star1: {name: "alpha", type: 'mine'}, 
-	star2: {name: "beta", type: 'mine'}, 
-	star3: {name: "gamma", type: 'mine'}, 
-	star4: {name: "delta", type: 'mine'}, 
-	star5: {name: "epsilon", type: 'mine'}, 
-	star6: {name: "zeta", type: 'mine'}, 
-	star7: {name: "eta", type: 'mine'}, 
-	star8: {name: "m0", type: 'mine'}, 
-	star9: {name: "m0", type: 'mine'}, 
-	star10: {name: "m0", type: 'mine'}, 
-	star11: {name: "m0", type: 'ai_center'}, 
-	star12: {name: "m0", type: 'ai_center'}, 
-	star13: {name: "m0", type: 'ai_center'}, 
-	star14: {name: "m0", type: 'ai_center'}, 
-	star15: {name: "m0", type: 'ai_center'}, 
-	star16: {name: "m0", type: 'ai_center'}, 
-	star17: {name: "m0", type: 'abandon'}, 
-	star18: {name: "m0", type: 'mine'}, 
-	star19: {name: "m0", type: 'mine'}, 
-	star20: {name: "m0", type: 'mine'}, 
-	star21: {name: "m0", type: 'mine'}, 
-	star22: {name: "m0", type: 'mine'}, 
-	star23: {name: "m0", type: 'mine'}, 
-	star24: {name: "m0", type: 'mine'}, 
-	star25: {name: "m0", type: 'mine'}, 
-	star26: {name: "m0", type: 'mine'}, 
-	star27: {name: "m0", type: 'mine'}, 
-	star28: {name: "m0", type: 'mine'}, 
-	star29: {name: "m0", type: 'mine'}, 
-	star30: {name: "m0", type: 'mine'}, 
+	star1: {name: "&alpha", type: 'mine'}, 
+	star2: {name: "&beta", type: 'mine'}, 
+	star3: {name: "&gamma", type: 'mine'}, 
+	star4: {name: "&delta", type: 'mine'}, 
+	star5: {name: "&epsilon", type: 'mine'}, 
+	star6: {name: "&zeta", type: 'mine'}, 
+	star7: {name: "&eta", type: 'mine'}, 
+	star8: {name: "&theta", type: 'mine'}, 
+	star9: {name: "&iota", type: 'mine'}, 
+	star10: {name: "&kappa", type: 'mine'}, 
+	star11: {name: "&lambda", type: 'ai_center'}, 
+	star12: {name: "&mu", type: 'ai_center'}, 
+	star13: {name: "&nu", type: 'ai_center'}, 
+	star14: {name: "&xi", type: 'ai_center'}, 
+	star15: {name: "&omicron", type: 'ai_center'}, 
+	star16: {name: "&pi", type: 'ai_center'}, 
+	star17: {name: "&rho", type: 'abandon'}, 
+	star18: {name: "&sigmaf", type: 'mine'}, 
+	star19: {name: "&sigma", type: 'mine'}, 
+	star20: {name: "&tau", type: 'mine'}, 
+	star21: {name: "&upsilon", type: 'mine'}, 
+	star22: {name: "&phi", type: 'mine'}, 
+	star23: {name: "&chi", type: 'mine'}, 
+	star24: {name: "&psi", type: 'mine'}, 
+	star25: {name: "&omega", type: 'mine'}, 
+	star26: {name: "&varkappa", type: 'mine'}, 
+	star27: {name: "&varrho", type: 'mine'}, 
+	star28: {name: " &straightepsilon", type: 'mine'}, 
+	star29: {name: "&backepsilon", type: 'mine'}, 
+	star30: {name: "&Omega", type: 'mine'}, 
 };
 
 var skill = {
@@ -55,8 +55,8 @@ var skill = {
 /* Learn the skill */
 function learn(name){
 	$('#'+name+'.skill').click();
-
 }
+
 /* After choosing type */
 function render_target(row){
 	var type = $('#assign_mblock_slot'+row+'_type').val();
@@ -65,7 +65,7 @@ function render_target(row){
 		var flag = true;
 		for (var key in stars){
 			if (stars[key].type == type){
-				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+stars[key].name+"</option>");
+				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+stars[key].name+";</option>");
 				flag = false;
 			}
 		}
