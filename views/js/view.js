@@ -37,7 +37,6 @@ function new_star(star_id){
 
 }
 socket.on("ship_mission", (baseID, targetID) => ship_mission(baseID, targetID));
-socket.on("chatting", (message,name) => jser(message,name));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 
 // call me with a number and a planet ID
@@ -61,22 +60,4 @@ function update_rank(name,score){
 }
 
 // give me what you want to show in chanroom
-var counter;
-function jser(inner,name){
-	if (this.counter == undefined)
-		this.counter = 0;
-	else
-		counter += 1;
-	console.log("XD");
-	console.log(counter)
-	var paragraph = document.getElementById("c-room");
-	paragraph.innerHTML += "<div class = 'chatroom-text' id = 'chatroom-text-" + counter + "style = 'width:100px;'>" + name + ":" + inner + "</div>";
-	// counter += 1;
-	if (counter > 9){
-		// var parent = document.getElementById("div1");
-		var child = document.getElementById("chatroom-text-" + (counter-10));
-		paragraph.removeChild(child);
-	}
 
-
-}

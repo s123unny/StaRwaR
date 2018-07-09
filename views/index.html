@@ -1,11 +1,11 @@
 <!-- bg picture will be update to a clean one and some planet, so no need to worried about size -->
 
 <!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/view.js"></script>
-<script src="js/chatRoom.js"></script>
+<script src="js/chatRoom.js"></script> -->
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="stylesheets/index.css">
@@ -29,26 +29,13 @@
       </span>
       
       <span class ="chatroom" id = "c-room" style="overflow:scroll;overflow-X:hidden;height:300px;">
-<!--        <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '1-score'>123</div>
-       <div class = 'chatroom-text' id = '2-score'>123</div>
-       <div class = 'chatroom-text' id = '4-score'>123</div>
-       <div class = 'chatroom-text' id = '5-score'>123</div>
-       <div class = 'chatroom-text' id = '6-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div> -->
 
       </span>
-
-      <input type="button" id="C" value="CCCCC" onclick="jser('12345678901234567890')">
+      <form action="">
+        <input id="messageForm" autocomplete="off" type="text" />
+        <input type="button" id="sendButton" value="Submit" onclick="sendMessage()">
+      </form>
+      
       <span class = "planet-orange" id = "m0" style="left: 425.7px; top: 230.5px;"></span>
       <span class = "planet-orange" id = "m1" style="left: 951.7px; top: 23.5px;"></span>
       <span class = "planet-orange" id = "m2" style="left: 45.7px; top: 410.5px;"></span>
