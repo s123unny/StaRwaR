@@ -14,21 +14,23 @@ $('#messageForm').keypress(function(e){
 		return false;
 	}
 });
-var counter;
+var counter = -1;
+var chatbox = ["","","","","","","","","",""];
 function addMessage(inner,name){
-	if (this.counter == undefined)
-		this.counter = 0;
-	else
-		counter += 1;
+	counter += 1;
 	console.log("XD");
 	console.log(counter);
 	var paragraph = document.getElementById("c-room");
-	paragraph.innerHTML += ("<div class = 'chatroom-text' id = 'chatroom-text-" + counter + "style = 'width:100px;'>" +"["+ name + "]" + inner + "</div>");
-	if (counter > 9){
-		// var parent = document.getElementById("div1");
-		var child = document.getElementById("chatroom-text-" + (counter-10));
-		console.log(typeof(child));
-		paragraph.removeChild(child);
+	if(counter <= 9){
+		chatbox[counter] = "["+ name + "]" + inner;
+		paragraph.innerHTML += ("<div class = 'chatroom-text' id = 'chatroom-text-" + counter +"'"+ "style = 'width:100px;'>" +"["+ name + "]" + inner + "</div>");
 	}
-
+	else{
+		for (var i = 0; i <= 8; i++) {
+			chatbox[i] = chatbox[i+1];
+			$("#chatroom-text-" + String(i)).text(chatbox[i+1]);
+		}
+		chatbox[9] = "["+ name + "]" + inner;
+		$("#chatroom-text-9").text(chatbox[9]);
+	}
 }
