@@ -454,7 +454,6 @@ Controller = function(io, model) {
 	//console.log(Player_skill[0])
 	// use method
 	var pay = 20;
-	Player_skill[0]['validation'].learned = true;
 	//console.log(Player_skill[0]['validation'].method(pay));
 	
 	/* Listen new connection */
@@ -487,7 +486,8 @@ Controller = function(io, model) {
 				test = model.players[id];
 				collectPlayerSetting(id, test); //for testing
 
-				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
+				
+				
 			}
 			else{
 				player.on('adminSayStart', night());
@@ -497,7 +497,6 @@ Controller = function(io, model) {
 		});
 
 		var connectUrl = url.parse(player.handshake.headers.referer);
-
 		if (connectUrl.query != null) {
 			var id = connectUrl.query[3];
 			var psw = connectUrl.pathname.split("/")[2];
@@ -506,6 +505,7 @@ Controller = function(io, model) {
 			if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login --2.");
 				playerIO[id].second = player.id;
+				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerIO[id].second,Player_skill[id]));
 			} else {
 				console.log("Wrong login!")
 				return;

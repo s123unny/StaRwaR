@@ -14,6 +14,7 @@ class Updateutil{
 		this.io.emit('leaderboard', username, money);
 	}
 	Skill(skillname, playerIO, Player_skill){
+		//console.log(Player_skill);
 		if(Player_skill[skillname].learned)
 			return Player_skill;
 		Player_skill[skillname].current+=1;
