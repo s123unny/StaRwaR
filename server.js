@@ -9,12 +9,17 @@ var fs = require("fs");
 var game_start = require("./routes/controller");
 var model = null;
 
+var controlPanel = require('./routes/controlPanel');
+app.use('/controlPanel', controlPanel);
+
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'views')));
+app.use('/controlPanel', express.static(path.join(__dirname, 'views')));
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname, '/views/index.html');
 });
+
 
 game_start(io, model);
 
