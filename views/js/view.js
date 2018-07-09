@@ -39,6 +39,10 @@ function new_star(star_id){
 	$("#" + star_id).show();
 
 }
+socket.on("lightupStar", (baseID, targetID) => ship_mission(baseID, targetID));
+socket.on("chatting", (message,name) => jser(message,name));
+socket.on("leaderboard", (username, money) => update_rank(username,money));
+
 // call me with a number and a planet ID
 function ship_mission(baseID,targetID){
 	console.log("b"+baseID+"-"+targetID)
@@ -53,15 +57,15 @@ function player_info(name,somthing){
 }
 
 // give me list of ranking, get view~
-function update_rank(score){
+function update_rank(name,score){
 	for (var i = 0; i < 5; i++){
-		document.getElementById(i + '-score').textContent="Grup "+(i+1)+" : " + score[i];
+		document.getElementById(i + '-score').textContent=name[i] + " : " + score[i];
 	}
 }
 
 // give me what you want to show in chanroom
 var counter;
-function jser(inner){
+function jser(inner,name){
 	if (this.counter == undefined)
 		this.counter = 0;
 	else
@@ -69,7 +73,7 @@ function jser(inner){
 	console.log("XD");
 	console.log(counter)
 	var paragraph = document.getElementById("c-room");
-	paragraph.innerHTML += "<div class = 'chatroom-text' id = 'chatroom-text-" + counter + "style = 'width:100px;'>" + inner + "</div>";
+	paragraph.innerHTML += "<div class = 'chatroom-text' id = 'chatroom-text-" + counter + "style = 'width:100px;'>" + name + ":" + inner + "</div>";
 	// counter += 1;
 	if (counter > 9){
 		// var parent = document.getElementById("div1");
