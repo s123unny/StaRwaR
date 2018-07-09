@@ -50,6 +50,9 @@ body {
     /*color: ;*/
 }
 div.main-window{
+/*	background-color:#FFF;
+	opacity:0.5;
+	border-radius:50%;*/
 	background-image:url(../img/Background.png);
 	height: 100%;
 	background-size: cover;
@@ -59,20 +62,66 @@ div.main-window{
 span.player-info{
 	background-image:url(../img/info-box.png);
 	background-size:contain;
-	background-repeat: no-repeat; 
+	background-repeat: no-repeat;
 	height: 200px;
 	width: 300px;	
 	position: relative;	
 	float:left;
 }
+span.player-info-text{
+	position: relative;
+	top:40px;
+	margin: 40px;
+	padding: 20px;
+	font-size: 30px;
+}
 
 span.side-form{
-	background-image:url(../img/info-box.png);
+	background-image:url(../img/form.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
 	float:right;
 	position: relative;
-	top:200px;
+	margin: 0px;
+	padding: 0px;
+	top:160px;
 	width: 200px;
-  	height: 40%;
+  	height:180px;
+}
+div.side-form-text{
+	left:15%;
+	top:8%;
+	font-size: 20px;
+	width: 170px;
+	position: relative;
+	/*margin: 10px;*/
+}
+div.chatroom-text{
+	left:15%;
+	top:8%;
+	font-size: 20px;
+	width: 100px;
+	position: relative;
+	margin: 10px;
+}
+span.chatroom{
+	/*background-image:url(../img/form_h.png);*/
+	background-size:contain;
+	background-repeat: no-repeat;
+	position: fixed;
+
+	/*float:right;*/
+	top:350px;
+	right: 0px;
+	width: 300px;
+  	height:300px;
+
+}
+span.line{
+	background-image:url(../img/line.png);
+	display: none;
+	background-size:contain;
+	background-repeat: repeat;
+	position: fixed;
+  	height: 8px;
 }

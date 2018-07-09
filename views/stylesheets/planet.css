@@ -3,8 +3,8 @@ span.planet-orange{
 	background-image:url(../img/orange.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 	position: fixed;
 }
 span.planet-blue{
@@ -12,8 +12,8 @@ span.planet-blue{
 	background-image:url(../img/blue.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 	position: fixed;
 }
 span.planet-red{
@@ -21,8 +21,8 @@ span.planet-red{
 	background-image:url(../img/red.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 	position: fixed;
 }
 span.planet-base{
@@ -34,10 +34,13 @@ span.planet-base{
 	position: fixed;
 }
 span.planet-unreached{
-	background-image:url(../img/gray.png);
-		background-size:contain;
+	background-color:#FFF;
+	opacity:0.5;
+	border-radius:50%;
+	background-image:url(../img/gray_2.png);
+	background-size:cover;
 	background-repeat: no-repeat; 
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 	position: fixed;
 }
