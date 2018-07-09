@@ -32,6 +32,7 @@ function start() {
 }
 
 
+socket.on("new_star", (targetID) => new_star(targetID));
 // call me when you want to display some planet
 function new_star(star_id){
 	console.log(star_id)
@@ -39,7 +40,7 @@ function new_star(star_id){
 	$("#" + star_id).show();
 
 }
-socket.on("lightupStar", (baseID, targetID) => ship_mission(baseID, targetID));
+socket.on("ship_mission", (baseID, targetID) => ship_mission(baseID, targetID));
 socket.on("chatting", (message,name) => jser(message,name));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 

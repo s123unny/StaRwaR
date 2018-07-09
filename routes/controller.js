@@ -96,8 +96,17 @@ Controller = function(io, model) {
 		// todo
 		for (var i = 0; i < 5; i++) {
 			if (player.ships[i].targetId != null) {
+				if (player.ships[i].targetId == "b"+id) {
+					Update.Ship_back(id, player.ships[i].targetId);
+					model.stars[player.ships[i].targetId].player_here[id] = null;
+					player.ships[i].targetId = null;
+					player.ships[i].dayLeft = null;
+				} else if (player.ships[i].dayLeft == null) {
+					//caculate require day
+					Update.Ship_Mission(id, player.ships[i].targetId);
+				}
 				if (player.ships[i].dayLeft == 1) {
-					player.ships[i].dayLeft = 0;
+					player.ships[i].dayLeft = 0; //arrive
 					model.stars[player.ships[i].targetId].player_here[id] = i;
 				} else if (player.ships[i].dayLeft > 0){
 					player.ships[i].dayLeft -= 1;
@@ -171,7 +180,7 @@ Controller = function(io, model) {
 						var msg = "玩家" + model.players[j].name + "挖礦獲得 " + add + "BTC";
 						Update.Chatting(msg, "SYSTEM");
 						/*update player*/
-						Update.Money(playerIO[j].first, model.players[j].money);
+						Update.Money(playerIO[j].second, model.players[j].money);
 					}
 				}
 				/*update board*/
@@ -204,7 +213,7 @@ Controller = function(io, model) {
 							//notify
 							msg = "你誤闖黑洞"+i+"，船員們遇難了，飛船已修復好回到基地";
 							Update.Notify(playerIO[j].first, msg);
-							Update.Worker(playerIO[j].first, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
+							Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 							//message
 							msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
 							Update.Chatting(msg, "SYSTEM");
@@ -273,6 +282,7 @@ Controller = function(io, model) {
 									//notify
 									msg = "你觸發了"+i+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
 									Update.Notify(playerIO[j].first, msg);
+									Update.Money(playerIO[j].second, model.players[j].money);
 								 } else {
 									msg = "你已經觸發過"+i+"星球事件囉";
 									Update.Notify(playerIO[j].first, msg);
@@ -325,6 +335,7 @@ Controller = function(io, model) {
 							model.players[j].money += optionReward;
 							msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+"BTC";
 							Update.Chatting(msg, "SYSTEM");
+							Update.Money(playerIO[j].second, model.players[j].money);
 						}
 					}
 					Update.Leaderboard(model.players);
@@ -340,7 +351,7 @@ Controller = function(io, model) {
 							msg = "玩家" + model.players[j].name + "在命運星球"+i+"抽到的命運是: " + randomMoney + "BTC";
 							Update.Chatting(msg, "SYSTEM");
 							//update player
-							Update.Money(playerIO[j].first, model.players[j].money);
+							Update.Money(playerIO[j].second, model.players[j].money);
 							//notify
 							msg = "你在" + i + "觸發命運";
 							Update.Notify(playerIO[j].first, msg);

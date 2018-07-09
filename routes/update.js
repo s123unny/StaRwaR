@@ -24,7 +24,13 @@ class Updateutil{
 		return Player_skill;
 	}
 	Star(star){
-		this.io.emit('lightupStar', star);	
+		this.io.emit('new_star', star);	
+	}
+	Ship_Mission(base, star){
+		this.io.emit('ship_mission', base, star);	
+	}
+	Ship_back(base, star){
+		this.io.emit('ship_back', base, star);	
 	}
 	Worker(playerIO, miner, trainer, haker) {
 		this.io.sockets.to(playerIO).emit("worker", miner, trainer, haker);
