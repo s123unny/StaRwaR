@@ -76,6 +76,7 @@ var skilltree = {
 		}
 
 		if (!this.editorMode) {
+			
 			this.buttons.click(function (e) {	// Learn
 				e.button = 0;
 				if (e.button == 0) {
@@ -107,6 +108,7 @@ var skilltree = {
 			});
 
 			this.buttons.bind('contextmenu', function (e) {
+
 				if (that.isDowngradePossible($(this))) {
 					var current = $(this).attrInt('current');
 					if (current > 0) {
@@ -127,7 +129,8 @@ var skilltree = {
 
 			this.buttons.hover(
 					function (e) {
-						that.rebuildHint($(this), e);
+//						console.log(e);
+//						that.rebuildHint($(this), e);
 					},
 					function () {
 						that.hint.html('');
@@ -139,6 +142,7 @@ var skilltree = {
 			// Moving the tooltip
 
 			this.buttons.mousemove(function (e) {
+				that.rebuildHint($(this), e);
 				var pagey = e.pageY;
 				if($(window).height() < (e.pageY + that.hint.innerHeight())){
 					pagey = e.pageY - (that.hint.innerHeight() - ($(window).height() - e.pageY));
@@ -147,6 +151,7 @@ var skilltree = {
 					left: e.pageX,
 					top: pagey
 				});
+				that.rebuildHint($(this), e);
 			})
 
 		}
