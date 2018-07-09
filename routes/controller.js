@@ -58,6 +58,7 @@ var Skill = require("./skill")
 Controller = function(io, model) {
 	var io = io;
 	var playerIO = [{},{},{},{},{}];
+	var adminIO;
 	var mine = ["m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9"];
 	var abandon = ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14"];
 	var starDatasetType = {a10: "image", a11: "image", a12: "text", a13: "text", a14: "sound"};
@@ -82,11 +83,12 @@ Controller = function(io, model) {
 		for (var i = 0; i < 5; i++) {
 			io.sockets.to(playerIO[i].second).emit("night_start", i, model.players[i], model.stars);
 		}
-		var Time = 30;
-		var timer = new timer(Time * 1000, io);
-		timer.tick();
+		var Time = 10;
+		var mytimer = new timer(Time * 1000, io, nightTimeUp);
+		mytimer.tick();
 	}
 	function nightTimeUp() {
+		console.log("night time up");
 		io.emit("nightTimeUp");
 	}
 
@@ -465,6 +467,7 @@ Controller = function(io, model) {
 		player.on("login", (id, name, psw) => {
 			// login password check
 			if (id == 87 && psw == "csie") {
+				adminIO = player.id;
 				console.log("admin login!");
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login.");
@@ -490,9 +493,10 @@ Controller = function(io, model) {
 				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
 			}
 			else{
-				player.on('adminSayStart', night());
+				player.on('adminSayStart', night);
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg
-				io.emit("adminStartButton");
+				io.sockets.to(adminIO).emit("adminStartButton");
+				console.log("emit admin start button");
 			}
 		});
 

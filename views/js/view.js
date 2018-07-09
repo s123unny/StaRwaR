@@ -20,16 +20,12 @@ function login() {
 
 
 	socket.emit("login", playerId, playerName, password);
-	var url = "/controlPanel/"+password+"?id="+playerId;
-	window.open(url);
+	if (playerId >= 0 && playerId < 5) {
+		var url = "/controlPanel/"+password+"?id="+playerId;
+		window.open(url);
+	}
 }
 
-socket.on("adminStartButton", function() {
-	$('#StartButton').show();
-});
-function start() {
-	socket.emit('gameStart');
-}
 
 
 socket.on("new_star", (targetID) => new_star(targetID));
