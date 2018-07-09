@@ -54,7 +54,7 @@ var timer = require("./timer");
 // var questionFuntion = require("./questionEvent");
 var Skill = require("./skill")
 
-model = {
+global.model = {
 	stars: stars,
 	players: [
 		player(0), player(1), player(2), player(3), player(4) ],
@@ -68,6 +68,7 @@ Controller = function(io, model) {
 	var abandon = ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14"];
 	var starDatasetType = {a10: "image", a11: "image", a12: "text", a13: "text", a14: "sound"};
 	var computer = ["c0", "c1", "c2", "c3", "c4"];
+	var model = global.model;
 	//console.log(model.stars);
 	var count = 0;
 	
