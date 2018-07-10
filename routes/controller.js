@@ -70,6 +70,8 @@ Controller = function(io, model) {
 	var starDatasetType = {a10: "image", a11: "image", a12: "text", a13: "text", a14: "sound"};
 	var computer = ["c0", "c1", "c2", "c3", "c4"];
 	var model = global.model;
+	model.stars.m1.player_here[2] = 0;
+	model.players[2].ships[0].num_of_miner = 2;
 	//console.log(model.stars);
 	var count = 0;
 	
@@ -123,6 +125,7 @@ Controller = function(io, model) {
 		}
 	}
 	function mine_process(id) {
+		console.log("mine process:", id);
 		star = model.stars[id];
 		if (star.num > 0) {
 			if (!star.found) {
@@ -139,11 +142,11 @@ Controller = function(io, model) {
 				for (var j = 0; j < 5; j++) {
 					if (star.player_here[j] != null) {
 						//Notify
-						var msg = "你在"+i+"星球與別人發生衝突，請準備答題";
-						Update.Notify(playerIO[j], msg);
+						var msg = "你在"+id+"星球與別人發生衝突，請準備答題";
+						Update.Notify(playerIO[j].first, msg);
 					}
 				}
-				// Question.Invoke(star.player_here, "Mine", id);
+				Question.Invoke(star.player_here, "Mine", id);
 				return;
 			}
 			var total = 0
@@ -220,9 +223,9 @@ Controller = function(io, model) {
 		//console.log(model.players[id]);
 		model.stars.m1.player_here[id] = 0;
 		model.players[id].ships[0].num_of_miner = 2;
-		model.stars.m1.num = 2;
+		model.stars.m1.num = 3;
 		//-------------
-		if (count == 2) {
+		if (count == 3) {
 			day("Init", null);
 		}
 	}

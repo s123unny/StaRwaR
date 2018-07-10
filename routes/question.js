@@ -13,7 +13,8 @@ class questionevent{
 		this.callback=callback;
 	}
 
-	Invoke(array,state,substate) {
+	Invoke(arr,state,substate) {
+		array=arr;
 		console.log("array ",array);
 		q=require("./questionlist.js")();
 		this.io.emit("needQuestion",q,array);
@@ -32,7 +33,7 @@ class questionevent{
 				returnArray[i]=null;
 			}
 		}
-	
+		console.log("return array when invoke: ", returnArray);	
 		return returnArray;
 	}
 
@@ -59,8 +60,8 @@ class questionevent{
 			//co.next(array);
 			//if(correct)console.log("player "+id+"answer correct");
 			//else console.log("nobody answer rightQQ");
-			console.log("arr="+array);
-			console.log("return arr="+returnArray);
+			console.log("arr=",array);
+			console.log("return arr=",returnArray);
 			this.io.emit("show_answer",q,returnArray,array);
 			count=totalcount=0;	
 		}
