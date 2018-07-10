@@ -5,12 +5,11 @@ const y_POS = [0,1,2,3,4]
 ship = function(id, user_id) {
 	return {
 		id: id,
-		user_id: user_id,
 		num_of_miner: 0,
 		num_of_trainer: 0,
 		num_of_haker: 0,
 		dayLeft: null, //init: =requiredDay, 0: arrive , !=0: going
-		targetId: null, //null: free, else: targetStarId
+		targetId: null, //null: free, false: back, else: targetStarId
 		datasetType: null,
 		datasetAmount: 0,
 		status: function() {
@@ -39,8 +38,9 @@ player = function(id) {
 		y_pos: y_POS[id],
 		dataset: {
 			image: 0, text: 0, sound: 0},
-		AImodel: {},
-		AImodelIdx: 0,
+		AImodel: {
+			image: 0, text: 0, sound: 0},
+		hand_on_AImodel: null,
 		num_of_working_miner: function() {
 			sum = 0;
 			for (var i = 0; i < 5; i++) {

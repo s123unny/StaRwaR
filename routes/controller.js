@@ -97,19 +97,40 @@ Controller = function(io, model) {
 		io.emit("nightTimeUp");
 	}
 
-	function collectPlayerSetting(id, player) {
+	function collectPlayerSetting(id, ships, money, workers, hand_on_AImodel) {
 		console.log("collectPlayerSetting", id);
+		player = model.players[id];
 		count += 1;
 		// todo
 		for (var i = 0; i < 5; i++) {
+			if (ships[i] != null) {
+				ships[i].status = player.ships[i].status;
+				player.ships[i] = ships[i];
+			}
 			if (player.ships[i].targetId != null) {
-				if (player.ships[i].targetId == "b"+id) {
+				if (player.ships[i].targetId == false) {
 					Update.Ship_back(id, player.ships[i].targetId);
 					model.stars[player.ships[i].targetId].player_here[id] = null;
 					player.ships[i].targetId = null;
 					player.ships[i].dayLeft = null;
+					player.ships[i].num_of_miner = 0;
+					player.ships[i].num_of_trainer = 0;
+					player.ships[i].num_of_haker = 0;
 				} else if (player.ships[i].dayLeft == null) {
 					//caculate require day
+					var distance = Math.abs(model.stars[player.ships[i].targetId].x_pos - model.player[id].x_pos);
+					distance += Math.abs(model.stars[player.ships[i].targetId].y_pos - model.player[id].y_pos);
+					if (distance <= 3) {
+						player.ships[i].dayLeft = 1;
+					} else if (distance < 10) {
+						player.ships[i].dayLeft = 2;
+					} else {
+						player.ships[i].dayLeft = 3;
+					}
+					if (player.ships[i].datasetType != null) {
+						player.ships[i].datasetAmount = player.dataset[dataserType];
+						player.dataset[datasetType] = 0;
+					}
 					Update.Ship_Mission(id, player.ships[i].targetId);
 				}
 				if (player.ships[i].dayLeft == 1) {
@@ -420,13 +441,14 @@ Controller = function(io, model) {
 						} else {
 							star.dayLeft[j] == null;
 							var msg = i+"星球上model訓練完成!";
+							var value = player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer);
+							if (player.AImodel[ player.ships[shipId].datasetType ] == null || value > player.AImodel[ player.ships[shipId].datasetType ]) {
+								//todo
+								player.AImodel[ player.ships[shipId].datasetType ] = value;
+							} else {
+								msg += "但品質較差，因此不做更新";
+							}
 							Update.Notify(playerIO[j].first, msg);
-							player.AImodel[player.AImodelIdx] = {
-								id: player.AImodelIdx, 
-								type: player.ships[shipId].datasetType, 
-								value: player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer)
-							};
-							player.AImodelIdx += 1;
 							player.ships[shipId].datasetType = null;
 							player.ships[shipId].datasetAmount = 0;
 							//update player: bag
@@ -442,7 +464,7 @@ Controller = function(io, model) {
 		
 
 		//finish => start night
-		io.emit("adminStartButton");
+		io.sockets.to(adminIO).emit("adminStartButton");
 	}
 
 
