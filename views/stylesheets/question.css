@@ -1,0 +1,27 @@
+#questionBox {
+	width: 800px;
+	height: 500px;
+	left: calc(50% - 400px);
+	top: calc(50% - 250px);
+	padding: 20px;
+}
+#questionBox .qDes{
+	text-align: left;
+}
+#questionBox form{
+	text-align: left;
+}
+#questionBox #answerResult {
+	margin-top: 20px;
+	text-align: center;
+}
+#questionBox #answerResult img{
+	height: 100px;
+	width: 100px;
+	margin: 0px;
+}
+#questionBox #answerResult div h1{
+	margin: 0px;
+	font-size: 30px;
+	font-weight: 300;
+}

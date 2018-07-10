@@ -51,7 +51,7 @@ var player = require("../model/player.js");
 var stars = require("../model/stars.js");
 var updateFunction = require("./update");
 var timer = require("./timer");
-// var questionFuntion = require("./question");
+var questionFuntion = require("./question");
 var Skill = require("./skill")
 
 global.model = {
@@ -60,6 +60,7 @@ global.model = {
 		player(0), player(1), player(2), player(3), player(4) ],
 	day: 0
 }
+
 Controller = function(io, model) {
 	var io = io;
 	var playerIO = [{},{},{},{},{}];
@@ -73,7 +74,7 @@ Controller = function(io, model) {
 	var count = 0;
 	
 	var Update = new updateFunction(io);
-	// var Question = new questionFuntion(io, question_return);
+	var Question = new questionFuntion(io, question_return);
 	
 	function chatPlayer(msg,id){
 		io.emit('chat_message', msg ,"PLAYER");
@@ -544,10 +545,21 @@ Controller = function(io, model) {
 				Update.Leaderboard(model.players);
 				Update.Notify(playerIO[id].first,login_msg);
 				player.on('chat_message', (msg) => Update.Chatting(msg, name)); // listen to chatting msg
-				// Question.Init(player);
+				Question.Init(player);
 				
 				test = model.players[id];
 				collectPlayerSetting(id, test); //for testing
+			//`	questionEvent(io);
+				/*var array=["1",null,null,null,null];
+				var state,substate;
+				function callback(array,state,substate){
+					console.log("callback");
+				};
+
+				var QE=new questionevent(io,callback);
+				QE.Init(player);
+				var newarray=QE.Invoke(array,1,1);
+				console.log("newarray in control: ", newarray);*/
 
 				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
 			}
@@ -569,6 +581,7 @@ Controller = function(io, model) {
 			if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login --2.");
 				playerIO[id].second = player.id;
+
 			} else {
 				console.log("Wrong login!")
 				return;
@@ -579,6 +592,8 @@ Controller = function(io, model) {
 				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
 			}
 		}
+
+	
 	});
 }
 module.exports = Controller;

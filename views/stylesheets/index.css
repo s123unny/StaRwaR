@@ -124,4 +124,42 @@ span.line{
 	background-repeat: repeat;
 	position: fixed;
   	height: 8px;
+
+.closeButton {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	top: 25px;
+	right: 25px;
+}
+.closeButton:hover {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+.popBox {
+	text-align: center;
+	display: none;
+	position: absolute;
+	border: solid grey 1px;
+	background-color:rgba(255,255,255,0.85);
+}
+.timer {
+	color: red;
+}
+
+.title {
+	text-align: center;
+}
+
+.eventBox {
+
+	width: 560px;
+	height: 300px;
+	left: calc(50% - 280px);
+	top: calc(50% - 150px);
+	padding: 20px;
+
 }
