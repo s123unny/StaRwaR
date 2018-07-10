@@ -186,6 +186,7 @@ function freeze_submit_block(row){
 	$('#assign_mblock_slot'+row+'_H').attr('disabled', true);
 	// append block on it
 	var iDiv = document.createElement('div');
+	iDiv.id="submitted"+row;
 	iDiv.style.position="relative";
 	iDiv.style.marginTop="-29.5px";
 	//iDiv.style.zIndex='100'; 
