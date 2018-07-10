@@ -1,3 +1,4 @@
+//import { MakePlayerSkill, Skill_ability } from 'skill.js';
 MAX_PLAYER = 5;
 /* Define game state. */
 /*ai event*/
@@ -10,40 +11,21 @@ var mine_change = {11:[0,5,5,5,10,10,10,20,20,40], 23:[0,5,5,5,10,10,20,40,40,80
 var datasetAmount = {11:60, 5:30, 1:5};
 var optionReward = 20;
 /*****/
-var display_tree = {
-	'old_king':['validation', 'employment'], 
-	'validation':['ensemble', 'oil_gas', 'AUTO_DEBUGGER'], 
-	'ensemble':['deep_learning'], 
-	'deep_learning':['laplas'], 
-	'oil_gas':['deep_learning', 'ssh'], 
-	'ssh':['ADMIN', 'no_people'], 
-	'AUTO_DEBUGGER':['no_people'], 
-	'employment':['people_consumption', 'GPU'], 
-	'people_consumption':['AUTO_DEBUGGER', 'god_of_crypto'], 
-	'GPU':['god_of_crypto', 'fiftyone'], 
-	'god_of_crypto':['attack', 'quantum'],
-	'fiftyone':['DDOS'],
-};
-Skill_ability = {
-	'old_king':[1, 'General', function(){return;}], 
-	'validation':[1, 'ML', function(pay){if(this.learned){return 1.1 * pay;} else{return pay;}}],
-	'ensemble':[1, 'ML', function(pay){if(this.learned){return 1.1 * pay;} else{return pay;}}], 
-	'deep_learning':[2, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}}], 
-	'laplas':[3, 'General', function(){return this.learned;}], 
-	'oil_gas':[1, 'General', function(money){if(this.learned){return 1.1 * money;} else{return money;}}], 
-	'ssh':[3, 'ML', function(){return this.learned;}], 
-	'ADMIN':[2, 'General', function(){return this.learned;}],
-	'no_people':[2, 'General', function(){return this.learned;}],
-	'AUTO_DEBUGGER':[2, 'General', function(){return this.learned;}],
-	'employment':[1, 'General', function(pay){return this.learned;}],
-	'people_consumer':[1, 'General', function(money){if(this.learned){return 0.9 * money;} else{return money;}}],
-	'god_of_crypto':[1, 'MINOR', function(money){if(this.learned){return 1.4 * money;} else{return money;}}],
-	'attack':[1, 'MINOR', function(){return this.learned;}],
-	'quantum':[3, 'General', function(day){if(this.learned){return day - 1;} else{return day;}}],
-	'fiftyone':[3, 'MINOR', function(){return this.learned;}],
-	'DDOS':[3, 'MINOR', function(){return this.learned;}],
-	'GPU':[1, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}}]
-};
+// var display_tree = {
+// 	'old_king':['validation', 'employment'], 
+// 	'validation':['ensemble', 'oil_gas', 'AUTO_DEBUGGER'], 
+// 	'ensemble':['deep_learning'], 
+// 	'deep_learning':['laplas'], 
+// 	'oil_gas':['deep_learning', 'ssh'], 
+// 	'ssh':['ADMIN', 'no_people'], 
+// 	'AUTO_DEBUGGER':['no_people'], 
+// 	'employment':['people_consumption', 'GPU'], 
+// 	'people_consumption':['AUTO_DEBUGGER', 'god_of_crypto'], 
+// 	'GPU':['god_of_crypto', 'fiftyone'], 
+// 	'god_of_crypto':['attack', 'quantum'],
+// 	'fiftyone':['DDOS'],
+// };
+
 var password = ["meow", "beep", "wang", "woof", "oops"];
 var fs = require("fs");
 var url = require("url");
@@ -52,8 +34,9 @@ var stars = require("../model/stars.js");
 var updateFunction = require("./update");
 var timer = require("./timer");
 // var questionFuntion = require("./questionEvent");
-var Skill = require("./skill")
 
+var Skill = require("./skill")
+//var Player_skill = new Skill.MakePlayerSkill();
 global.model = {
 	stars: stars,
 	players: [
@@ -71,7 +54,8 @@ Controller = function(io, model) {
 	var model = global.model;
 	//console.log(model.stars);
 	var count = 0;
-	
+	var Player_skill =  Skill.make();
+	console.log(Player_skill[0]);
 	var Update = new updateFunction(io);
 	// var Question = new questionFuntion(io);
 	
@@ -447,21 +431,6 @@ Controller = function(io, model) {
 
 
 
-	var Player_skill = []
-	for (var i = 0; i < 5; i++){
-		var single_user_skill = {};
-		for (var skill_name in Skill_ability){
-			var require = Skill_ability[skill_name][0];
-			var type = Skill_ability[skill_name][1];
-			var method = Skill_ability[skill_name][2];
-			single_user_skill[skill_name] =  new Skill(require, type, method);
-		}
-		Player_skill.push(single_user_skill);
-	}
-	//console.log(Player_skill[0])
-	// use method
-	var pay = 20;
-	Player_skill[0]['validation'].learned = true;
 	//console.log(Player_skill[0]['validation'].method(pay));
 	
 	/* Listen new connection */
@@ -489,13 +458,13 @@ Controller = function(io, model) {
 				Update.Chatting(login_msg, "SYSTEM");
 				Update.Leaderboard(model.players);
 				Update.Notify(playerIO[id].first,login_msg);
-				player.on('chat_message', (msg) => Update.Chatting(msg, name)); // listen to chatting msg
+				player.on('chat_message', (msg) => Update.Chatting(msg, Player_skill[id]['Respectful-Player'].method(name))); // listen to chatting msg
 				// Question.Init(player);
 				
 				test = model.players[id];
 				collectPlayerSetting(id, test); //for testing
 
-				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
+				
 			}
 			else{
 				player.on('adminSayStart', night);
@@ -523,6 +492,7 @@ Controller = function(io, model) {
 			// socket io start
 			if(id >= 0 && id <= 4) {
 				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
+				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerIO[id].second,Player_skill[id]));
 			}
 		}
 	});
