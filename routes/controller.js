@@ -423,7 +423,12 @@ Controller = function(io, model) {
 			console.log("AImodel event");
 			/*pop box: event*/
 		}
-		
+		for(var i = 0; i < 5; i++)
+			if(model.players[i].skill['Laplace-Acma'].method())
+				Update.Notify(playerIO[i].first,"Day 53 BANG!");
+		for(var i = 0; i < 5; i++)
+			if(model.players[i].skill['Laplace-Acma'].method())
+				model.players[i].money += 87;
 
 		//finish => start night
 		io.emit("adminStartButton");
