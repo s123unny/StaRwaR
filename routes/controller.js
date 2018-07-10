@@ -498,7 +498,7 @@ Controller = function(io, model) {
 			
 
 			//finish => start night
-			io.emit("adminStartButton");
+			io.sockets.to(adminIO).emit("adminStartButton");
 			break;
 		}
 	}
