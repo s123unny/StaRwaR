@@ -3,205 +3,178 @@
 <!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/view.js"></script>
-<script src="js/chatRoom.js"></script>
+
 <html>
 <head>
-  <link type="text/css" rel="stylesheet" href="stylesheets/index.css">
-  <link type="text/css" rel="stylesheet" href="stylesheets/planet.css" />
-  <link type="text/css" rel="stylesheet" href="stylesheets/adminbutton.css" />
+	<link type="text/css" rel="stylesheet" href="stylesheets/index.css">
+	<link type="text/css" rel="stylesheet" href="stylesheets/planet.css" />
+	<link type="text/css" rel="stylesheet" href="stylesheets/adminbutton.css" />
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="container" id = "container">
-    <!-- <input type="button" id="loginButton" value="COOL" onclick="secondindex()"> -->
-    <div class = "main-window" id = "test">
-      <span class = "player-info" id = "player-info-box">
-        <span class = "player-info-text" id = 'player-name'>Name</span>
-        <span class = "player-info-text" id = 'else'>Money</span>
-      </span>
-      <span class = "side-form" id = "test"> 
-       <div class = 'side-form-text' id = '0-score'>123</div>
-       <div class = 'side-form-text' id = '1-score'>456</div>
-       <div class = 'side-form-text' id = '2-score'>890</div>
-       <div class = 'side-form-text' id = '3-score'>89</div>
-       <div class = 'side-form-text' id = '4-score'>80</div>
-      </span>
-      
-      <span class ="chatroom" id = "c-room" style="overflow:scroll;overflow-X:hidden;height:300px;">
-<!--        <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '1-score'>123</div>
-       <div class = 'chatroom-text' id = '2-score'>123</div>
-       <div class = 'chatroom-text' id = '4-score'>123</div>
-       <div class = 'chatroom-text' id = '5-score'>123</div>
-       <div class = 'chatroom-text' id = '6-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div>
-       <div class = 'chatroom-text' id = '0-score'>123</div> -->
+	<div class="main-window">
+		<!-- login window -->
+		<div id="login" class="confirmOverlay">
+			<div class="alertBox">
+				<h1 >Welcome to 2018 CSIE camp StarWar!</h1>
+				<span>PlayerID : <input id="teamID" type="number" class="minion_num" style="margin: 10px 10px 10px 20px; padding: 5px;" /></span></br>
+				<span>Account : <input id="teamName" type="text" class="minion_num" style="margin: 10px 10px 10px 20px; padding: 5px;" /></span></br>
+				<span>Passwd : <input id="teamPassword" type="passwordr" class="minion_num" style="margin: 10px 10px 10px 26.5px; padding: 5px;" /></span></br>
+				<div class="confirmButtons">
+					<a href="#" class="button" onclick="login()">Login<span></span></a>
+				</div>
+				<!-- <input class="button" type="button" id="loginButton" value="Login" onclick="login()">				 -->
+			</div>
+		</div>
+		<!-- planet  -->
+		<div class="map">
+			<span class = "planet-orange" id = "m0" style="left: 475.7px; top: 240.5px;"></span>
+			<span class = "planet-orange" id = "m1" style="left: 991.7px; top: 33.5px;"></span>
+			<span class = "planet-orange" id = "m2" style="left: 85.7px; top: 420.5px;"></span>
+			<span class = "planet-orange" id = "m3" style="left: 1264.7px; top: 122.5px;"></span>
+			<span class = "planet-orange" id = "m4" style="left: 382.7px; top: 610.5px;"></span>
+			<span class = "planet-orange" id = "m5" style="left: 529.7px; top: 580.5px;"></span>
+			<span class = "planet-orange" id = "m6" style="left: 666.7px; top: 340.5px;"></span>
+			<span class = "planet-orange" id = "m7" style="left: 550.7px; top: 120.5px;"></span>
+			<span class = "planet-orange" id = "m8" style="left: 163.4px; top: 235.4px;"></span>
+			<span class = "planet-orange" id = "m9" style="left: 1006.6px; top: 640.5px;"></span>
+			<span class = "planet-red" id = "c0" style="left: 346.6px; top: 591.5px;"></span>
+			<span class = "planet-red" id = "c1" style="left: 656.6px; top: 240.5px;"></span>
+			<span class = "planet-red" id = "c2" style="left: 336.6px; top: 110.5px;"></span>
+			<span class = "planet-red" id = "c3" style="left: 1006.6px; top: 240.5px;"></span>
+			<span class = "planet-red" id = "c4" style="left: 426.6px; top: 700.5px;"></span>
+			<span class = "planet-blue" id = "a0" style="left: 1106.6px; top: 140.5px;"></span>
+			<span class = "planet-blue" id = "a1" style="left: 966.6px; top: 280.5px;"></span>
+			<span class = "planet-blue" id = "a2" style="left: 674.4px; top: 140.5px;"></span>
+			<span class = "planet-blue" id = "a3" style="left: 1032.5px; top: 345.5px;"></span>
+			<span class = "planet-blue" id = "a4" style="left: 871.1px; top: 660.5px;"></span>
+			<span class = "planet-blue" id = "a5" style="left: 106.6px; top: 287.5px;"></span>
+			<span class = "planet-blue" id = "a6" style="left: 506.6px; top: 676.6px;"></span>
+			<span class = "planet-blue" id = "a7" style="left: 406.6px; top: 140.5px;"></span>
+			<span class = "planet-blue" id = "a8" style="left: 50.6px; top: 455.2px;"></span>
+			<span class = "planet-blue" id = "a9" style="left: 206.6px; top: 382.1px;"></span>
+			<span class = "planet-blue" id = "a10" style="left: 406.6px; top: 240.5px;"></span>
+			<span class = "planet-blue" id = "a11" style="left: 406.6px; top: 542.1px;"></span>
+			<span class = "planet-blue" id = "a12" style="left: 986.6px; top: 182.5px;"></span>
+			<span class = "planet-blue" id = "a13" style="left: 106.6px; top: 322.3px;"></span>
+			<span class = "planet-blue" id = "a14" style="left: 506.6px; top: 193.5px;"></span>
+			<span class = "planet-base" id = "b0" style="left: 296.6px; top: 410.5px;"></span>
+			<span class = "planet-base" id = "b1" style="left: 646.6px; top: 193.5px;"></span>
+			<span class = "planet-base" id = "b2" style="left: 956.6px; top: 543.5px;"></span>
+			<span class = "planet-base" id = "b3" style="left: 606.6px; top: 293.5px;"></span>
+			<span class = "planet-base" id = "b4" style="left: 1106.6px; top: 271.5px;"></span>
 
-      </span>
-
-      <input type="button" id="C" value="CCCCC" onclick="jser('12345678901234567890')">
-      <span class = "planet-orange" id = "m0" style="left: 425.7px; top: 230.5px;"></span>
-      <span class = "planet-orange" id = "m1" style="left: 951.7px; top: 23.5px;"></span>
-      <span class = "planet-orange" id = "m2" style="left: 45.7px; top: 410.5px;"></span>
-      <span class = "planet-orange" id = "m3" style="left: 1024.7px; top: 512.5px;"></span>
-      <span class = "planet-orange" id = "m4" style="left: 342.7px; top: 600.5px;"></span>
-      <span class = "planet-orange" id = "m5" style="left: 489.7px; top: 570.5px;"></span>
-      <span class = "planet-orange" id = "m6" style="left: 626.7px; top: 330.5px;"></span>
-      <span class = "planet-orange" id = "m7" style="left: 510.7px; top: 110.5px;"></span>
-      <span class = "planet-orange" id = "m8" style="left: 123.4px; top: 225.4px;"></span>
-      <span class = "planet-orange" id = "m9" style="left: 966.6px; top: 630.5px;"></span>
-      <span class = "planet-red" id = "c0" style="left: 306.6px; top: 581.5px;"></span>
-      <span class = "planet-red" id = "c1" style="left: 616.6px; top: 230.5px;"></span>
-      <span class = "planet-red" id = "c2" style="left: 296.6px; top: 100.5px;"></span>
-      <span class = "planet-red" id = "c3" style="left: 966.6px; top: 230.5px;"></span>
-      <span class = "planet-red" id = "c4" style="left: 386.6px; top: 700.5px;"></span>
-      <span class = "planet-blue" id = "a0" style="left: 1066.6px; top: 530.5px;"></span>
-      <span class = "planet-blue" id = "a1" style="left: 926.6px; top: 270.5px;"></span>
-      <span class = "planet-blue" id = "a2" style="left: 634.4px; top: 130.5px;"></span>
-      <span class = "planet-blue" id = "a3" style="left: 992.5px; top: 335.5px;"></span>
-      <span class = "planet-blue" id = "a4" style="left: 831.1px; top: 650.5px;"></span>
-      <span class = "planet-blue" id = "a5" style="left: 66.6px; top: 277.5px;"></span>
-      <span class = "planet-blue" id = "a6" style="left: 466.6px; top: 666.6px;"></span>
-      <span class = "planet-blue" id = "a7" style="left: 366.6px; top: 130.5px;"></span>
-      <span class = "planet-blue" id = "a8" style="left: 10.6px; top: 445.2px;"></span>
-      <span class = "planet-blue" id = "a9" style="left: 166.6px; top: 372.1px;"></span>
-      <span class = "planet-blue" id = "a10" style="left: 366.6px; top: 230.5px;"></span>
-      <span class = "planet-blue" id = "a11" style="left: 366.6px; top: 532.1px;"></span>
-      <span class = "planet-blue" id = "a12" style="left: 946.6px; top: 172.5px;"></span>
-      <span class = "planet-blue" id = "a13" style="left: 66.6px; top: 312.3px;"></span>
-      <span class = "planet-blue" id = "a14" style="left: 466.6px; top: 183.5px;"></span>
-      <span class = "planet-base" id = "b0" style="left: 256.6px; top: 400.5px;"></span>
-      <span class = "planet-base" id = "b1" style="left: 606.6px; top: 183.5px;"></span>
-      <span class = "planet-base" id = "b2" style="left: 916.6px; top: 533.5px;"></span>
-      <span class = "planet-base" id = "b3" style="left: 566.6px; top: 283.5px;"></span>
-      <span class = "planet-base" id = "b4" style="left: 1066.6px; top: 261.5px;"></span>
-
-      <span class = "planet-unreached" id = "_m0" style="left: 425.7px; top: 230.5px;"></span>
-      <span class = "planet-unreached" id = "_m1" style="left: 951.7px; top: 23.5px;"></span>
-      <span class = "planet-unreached" id = "_m2" style="left: 45.7px; top: 410.5px;"></span>
-      <span class = "planet-unreached" id = "_m3" style="left: 1024.7px; top: 512.5px;"></span>
-      <span class = "planet-unreached" id = "_m4" style="left: 342.7px; top: 600.5px;"></span>
-      <span class = "planet-unreached" id = "_m5" style="left: 489.7px; top: 570.5px;"></span>
-      <span class = "planet-unreached" id = "_m6" style="left: 626.7px; top: 330.5px;"></span>
-      <span class = "planet-unreached" id = "_m7" style="left: 510.7px; top: 110.5px;"></span>
-      <span class = "planet-unreached" id = "_m8" style="left: 123.4px; top: 225.4px;"></span>
-      <span class = "planet-unreached" id = "_m9" style="left: 966.6px; top: 630.5px;"></span>
-      <span class = "planet-unreached" id = "_c0" style="left: 306.6px; top: 581.5px;"></span>
-      <span class = "planet-unreached" id = "_c1" style="left: 616.6px; top: 230.5px;"></span>
-      <span class = "planet-unreached" id = "_c2" style="left: 296.6px; top: 100.5px;"></span>
-      <span class = "planet-unreached" id = "_c3" style="left: 966.6px; top: 230.5px;"></span>
-      <span class = "planet-unreached" id = "_c4" style="left: 386.6px; top: 700.5px;"></span>
-      <span class = "planet-unreached" id = "_a0" style="left: 1066.6px; top: 530.5px;"></span>
-      <span class = "planet-unreached" id = "_a1" style="left: 926.6px; top: 270.5px;"></span>
-      <span class = "planet-unreached" id = "_a2" style="left: 634.4px; top: 130.5px;"></span>
-      <span class = "planet-unreached" id = "_a3" style="left: 992.5px; top: 335.5px;"></span>
-      <span class = "planet-unreached" id = "_a4" style="left: 831.1px; top: 650.5px;"></span>
-      <span class = "planet-unreached" id = "_a5" style="left: 66.6px; top: 277.5px;"></span>
-      <span class = "planet-unreached" id = "_a6" style="left: 466.6px; top: 666.6px;"></span>
-      <span class = "planet-unreached" id = "_a7" style="left: 366.6px; top: 130.5px;"></span>
-      <span class = "planet-unreached" id = "_a8" style="left: 10.6px; top: 445.2px;"></span>
-      <span class = "planet-unreached" id = "_a9" style="left: 166.6px; top: 372.1px;"></span>
-      <span class = "planet-unreached" id = "_a10" style="left: 366.6px; top: 230.5px;"></span>
-      <span class = "planet-unreached" id = "_a11" style="left: 366.6px; top: 532.1px;"></span>
-      <span class = "planet-unreached" id = "_a12" style="left: 946.6px; top: 172.5px;"></span>
-      <span class = "planet-unreached" id = "_a13" style="left: 66.6px; top: 312.3px;"></span>
-      <span class = "planet-unreached" id = "_a14" style="left: 466.6px; top: 183.5px;"></span>
-
-      <!-- This is b0 lines -->
-      <span class = "line" id = "b0-a9" style = "transform: rotate(17deg); left: 168.6px; top: 403.5px; width: 109px"></span> 
-      <span class = "line" id = "b0-a5" style = "transform: rotate(35deg); left: 83.6px; top: 353.5px; width: 200px"></span>
-      <span class = "line" id = "b0-a13" style = "transform: rotate(28deg); left: 83.6px; top: 373.5px; width: 200px"></span>
-      <span class = "line" id = "b0-m2" style = "transform: rotate(-2deg); left: 83.6px; top: 428.5px; width: 188px"></span>
-      <span class = "line" id = "b0-a8" style = "transform: rotate(-10deg); left: 53.6px; top: 448.5px; width: 228px"></span>
-      <span class = "line" id = "b0-c0" style = "transform: rotate(75deg); left: 220.6px; top: 508.5px; width: 168px"></span>
-      <span class = "line" id = "b0-m4" style = "transform: rotate(65deg); left: 220.6px; top: 518.5px; width: 208px"></span>
-      <span class = "line" id = "b0-a11" style = "transform: rotate(45deg); left: 260.6px; top: 488.5px; width: 158px"></span>
-      <span class = "line" id = "b0-a6" style = "transform: rotate(53deg); left: 230.6px; top: 559.5px; width: 318px"></span>
-      <span class = "line" id = "b0-c4" style = "transform: rotate(65deg); left: 190.6px; top: 559.5px; width: 318px"></span>
-      <span class = "line" id = "b0-m5" style = "transform: rotate(35deg); left: 263.6px; top: 500.5px; width: 278px"></span>
-      <span class = "line" id = "b0-m8" style = "transform: rotate(58deg); left: 93.6px; top: 320.5px; width: 228px"></span>
-      <span class = "line" id = "b0-c2" style = "transform: rotate(-80deg); left: 150.6px; top: 270.5px; width: 298px"></span>
-      <span class = "line" id = "b0-a7" style = "transform: rotate(-70deg); left: 190.6px; top: 280.5px; width: 298px"></span>
-      <span class = "line" id = "b0-a10" style = "transform: rotate(-60deg); left: 240.6px; top: 338.5px; width: 188px"></span>
-      <span class = "line" id = "b0-m0" style = "transform: rotate(-45deg); left: 250.6px; top: 338.5px; width: 228px"></span>
-      <span class = "line" id = "b0-a14" style = "transform: rotate(-45deg); left: 230.6px; top: 308.5px; width: 308px"></span>
-      <span class = "line" id = "b0-m7" style = "transform: rotate(-50deg); left: 210.6px; top: 288.5px; width: 398px"></span>
-      <span class = "line" id = "b0-a2" style = "transform: rotate(-35deg); left: 250.6px; top: 288.5px; width: 450px"></span> 
-      <span class = "line" id = "b0-c1" style = "transform: rotate(-25deg); left: 260.6px; top: 328.5px; width: 400px"></span>
-      <span class = "line" id = "b0-m6" style = "transform: rotate(-10deg); left: 260.6px; top: 378.5px; width: 390px"></span>
-      <span class = "line" id = "b0-m1" style = "transform: rotate(-28deg); left: 260.6px; top: 228.5px; width: 750px"></span>
-      <span class = "line" id = "b0-a1" style = "transform: rotate(-10deg); left: 260.6px; top: 358.5px; width: 690px"></span>
-      <span class = "line" id = "b0-c3" style = "transform: rotate(-14deg); left: 280.6px; top: 338.5px; width: 710px"></span>
-      <span class = "line" id = "b0-a12" style = "transform: rotate(-20deg); left: 260.6px; top: 308.5px; width: 720px"></span>
-      <span class = "line" id = "b0-a3" style = "transform: rotate(-5deg); left: 280.6px; top: 388.5px; width: 720px"></span>
-      <span class = "line" id = "b0-m3" style = "transform: rotate(8deg); left: 270.6px; top: 480.5px; width: 780px"></span>
-      <span class = "line" id = "b0-a0" style = "transform: rotate(9deg); left: 270.6px; top: 495.5px; width: 830px"></span>
-      <span class = "line" id = "b0-m9" style = "transform: rotate(18deg); left: 250.6px; top: 520.5px; width: 750px"></span>
-      <span class = "line" id = "b0-a4" style = "transform: rotate(23deg); left: 250.6px; top: 540.5px; width: 630px"></span>
-
-
-      <span class = "line" id = "b1-c1" style = "transform: rotate(80deg); left: 610.6px; top: 220.5px; width: 40px"></span>
-      <span class = "line" id = "b1-m6" style = "transform: rotate(80deg); left: 570.6px; top: 270.5px; width: 130px"></span>
-      <span class = "line" id = "b1-m6" style = "transform: rotate(-60deg); left: 610.6px; top: 180.5px; width: 60px"></span>
-      <span class = "line" id = "b1-m1" style = "transform: rotate(-26deg); left: 620.6px; top: 130.5px; width: 360px"></span>
-      <span class = "line" id = "b1-a12" style = "transform: rotate(-2deg); left: 635.6px; top: 190.5px; width: 320px"></span>
-      <span class = "line" id = "b1-c3" style = "transform: rotate(8deg); left: 635.6px; top: 220.5px; width: 350px"></span>
-      <span class = "line" id = "b1-a1" style = "transform: rotate(13deg); left: 625.6px; top: 240.5px; width: 320px"></span>
-      <span class = "line" id = "b1-a3" style = "transform: rotate(19deg); left: 625.6px; top: 270.5px; width: 400px"></span>
-      <span class = "line" id = "b1-m3" style = "transform: rotate(38deg); left: 585.6px; top: 370.5px; width: 510px"></span>
-      <span class = "line" id = "b1-a0" style = "transform: rotate(38deg); left: 585.6px; top: 370.5px; width: 550px"></span>
-      <span class = "line" id = "b1-m9" style = "transform: rotate(50deg); left: 525.6px; top: 420.5px; width: 550px"></span>
-      <span class = "line" id = "b1-a4" style = "transform: rotate(64deg); left: 480.6px; top: 427.5px; width: 510px"></span>
-      <span class = "line" id = "b1-m7" style = "transform: rotate(40deg); left: 520.6px; top: 167.5px; width: 120px"></span>
-      <span class = "line" id = "b1-a14" style = "transform: rotate(4deg); left: 480.6px; top: 197.5px; width: 140px"></span>
-      <span class = "line" id = "b1-m0" style = "transform: rotate(-12deg); left: 440.6px; top: 217.5px; width: 190px"></span>
-      <span class = "line" id = "b1-a10" style = "transform: rotate(-12deg); left: 380.6px; top: 217.5px; width: 250px"></span>
-      <span class = "line" id = "b1-a7" style = "transform: rotate(16deg); left: 375.6px; top: 177.5px; width: 250px"></span>
-      <span class = "line" id = "b1-c2" style = "transform: rotate(16deg); left: 305.6px; top: 157.5px; width: 320px"></span>
-      <span class = "line" id = "b1-a13" style = "transform: rotate(-12deg); left: 70.6px; top: 262.5px; width: 550px"></span>
-      <span class = "line" id = "b1-a5" style = "transform: rotate(-10deg); left: 70.6px; top: 242.5px; width: 550px"></span>
-      <span class = "line" id = "b1-m8" style = "transform: rotate(-5deg); left: 140.6px; top: 219.5px; width: 470px"></span>
-      <span class = "line" id = "b1-a9" style = "transform: rotate(-20deg); left: 160.6px; top: 289.5px; width: 470px"></span>
-      <span class = "line" id = "b1-m2" style = "transform: rotate(-20deg); left: 40.6px; top: 319.5px; width: 600px"></span>
-      <span class = "line" id = "b1-a8" style = "transform: rotate(-23deg); left: -5px; top: 329.5px; width: 655px"></span>
-      <span class = "line" id = "b1-c4" style = "transform: rotate(-65deg); left: 240px; top: 459.5px; width: 555px"></span>
-      <span class = "line" id = "b1-a11" style = "transform: rotate(-55deg); left: 290px; top: 379.5px; width: 425px"></span>
-      <span class = "line" id = "b1-m4" style = "transform: rotate(-58deg); left: 240px; top: 405.5px; width: 505px"></span>
-      <span class = "line" id = "b1-c0" style = "transform: rotate(-50deg); left: 230px; top: 399.5px; width: 495px"></span>
-      <span class = "line" id = "b1-a6" style = "transform: rotate(-72deg); left: 300px; top: 435.5px; width: 505px"></span>
-      <span class = "line" id = "b1-m5" style = "transform: rotate(-72deg); left: 310px; top: 435.5px; width: 485px"></span>
-
-
-      <!-- <span class = "line" id = "b2-m5" style = "transform: rotate(-72deg); left: 310px; top: 435.5px; width: 485px"></span> -->
-    </div>
-  </div>
-
-  <div id="login" class="popBox">
-	<div class="title" id="welcome">Welcome to 2018 CSIE camp StarWar!</div>
-    請輸入小隊編號： <input id="teamID" type="number" /> <br/>
-    請輸入小隊名稱： <input id="teamName" type="text" maxlength="8"/> <br/>
-    請輸入小隊密碼： <input id="teamPassword" type="password"/> <br/>
-    <input type="button" id="loginButton" value="Submit" onclick="login()">
-  </div>
+			<span class = "planet-unreached" id = "m0" style="left: 475.7px; top: 240.5px;"></span>
+			<span class = "planet-unreached" id = "m1" style="left: 991.7px; top: 33.5px;"></span>
+			<span class = "planet-unreached" id = "m2" style="left: 85.7px; top: 420.5px;"></span>
+			<span class = "planet-unreached" id = "m3" style="left: 1264.7px; top: 122.5px;"></span>
+			<span class = "planet-unreached" id = "m4" style="left: 382.7px; top: 610.5px;"></span>
+			<span class = "planet-unreached" id = "m5" style="left: 529.7px; top: 580.5px;"></span>
+			<span class = "planet-unreached" id = "m6" style="left: 666.7px; top: 340.5px;"></span>
+			<span class = "planet-unreached" id = "m7" style="left: 550.7px; top: 120.5px;"></span>
+			<span class = "planet-unreached" id = "m8" style="left: 163.4px; top: 235.4px;"></span>
+			<span class = "planet-unreached" id = "m9" style="left: 1006.6px; top: 640.5px;"></span>
+			<span class = "planet-unreached" id = "c0" style="left: 346.6px; top: 591.5px;"></span>
+			<span class = "planet-unreached" id = "c1" style="left: 656.6px; top: 240.5px;"></span>
+			<span class = "planet-unreached" id = "c2" style="left: 336.6px; top: 110.5px;"></span>
+			<span class = "planet-unreached" id = "c3" style="left: 1006.6px; top: 240.5px;"></span>
+			<span class = "planet-unreached" id = "c4" style="left: 426.6px; top: 700.5px;"></span>
+			<span class = "planet-unreached" id = "a0" style="left: 1106.6px; top: 140.5px;"></span>
+			<span class = "planet-unreached" id = "a1" style="left: 966.6px; top: 280.5px;"></span>
+			<span class = "planet-unreached" id = "a2" style="left: 674.4px; top: 140.5px;"></span>
+			<span class = "planet-unreached" id = "a3" style="left: 1032.5px; top: 345.5px;"></span>
+			<span class = "planet-unreached" id = "a4" style="left: 871.1px; top: 660.5px;"></span>
+			<span class = "planet-unreached" id = "a5" style="left: 106.6px; top: 287.5px;"></span>
+			<span class = "planet-unreached" id = "a6" style="left: 506.6px; top: 676.6px;"></span>
+			<span class = "planet-unreached" id = "a7" style="left: 406.6px; top: 140.5px;"></span>
+			<span class = "planet-unreached" id = "a8" style="left: 50.6px; top: 455.2px;"></span>
+			<span class = "planet-unreached" id = "a9" style="left: 206.6px; top: 382.1px;"></span>
+			<span class = "planet-unreached" id = "a10" style="left: 406.6px; top: 240.5px;"></span>
+			<span class = "planet-unreached" id = "a11" style="left: 406.6px; top: 542.1px;"></span>
+			<span class = "planet-unreached" id = "a12" style="left: 986.6px; top: 182.5px;"></span>
+			<span class = "planet-unreached" id = "a13" style="left: 106.6px; top: 322.3px;"></span>
+			<span class = "planet-unreached" id = "a14" style="left: 506.6px; top: 193.5px;"></span>
+			<span class = "planet-unreached" id = "b0" style="left: 306.6px; top: 460.5px;"></span>
+			<span class = "planet-unreached" id = "b1" style="left: 666.6px; top: 173.5px;"></span>
+			<span class = "planet-unreached" id = "b2" style="left: 936.6px; top: 573.5px;"></span>
+			<span class = "planet-unreached" id = "b3" style="left: 636.6px; top: 313.5px;"></span>
+			<span class = "planet-unreached" id = "b4" style="left: 1116.6px; top: 271.5px;"></span>
+		</div>
+		<!-- chatroom  -->
+		<div class="chatroom">
+			<p class="title"> Chat room</p>
+			<div id="chat_msg">
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+			</div>
+			<div class="user_chat">
+				<button class="chat_button">Send</button><input class="chat"/>
+			</div>
+		</div>
+		<!-- score board -->
+		<div>
+			<div class = "leaderBoard">
+				<div class='player-info'>
+					<div class="number">Team</div>
+					<div class="name">Name</div>
+					<div class="money">Money</div>
+				</div>
+				<div id = 'Team1' class='player-info'>
+					<div class="number">#1</div>
+					<div class="name">XDDDD</div>
+					<div class="money">200</div>
+				</div>
+				<div id = 'Team2' class='player-info'>
+					<div class="number">#2</div>
+					<div class="name">XDDDD</div>
+					<div class="money">200</div>
+				</div>
+				<div id = 'Team3' class='player-info'>
+					<div class="number">#3</div>
+					<div class="name">XDDDD</div>
+					<div class="money">200</div>
+				</div>
+				<div id = 'Team4' class='player-info'>
+					<div class="number">#4</div>
+					<div class="name">XDDDD</div>
+					<div class="money">200</div>
+				</div>
+				<div id = 'Team5' class='player-info'>
+					<div class="number">#5</div>
+					<div class="name">XDDDD</div>
+					<div class="money">200</div>
+				</div>
+			</div>	
+		</div>
+		<!-- day -->
+		<div class="count_day">
+			<div id="day">
+				20
+			</div>
+		</div>
+	</div>
 </body>
 </html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/socket.io/socket.io.js"></script>
 <script src="js/view.js"></script>
 <script src="js/chatRoom.js"></script>
 <script src="js/leaderBoard.js"></script>
 <script src="js/notify.js"></script>
 <script src="js/skillTree.js"></script>
 <script src="js/adminbutton.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
+<!-- <script src="/socket.io/socket.io.js"></script> -->
 
