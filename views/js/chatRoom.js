@@ -20,10 +20,15 @@ function addMessage(inner,name){
 	counter += 1;
 	console.log("XD");
 	console.log(counter);
-	var paragraph = document.getElementById("c-room");
+	var paragraph = document.getElementById("chat_msg");
+	console.log(paragraph);
 	if(counter <= 9){
 		chatbox[counter] = "["+ name + "]" + inner;
-		paragraph.innerHTML += ("<div class = 'chatroom-text' id = 'chatroom-text-" + counter +"'"+ "style = 'width:100px;'>" +"["+ name + "]" + inner + "</div>");
+		console.log(chatbox[counter]);
+		var s = "<ul class= 'chatroom-text' id = 'chatroom-text-"+counter+"'"+">" + "["+name+"]"+inner+"</ul>";
+		
+		// $('#chat_msg').prepend()
+		paragraph.innerHTML += s;
 	}
 	else{
 		for (var i = 0; i <= 8; i++) {

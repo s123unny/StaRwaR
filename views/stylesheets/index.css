@@ -110,7 +110,7 @@ div.main-window{
 	overflow: scroll;
 }
 
-.chatroom_content{
+.chatroom-text{
 	position: relative;
 	left: -35px;
 	top: -12px;

@@ -11,7 +11,7 @@
 	<link type="text/css" rel="stylesheet" href="stylesheets/adminbutton.css" />
 	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body onload="hide_something()">
 	<div class="main-window">
 		<!-- login window -->
 		<div id="login" class="confirmOverlay">
@@ -102,26 +102,26 @@
 		</div>
 		<!-- chatroom  -->
 		<div class="chatroom">
-			<p class="title"> Chat room</p>
+			<p class="title"> Chatroom</p>
 			<div id="chat_msg">
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom_content">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+<!-- 				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
+				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul> -->
 			</div>
 			<div class="user_chat">
-				<button class="chat_button">Send</button><input class="chat"/>
+				<button class="chat_button" onclick="sendMessage()">Send</button><input class="chat" id="messageForm"/>
 			</div>
 		</div>
 		<!-- score board -->
@@ -134,28 +134,28 @@
 				</div>
 				<div id = 'Team1' class='player-info'>
 					<div class="number">#1</div>
-					<div class="name">XDDDD</div>
-					<div class="money">200</div>
+					<div class="name" id="1-name">XDDDD</div>
+					<div class="money" id="1-score">200</div>
 				</div>
 				<div id = 'Team2' class='player-info'>
 					<div class="number">#2</div>
-					<div class="name">XDDDD</div>
-					<div class="money">200</div>
+					<div class="name" id="2-name">XDDDD</div>
+					<div class="money" id="2-score">200</div>
 				</div>
 				<div id = 'Team3' class='player-info'>
 					<div class="number">#3</div>
-					<div class="name">XDDDD</div>
-					<div class="money">200</div>
+					<div class="name" id="3-name">XDDDD</div>
+					<div class="money" id="3-score">200</div>
 				</div>
 				<div id = 'Team4' class='player-info'>
 					<div class="number">#4</div>
-					<div class="name">XDDDD</div>
-					<div class="money">200</div>
+					<div class="name" id="4-name">XDDDD</div>
+					<div class="money" id="4-score">200</div>
 				</div>
 				<div id = 'Team5' class='player-info'>
 					<div class="number">#5</div>
-					<div class="name">XDDDD</div>
-					<div class="money">200</div>
+					<div class="name" id="5-name">XDDDD</div>
+					<div class="money" id="5-score">200</div>
 				</div>
 			</div>	
 		</div>
@@ -168,13 +168,14 @@
 	</div>
 </body>
 </html>
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/view.js"></script>
 <script src="js/chatRoom.js"></script>
 <script src="js/leaderBoard.js"></script>
 <script src="js/notify.js"></script>
 <script src="js/skillTree.js"></script>
-<script src="js/adminbutton.js"></script>
+<!-- <script src="js/adminbutton.js"></script> -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
-<!-- <script src="/socket.io/socket.io.js"></script> -->
+
 

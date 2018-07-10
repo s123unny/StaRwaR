@@ -1,5 +1,13 @@
 var socket = io();
 
+function hide_something(){
+	var planet_name = ['#m0','#m1','#m2','#m3','#m4','#m5','#m6','#m7','#m8','#m9','#c0','#c1','#c2','#c3','#c4','#a0','#a1',"#a2","#a3","#a4","#a5","#a6",'#a7','#a8','#a9','#a10','#a11','#a12','#a13','#a14'];
+	var arrayLength = planet_name.length;
+	for (var i = 0; i < arrayLength; i++) {
+		$(planet_name[i]).hide();
+	}	
+}
+
 function login() {
 	playerId = Number( $('#teamID').val() );
 	playerName = $('#teamName').val();
@@ -10,13 +18,13 @@ function login() {
 	// $('#planet-blue').hide();
 	// $('#planet-red').hide();
 	// $('#planet-orange').hide();
-	var planet_name = ['#m0','#m1','#m2','#m3','#m4','#m5','#m6','#m7','#m8','#m9','#c0','#c1','#c2','#c3','#c4','#a0','#a1',"#a2","#a3","#a4","#a5","#a6",'#a7','#a8','#a9','#a10','#a11','#a12','#a13','#a14'];
-	var arrayLength = planet_name.length;
-	for (var i = 0; i < arrayLength; i++) {
-		$(planet_name[i]).hide();
-    //Do something
-	}
-
+	// var planet_name = ['#m0','#m1','#m2','#m3','#m4','#m5','#m6','#m7','#m8','#m9','#c0','#c1','#c2','#c3','#c4','#a0','#a1',"#a2","#a3","#a4","#a5","#a6",'#a7','#a8','#a9','#a10','#a11','#a12','#a13','#a14'];
+	// var arrayLength = planet_name.length;
+	// for (var i = 0; i < arrayLength; i++) {
+	// 	$(planet_name[i]).hide();
+ //    //Do something
+	// }
+	console.log(playerId, playerName, password);
 
 	socket.emit("login", playerId, playerName, password);
 	if (playerId >= 0 && playerId < 5) {
@@ -47,15 +55,27 @@ function ship_mission(baseID,targetID){
 
 }
 // this function can update information in left top box
-function player_info(name,somthing){
-	document.getElementById("player-name").textContent=name;
-	document.getElementById("else").textContent = somthing;
-}
+// function player_info(name,somthing){
+// 	document.getElementById("player-name").textContent=name;
+// 	document.getElementById("else").textContent = somthing;
+// }
 
 // give me list of ranking, get view~
 function update_rank(name,score){
 	for (var i = 0; i < 5; i++){
-		document.getElementById(i + '-score').textContent=name[i] + " : " + score[i];
+		if (score[i] == undefined){
+			document.getElementById((i+1) + '-score').textContent=0;
+			console.log("undefined score" + i);
+		}
+		else{
+			document.getElementById((i+1) + '-score').textContent=score[i];
+		}
+		if (name[i] == undefined){
+			document.getElementById((i+1)+'-name').textContent="CSIE";
+		}
+		else{
+			document.getElementById((i+1)+'-name').textContent=name[i];
+		}
 	}
 }
 
