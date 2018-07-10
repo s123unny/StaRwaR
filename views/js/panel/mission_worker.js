@@ -59,22 +59,34 @@ function learn(name){
 
 /* After choosing type */
 function render_target(row){
+	console.log("render target" + row);
+	var all_type = ["mine", "computer", "abandon", "unknown"];
 	var type = $('#assign_mblock_slot'+row+'_type').val();
-	$("#assign_mblock_slot"+row+"_target").empty();
-	if (type != 'learn'){	// render all stars and choose one
-		var flag = true;
-		for (var key in stars){
-			if (stars[key].type == type){
-				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+stars[key].name+";</option>");
-				flag = false;
-			}
+	
+	// hide and show option
+	for (var idx = 0; idx < all_type.length; idx++){
+		if (all_type[idx] != type){
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
 		}
-		if (flag == true){
-			$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>None</option>");
+		else{
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+		}		
+	}
+
+	if (type != 'learn'){	
+		// hide and show option
+		for (var idx = 0; idx < all_type.length; idx++){
+			if (all_type[idx] != type){
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
+			}
+			else{
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+			}		
 		}
 		return;
 	}
 	else{	// query skill-tree
+		return;
 		var flag = true;
 		for (var key in skill){
 			if (skill[key].state == "learnable"){

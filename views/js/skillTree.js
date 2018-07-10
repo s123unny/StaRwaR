@@ -1,3 +1,5 @@
+var socket = io();
+
 function add_skill(id) {
 	console.log(id);
 	socket.emit('skill',id);
