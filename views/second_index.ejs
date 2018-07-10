@@ -71,39 +71,48 @@
 					<div class="items_img">
 						<img class="worker_png" src="./pic/audio.png" width="30" height="30"></img>
 					</div>
-					<div class="items_type">Endearing Flutesong <span id:"audio_num">0</span></div>
+					<div class="items_type">Phoney Tunes &nbsp  <span id="audio_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/image.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Surreal Landscape &nbsp&nbsp <span id:"image_num">0</span></div>
+					<div class="items_type">Alien Drawings&nbsp <span id="image_num">0</span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/text.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Sentimental Letter &nbsp&nbsp <span id:"text_num">0</span></div>
+					<div class="items_type">Forged Notes &nbsp&nbsp <span id="text_num">0</span></div>
 				</div>
 			</div>
-			<div class="items_block">
+			<div class="model_block">
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/audio_m.png" width="40" height="40"></img>
 					</div>
-					<div class="items_type">Phoney Tunes &nbsp <span id:"audioM_num">0</span></div>
+					<div class="items_type">
+						Endearing Flutesong &nbsp<span id="audioM_num">0</span>
+						<span class="submit_model" onclick="submit_model('audio')" id="submit_audio">Submit</span>
+					</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/image_m.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Alien Drawings&nbsp <span id:"imageM_num">0</span></div>
+					<div class="items_type">
+						Surreal Landscape &nbsp&nbsp <span id="imageM_num">0</span>
+						<span class="submit_model" onclick="submit_model('image')" id="submit_image">Submit</span>
+					</div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/text_m.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Forged Notes &nbsp&nbsp <span id:"textM_num">0</span></div>
+					<div class="items_type">
+						Sentimental Letter &nbsp&nbsp <span id="textM_num">0</span>
+						<span class="submit_model" onclick="submit_model('text')" id="submit_text">Submit</span>
+					</div>
 				</div>
 			</div>
 
@@ -174,7 +183,7 @@
 					<div class="content">
 						<select id="assign_mblock_slot<%= i+1 %>_target" class="choosetype" name="YourLocation" style="width: 67px">
 								<option value="None" class="none">None</option>
-								
+
 							<% for (let j of mines) { -%>
 								<option value="<%= j %>" class="mine"><%= j %></option>
 							<% } -%>
@@ -201,7 +210,7 @@
 					</div>
 					<div class="content">
 						<form >
-							<select id="assign_mblock_slot1_carry" class="choosetype" name="YourItem" style="width: 81px";>
+							<select id="assign_mblock_slot<%= i+1 %>_carry" class="choosetype" name="YourItem" style="width: 81px";>
 								<option value="nothing">Nothing</option>
 								<option value="audio">Phoney Tunes</option>
 								<option value="image">Alien Drawings</option>
@@ -225,7 +234,7 @@
 	<h2 class="skilltitle">Skills</h2>
 	<div class="Skill_Tree" id="st" >
 		<!-- skill * 1 -->
-		<div class="skill skill angel" current="0" max="1" skillid="Legacy-of-Ancient-God" sprite="1x1" id="Legacy-of-Ancient-God" onclick="add_skill('Legacy-of-Ancient-God')">
+		<div class="skill skill angel" current="<%= skill['Legacy-of-Ancient-God'].current %>" max="1" skillid="Legacy-of-Ancient-God" sprite="1x1" id="Legacy-of-Ancient-God" onclick="add_skill('Legacy-of-Ancient-God')">
 			<div>
 				<h3>Legacy of Ancient God</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Start of journey !</p> <!-- discription name-->
@@ -234,7 +243,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 2 -->
-		<div class="skill skill angel" current="0" max="2" skillid="Tax-Collector" sprite="1x1" id="Tax-Collector" musthave="Legacy-of-Ancient-God" onclick="add_skill('Tax-Collector')">
+		<div class="skill skill angel" current="<%= skill['Tax-Collector'].current %>" max="2" skillid="Tax-Collector" sprite="1x1" id="Tax-Collector" musthave="Legacy-of-Ancient-God" onclick="add_skill('Tax-Collector')">
 			<div>
 				<h3>Tax Collector</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Want more money?</p> <!-- discription name-->
@@ -243,7 +252,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 3 -->
-		<div class="skill skill angel" current="0" max="2" skillid="Adventure-Trip" sprite="1x1" id="Adventure-Trip" musthave="Tax-Collector" onclick="add_skill('Adventure-Trip')">
+		<div class="skill skill angel" current="<%= skill['Adventure-Trip'].current %>" max="2" skillid="Adventure-Trip" sprite="1x1" id="Adventure-Trip" musthave="Tax-Collector" onclick="add_skill('Adventure-Trip')">
 			<div>
 				<h3>Adventure Trip</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: A chance to take adventure</p>
@@ -254,7 +263,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 4 -->
-		<div class="skill skill angel" current="0" max="3" skillid="GPU" sprite="1x1" id="GPU" musthave="Legacy-of-Ancient-God" onclick="add_skill('GPU')">
+		<div class="skill skill angel" current="<%= skill['GPU'].current %>" max="3" skillid="GPU" sprite="1x1" id="GPU" musthave="Legacy-of-Ancient-God" onclick="add_skill('GPU')">
 			<div>
 				<h3>GPU</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Better performance on ...</p>
@@ -263,7 +272,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 5 -->
-		<div class="skill skill angel" current="0" max="3" skillid="Deep-Learning" sprite="1x1" id="Deep-Learning" musthave="Tax-Collector" dependency="XD" onclick="add_skill('Deep-Learning')">
+		<div class="skill skill angel" current="<%= skill['Deep-Learning'].current %>" max="3" skillid="Deep-Learning" sprite="1x1" id="Deep-Learning" musthave="Tax-Collector" dependency="XD" onclick="add_skill('Deep-Learning')">
 			<div>
 				<h3>Deep Learning</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: I think the hint is too much for you XD</p> 
@@ -272,7 +281,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 6 -->
-		<div class="skill skill angel" current="0" max="3" skillid="Rainbow" sprite="1x1" id="Rainbow" musthave="Adventure-Trip" musthave2="Deep-Learning" onclick="add_skill('Rainbow')">
+		<div class="skill skill angel" current="<%= skill['Rainbow'].current %>" max="3" skillid="Rainbow" sprite="1x1" id="Rainbow" musthave="Adventure-Trip" musthave2="Deep-Learning" onclick="add_skill('Rainbow')">
 			<div>
 				<h3>Rainbow</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Colorful is powerful !</p>
@@ -283,7 +292,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 7 -->
-		<div class="skill skill angel" current="0" max="5" skillid="Thief" sprite="1x1" id="Thief" musthave="GPU" onclick="add_skill('Thief')">
+		<div class="skill skill angel" current="<%= skill['Thief'].current %>" max="5" skillid="Thief" sprite="1x1" id="Thief" musthave="GPU" onclick="add_skill('Thief')">
 			<div>
 				<h3>Thief</h3>	<!-- skill name-->
 				<p>Hint: Fear the legendary DDOS. Have you heard of it?</p> <!-- discription name-->
@@ -292,7 +301,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 8 -->
-		<div class="skill skill angel" current="0" max="5" skillid="SSH" sprite="1x1" id="SSH" musthave="Deep-Learning" onclick="add_skill('SSH')">
+		<div class="skill skill angel" current="<%= skill['SSH'].current %>" max="5" skillid="SSH" sprite="1x1" id="SSH" musthave="Deep-Learning" onclick="add_skill('SSH')">
 			<div>
 				<h3>SSH</h3>	<!-- skill name-->
 				<p>I think the hint is enough =)</p> <!-- discription name-->
@@ -302,7 +311,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 9 -->
-		<div class="skill skill angel" current="0" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" musthave="Rainbow" onclick="add_skill('Respectful-Player')">
+		<div class="skill skill angel" current="<%= skill['Respectful-Player'].current %>" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" musthave="Rainbow" onclick="add_skill('Respectful-Player')">
 			<div>
 				<h3>Respectful Player</h3>	<!-- skill name-->
 				<p>Just Monika</p> <!-- discription name-->
@@ -313,7 +322,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 10 -->
-		<div class="skill skill angel" current="0" max="10" skillid="God-of-Crypto" sprite="1x1" id="God-of-Crypto" musthave="Thief" onclick="add_skill('God-of-Crypto')">
+		<div class="skill skill angel" current="<%= skill['God-of-Crypto'].current %>" max="10" skillid="God-of-Crypto" sprite="1x1" id="God-of-Crypto" musthave="Thief" onclick="add_skill('God-of-Crypto')">
 			<div>
 				<h3>God of Crypto</h3>	<!-- skill name-->
 				<p>Forgive others is to be kind to yourself !</p> <!-- discription name-->
@@ -322,7 +331,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 11 -->
-		<div class="skill skill angel" current="0" max="10" skillid="Unknown" sprite="1x1" id="Unknown" musthave="SSH" onclick="add_skill('Unknown')">
+		<div class="skill skill angel" current="<%= skill['Unknown'].current %>" max="10" skillid="Unknown" sprite="1x1" id="Unknown" musthave="SSH" onclick="add_skill('Unknown')">
 			<div>
 				<h3>Unknown</h3>	<!-- skill name-->
 				<p>Faster than light =) </p> <!-- discription name-->
@@ -331,7 +340,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 12 -->
-		<div class="skill skill angel" current="0" max="10" skillid="Laplaces-Acma" sprite="1x1" id="Laplaces-Acma"  musthave="Respectful-Player" onclick="add_skill('Laplaces-Acma')">
+		<div class="skill skill angel" current="<%= skill['Laplaces-Acma'].current %>" max="10" skillid="Laplaces-Acma" sprite="1x1" id="Laplaces-Acma"  musthave="Respectful-Player" onclick="add_skill('Laplaces-Acma')">
 			<div>
 				<h3>Laplace's Acma</h3>	<!-- skill name-->
 				<p>No one can stand the mob. Not even Blockchains under 51% of angry nodes.</p>

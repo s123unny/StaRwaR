@@ -180,7 +180,18 @@ body {
   background:#30588e;
 }
 
-
+.submit_model {
+    position: absolute;
+    top: 0.5px;
+    left: 16px;
+    /*height: 24px;*/
+    width: 65px;
+    background-color: #3E3E3E;
+    border-style: outset;
+    border-color: #7C7C7C;
+    border-width: 2px;
+    border-radius: 8px;
+}
 
 .workers_type {
 	position: relative;
@@ -199,6 +210,14 @@ body {
 	margin: 0px 0px 0px 0px;
 	float: left;
 	width: 380px;
+	overflow: hidden;
+}
+
+.model_block{
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	float: left;
+	width: 430px;
 	overflow: hidden;
 }
 
