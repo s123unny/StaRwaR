@@ -360,7 +360,7 @@ div.chatroom-text{
 
 span.line{
 	background-image:url(../img/line.png);
-	display: none;
+	display: block;
 	background-size:contain;
 	background-repeat: repeat;
 	position: fixed;

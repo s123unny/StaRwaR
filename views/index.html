@@ -11,7 +11,7 @@
 	<link type="text/css" rel="stylesheet" href="stylesheets/adminbutton.css" />
 	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 </head>
-<body onload="hide_something()">
+<body>
 	<div class="main-window">
 		<!-- login window -->
 		<div id="login" class="confirmOverlay">
@@ -28,41 +28,7 @@
 		</div>
 		<!-- planet  -->
 		<div class="map">
-			<span class = "planet-orange" id = "m0" style="left: 475.7px; top: 240.5px;"></span>
-			<span class = "planet-orange" id = "m1" style="left: 991.7px; top: 33.5px;"></span>
-			<span class = "planet-orange" id = "m2" style="left: 85.7px; top: 420.5px;"></span>
-			<span class = "planet-orange" id = "m3" style="left: 1264.7px; top: 122.5px;"></span>
-			<span class = "planet-orange" id = "m4" style="left: 382.7px; top: 610.5px;"></span>
-			<span class = "planet-orange" id = "m5" style="left: 529.7px; top: 580.5px;"></span>
-			<span class = "planet-orange" id = "m6" style="left: 666.7px; top: 340.5px;"></span>
-			<span class = "planet-orange" id = "m7" style="left: 550.7px; top: 120.5px;"></span>
-			<span class = "planet-orange" id = "m8" style="left: 163.4px; top: 235.4px;"></span>
-			<span class = "planet-orange" id = "m9" style="left: 1006.6px; top: 640.5px;"></span>
-			<span class = "planet-red" id = "c0" style="left: 346.6px; top: 591.5px;"></span>
-			<span class = "planet-red" id = "c1" style="left: 656.6px; top: 240.5px;"></span>
-			<span class = "planet-red" id = "c2" style="left: 336.6px; top: 110.5px;"></span>
-			<span class = "planet-red" id = "c3" style="left: 1006.6px; top: 240.5px;"></span>
-			<span class = "planet-red" id = "c4" style="left: 426.6px; top: 700.5px;"></span>
-			<span class = "planet-blue" id = "a0" style="left: 1106.6px; top: 140.5px;"></span>
-			<span class = "planet-blue" id = "a1" style="left: 966.6px; top: 280.5px;"></span>
-			<span class = "planet-blue" id = "a2" style="left: 674.4px; top: 140.5px;"></span>
-			<span class = "planet-blue" id = "a3" style="left: 1032.5px; top: 345.5px;"></span>
-			<span class = "planet-blue" id = "a4" style="left: 871.1px; top: 660.5px;"></span>
-			<span class = "planet-blue" id = "a5" style="left: 106.6px; top: 287.5px;"></span>
-			<span class = "planet-blue" id = "a6" style="left: 506.6px; top: 676.6px;"></span>
-			<span class = "planet-blue" id = "a7" style="left: 406.6px; top: 140.5px;"></span>
-			<span class = "planet-blue" id = "a8" style="left: 50.6px; top: 455.2px;"></span>
-			<span class = "planet-blue" id = "a9" style="left: 206.6px; top: 382.1px;"></span>
-			<span class = "planet-blue" id = "a10" style="left: 406.6px; top: 240.5px;"></span>
-			<span class = "planet-blue" id = "a11" style="left: 406.6px; top: 542.1px;"></span>
-			<span class = "planet-blue" id = "a12" style="left: 986.6px; top: 182.5px;"></span>
-			<span class = "planet-blue" id = "a13" style="left: 106.6px; top: 322.3px;"></span>
-			<span class = "planet-blue" id = "a14" style="left: 506.6px; top: 193.5px;"></span>
-			<span class = "planet-base" id = "b0" style="left: 296.6px; top: 410.5px;"></span>
-			<span class = "planet-base" id = "b1" style="left: 646.6px; top: 193.5px;"></span>
-			<span class = "planet-base" id = "b2" style="left: 956.6px; top: 543.5px;"></span>
-			<span class = "planet-base" id = "b3" style="left: 606.6px; top: 293.5px;"></span>
-			<span class = "planet-base" id = "b4" style="left: 1106.6px; top: 271.5px;"></span>
+      <button onclick="new_star('c2')">HI</button><
 
 			<span class = "planet-unreached" id = "m0" style="left: 475.7px; top: 240.5px;"></span>
 			<span class = "planet-unreached" id = "m1" style="left: 991.7px; top: 33.5px;"></span>
@@ -94,31 +60,20 @@
 			<span class = "planet-unreached" id = "a12" style="left: 986.6px; top: 182.5px;"></span>
 			<span class = "planet-unreached" id = "a13" style="left: 106.6px; top: 322.3px;"></span>
 			<span class = "planet-unreached" id = "a14" style="left: 506.6px; top: 193.5px;"></span>
-			<span class = "planet-unreached" id = "b0" style="left: 306.6px; top: 460.5px;"></span>
-			<span class = "planet-unreached" id = "b1" style="left: 666.6px; top: 173.5px;"></span>
-			<span class = "planet-unreached" id = "b2" style="left: 936.6px; top: 573.5px;"></span>
-			<span class = "planet-unreached" id = "b3" style="left: 636.6px; top: 313.5px;"></span>
-			<span class = "planet-unreached" id = "b4" style="left: 1116.6px; top: 271.5px;"></span>
+			<span class = "planet-base" id = "b0" style="left: 306.6px; top: 460.5px;"></span>
+			<span class = "planet-base" id = "b1" style="left: 666.6px; top: 173.5px;"></span>
+			<span class = "planet-base" id = "b2" style="left: 936.6px; top: 573.5px;"></span>
+			<span class = "planet-base" id = "b3" style="left: 636.6px; top: 313.5px;"></span>
+			<span class = "planet-base" id = "b4" style="left: 1116.6px; top: 271.5px;"></span>
+
+       <!-- This is b0 lines -->
+      <span class = "line" id = "b0-a9" style = "transform: rotate(17deg); left: 168.6px; top: 403.5px; width: 109px"></span> 
+
 		</div>
 		<!-- chatroom  -->
 		<div class="chatroom">
 			<p class="title"> Chatroom</p>
 			<div id="chat_msg">
-<!-- 				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul>
-				<ul class="chatroom-text">[Player 1]：你是在公三小喔喔喔喔喔喔喔喔喔</ul> -->
 			</div>
 			<div class="user_chat">
 				<button class="chat_button" onclick="sendMessage()">Send</button><input class="chat" id="messageForm"/>
