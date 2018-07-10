@@ -11,7 +11,7 @@ class Skill{
 	}
 }
 function MakePlayerSkill(){
-		var Player_skill = [];
+		// var Player_skill = [];
 		var Skill_ability = {
 			'Legacy-of-Ancient-God':[1, 'General', function(){return;}], 
 			'Tax-Collector':[2, 'ML', function(pay){if(this.learned){return 1.1 * pay;} else{return pay;}}],
@@ -26,17 +26,18 @@ function MakePlayerSkill(){
 			'Unknown':[10, 'MINOR', function(){return this.learned;}],
 			"Laplaces-Acma":[10, 'General', function(day){if(this.learned){return day - 1;} else{return day;}}],
 		};
-		for (var i = 0; i < 5; i++){
-			var single_user_skill = {};
-			for (var skill_name in Skill_ability){
-				var require = Skill_ability[skill_name][0];
-				var type = Skill_ability[skill_name][1];
-				var method = Skill_ability[skill_name][2];
-				single_user_skill[skill_name] =  new Skill(require, type, method);
-			}
-		Player_skill.push(single_user_skill);
+		// for (var i = 0; i < 5; i++){
+		var single_user_skill = {};
+		for (var skill_name in Skill_ability){
+			var require = Skill_ability[skill_name][0];
+			var type = Skill_ability[skill_name][1];
+			var method = Skill_ability[skill_name][2];
+			single_user_skill[skill_name] =  new Skill(require, type, method);
 		}
-		return Player_skill;
+		// Player_skill.push(single_user_skill);
+		// }
+		// return Player_skill;
+		return single_user_skill;
 	}
 module.exports = 
 {

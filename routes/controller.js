@@ -35,7 +35,7 @@ var updateFunction = require("./update");
 var timer = require("./timer");
 // var questionFuntion = require("./questionEvent");
 
-var Skill = require("./skill")
+var Skill = require("../model/skill")
 //var Player_skill = new Skill.MakePlayerSkill();
 global.model = {
 	stars: stars,
@@ -54,8 +54,8 @@ Controller = function(io, model) {
 	var model = global.model;
 	//console.log(model.stars);
 	var count = 0;
-	var Player_skill =  Skill.make();
-	console.log(Player_skill[0]);
+	// var Player_skill =  Skill.make();
+	// console.log(Player_skill[0]);
 	var Update = new updateFunction(io);
 	// var Question = new questionFuntion(io);
 	
@@ -454,11 +454,12 @@ Controller = function(io, model) {
 			// socket io start
 			if(id != 87 && id >= 0 && id <= 4) {
 				model.players[id].name = name;
+
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
 				Update.Chatting(login_msg, "SYSTEM");
 				Update.Leaderboard(model.players);
 				Update.Notify(playerIO[id].first,login_msg);
-				player.on('chat_message', (msg) => Update.Chatting(msg, Player_skill[id]['Respectful-Player'].method(name))); // listen to chatting msg
+				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name))); // listen to chatting msg
 				// Question.Init(player);
 				
 				test = model.players[id];
@@ -492,7 +493,7 @@ Controller = function(io, model) {
 			// socket io start
 			if(id >= 0 && id <= 4) {
 				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
-				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerIO[id].second,Player_skill[id]));
+				player.on('skill', (skillname) => model.players[id].skill=Update.Skill(skillname, playerIO[id].second,model.players[id].skill));
 			}
 		}
 	});
