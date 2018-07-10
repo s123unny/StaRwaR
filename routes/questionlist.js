@@ -78,13 +78,13 @@ module.exports = function(io) {
 			//"money": 3000,
 			"id": 5,
 			"multi" : false,
-			"subject" : "Network",
-			"description" : "馬撈家中對外的網路連線只有一個public IP，但因為他是個強大的電腦工程師，因此有10台電腦都必須經由該public IP連接上網際網路。下列哪個技術或服務是他為了達成這個目的而會用到的呢？ (單選)",
+			"subject" : "放鬆一下",
+			"description" : "考驗運氣與直覺的時候XD (單選)",
 			"options" : [
-				"IPv6，Internet Protocol version 6，網際網路通訊協定第6版",
-				"NAT，Network Address Translation，網路位址轉換",
-				"Firewall，防火牆",
-				"DNS，Domain Name System，網域名稱系統"
+				"老師說過，選項三短一長當然是要選最長的",
+				"擲個橡皮擦決定吧",
+				"當然是要選中間的",
+				"運氣也是實力的一種呢"
 			],
 			"correct" : [ 1 ]
 		},
@@ -93,13 +93,13 @@ module.exports = function(io) {
 			//"money": 3000,
 			"id": 6,
 			"multi" : false,
-			"subject" : "Network",
-			"description" : "小當家是名偉大的中華料理廚師，在外闖蕩多年，為了再次精進自己的廚藝，他決定回老家中國四川學習「麻婆豆腐」的精髓。然而學習過程並不順遂，正當他在四川想要上Facebook打卡分享悲傷心情順便上個Hashtag時，發現竟然連不上Facebook!! 看來中國強大的『長城』真是滴水不漏啊。如果小當家還是堅持要上Facebook打卡，下列哪個技術或服務可以幫助他連上Facebook呢？ (單選)",
+			"subject" : "小知識",
+			"description" : "資工系在台大是屬於那一院呢?(單選)",
 			"options" : [
-				"IoT，Internet of Things，物聯網",
-				"DHCP，Dynamic Host Configuration Protocol，動態主機設定協定",
-				"NAT，Network Address Translation，網路位址轉換",
-				"VPN，Virtual Private Network，虛擬私人網路"
+				"理學院",
+				"工學院",
+				"商學院",
+				"電資學院"
 			],
 			"correct" : [ 3 ]
 		},
@@ -108,13 +108,12 @@ module.exports = function(io) {
 			//"money": 5000,
 			"id": 7,
 			"multi" : false,
-			"subject" : "Network",
-			"description" : "下列哪個Subnet皆屬於Private IP？ (單選)",
+			"subject" : "小知識",
+			"description" : "工人們的名牌是以什麼為藍本? (單選)",
 			"options" : [
-				"8.8.8.8",
-				"172.40.21.244",
-				"192.168.241.125",
-				"31.13.87.36"
+				"深情馬戲團",
+				"家事小浣熊",
+				"角落小夥伴",
 			],
 			"correct" : [ 2 ]
 		},
@@ -123,14 +122,14 @@ module.exports = function(io) {
 			//"money": 5000,
 			"id": 8,
 			"multi" : false,
-			"subject" : "Network",
-			"description" : "請問URL <strong>www.csie.ntu.edu.tw</strong> 對應到的IP是? (單選)",
+			"subject" : "fintech",
+			"description" : " (單選)",
 			"options" : [
-				"31.13.87.36",
-				"140.112.30.26 ",
-				"202.169.173.217",
-				"203.72.178.253",
-				"216.58.200.37"
+				"",
+				"",
+				"",
+				"",
+				""
 			],
 			"correct" : [ 1 ]
 		},
@@ -139,14 +138,14 @@ module.exports = function(io) {
 			//"money": 5000,
 			"id": 9,
 			"multi" : true,
-			"subject" : "Network",
-			"description" : "下列哪些IP屬於140.112.0.0/16的子網域內？ (多選)",
+			"subject" : "fintech",
+			"description" : " (多選)",
 			"options" : [
-				"140.112.37.223",
-				"140.112.253.99",
-				"140.114.2.243",
-				"140.118.77.103",
-				"140.132.1.30"
+				"",
+				"",
+				"",
+				"",
+				""
 			],
 			"correct" : [ 0, 1 ]
 		},
@@ -175,7 +174,7 @@ module.exports = function(io) {
 			"description" : "下列哪一個 Python 語法是錯誤的？(A,B 型態皆為 Int) (單選)",
 			"options" : [
 				"if A = B:",
-				"for A in range(2017):",
+				"for A in range(2018):",
 				"A,B = (1,2)",
 			],
 			"correct" : [ 0 ]
@@ -372,10 +371,10 @@ module.exports = function(io) {
 			"subject": "送分題",
 			"description" : "這次資訊營的標題是什麼？ (單選)",
 			"options": [
-				"2017臺大資訊營-你的城市",
-				"2087臺大資訊營-你的程式",
-				"2017臺大資訊營-你的名字",
-				"2017臺大資訊營-你的程式",
+				"2018臺大資訊營-遇見你之後",
+				"2078臺大資訊營-遇見你資後",
+				"2018臺大資訊營-遇見你資前",
+				"2018臺大資訊營-遇見你資後",
 			],
 			"correct": [3]
 		},
@@ -383,16 +382,15 @@ module.exports = function(io) {
 			//"money": 2000,
 			"id": 25,
 			"multi": false,
-			"subject": "Python",
-			"description" : "教Python的講師名牌上的綽號是什麼？ (單選)",
+			"subject": "時事",
+			"description" : "營期前的颱風叫什麼? (單選)",
 			"options": [
-				"小羊",
-				"小狗",
-				"小貓",
-				"小雞",
-				"小牛",
+				"卡崔娜",
+				"瑪麗娜",
+				"瑪莉亞",
+				"卡利亞",
 			],
-			"correct": [0]	
+			"correct": [1]	
 
 		}, 
 		{
@@ -461,15 +459,17 @@ module.exports = function(io) {
 	];	
 
 	/* shuffle */
-	var j, x;
-	for (var i = questions.length; i; i--) {
+	var i,j;
+	/*for (var i = questions.length; i; i--) {
 		j = Math.floor(Math.random() * i);
 		x = questions[i - 1];
 		questions[i - 1] = questions[j];
 		questions[j] = x;
-	}
-	console.log("get a Question : " + questions[0].id);
-	return question[0];
+	}*/
+	i=questions.length;
+	j = Math.floor(Math.random() * i);
+	console.log("get a Question : " + questions[j].id);
+	return questions[j];
 	//console.log("end to get a question");
 //	io.emit("show_answer",questions[0],"1");
 };

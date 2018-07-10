@@ -7,7 +7,7 @@ var password = ["meow", "beep", "wang", "woof", "oops"];
 
 var fs = require("fs");
 
-
+//var questionevent = require("./question.js");
 
 Controller = function(io, model) {
 	var io = io;
@@ -27,8 +27,17 @@ Controller = function(io, model) {
 			} else if (id >= 0 && id < 5 && psw == password[id]) {
 				console.log("Player " + id + " login.");
 			//`	questionEvent(io);
-				
-							
+				/*var array=["1",null,null,null,null];
+				var state,substate;
+				function callback(array,state,substate){
+					console.log("callback");
+				};
+
+				var QE=new questionevent(io,callback);
+				QE.Init(player);
+				var newarray=QE.Invoke(array,1,1);
+				console.log("newarray in control: ", newarray);*/
+
 			} else {
 				console.log("Wrong login!")
 				return;

@@ -1,7 +1,8 @@
 var q;
 var array;
+var tmp;
 
-function showQuestion(questions,flag){
+function showQuestion(questions,array){
 	
 	q=questions;
 
@@ -13,10 +14,14 @@ function showQuestion(questions,flag){
 	$('#questionBox .title h1').text(q.subject);
 	$('#questionBox .qDes p').html(q.description);
 	
-	if(flag)
+	if(array[playerId]!=null){
 		$("#submitButton").show();
+		console.log("can submit== "+playerId);
+	}
 	else {
 		$("#submitButton").hide();
+		console.log("can not submit== "+playerId);
+		
 	}
 
 	if( q.multi ) {
@@ -51,16 +56,18 @@ function showQuestion(questions,flag){
 		$('#questionBox #timeLeft').text('剩餘時間：'+cnt);
 		if( cnt == 0 ) {
 			clearInterval(timer);
-			socket.emit("answer_question",q, []);
 			$('#questionBox #timeLeft').hide();
-			$('#answerResult .title').text("來不及了QQ");
-		
+			socket.emit("answer_question",q, [],playerId);
+			if((tmp==0)&&(array[playerId])){$('#answerResult .title').text("來不及了QQ");
+			}
+			tmp=0;
 		}
 	} , 1000);
 
 }
 
 function submitAnswer() {
+	tmp=1;
 	clearInterval(timer);
 	$('#questionBox #timeLeft').hide();
 	var ans = [];
@@ -71,28 +78,29 @@ function submitAnswer() {
 		    ans.push( Number( $(this).val() ) );
 		});
 	}
-	console.log("player ? answer : "+ ans);
+	console.log("player answer : "+ ans);
 	$('#submitButton').hide();
-	socket.emit('answer_question',q, ans);
+	socket.emit('answer_question',q, ans,playerId);
 	console.log("send answer and q: "+ q.id);
+	$('#answerResult  .title').text("waiting for others");
 	$('#questionBox form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 }
 
-function showAnswer( q,flag ,id ) {
+function showAnswer( q,returnArray,array ) {
 
-	if (correct==1) {
-		$('#answerResult  .title').text("答對了！");
+	if (returnArray[playerId]) {
+		$('#answerResult  .title').text("答對了!");
 		//$('#answerResult img').attr( 'src', "img/correct.png" );
-		console.log(id+" answer correct");
+		console.log(playerId+" answer correct");
 	}
-	else if(correct==0){
+	else if(array[playerId]){
 		$('#answerResult  .title ').text("答錯了QQ");
-		//$('#answerResult img').attr( 'src', "img/wrong.png" );
-		
-		console.log(id+" answer wrong");
+		//$('#answerResult img').attr( 'src', "img/wrong.png" );	
+		console.log(playerId+" answer wrong");
 	}
 	else{
-		console.log(id+" no need answer");
+		$('#answerResult  .title ').text("");
+		console.log(playerId+" no need answer");
 	}
 
 	var correctAns = '正確答案：';
@@ -105,14 +113,14 @@ function showAnswer( q,flag ,id ) {
 
 	$('#questionBox #answerResult p').text(correctAns);
 	$('#questionBox form').hide();
-	if(id==9)//admin
+	//if(playerId==87)//admin
 		$('#questionBox .closeButton').show();
 	$('#questionBox #answerResult').show();
 }
-socket.on('show_answer',(q,flag,id)=>showAnswer(q,flag,id));
+socket.on('show_answer',(q,returnArray,array)=>showAnswer(q,returnArray,array));
 
 function closeQuestion() {
 	$('#questionBox').hide();
 //	showTurnOver();
 }
-socket.on('needQuestion',(questions,flag)=> showQuestion(questions,flag));
+socket.on('needQuestion',(questions,array)=> showQuestion(questions,array));
