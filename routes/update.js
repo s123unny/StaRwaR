@@ -42,7 +42,7 @@ class Updateutil{
 		this.io.sockets.to(playerIO).emit();	
 	}
 	Chatting(msg, name){
-		console.log(name, msg);
+		console.log(name, msg,"test");
 		this.io.emit('chatting', msg, name);
 	}
 	Notify(playerIO, msg) {
