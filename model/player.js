@@ -39,9 +39,9 @@ player = function(id) {
 		x_pos: x_POS[id],
 		y_pos: y_POS[id],
 		dataset: {
-			image: 0, text: 0, sound: 0},
+			image: 0, text: 0, audio: 0},
 		AImodel: {
-			image: 0, text: 0, sound: 0},
+			image: 1, text: 2, audio: 3},
 		hand_on_AImodel: null,
 		num_of_working_miner: function() {
 			sum = 0;

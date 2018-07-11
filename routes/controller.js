@@ -82,6 +82,7 @@ Controller = function(io, model) {
 
 	function collectPlayerSetting(id, ships, money, workers, hand_on_AImodel) {
 		console.log("collectPlayerSetting", id);
+		console.log(hand_on_AImodel);
 		player = model.players[id];
 		player.money = money;
 		player.num_of_miner = workers[0];

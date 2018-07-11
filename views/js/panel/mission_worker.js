@@ -82,8 +82,8 @@ function confirm_model(type){
 	$("#submit_"+type).attr('id', 'submit_confirm');
 	$("#"+type+"M_num").attr('id', 'confirm_model_value');
 	$('#submit_confirm').attr('disabled', true);
+	$('#model_big_block').append('<span id="confirm_model_type" style="display: none;">'+type+'</span>')
 }
-
 
 /* click button and assign work */
 

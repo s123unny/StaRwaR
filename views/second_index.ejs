@@ -72,28 +72,28 @@
 					<div class="items_img">
 						<img class="worker_png" src="./pic/audio.png" width="30" height="30"></img>
 					</div>
-					<div class="items_type">Phoney Tunes &nbsp  <span id="audio_num">0</span></div>
+					<div class="items_type">Phoney Tunes &nbsp  <span id="audio_num"><%=player.dataset["audio"]%></span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/image.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Alien Drawings&nbsp <span id="image_num">0</span></div>
+					<div class="items_type">Alien Drawings&nbsp <span id="image_num"><%=player.dataset["image"]%></span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/text.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Forged Notes &nbsp&nbsp <span id="text_num">0</span></div>
+					<div class="items_type">Forged Notes &nbsp&nbsp <span id="text_num"><%=player.dataset["text"]%></span></div>
 				</div>
 			</div>
-			<div class="model_block">
+			<div class="model_block" id="model_big_block">
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/audio_m.png" width="40" height="40"></img>
 					</div>
 					<div class="items_type">
-						Endearing Flutesong &nbsp<span id="audioM_num">0</span>
+						Endearing Flutesong &nbsp<span id="audioM_num"><%=player.AImodel["audio"]%></span>
 						<span class="submit_model" onclick="submit_model('audio')" id="submit_audio">Submit</span>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 						<img class="worker_png" src="./pic/image_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">
-						Surreal Landscape &nbsp&nbsp <span id="imageM_num">0</span>
+						Surreal Landscape &nbsp&nbsp <span id="imageM_num"><%=player.AImodel["image"]%></span>
 						<span class="submit_model" onclick="submit_model('image')" id="submit_image">Submit</span>
 					</div>
 				</div>
@@ -111,7 +111,7 @@
 						<img class="worker_png" src="./pic/text_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">
-						Sentimental Letter &nbsp&nbsp <span id="textM_num">0</span>
+						Sentimental Letter &nbsp&nbsp <span id="textM_num"><%=player.AImodel["text"]%></span>
 						<span class="submit_model" onclick="submit_model('text')" id="submit_text">Submit</span>
 					</div>
 				</div>

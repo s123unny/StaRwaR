@@ -29,7 +29,7 @@ function collect_pannel() {
   var num_of_miner = Number($('#standby_miner_num').text()) + Number($('#working_miner_num').text());
   var num_of_haker = Number($('#standby_hacker_num').text()) + Number($('#working_hacker_num').text());
   var workers = [num_of_miner, num_of_trainer, num_of_haker];
-  var hand_on_AImodel = null;
+  var hand_on_AImodel = get_model_type();
   var ships = [];
   for (var i = 0; i < 5; i++) {
     ships.push(get_ship_info(i));
@@ -37,12 +37,21 @@ function collect_pannel() {
   console.log(money, workers);
   
   socket.emit("collectData", pid, ships, money, workers, hand_on_AImodel);
+  alert("時間到！請停止操作控制面板");
+  disable_pannel();
+}
+
+function get_model_type() {
+  if($('#confirm_model_type').length) {
+    return $('#confirm_model_type').text();
+  } else {
+    return null;
+  }
 }
 
 function get_ship_info(sid) {
   console.log("Get ship Info ")
   if($('#going_mblock_slot'+sid).length) {  // for ongoing ship
-    //pending: 確定onging 船隻狀況
     if ($('#returned'+sid).length) {
       var targetId = $('#ongoing_mblock_slot'+sid+'_location').text();
       return ship(sid, -1, -1, -1, targetId, null);
@@ -51,7 +60,6 @@ function get_ship_info(sid) {
     }
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
     if ($('#submitted'+sid).length) {
-    // if (sid == 1) {  // 測試用，把這行打開上面註解掉就可以看到有一艘船的回傳資料
       var miner = Number($('#assign_mblock_slot'+sid+'_M').val());
       var trainer = Number($('#assign_mblock_slot'+sid+'_T').val());
       var hacker = Number($('#assign_mblock_slot'+sid+'_H').val());
@@ -86,3 +94,8 @@ function ship(id, miner, trainer, haker, targetId, datasetType) {
   };
 }
 
+function disable_pannel() {
+  $(".add_minus_button").css("display", "none");
+  $(".submitter").css("display", "none");
+  $(".submit_model").css("display", "none");
+}
