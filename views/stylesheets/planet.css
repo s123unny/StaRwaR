@@ -49,3 +49,9 @@ span.planet-unreached{
 	width: 30px;
 	position: fixed;
 }
+
+span.pos{
+	position: fixed;
+	display: none;
+
+}

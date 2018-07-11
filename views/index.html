@@ -28,41 +28,77 @@
 		</div>
 		<!-- planet  -->
 		<div class="map">
-			<span class = "planet-unreached" id = "m0" style="left: 475.7px; top: 240.5px;"></span>
-			<span class = "planet-unreached" id = "m1" style="left: 991.7px; top: 33.5px;"></span>
-			<span class = "planet-unreached" id = "m2" style="left: 85.7px; top: 420.5px;"></span>
-			<span class = "planet-unreached" id = "m3" style="left: 1264.7px; top: 122.5px;"></span>
-			<span class = "planet-unreached" id = "m4" style="left: 382.7px; top: 610.5px;"></span>
-			<span class = "planet-unreached" id = "m5" style="left: 529.7px; top: 580.5px;"></span>
-			<span class = "planet-unreached" id = "m6" style="left: 666.7px; top: 340.5px;"></span>
-			<span class = "planet-unreached" id = "m7" style="left: 550.7px; top: 120.5px;"></span>
-			<span class = "planet-unreached" id = "m8" style="left: 163.4px; top: 235.4px;"></span>
-			<span class = "planet-unreached" id = "m9" style="left: 1006.6px; top: 640.5px;"></span>
-			<span class = "planet-unreached" id = "c0" style="left: 346.6px; top: 591.5px;"></span>
-			<span class = "planet-unreached" id = "c1" style="left: 656.6px; top: 240.5px;"></span>
-			<span class = "planet-unreached" id = "c2" style="left: 336.6px; top: 110.5px;"></span>
-			<span class = "planet-unreached" id = "c3" style="left: 1006.6px; top: 240.5px;"></span>
-			<span class = "planet-unreached" id = "c4" style="left: 426.6px; top: 700.5px;"></span>
-			<span class = "planet-unreached" id = "a0" style="left: 1106.6px; top: 140.5px;"></span>
-			<span class = "planet-unreached" id = "a1" style="left: 966.6px; top: 280.5px;"></span>
-			<span class = "planet-unreached" id = "a2" style="left: 674.4px; top: 140.5px;"></span>
-			<span class = "planet-unreached" id = "a3" style="left: 1032.5px; top: 345.5px;"></span>
-			<span class = "planet-unreached" id = "a4" style="left: 871.1px; top: 660.5px;"></span>
-			<span class = "planet-unreached" id = "a5" style="left: 106.6px; top: 287.5px;"></span>
-			<span class = "planet-unreached" id = "a6" style="left: 506.6px; top: 676.6px;"></span>
-			<span class = "planet-unreached" id = "a7" style="left: 406.6px; top: 140.5px;"></span>
-			<span class = "planet-unreached" id = "a8" style="left: 50.6px; top: 455.2px;"></span>
-			<span class = "planet-unreached" id = "a9" style="left: 206.6px; top: 382.1px;"></span>
-			<span class = "planet-unreached" id = "a10" style="left: 406.6px; top: 240.5px;"></span>
-			<span class = "planet-unreached" id = "a11" style="left: 406.6px; top: 542.1px;"></span>
-			<span class = "planet-unreached" id = "a12" style="left: 986.6px; top: 182.5px;"></span>
-			<span class = "planet-unreached" id = "a13" style="left: 106.6px; top: 322.3px;"></span>
-			<span class = "planet-unreached" id = "a14" style="left: 506.6px; top: 193.5px;"></span>
-			<span class = "planet-base" id = "b0" style="left: 306.6px; top: 460.5px;"></span>
-			<span class = "planet-base" id = "b1" style="left: 690.6px; top: 173.5px;"></span>
-			<span class = "planet-base" id = "b2" style="left: 936.6px; top: 490px;"></span>
-			<span class = "planet-base" id = "b3" style="left: 636.6px; top: 313.5px;"></span>
-			<span class = "planet-base" id = "b4" style="left: 1116.6px; top: 271.5px;"></span>
+			<span class = "planet-unreached" id = "m0" style="left: 475.7px; top: 240.5px;" onmouseover="show_pos('m0')" onmouseout="close_pos('m0')"></span>
+			<span class = "planet-unreached" id = "m1" style="left: 991.7px; top: 33.5px;" onmouseover="show_pos('m1')" onmouseout="close_pos('m1')"></span>
+			<span class = "planet-unreached" id = "m2" style="left: 85.7px; top: 420.5px;" onmouseover="show_pos('m2')" onmouseout="close_pos('m2')"></span>
+			<span class = "planet-unreached" id = "m3" style="left: 1264.7px; top: 122.5px;" onmouseover="show_pos('m3')" onmouseout="close_pos('m3')"></span>
+			<span class = "planet-unreached" id = "m4" style="left: 382.7px; top: 610.5px;" onmouseover="show_pos('m4')" onmouseout="close_pos('m4')"></span>
+			<span class = "planet-unreached" id = "m5" style="left: 529.7px; top: 580.5px;" onmouseover="show_pos('m5')" onmouseout="close_pos('m5')"></span>
+			<span class = "planet-unreached" id = "m6" style="left: 666.7px; top: 340.5px;" onmouseover="show_pos('m6')" onmouseout="close_pos('m6')"></span>
+			<span class = "planet-unreached" id = "m7" style="left: 550.7px; top: 120.5px;" onmouseover="show_pos('m7')" onmouseout="close_pos('m7')"></span>
+			<span class = "planet-unreached" id = "m8" style="left: 163.4px; top: 235.4px;" onmouseover="show_pos('m8')" onmouseout="close_pos('m8')"></span>
+			<span class = "planet-unreached" id = "m9" style="left: 1006.6px; top: 640.5px;" onmouseover="show_pos('m9')" onmouseout="close_pos('m9')"></span>
+			<span class = "planet-unreached" id = "c0" style="left: 346.6px; top: 591.5px;" onmouseover="show_pos('c0')" onmouseout="close_pos('c0')"></span>
+			<span class = "planet-unreached" id = "c1" style="left: 656.6px; top: 240.5px;" onmouseover="show_pos('c1')" onmouseout="close_pos('c1')"></span>
+			<span class = "planet-unreached" id = "c2" style="left: 336.6px; top: 110.5px;" onmouseover="show_pos('c2')" onmouseout="close_pos('c2')"></span>
+			<span class = "planet-unreached" id = "c3" style="left: 1006.6px; top: 240.5px;" onmouseover="show_pos('c3')" onmouseout="close_pos('c3')"></span>
+			<span class = "planet-unreached" id = "c4" style="left: 426.6px; top: 700.5px;" onmouseover="show_pos('c4')" onmouseout="close_pos('c4')"></span>
+			<span class = "planet-unreached" id = "a0" style="left: 1106.6px; top: 140.5px;" onmouseover="show_pos('a0')" onmouseout="close_pos('a0')"></span>
+			<span class = "planet-unreached" id = "a1" style="left: 966.6px; top: 280.5px;" onmouseover="show_pos('a1')" onmouseout="close_pos('a1')"></span>
+			<span class = "planet-unreached" id = "a2" style="left: 674.4px; top: 140.5px;" onmouseover="show_pos('a2')" onmouseout="close_pos('a2')"></span>
+			<span class = "planet-unreached" id = "a3" style="left: 1032.5px; top: 345.5px;" onmouseover="show_pos('a3')" onmouseout="close_pos('a3')"></span>
+			<span class = "planet-unreached" id = "a4" style="left: 871.1px; top: 660.5px;" onmouseover="show_pos('a4')" onmouseout="close_pos('a4')"></span>
+			<span class = "planet-unreached" id = "a5" style="left: 106.6px; top: 287.5px;" onmouseover="show_pos('a5')" onmouseout="close_pos('a5')"></span>
+			<span class = "planet-unreached" id = "a6" style="left: 506.6px; top: 676.6px;" onmouseover="show_pos('a6')" onmouseout="close_pos('a6')"></span>
+			<span class = "planet-unreached" id = "a7" style="left: 406.6px; top: 140.5px;" onmouseover="show_pos('a7')" onmouseout="close_pos('a7')"></span>
+			<span class = "planet-unreached" id = "a8" style="left: 50.6px; top: 455.2px;" onmouseover="show_pos('a8')" onmouseout="close_pos('a8')"></span>
+			<span class = "planet-unreached" id = "a9" style="left: 206.6px; top: 382.1px;" onmouseover="show_pos('a9')" onmouseout="close_pos('a9')"></span>
+			<span class = "planet-unreached" id = "a10" style="left: 406.6px; top: 240.5px;" onmouseover="show_pos('a10')" onmouseout="close_pos('a10')"></span>
+			<span class = "planet-unreached" id = "a11" style="left: 406.6px; top: 542.1px;" onmouseover="show_pos('a11')" onmouseout="close_pos('a11')"></span>
+			<span class = "planet-unreached" id = "a12" style="left: 986.6px; top: 182.5px;" onmouseover="show_pos('a12')" onmouseout="close_pos('a12')"></span>
+			<span class = "planet-unreached" id = "a13" style="left: 106.6px; top: 322.3px;" onmouseover="show_pos('a13')" onmouseout="close_pos('a13')"></span>
+			<span class = "planet-unreached" id = "a14" style="left: 506.6px; top: 193.5px;" onmouseover="show_pos('a14')" onmouseout="close_pos('a14')"></span>
+			<span class = "planet-base" id = "b0" style="left: 306.6px; top: 460.5px;" onmouseover="show_pos('b0')" onmouseout="close_pos('b0')"></span>
+			<span class = "planet-base" id = "b1" style="left: 690.6px; top: 173.5px;" onmouseover="show_pos('b1')" onmouseout="close_pos('b1')"></span>
+			<span class = "planet-base" id = "b2" style="left: 936.6px; top: 490px;" onmouseover="show_pos('b2')" onmouseout="close_pos('b2')"></span>
+			<span class = "planet-base" id = "b3" style="left: 636.6px; top: 313.5px;" onmouseover="show_pos('b3')" onmouseout="close_pos('b3')"></span>
+			<span class = "planet-base" id = "b4" style="left: 1116.6px; top: 271.5px;" onmouseover="show_pos('b4')" onmouseout="close_pos('b4')"></span>
+			<!-- show position -->
+			<span class="pos" id="m0_pos" style="left: 475.7px; top: 240.5px;">(4, 3)</span>
+			<span class="pos" id="m1_pos" style="left: 991.7px; top: 33.5px;" >(9, 0)</span>
+			<span class="pos" id="m2_pos" style="left: 85.7px; top: 420.5px;" >(0, 5)</span>
+			<span class="pos" id="m3_pos" style="left: 1264.7px; top: 122.5px;" >(11, 1)</span>
+			<span class="pos" id="m4_pos" style="left: 382.7px; top: 610.5px;" >(3, 8)</span>
+			<span class="pos" id="m5_pos" style="left: 529.7px; top: 580.5px;" >(4, 7)</span>
+			<span class="pos" id="m6_pos" style="left: 666.7px; top: 340.5px;" >(5, 5)</span>
+			<span class="pos" id="m7_pos" style="left: 550.7px; top: 120.5px;" >(4, 1)</span>
+			<span class="pos" id="m8_pos" style="left: 163.4px; top: 235.4px;" >(1, 2)</span>
+			<span class="pos" id="m9_pos" style="left: 1006.6px; top: 640.5px;" >(9, 8)</span>
+			<span class="pos" id="c0_pos" style="left: 346.6px; top: 591.5px;" >(2, 8)</span>
+			<span class="pos" id="c1_pos" style="left: 656.6px; top: 240.5px;" >(5, 3)</span>
+			<span class="pos" id="c2_pos" style="left: 336.6px; top: 110.5px;" >(2, 1)</span>
+			<span class="pos" id="c3_pos" style="left: 1006.6px; top: 240.5px;" ></span>
+			<span class="pos" id="c4_pos" style="left: 426.6px; top: 700.5px;" ></span>
+			<span class="pos" id="a0_pos" style="left: 1106.6px; top: 140.5px;" ></span>
+			<span class="pos" id="a1_pos" style="left: 966.6px; top: 280.5px;" ></span>
+			<span class="pos" id="a2_pos" style="left: 674.4px; top: 140.5px;" ></span>
+			<span class="pos" id="a3_pos" style="left: 1032.5px; top: 345.5px;" ></span>
+			<span class="pos" id="a4_pos" style="left: 871.1px; top: 660.5px;" ></span>
+			<span class="pos" id="a5_pos" style="left: 106.6px; top: 287.5px;" ></span>
+			<span class="pos" id="a6_pos" style="left: 506.6px; top: 676.6px;" ></span>
+			<span class="pos" id="a7_pos" style="left: 406.6px; top: 140.5px;" ></span>
+			<span class="pos" id="a8_pos" style="left: 50.6px; top: 455.2px;" ></span>
+			<span class="pos" id="a9_pos" style="left: 206.6px; top: 382.1px;" ></span>
+			<span class="pos" id="a10_pos" style="left: 406.6px; top: 240.5px;" ></span>
+			<span class="pos" id="a11_pos" style="left: 406.6px; top: 542.1px;" ></span>
+			<span class="pos" id="a12_pos" style="left: 986.6px; top: 182.5px;" ></span>
+			<span class="pos" id="a13_pos" style="left: 106.6px; top: 322.3px;" ></span>
+			<span class="pos" id="a14_pos" style="left: 506.6px; top: 193.5px;" ></span>
+			<span class="pos" id="b0_pos" style="left: 306.6px; top: 460.5px;"></span>
+			<span class="pos" id="b1_pos" style="left: 690.6px; top: 173.5px;"></span>
+			<span class="pos" id="b2_pos" style="left: 936.6px; top: 490px;"></span>
+			<span class="pos" id="b3_pos" style="left: 636.6px; top: 313.5px;"></span>
+			<span class="pos" id="b4_pos" style="left: 1116.6px; top: 271.5px;"></span>
 
 		   <!-- This is b0 lines -->
 			<span class = "line" id = "b0-a9" style = "transform: rotate(35deg); left: 208.6px; top: 433.5px; width: 129px"></span> 
