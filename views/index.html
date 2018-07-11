@@ -10,6 +10,7 @@
 	<link type="text/css" rel="stylesheet" href="stylesheets/planet.css" />
 	<link type="text/css" rel="stylesheet" href="stylesheets/adminbutton.css" />
 	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+      <link type="text/css" rel="stylesheet" href="stylesheets/question.css"/>
 </head>
 <body>
 	<div class="main-window">
@@ -225,11 +226,20 @@
       <span class = "line" id = "b4-m1" style = "transform: rotate(242deg); left: 940.6px; top: 180px; width: 280px"></span>
       <span class = "line" id = "b4-a0" style = "transform: rotate(260deg); left: 1060.6px; top: 220px; width: 130px"></span>
 
+<<<<<<< HEAD
     </div>
 	
      <div class="popBox eventBox" id="questionBox">
 	     <input type=button class="closeButton" value="close" onclick="closeQuestion()">
 	     	<div class="title">
+=======
+      <!-- <span class = "line" id = "b2-m5" style = "transform: rotate(-72deg); left: 310px; top: 435.5px; width: 485px"></span> -->
+    
+    </div>	
+     <div class="questionPopBox questionevent" id="questionBox">
+	     <input type=button class="closeButton" value="close" onclick="sendcloseQ()">
+	     	<div class="questionTitle">
+>>>>>>> connect_question
 			<h1>題目名稱</h1>
 			<div class="timer" id="timeLeft"></div>
 		</div>
@@ -286,13 +296,14 @@
 		</form>
 		
 		<div id="answerResult">
-			<h1 class="title">答對/錯了<h1>
+			<h1 class="questionTitle">答對/錯了<h1>
 			<p></p>
 		</div>
 		
 		
 		
 	</div>
+
   </div>
 
 		<!-- chatroom  -->
