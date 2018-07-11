@@ -478,6 +478,10 @@ Controller = function(io, model) {
 			}
 			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
 				console.log("AImodel event");
+				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下： Audio: "+ai_ratio[model.day][0]+"Image: "+ai_ratio[model.day][1]+"Text: "+ai_ratio[model.day][2]+;
+				for (var i = 0; i < 5; i++) {
+					Update.Notify(playerIO[i].first, msg);
+				}
 				/*pop box: event*/
 			}
 			for(var i = 0; i < 5; i++)

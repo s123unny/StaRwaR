@@ -44,7 +44,7 @@ function ship_status(ships, id, stars, skillid) {
 		} else {
 			if (list[i]) {
 				status_array.push("suspend");
-			else {
+			} else {
 				status_array.push("arrive");
 			}
 		}
