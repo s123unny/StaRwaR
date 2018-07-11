@@ -51,9 +51,9 @@ class Updateutil{
 	Item(playerIO, item, amount) { 
 		this.io.sockets.to(playerIO).emit();	
 	}
-	Chatting(msg, name){
+	Chatting(msg, name,color){
 		console.log(name, msg,"test");
-		this.io.emit('chatting', msg, name);
+		this.io.emit('chatting', msg, name,color);
 	}
 	Notify(playerIO, msg) {
 		this.io.sockets.to(playerIO).emit("notify", msg);

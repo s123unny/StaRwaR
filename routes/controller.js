@@ -461,10 +461,10 @@ Controller = function(io, model) {
 				model.players[id].name = name;
 
 				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
-				Update.Chatting(login_msg, "SYSTEM");
+				Update.Chatting(login_msg, "SYSTEM","red");
 				Update.Leaderboard(model.players);
 				Update.Notify(playerIO[id].first,login_msg);
-				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name))); // listen to chatting msg
+				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name),model.players[id].skill['Rainbow'].method(id))); // listen to chatting msg
 				// Question.Init(player);
 				
 				test = model.players[id];
@@ -474,7 +474,7 @@ Controller = function(io, model) {
 			}
 			else{
 				player.on('adminSayStart', night);
-				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM"));	// listen to chatting msg
+				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM","red"));	// listen to chatting msg
 				io.sockets.to(adminIO).emit("adminStartButton");
 				console.log("emit admin start button");
 			}
