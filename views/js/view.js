@@ -76,9 +76,6 @@ socket.on("leaderboard", (username, money) => update_rank(username,money));
 socket.on("new_day", (day) => update_day(day));
 socket.on("leftTime", (time) => update_time(time));
 socket.on("howhow",(ooooooo) => howhow(ooooooo));
-function howhow(ooooooo){
-	return;
-}
 // call me with a number and a planet ID
 function ship_mission(baseID,targetID){
 	console.log("b"+baseID+"-"+targetID)
