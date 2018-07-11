@@ -57,18 +57,6 @@ var stars = {
 		}
 		return list;
 	},
-	list_cannot_callback: function(id) {
-		var list = [false, false, false, false, false];
-		for (var i = 0; i < 5; i++) {
-			if (this["c"+i].dayLeft[id] != null) {
-				list[ this["c"+i].player_here[id] ] = true;
-			}
-		}
-		if (this["a3"].cannotback != null) {
-			list[ this["a3"].player_here[id] ] = true;
-		}
-		return list;
-	},
 	next: function(id) {
 		var keys = Object.keys( this );
     	var	idIndex = keys.indexOf( id );

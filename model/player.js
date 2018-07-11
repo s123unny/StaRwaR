@@ -13,15 +13,6 @@ ship = function(id, user_id) {
 		targetId: null, //null: free, false: back, else: targetStarId
 		datasetType: null,
 		datasetAmount: 0,
-		status: function() {
-			if (this.targetId == null) {
-				return "free";
-			} else if (this.dayLeft == 0) {
-				return "arrive";
-			} else {
-				return "going";
-			}
-		},
 	}
 }
 player = function(id) {
