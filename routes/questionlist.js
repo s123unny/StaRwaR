@@ -126,7 +126,7 @@ module.exports = function(io) {
 			"description" : " (單選)",
 			"options" : [
 				"",
-				"",
+				"i am the correct ans",
 				"",
 				"",
 				""
@@ -141,8 +141,8 @@ module.exports = function(io) {
 			"subject" : "fintech",
 			"description" : " (多選)",
 			"options" : [
-				"",
-				"",
+				"i am the correct ans",
+				"i am the correct ans",
 				"",
 				"",
 				""
@@ -200,14 +200,14 @@ module.exports = function(io) {
 			"id": 13,
 			"multi" : false,
 			"subject" : "Python",
-			"description" : '以下 Python 程式碼執行後會印出？<img src="img/q13.png" style="height:225.6px; width:473.4px; float:right;"> (單選)',
+			"description" : "int 範圍最大到哪?(單選)",
 			"options" : [
-				"61",
-				"62",
 				"2147483647",
-				"2147483648"
+				"2147483648",
+				"2147483654",
+				"2147483658"
 			],
-			"correct" : [ 2 ]
+			"correct" : [ 0 ]
 		},
 
 		{
@@ -383,7 +383,7 @@ module.exports = function(io) {
 			"id": 25,
 			"multi": false,
 			"subject": "時事",
-			"description" : "營期前的颱風叫什麼? (單選)",
+			"description" : "營期前從北部經過的颱風叫什麼? (單選)",
 			"options": [
 				"卡崔娜",
 				"瑪麗娜",
@@ -403,6 +403,7 @@ module.exports = function(io) {
 				"黑杯中的牛奶比較多",
 				"白杯中的咖啡比較多",
 				"一樣多!!",
+				"不知道QQ",
 			],
 			"correct": [2]
 

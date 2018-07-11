@@ -26,14 +26,11 @@ class questionevent{
 		for(var i=0;i<5;i++){
 			if(array[i]!=null){
 				totalcount++;
-				console.log(i+" : totalcount++ = ",totalcount);
-				returnArray[i]=array[i];
+				//console.log(i+" : totalcount++ = ",totalcount);
 			}
-			else{
-				returnArray[i]=null;
-			}
+			returnArray[i]=null;
 		}
-		console.log("return array when invoke: ", returnArray);	
+		//console.log("return array when invoke: ", returnArray);	
 		return returnArray;
 	}
 
@@ -51,30 +48,30 @@ class questionevent{
 		console.log("count= "+ count);
 		console.log("totalcount= "+ totalcount);
 
-		if(!correct){
-			returnArray[id]=null;
-			//console.log("player "+id+"answer wrong");
-		}
-		if((count==totalcount)||(count==5)){ //count ==5 when time up
+		if(correct||(count==totalcount)||(count==5)){ //count ==5 when time up or no body correct
+			
+			if(correct){
+				returnArray[id]=array[id]; //get the write ans
+				console.log("player "+id+" answer correct");
+			}
+			else{
+				console.log("nobody answer rightQQ");
+			}
+			
 			this.callback(returnArray,state,substate);
-			//co.next(array);
-			//if(correct)console.log("player "+id+"answer correct");
-			//else console.log("nobody answer rightQQ");
-			console.log("arr=",array);
-			console.log("return arr=",returnArray);
+			//console.log("arr=",array);//console.log("return arr=",returnArray);
 			this.io.emit("show_answer",q,returnArray,array);
 			count=totalcount=0;	
 		}
 	}
-
-//	check_answer_num(_this){
-//		console.log("in interval total= "+this.totalcount);
-//	}
+	needcloseQ(){
+		this.io.emit("closeQ");
+		//console.log("at back send closeQ");
+	}
 
 	Init(player){
-		//this.player=player;
 		player.on('answer_question',(q,ans,id)=> this.answerQuestion(q,ans,id));
-	//	console.log(tmp);
+		player.on('sendCloseQsig',()=>this.needcloseQ());
 	}
 }
 
