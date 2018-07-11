@@ -6,7 +6,7 @@ class Timer{
 		console.log("initialize time as " + (t/1000) + " seconds");
 	}
 	display(_this){
-		console.log("Left " + (_this.countdown/1000) + " second ...");
+		//console.log("Left " + (_this.countdown/1000) + " second ...");
 		_this.io.emit("leftTime", _this.countdown/1000);
 		_this.countdown-=1000;
 		if(_this.countdown<0){

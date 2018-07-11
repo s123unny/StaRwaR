@@ -12,7 +12,7 @@ var model = null;
 var controlPanel = require('./routes/controlPanel');
 app.use('/controlPanel', controlPanel);
 
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use('/controlPanel', express.static(path.join(__dirname, 'views')));
 

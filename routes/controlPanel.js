@@ -29,7 +29,7 @@ function ship_status(ships, id, stars, skillid) {
 	} else {
 		list = [false, false, false, false, false];
 		for (var i = 0; i < 5; i++) {
-			if (stars["c"+i].dayLeft[id] != null) {
+			if (stars["c"+i].dayLeft[id] != null && stars["c"+i].dayLeft > 0) {
 				list[ stars["c"+i].player_here[id] ] = true;
 			}
 		}
