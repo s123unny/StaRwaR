@@ -18,14 +18,14 @@ function MakePlayerSkill(){
 		var Skill_ability = {
 			'Legacy-of-Ancient-God':[1, 'General', function(){return;},['Tax-Collector','GPU']], 
 			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Deep-Learning','How-Universe']],
-			'How-Universe':[2, 'General', function(){},['Rainbow']], //?
+			'How-Universe':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Rainbow']], //?
 			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Centralize']], 
 			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['SSH']], 
 			'Rainbow':[3, 'General', function(id){
 				if(this.learned){if(id == 0)return "orange";else if(id == 1)return "yellow";else if(id == 2)return "green";else if(id == 3)return "maganta";else if(id == 4)return "purple";} 
 				else{return "white";}},['Respectful-Player']], 
 			'Centralize':[5,'MINOR', function(pay){if(this.learned){return 0.05 * pay;} else{return 0;}},['God-of-Crypto']], 
-			'SSH':[5, 'ML', function(){return this.learned;},['GAN']],//?
+			'SSH':[5, 'ML', function(hacker){if(this.learned && hacker > 0) return true;else{return false;}},['GAN']],//?
 			'Respectful-Player':[5, 'General', function(name){if(this.learned){return "尊貴的"+name;} else{return name;}},['Laplaces-Acma']],
 			'God-of-Crypto':[10, 'MINOR', function(){return this.learned;},[]],//?
 			'GAN':[10, 'ML', function(pay){if(this.learned){return 2 * pay;} else{return pay;}},[]],

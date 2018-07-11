@@ -146,6 +146,7 @@ Controller = function(io, model) {
 	function day() {
 		console.log("run day function");
 		count = 0;
+		var totalmoney = 0;
 		//update day
 		model.day += 1;
 		io.emit('new_day', model.day);
@@ -444,7 +445,11 @@ Controller = function(io, model) {
 		for(var i = 0; i < 5; i++)
 			if(model.players[i].skill['Tax-Collector'].method())
 				model.players[i].money += 87;
-
+		for(var i = 0; i < 5; i++)
+			if(model.players[i].skill['How-Universe'].method())
+				io.sockets.to(playerIO[i].first).emit("howhow", String(i));	
+		for(var i = 0; i < 5; i++)
+			model.players[i].money+=model.players[i].skill['How-Universe'].method(totalmoney);
 		//finish => start night
 		io.sockets.to(adminIO).emit("adminStartButton");
 	}
