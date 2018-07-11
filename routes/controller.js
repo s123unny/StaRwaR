@@ -84,6 +84,11 @@ Controller = function(io, model) {
 	function collectPlayerSetting(id, ships, money, workers, hand_on_AImodel) {
 		console.log("collectPlayerSetting", id);
 		player = model.players[id];
+		player.money = money;
+		player.num_of_miner = workers[0];
+		player.num_of_trainer = workers[1];
+		player.num_of_haker = workers[2];
+		Update.Leaderboard(model.players);
 		count += 1;
 		// todo
 		for (var i = 0; i < 5; i++) {
@@ -469,19 +474,12 @@ Controller = function(io, model) {
 			// socket io start
 			if(id != 87 && id >= 0 && id <= 4) {
 				model.players[id].name = name;
-
-				login_msg = "玩家 " + name + "上線了！ 大家跟他打聲招呼吧！"
+				
+				var login_msg = "玩家" +name+"上線了，大家跟他打招呼吧!"
 				Update.Chatting(login_msg, "SYSTEM","red");
 				Update.Leaderboard(model.players);
-				Update.Notify(playerIO[id].first,login_msg);
 				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name),model.players[id].skill['Rainbow'].method(id))); // listen to chatting msg
 				// Question.Init(player);
-				
-				test = model.players[id];
-				collectPlayerSetting(id, test); //for testing
-				var t = 1;
-				io.emit("leftTime", t);
-
 				
 			}
 			else{
