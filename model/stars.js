@@ -17,13 +17,13 @@ var stars = {
 	a0: {id: "a0", x_pos: 10, y_pos: 3, type: 'abandon', subtype: 'black'},
 	a1: {id: "a1", x_pos: 8, y_pos: 3, type: 'abandon', subtype: 'desert'},
 	a2: {id: "a2", x_pos: 5, y_pos: 1, type: 'abandon', subtype: 'desert'},
-	a3: {id: "a3", x_pos: 9, y_pos: 5, type: 'abandon', subtype: 'ML'},
-	a4: {id: "a4", x_pos: 8, y_pos: 9, type: 'abandon', subtype: 'MINE'},
-	a5: {id: "a5", x_pos: 0, y_pos: 3, type: 'abandon', subtype: 'HAKER'},
+	a3: {id: "a3", x_pos: 9, y_pos: 5, type: 'abandon', subtype: 'MINE'},
+	a4: {id: "a4", x_pos: 8, y_pos: 9, type: 'abandon', subtype: 'HAKER'},
+	a5: {id: "a5", x_pos: 0, y_pos: 3, type: 'abandon', subtype: 'option'},
 	a6: {id: "a6", x_pos: 4, y_pos: 9, type: 'abandon', subtype: 'option'},
-	a7: {id: "a7", x_pos: 3, y_pos: 1, type: 'abandon', subtype: 'option'},
+	a7: {id: "a7", x_pos: 3, y_pos: 1, type: 'abandon', subtype: 'destiny'},
 	a8: {id: "a8", x_pos: 0, y_pos: 6, type: 'abandon', subtype: 'destiny'},
-	a9: {id: "a9", x_pos: 2, y_pos: 5, type: 'abandon', subtype: 'destiny'},
+	a9: {id: "a9", x_pos: 2, y_pos: 5, type: 'abandon', subtype: 'data'},
 	a10: {id: "a10", x_pos: 3, y_pos: 3, type: 'abandon', subtype: 'data'},
 	a11: {id: "a11", x_pos: 3, y_pos: 7, type: 'abandon', subtype: 'data'},
 	a12: {id: "a12", x_pos: 9, y_pos: 1, type: 'abandon', subtype: 'data'},
@@ -34,7 +34,7 @@ var stars = {
 	b2: {id: "b2", x_pos: 7, y_pos: 6, type: 'base'},
 	b3: {id: "b3", x_pos: 5, y_pos: 4, type: 'base'},
 	b4: {id: "b4", x_pos: 10, y_pos: 3, type: 'base'},
-	list_from_type: function(type) {
+	list_from_type: function(type, ships) {
 		var list = [];
 		if (type == "unknown") {
 			for (var id in this) {
@@ -43,11 +43,29 @@ var stars = {
 				}
 			}
 		} else {
+			var checklist = [];
+			for (var i = 0; i < 5; i++) {
+				checklist.push(ships[i].targetId);
+			}
 			for (var id in this) {
 				if (this[id].type == type && this[id].found == true) {
-					list.push(id);
+					if (!checklist.includes(id)) {
+						list.push(id);
+					}
 				}
 			}
+		}
+		return list;
+	},
+	list_cannot_callback: function(id) {
+		var list = [false, false, false, false, false];
+		for (var i = 0; i < 5; i++) {
+			if (this["c"+i].dayLeft[id] != null) {
+				list[ this["c"+i].player_here[id] ] = true;
+			}
+		}
+		if (this["a3"].cannotback != null) {
+			list[ this["a3"].player_here[id] ] = true;
 		}
 		return list;
 	}
@@ -58,12 +76,15 @@ for (var id in stars) {
 	node.found = false;
 	node.num = 0;
 	node.player_here = [null, null, null, null, null];
-	if (id == "a4" || id == "a5") {
+	if (id == "a3" || id == "a4") {
 		node.trigger = [false, false, false, false, false];
-	} else if (id == "a3") {
-		node.GPU == 2;
+		if (id == "a3") {
+			node.cannotback = null;
+		}
 	} else if (node.type == 'computer') {
 		node.dayLeft = [null, null, null, null, null];
+	} else if (node.type == 'base') {
+		node.found = true;
 	}
 }
 //console.log(stars);

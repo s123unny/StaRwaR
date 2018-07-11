@@ -37,6 +37,7 @@ function new_star(star_id){
 
 }
 socket.on("ship_mission", (baseID, targetID) => ship_mission(baseID, targetID));
+socket.on("ship_back", (baseID, targetID) => ship_back(baseID, targetID));
 socket.on("chatting", (message,name) => jser(message,name));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 
@@ -46,6 +47,11 @@ function ship_mission(baseID,targetID){
 	var x = document.getElementById("b"+baseID+"-"+targetID);   // Get the element with id="demo"
 	x.style.display = 'block';
 
+}
+function ship_back(baseID,targetID){
+	console.log("b"+baseID+"-"+targetID)
+	var x = document.getElementById("b"+baseID+"-"+targetID);
+	x.style.display = 'none';
 }
 // this function can update information in left top box
 function player_info(name,somthing){
