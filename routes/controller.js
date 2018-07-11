@@ -72,7 +72,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 30;
+		var Time = 20;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp);
 		mytimer.tick();
 	}
@@ -92,7 +92,7 @@ Controller = function(io, model) {
 		count += 1;
 		// todo
 		for (var i = 0; i < 5; i++) {
-			if(ships[i].missionType == "Learn Skill"){
+			if(ships[i]!=null && ships[i].missionType == "Learn Skill"){
 				for(var j = 0; j < ships[i].num_of_haker; j++){
 					model.players[id].skill=Update.Skill(ships[i].targetId,model.players[id].skill);
 				}

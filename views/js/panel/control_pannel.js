@@ -40,13 +40,12 @@ function get_ship_info(sid) {
   if($('#going_mblock_slot'+sid).length) {  // for ongoing ship
     //pending: 確定onging 船隻狀況
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
-    if ($('submitted'+sid).length) {
+    if ($('#submitted'+sid).length) {
     // if (sid == 1) {  // 測試用，把這行打開上面註解掉就可以看到有一艘船的回傳資料
-      var missionType = Number($('#assign_mblock_slot'+sid+'_type').val());
+      var missionType = $('#assign_mblock_slot'+sid+'_type').find(":selected").text();
       var miner = Number($('#assign_mblock_slot'+sid+'_M').val());
       var trainer = Number($('#assign_mblock_slot'+sid+'_T').val());
       var hacker = Number($('#assign_mblock_slot'+sid+'_H').val());
-
       var targetId = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
       var datasetType = $('#assign_mblock_slot'+sid+'_carry').find(":selected").text()
       if (datasetType == "Nothing") {
