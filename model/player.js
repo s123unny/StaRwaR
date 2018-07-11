@@ -12,6 +12,7 @@ ship = function(id, user_id) {
 		dayLeft: null, //init: =requiredDay, 0: arrive , !=0: going
 		targetId: null, //null: free, false: back, else: targetStarId
 		datasetType: null,
+		missionType: null,
 		datasetAmount: 0,
 	}
 }

@@ -154,7 +154,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 30;
+		var Time = 20;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp);
 		mytimer.tick();
 	}
@@ -175,6 +175,12 @@ Controller = function(io, model) {
 		count += 1;
 		// todo
 		for (var i = 0; i < 5; i++) {
+			if(ships[i]!=null && ships[i].missionType == "Learn Skill"){
+				for(var j = 0; j < ships[i].num_of_haker; j++){
+					model.players[id].skill=Update.Skill(ships[i].targetId,model.players[id].skill);
+				}
+				continue;
+			}
 			if (ships[i] != null) {
 				ships[i].status = player.ships[i].status;
 				player.ships[i] = ships[i];
@@ -204,7 +210,7 @@ Controller = function(io, model) {
 						player.ships[i].dayLeft = 3;
 					}
 					if (player.ships[i].datasetType != null) {
-						player.ships[i].datasetAmount = player.dataset[dataserType];
+						player.ships[i].datasetAmount = player.dataset[datasetType];
 						player.dataset[datasetType] = 0;
 					}
 					Update.Ship_Mission(id, player.ships[i].targetId);
@@ -569,7 +575,7 @@ Controller = function(io, model) {
 			// socket io start
 			if(id >= 0 && id <= 4) {
 				player.on("collectData", (id, ships, money, workers, hand_on_AImodel) => collectPlayerSetting(id, ships, money, workers, hand_on_AImodel));
-				player.on('skill', (skillname) => model.players[id].skill=Update.Skill(skillname, playerIO[id].second,model.players[id].skill));
+				//player.on('skill', (skillname) => model.players[id].skill=Update.Skill(skillname, playerIO[id].second,model.players[id].skill));
 			}
 		}
 

@@ -60,20 +60,26 @@ function get_ship_info(sid) {
     }
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
     if ($('#submitted'+sid).length) {
+      var missionType = $('#assign_mblock_slot'+sid+'_type').find(":selected").text();
       var miner = Number($('#assign_mblock_slot'+sid+'_M').val());
       var trainer = Number($('#assign_mblock_slot'+sid+'_T').val());
       var hacker = Number($('#assign_mblock_slot'+sid+'_H').val());
+      if (missionType == "Learn Skill") {
+        var targetId = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
+      } else {
+        var targetname = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
+        var targetId = name2id[targetname];
+      }
 
-      var targetname = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
-      var targetId = name2id[targetname];
       console.log("==================");
       console.log(targetId);
       console.log("==================");
+
       var datasetType = $('#assign_mblock_slot'+sid+'_carry').find(":selected").text()
       if (datasetType == "Nothing") {
         datasetType = null;
       }
-      return ship(sid, miner, trainer, hacker, targetId, datasetType);
+      return ship(sid, miner, trainer, hacker, targetId, datasetType,missionType);
     }
     else {
       return null
@@ -81,7 +87,7 @@ function get_ship_info(sid) {
   }
 }
 
-function ship(id, miner, trainer, haker, targetId, datasetType) {
+function ship(id, miner, trainer, haker, targetId, datasetType, missionType) {
   return {
     id: id,
     num_of_miner: miner,
@@ -91,6 +97,7 @@ function ship(id, miner, trainer, haker, targetId, datasetType) {
     targetId: targetId,
     datasetType: datasetType,
     datasetAmount: null,
+    missionType: missionType,
   };
 }
 
