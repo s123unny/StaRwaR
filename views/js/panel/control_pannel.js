@@ -42,6 +42,7 @@ function get_ship_info(sid) {
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
     if ($('submitted'+sid).length) {
     // if (sid == 1) {  // 測試用，把這行打開上面註解掉就可以看到有一艘船的回傳資料
+      var missionType = Number($('#assign_mblock_slot'+sid+'_type').val());
       var miner = Number($('#assign_mblock_slot'+sid+'_M').val());
       var trainer = Number($('#assign_mblock_slot'+sid+'_T').val());
       var hacker = Number($('#assign_mblock_slot'+sid+'_H').val());
@@ -51,7 +52,7 @@ function get_ship_info(sid) {
       if (datasetType == "Nothing") {
         datasetType = null;
       }
-      return ship(sid, miner, trainer, hacker, targetId, datasetType);
+      return ship(sid, miner, trainer, hacker, targetId, datasetType,missionType);
     }
     else {
       return null
@@ -59,7 +60,7 @@ function get_ship_info(sid) {
   }
 }
 
-function ship(id, miner, trainer, haker, targetId, datasetType) {
+function ship(id, miner, trainer, haker, targetId, datasetType, missionType) {
   return {
     id: id,
     num_of_miner: miner,
@@ -69,6 +70,7 @@ function ship(id, miner, trainer, haker, targetId, datasetType) {
     targetId: targetId,
     datasetType: datasetType,
     datasetAmount: null,
+    missionType: missionType,
   };
 }
 
