@@ -7,7 +7,6 @@ function get_pannel() {
   window.location.reload();
 }
 
-
 /*return
 id
 ships[5]:
@@ -19,12 +18,6 @@ workers: [num_of_miner, num_of_trainer, num_of_haker]
 hand_on_AImodel //填type 沒有填null
 */
 
-//測試用, 可以在console看到回傳結果
-jizz()
-function jizz () {
-  k = collect_pannel();
-  console.log(k);
-}
 
 function collect_pannel() {
   var pid = Number($('#player_id').text());
@@ -33,19 +26,14 @@ function collect_pannel() {
   var num_of_miner = Number($('#standby_miner_num').text()) + Number($('#working_miner_num').text());
   var num_of_haker = Number($('#standby_hacker_num').text()) + Number($('#working_hacker_num').text());
   var workers = [num_of_miner, num_of_trainer, num_of_haker];
-  // pending: hand_on_AImodel
+  var hand_on_AImodel = null;
   var ships = [];
   for (var i = 0; i < 5; i++) {
     ships.push(get_ship_info(i));
   }
-  console.log(ships)
-  return {
-    id: pid,
-    ships: ships,
-    money: money,
-    workers: workers,
-    // hand_on_AImodel: 
-  }
+  console.log(ships);
+  
+  socket.emit("collectData", pid, ships, money, workers, hand_on_AImodel);
 }
 
 function get_ship_info(sid) {

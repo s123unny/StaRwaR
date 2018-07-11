@@ -509,7 +509,7 @@ Controller = function(io, model) {
 
 			// socket io start
 			if(id >= 0 && id <= 4) {
-				player.on("collectData", (Id, Player) => collectPlayerSetting(Id, Player));
+				player.on("collectData", (id, ships, money, workers, hand_on_AImodel) => collectPlayerSetting(id, ships, money, workers, hand_on_AImodel));
 				player.on('skill', (skillname) => model.players[id].skill=Update.Skill(skillname, playerIO[id].second,model.players[id].skill));
 			}
 		}

@@ -12,10 +12,10 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
     player: model.players[req.query.id],
     ships: model.players[req.query.id].ships,
     stars: model.stars,
-    mines: model.stars.list_from_type("mine"),
-    unknowns: model.stars.list_from_type("unknown"),
-    computers: model.stars.list_from_type("computer"),
-    abandons: model.stars.list_from_type("abandon"),
+    mines: model.stars.list_from_type("mine", req.query.id),
+    unknowns: model.stars.list_from_type("unknown", req.query.id),
+    computers: model.stars.list_from_type("computer", req.query.id),
+    abandons: model.stars.list_from_type("abandon", req.query.id),
     skill: model.players[req.query.id].skill,
   })
 });
