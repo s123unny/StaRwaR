@@ -1,24 +1,24 @@
 #questionBox {
 	text-align:center;
 	width: 800px;
-	height: 500px;
+	height: 600px;
 	left: calc(50% - 400px);
-	top: calc(50% - 250px);
+	top: calc(50% - 300px);
 	padding: 20px;
 }
 #questionBox .qDes{
 	font-size:20px;
-	top:60px;
+	top:40px;
 	text-align: left;
 }
 #questionBox form{
 	font-size:20px;
-	top:60px;
+	top:40px;
 	text-align: left;
 	margin 20,20,0,0;
 }
 #questionBox #answerResult {
-	top: 70px;
+	top: 50px;
 	text-align: center;
 	font-size:23px;
 }
@@ -50,7 +50,7 @@
 .questionPopBox {
 	 background-color: rgba(255,255,255,0.85);
 	 border-style: solid;
-         border-radius: 12px;
+	 border-radius: 12px;
 	 border-width: 1px;
 	 border-color: #80f1dc;
 	 width:460px;
