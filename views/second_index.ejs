@@ -14,6 +14,7 @@
 <!-- <body onload="render_skill_tree()"> -->
 <body >
 <h1 class="title" id="big_title">Control Panel</h1>
+<h1 id="player_id" style="display: none"><%=player_id%></h1>
 <div class="wrapper">
 	<div class="character">
 		<img src="./pic/char1.png" width="389" height="457"></img>
@@ -134,16 +135,16 @@
 	<% for (var i = 0; i < ships.length; i++) { -%>
 		<% if (ships[i].status() != "free") { -%>
 			<div class="Mission_Block">
-				<div class="slot_wrapper" id="going_mblock_slot1">
-					<div id="ongoing_mblock_slot<%=i+1%>_type" class="content">Mine</div>
-					<div id="ongoing_mblock_slot<%=i+1%>_location" class="content">Alpha</div>
-					<div id="ongoing_mblock_slot<%=i+1%>_M" class="content">0</div>
-					<div id="ongoing_mblock_slot<%=i+1%>_T" class="content">0</div>
-					<div id="ongoing_mblock_slot<%=i+1%>_H" class="content">0</div>
-					<div id="ongoing_mblock_slot<%=i+1%>_State" class="content"><%= ships[i].status() %></div>
+				<div class="slot_wrapper" id="going_mblock_slot<%=i%>">
+					<div id="ongoing_mblock_slot<%=i%>_type" class="content">Mine</div>
+					<div id="ongoing_mblock_slot<%=i%>_location" class="content">Alpha</div>
+					<div id="ongoing_mblock_slot<%=i%>_M" class="content">0</div>
+					<div id="ongoing_mblock_slot<%=i%>_T" class="content">0</div>
+					<div id="ongoing_mblock_slot<%=i%>_H" class="content">0</div>
+					<div id="ongoing_mblock_slot<%=i%>_State" class="content"><%= ships[i].status() %></div>
 					<div class="content">
 						<label class="rest">
-							<input id="ongoing_mblock_slot${i+1}_withdraw" type="checkbox" checked:false onclick="comeback(<%= i+1 %>)">
+							<input id="ongoing_mblock_slot<%=i%>_withdraw" type="checkbox" checked:false onclick="comeback(<%=i%>)">
 		  					<span class="checkmark"></span>
 						Return</label>
 					</div>
@@ -167,10 +168,10 @@
 	<% for (var i = 0; i < ships.length; i++) { -%>
 		<% if (ships[i].status() == "free") { -%>
 			<div class="Mission_Block">
-				<div class='slot_wrapper' id='assign_mblock_slot<%= i+1 %>'>
+				<div class="slot_wrapper" id="assign_mblock_slot<%=i%>">
 					<div class="content ">
 						<form>
-							<select id="assign_mblock_slot<%= i+1 %>_type" class="choosetype" name="YourType" onchange="render_target(<%= i+1 %>)">
+							<select id="assign_mblock_slot<%=i%>_type" class="choosetype" name="YourType" onchange="render_target(<%=i%>)">
 								<option value="none">Job Choice</option>
 								<option value="mine">Mine</option>
 								<option value="computer">AI Center</option>
@@ -181,9 +182,8 @@
 						</form>
 					</div>
 					<div class="content">
-						<select id="assign_mblock_slot<%= i+1 %>_target" class="choosetype" name="YourLocation" style="width: 67px">
+						<select id="assign_mblock_slot<%=i%>_target" class="choosetype" name="YourLocation" style="width: 67px">
 								<option value="None" class="none">None</option>
-
 							<% for (let j of mines) { -%>
 								<option value="<%= j %>" class="mine"><%= j %></option>
 							<% } -%>
@@ -205,17 +205,17 @@
 						</select>
 					</div>
 					<div class="content">
-						<input id="assign_mblock_slot<%= i+1 %>_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+						<input id="assign_mblock_slot<%=i%>_M" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 					</div>
 					<div class="content">
-						<input id="assign_mblock_slot<%= i+1 %>_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
+						<input id="assign_mblock_slot<%=i%>_T" class="minion_num" type="number" min="0" step="1" name="# of miner" style="width: 50px";>
 					</div>
 					<div class="content">
-						<input id="assign_mblock_slot<%= i+1 %>_H" class="minion_num" type="number" min="0" step="1" name="# of hacker" style="width: 50px";>
+						<input id="assign_mblock_slot<%=i%>_H" class="minion_num" type="number" min="0" step="1" name="# of hacker" style="width: 50px";>
 					</div>
 					<div class="content">
 						<form >
-							<select id="assign_mblock_slot<%= i+1 %>_carry" class="choosetype" name="YourItem" style="width: 81px";>
+							<select id="assign_mblock_slot<%=i%>_carry" class="choosetype" name="YourItem" style="width: 81px";>
 								<option value="nothing">Nothing</option>
 								<option value="audio">Phoney Tunes</option>
 								<option value="image">Alien Drawings</option>
@@ -225,7 +225,7 @@
 					</div>
 					<div class="content">
 						<label class="rest">
-		  					<span class="submitter" onclick="submit_mission(<%= i+1 %>)">Submit</span>
+		  				<span class="submitter" onclick="submit_mission(<%=i%>)">Submit</span>
 						</label>
 					</div>
 				</div>	
@@ -361,8 +361,8 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/skillTree.js"></script>
-<script src="js/panel/get_pannel.js"></script>
 <script src="js/panel/day_process.js"></script>
+<script src="js/panel/control_pannel.js"></script>
 <script src="js/panel/update_worker.js"></script>
 <script src="js/panel/mission_worker.js"></script>
 <script src="js/panel/jquery.confirm.js"></script>

@@ -71,6 +71,7 @@ function new_star(star_id){
 
 }
 socket.on("ship_mission", (baseID, targetID) => ship_mission(baseID, targetID));
+socket.on("ship_back", (baseID, targetID) => ship_back(baseID, targetID));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 socket.on("new_day", (day) => update_day(day));
 socket.on("leftTime", (time) => update_time(time));
@@ -81,6 +82,12 @@ function ship_mission(baseID,targetID){
 	var x = document.getElementById("b"+baseID+"-"+targetID);   // Get the element with id="demo"
 	x.style.display = 'block';
 
+}
+
+function ship_back(baseID,targetID){
+	console.log("b"+baseID+"-"+targetID)
+	var x = document.getElementById("b"+baseID+"-"+targetID);
+	x.style.display = 'none';
 }
 
 // give me list of ranking, get view~

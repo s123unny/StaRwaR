@@ -49,7 +49,7 @@ class Updateutil{
 		this.io.sockets.to(playerIO).emit("money", money);
 	}
 	Item(playerIO, item, amount) { 
-		this.io.sockets.to(playerIO).emit();	
+		this.io.sockets.to(playerIO).emit("item", type, subtype, amount);	
 	}
 	Chatting(msg, name,color){
 		console.log(name, msg,"test");

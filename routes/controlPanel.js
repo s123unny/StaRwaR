@@ -8,6 +8,7 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
   console.log(model.players[req.query.id].skill)
   console.log("--------------------------------------");
   res.render('second_index.ejs', {
+    player_id: req.query.id,
     player: model.players[req.query.id],
     ships: model.players[req.query.id].ships,
     stars: model.stars,
