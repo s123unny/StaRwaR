@@ -2,6 +2,7 @@ const MONEY_INIT = 100;
 const WORKER_INIT = 1;
 const x_POS = [0,1,2,3,4]
 const y_POS = [0,1,2,3,4]
+var Skill = require("./skill")
 ship = function(id, user_id) {
 	return {
 		id: id,
@@ -35,6 +36,7 @@ player = function(id) {
 		ships: [
 			ship(0, id), ship(1, id), ship(2, id), ship(3, id), ship(4, id)
 			],
+		skill: Skill.make(),
 		x_pos: x_POS[id],
 		y_pos: y_POS[id],
 		dataset: {

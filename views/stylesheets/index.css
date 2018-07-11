@@ -224,6 +224,20 @@ div.main-window{
 	
 }
 
+/* Time counter */
+.time_counter{
+	font:20px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #80f1dc;
+    padding: 0px 0px;
+	position: relative;
+/*	border: black solid 1px;*/
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+#Timer{
+	display: none;
+}
 /* login-window */
 
 .confirmOverlay{

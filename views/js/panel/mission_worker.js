@@ -1,39 +1,5 @@
 /* This file is for update mission block */
 
-// This is the api what i define (type is the same as ms. Xiao )
-var stars = { 
-	star1: {name: "&alpha", type: 'mine'}, 
-	star2: {name: "&beta", type: 'mine'}, 
-	star3: {name: "&gamma", type: 'mine'}, 
-	star4: {name: "&delta", type: 'mine'}, 
-	star5: {name: "&epsilon", type: 'mine'}, 
-	star6: {name: "&zeta", type: 'mine'}, 
-	star7: {name: "&eta", type: 'mine'}, 
-	star8: {name: "&theta", type: 'mine'}, 
-	star9: {name: "&iota", type: 'mine'}, 
-	star10: {name: "&kappa", type: 'mine'}, 
-	star11: {name: "&lambda", type: 'ai_center'}, 
-	star12: {name: "&mu", type: 'ai_center'}, 
-	star13: {name: "&nu", type: 'ai_center'}, 
-	star14: {name: "&xi", type: 'ai_center'}, 
-	star15: {name: "&omicron", type: 'ai_center'}, 
-	star16: {name: "&pi", type: 'ai_center'}, 
-	star17: {name: "&rho", type: 'abandon'}, 
-	star18: {name: "&sigmaf", type: 'mine'}, 
-	star19: {name: "&sigma", type: 'mine'}, 
-	star20: {name: "&tau", type: 'mine'}, 
-	star21: {name: "&upsilon", type: 'mine'}, 
-	star22: {name: "&phi", type: 'mine'}, 
-	star23: {name: "&chi", type: 'mine'}, 
-	star24: {name: "&psi", type: 'mine'}, 
-	star25: {name: "&omega", type: 'mine'}, 
-	star26: {name: "&varkappa", type: 'mine'}, 
-	star27: {name: "&varrho", type: 'mine'}, 
-	star28: {name: " &straightepsilon", type: 'mine'}, 
-	star29: {name: "&backepsilon", type: 'mine'}, 
-	star30: {name: "&Omega", type: 'mine'}, 
-};
-
 var skill = {
 	skill1: {name:"old_king", state: "know"},
 	skill2: {name:"oil_gas", state: "know"},
@@ -59,34 +25,83 @@ function learn(name){
 
 /* After choosing type */
 function render_target(row){
+	console.log("render target" + row);
+	var all_type = ["mine", "computer", "abandon", "unknown", "learn"];
 	var type = $('#assign_mblock_slot'+row+'_type').val();
-	$("#assign_mblock_slot"+row+"_target").empty();
-	if (type != 'learn'){	// render all stars and choose one
-		var flag = true;
-		for (var key in stars){
-			if (stars[key].type == type){
-				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+stars[key].name+";</option>");
-				flag = false;
-			}
+	
+	// hide and show option
+	for (var idx = 0; idx < all_type.length; idx++){
+		if (all_type[idx] != type){
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
 		}
-		if (flag == true){
-			$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>None</option>");
+		else{
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+		}		
+	}
+
+	// hide and show option
+	for (var idx = 0; idx < all_type.length; idx++){
+		if (all_type[idx] != type){
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
 		}
+		else{
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+		}		
+	}
+
+	return;
+}
+
+// upload model
+function submit_model(type){
+		try{
+			var check = $('#submit_confirm').attr('disabled');
+		}
+		catch{
+			var check = true;
+		}
+		if (check == "disabled"){
+			return;
+		}
+        $.confirm({
+	    'title'     : 'Assign Confirmation',
+	    'message'   : 'You are about to hand on trained AI model. <br />It cannot be modified further after comfirmation!',
+	    'buttons'   : {
+		'Yes'   : {
+		    'class' : 'yes_option',
+		    'action': function(){confirm_model(type);}
+		},
+		'No'    : {
+		    'class' : 'no_option',
+		    'action': function(){console.log('Cancel submission.');}
+		}
+	    }
+	});
+}
+
+function confirm_model(type){
+	console.log("Sure to give model");
+	/* check if it is ok */
+	var all_type = ["image", "audio", "text"];
+	var model_val = $('#'+type+"M_num").text();
+	if (model_val == 0){
+		myalert("You don't have any valuable model !");
 		return;
 	}
-	else{	// query skill-tree
-		var flag = true;
-		for (var key in skill){
-			if (skill[key].state == "learnable"){
-				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+skill[key].name+"</option>");
-				flag = false;
-			}
+	for (var i = 0; i < all_type.length; i++){
+		if (all_type[i] == type){
+			console.log(type);
+			$("#submit_"+type).text("Confirm");			
 		}
-		if (flag == false){
-			$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>None</option>");
+		else{
+			$("#submit_"+all_type[i]).hide();
 		}
 	}
+	$("#submit_"+type).attr('id', 'submit_confirm');
+	$("#"+type+"M_num").attr('id', 'confirm_model_value');
+	$('#submit_confirm').attr('disabled', true);
 }
+
 
 /* click button and assign work */
 
@@ -174,6 +189,7 @@ function freeze_submit_block(row){
 		myalert("Prepare some Datasets before training !");
 		return;
 	}
+
 	// update value / text
 	update_value(miner, trainer, hacker);	// carry item ?
 	// fixed 

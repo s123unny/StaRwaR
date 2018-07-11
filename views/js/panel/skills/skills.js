@@ -45,7 +45,7 @@ hexColorToGrayscale = function (str) {
 var skilltree = {
 	buttons: '',
 	skillpoints_dependency: true,
-	skillpoints: 12,
+	skillpoints: 59,
 	group_dependency_modifier: [],
 	hint: '',
 	size: 80,

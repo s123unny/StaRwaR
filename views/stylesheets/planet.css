@@ -1,5 +1,4 @@
-span.planet-orange{
-	/*display: none;*/
+span.planet-c{
 	background-image:url(../img/orange.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
@@ -7,8 +6,7 @@ span.planet-orange{
 	width: 30px;
 	position: fixed;
 }
-span.planet-blue{
-	/*display: none;*/
+span.planet-a{
 	background-image:url(../img/blue.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
@@ -16,8 +14,7 @@ span.planet-blue{
 	width: 30px;
 	position: fixed;
 }
-span.planet-red{
-	/*display: none;*/
+span.planet-m{
 	background-image:url(../img/red.png);
 	background-size:contain;
 	background-repeat: no-repeat; 
