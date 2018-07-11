@@ -41,6 +41,9 @@ function ship_mission(baseID,targetID){
 	x.style.display = 'block';
 
 }
+function howhow(baseID){
+	$("#b" + baseID).switchClass('planet-base', 'planet-howhow');
+}
 
 // give me list of ranking, get view~
 function update_rank(name,score){

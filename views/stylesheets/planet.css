@@ -30,6 +30,14 @@ span.planet-base{
 	width: 50px;
 	position: fixed;
 }
+span.planet-howhow{
+	background-image:url(../img/howhow.png);
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
 span.planet-unreached{
 	background-color:#FFF;
 	opacity:0.5;
