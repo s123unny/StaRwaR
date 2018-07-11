@@ -200,19 +200,48 @@ function freeze_submit_block(row){
 
 /* come back function */
 function comeback(row){
+	$.confirm({
+	    'title'     : 'Return Confirmation',
+	    'message'   : 'You are about to return workers. <br />It cannot be modified further after comfirmation!',
+	    'buttons'   : {
+		'Yes'   : {
+		    'class' : 'yes_option',
+		    'action': function(){freeze_return_block(row);}
+		},
+		'No'    : {
+		    'class' : 'no_option',
+		    'action': function(){console.log('Cancel return.');}
+		}
+	    }
+	});
 	console.log("callback");
+}
+
+function freeze_return_block(row){
+
+	console.log("Sure to return work");
 
 	var state = document.getElementById('ongoing_mblock_slot'+row+'_State').textContent;
 	console.log(state);
-	if (state == "Ongoing"){
-		document.getElementById('ongoing_mblock_slot'+row+'_withdraw').checked = false;
-		myalert("You can't call ongoing workers back !");
+	if (state != "arrive"){
+		myalert("You can't call these workers back !");
 		// myalert("Just Monika");
 		return;
 	}
-	else{
-		return;
-	}
+
+	// append block on it
+	var iDiv = document.createElement('div');
+	iDiv.id="returned"+row;
+	iDiv.style.position="relative";
+	iDiv.style.marginTop="-22px";
+	iDiv.style.backgroundColor="#C53131";
+	iDiv.style.opacity=0.5;
+	iDiv.style.width="720px";
+	iDiv.style.height="28px";
+	iDiv.style.borderStyle="none";
+	iDiv.style.borderRadius="8px"
+	var cDiv = document.getElementById('going_mblock_slot'+row);
+	cDiv.parentNode.append(iDiv);
 }
 
 

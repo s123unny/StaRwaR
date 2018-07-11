@@ -96,9 +96,10 @@ Controller = function(io, model) {
 				player.ships[i] = ships[i];
 			}
 			if (player.ships[i].targetId != null) {
-				if (player.ships[i].targetId == false) {
+				if (player.ships[i].num_of_miner == -1) { //for returned ship
 					Update.Ship_back(id, player.ships[i].targetId);
 					model.stars[player.ships[i].targetId].player_here[id] = null;
+					model.stars[player.ships[i].targetId].num -= 1;
 					player.ships[i].targetId = null;
 					player.ships[i].dayLeft = null;
 					player.ships[i].num_of_miner = 0;
@@ -107,6 +108,8 @@ Controller = function(io, model) {
 				} else if (player.ships[i].dayLeft == null) {
 					//caculate require day
 					//if (skill) todo
+					model.stars[player.ships[i].targetId].player_here[id] = i;
+					model.stars[player.ships[i].targetId].num += 1;
 					var distance = Math.abs(model.stars[player.ships[i].targetId].x_pos - model.players[id].x_pos);
 					distance += Math.abs(model.stars[player.ships[i].targetId].y_pos - model.players[id].y_pos);
 					if (distance <= 3) {

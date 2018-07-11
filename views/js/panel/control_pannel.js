@@ -43,6 +43,12 @@ function get_ship_info(sid) {
   console.log("Get ship Info ")
   if($('#going_mblock_slot'+sid).length) {  // for ongoing ship
     //pending: 確定onging 船隻狀況
+    if ($('#returned'+sid).length) {
+      var targetId = $('#ongoing_mblock_slot'+sid+'_location').text();
+      return ship(sid, -1, -1, -1, targetId, null);
+    } else {
+      return null;
+    }
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
     if ($('#submitted'+sid).length) {
     // if (sid == 1) {  // 測試用，把這行打開上面註解掉就可以看到有一艘船的回傳資料
