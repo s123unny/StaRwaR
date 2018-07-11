@@ -66,6 +66,7 @@ class questionevent{
 	}
 	needcloseQ(){
 		this.io.emit("closeQ");
+		questionflag = false;
 		//console.log("at back send closeQ");
 	}
 

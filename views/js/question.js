@@ -128,7 +128,7 @@ socket.on('show_answer',(q,returnArray,array)=>showAnswer(q,returnArray,array));
 
 function sendcloseQ(){
 	socket.emit("sendCloseQsig");
-	//console.log("onclick sendcloseQsig");
+	console.log("onclick sendcloseQsig");
 }
 
 function closeQuestion() {

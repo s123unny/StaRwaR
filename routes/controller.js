@@ -31,6 +31,7 @@ global.model = {
 	day: 0
 };
 global.skillid = [];
+global.questionflag = false;
 
 Controller = function(io, model) {
 	var io = io;
@@ -52,6 +53,7 @@ Controller = function(io, model) {
 	// console.log(Player_skill[0]);
 	var Update = new updateFunction(io);
 	var Question = new questionFuntion(io, question_return);
+	var intervalflag, clearflag;
 	
 	function chatPlayer(msg,id){
 		io.emit('chat_message', msg ,"PLAYER");
@@ -125,6 +127,7 @@ Controller = function(io, model) {
 						Update.Notify(playerIO[j].first, msg);
 					}
 				}
+				questionflag = true;
 				Question.Invoke(star.player_here, "Mine", id);
 				return;
 			}
@@ -249,7 +252,7 @@ Controller = function(io, model) {
 		// model.players[id].ships[0].num_of_miner = 2;
 		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 1) {
+		if (count == 3) {
 			day("Init", null);
 		}
 	}
@@ -259,6 +262,7 @@ Controller = function(io, model) {
 		console.log(state, substate);
 		switch(state) {
 		case "Init":
+			questionflag = false;
 			console.log("run day function");
 			count = 0;
 			totalmoney = 0;
@@ -409,6 +413,7 @@ Controller = function(io, model) {
 							}
 						}
 						//pop box: question
+						questionflag = true;
 						Question.Invoke(star.player_here, "Abandon", "a7");
 						break;
 					case "a7":
@@ -560,15 +565,26 @@ Controller = function(io, model) {
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['God-of-Crypto'].method())
 					skillid.push(i);
-			
-
+			day("Next", null);
+			break;
+		case "Next":
 			//finish => start night
-			console.log("emit start button");
-			io.sockets.to(adminIO).emit("adminStartButton");
+			if (questionflag) {
+				if (!clearflag) {
+					intervalflag = setInterval(day, 1000, "Next", null);
+				}
+				clearflag = true;
+			} else {
+				console.log("emit start button");
+				io.sockets.to(adminIO).emit("adminStartButton");
+				if (clearflag) {
+					clearInterval(intervalflag);
+					clearflag = false;
+				}
+			}
 			break;
 		}
 	}
-
 
 
 	
@@ -608,6 +624,7 @@ Controller = function(io, model) {
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM","red"));	// listen to chatting msg
 				io.sockets.to(adminIO).emit("adminStartButton");
 				console.log("emit admin start button");
+				Question.Init(player);
 			}
 		});
 
