@@ -16,7 +16,7 @@ class Skill{
 function MakePlayerSkill(){
 		// var Player_skill = [];
 		var Skill_ability = {
-			'Legacy-of-Ancient-God':[1, 'General', function(){return;},['Tax-Collector','GPU']], 
+			'Legacy-of-Ancient-God':[1, 'General', function(){if(this.learned){return 5;}else{return 3}},['Tax-Collector','GPU']], 
 			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Deep-Learning','How-Universe']],
 			'How-Universe':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Rainbow']], //?
 			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Centralize']], 

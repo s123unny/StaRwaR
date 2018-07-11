@@ -9,7 +9,7 @@ var mine_msg = {11:"因應電費大漲，部分礦場利潤下降",23:"技術革
 var mine_change = {11:[0,5,5,5,10,10,10,20,20,40], 23:[0,5,5,5,10,10,20,40,40,80], 43:[0,5,5,5,10,10,20,0,0,0]};
 /*dataset amount*/
 var datasetAmount = {11:60, 5:30, 1:5};
-var optionReward = 20;
+var optionReward = 10;
 
 var password = ["meow", "beep", "wang", "woof", "oops"];
 var fs = require("fs");
@@ -29,7 +29,8 @@ global.model = {
 	players: [
 		player(0), player(1), player(2), player(3), player(4) ],
 	day: 0
-}
+};
+global.skillid = [];
 
 Controller = function(io, model) {
 	var io = io;
@@ -350,8 +351,8 @@ Controller = function(io, model) {
 									}
 								} else {
 									if (!star.trigger[j]) {
-										player.money += 200;
-										totalmoney += 200;
+										player.money += 50;
+										totalmoney += 50;
 										star.trigger[j] == true;
 										//notify
 										msg = "你觸發了"+id2name[i]+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
@@ -549,12 +550,16 @@ Controller = function(io, model) {
 					Update.Notify(playerIO[i].first,"Day 53 BANG!");
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['Tax-Collector'].method())
-					model.players[i].money += 87;
+					model.players[i].money += 50;
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['How-Universe'].method())
 					io.emit("howhow", String(i));	
 			for(var i = 0; i < 5; i++)
 				model.players[i].money+=model.players[i].skill['How-Universe'].method(totalmoney);
+			skillid = [];
+			for(var i = 0; i < 5; i++)
+				if(model.players[i].skill['God-of-Crypto'].method())
+					skillid.push(i);
 			
 
 			//finish => start night

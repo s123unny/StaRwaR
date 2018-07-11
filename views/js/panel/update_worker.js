@@ -1,6 +1,6 @@
 /* click button and add / minus people */
 
-Hire = {'trainer': 20, 'miner': 30, 'hacker': 40};
+const Hire = {'trainer': 40, 'miner': 20, 'hacker': 100};
 
 
 function add_trainer(){

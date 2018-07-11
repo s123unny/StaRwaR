@@ -1,5 +1,5 @@
 var Skill = require("./skill")
-const MONEY_INIT = 100;
+const MONEY_INIT = 40;
 const WORKER_INIT = 1;
 const x_POS = [2,6,7,5,10]
 const y_POS = [6,2,6,4,3]
@@ -33,7 +33,7 @@ player = function(id) {
 		dataset: {
 			image: 0, text: 0, audio: 0},
 		AImodel: {
-			image: 1, text: 2, audio: 3},
+			image: 0, text: 0, audio: 0},
 		hand_on_AImodel: null,
 		num_of_working_miner: function() {
 			sum = 0;

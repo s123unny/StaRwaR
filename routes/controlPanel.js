@@ -7,7 +7,13 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
   // console.log("--------------------------------------");
   // console.log(model.players[req.query.id].skill)
   // console.log("--------------------------------------");
- 
+  var ship_status = shipStatus(model.players[req.query.id].ships, req.query.id, model.stars, skillid); //todo
+  var not_free = 0;
+  for (var i = 0; i < 5; i++) {
+  	if (ship_status[i] != "free") {
+		not_free += 1;
+	}
+  }
   res.render('second_index.ejs', {
     player_id: req.query.id,
     player: model.players[req.query.id],
@@ -18,13 +24,14 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
     computers: model.stars.list_from_type("computer", model.players[req.query.id].ships),
     abandons: model.stars.list_from_type("abandon", model.players[req.query.id].ships),
     skill: model.players[req.query.id].skill,
-	ship_status: ship_status(model.players[req.query.id].ships, req.query.id, model.stars, null), //todo
+	ship_status: ship_status,
+	available_ship: model.players[req.query.id].skill['Legacy-of-Ancient-God'].method() - not_free,
   })
 });
 
-function ship_status(ships, id, stars, skillid) {
+function shipStatus(ships, id, stars, skillid) {
 	var status_array = [], list = [];
-	if (skillid != null && !skillid.includes(id)) {
+	if (skillid.length && !skillid.includes(id)) {
 		list = [true, true, true, true, true];
 	} else {
 		list = [false, false, false, false, false];
