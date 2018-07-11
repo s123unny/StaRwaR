@@ -34,6 +34,7 @@ function new_star(star_id){
 socket.on("ship_mission", (baseID, targetID) => ship_mission(baseID, targetID));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 socket.on("new_day", (day) => update_day(day));
+socket.on("leftTime", (time) => update_time(time));
 
 // call me with a number and a planet ID
 function ship_mission(baseID,targetID){
@@ -67,6 +68,15 @@ function update_day(day){
 	return;
 }
 
+function update_time(time){
+	if (time == 0){
+		$("#Timer").hide();
+		return;
+	}
+	$("#Timer").show();
+	$("#tick").text(time+" second");
+	return;
+}
 
 
 

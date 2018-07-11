@@ -39,32 +39,17 @@ function render_target(row){
 		}		
 	}
 
-	if (type != 'learn'){	
-		// hide and show option
-		for (var idx = 0; idx < all_type.length; idx++){
-			if (all_type[idx] != type){
-				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
-			}
-			else{
-				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
-			}		
+	// hide and show option
+	for (var idx = 0; idx < all_type.length; idx++){
+		if (all_type[idx] != type){
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
 		}
+		else{
+			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+		}		
+	}
 
-		return;
-	}
-	else{	// query skill-tree
-		return;
-		var flag = true;
-		for (var key in skill){
-			if (skill[key].state == "learnable"){
-				$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>"+skill[key].name+"</option>");
-				flag = false;
-			}
-		}
-		if (flag == false){
-			$("#assign_mblock_slot"+row+"_target").prepend("<option value='QQ'>None</option>");
-		}
-	}
+	return;
 }
 
 // upload model
@@ -204,6 +189,7 @@ function freeze_submit_block(row){
 		myalert("Prepare some Datasets before training !");
 		return;
 	}
+
 	// update value / text
 	update_value(miner, trainer, hacker);	// carry item ?
 	// fixed 

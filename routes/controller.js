@@ -442,7 +442,7 @@ Controller = function(io, model) {
 	io.on("connection", (player) => {
 
 		console.log("New connection.");
-
+		// night();
 		player.on("login", (id, name, psw) => {
 			// login password check
 			if (id == 87 && psw == "csie") {

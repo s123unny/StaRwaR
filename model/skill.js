@@ -29,7 +29,7 @@ function MakePlayerSkill(){
 			'Respectful-Player':[5, 'General', function(name){if(this.learned){return "尊貴的"+name;} else{return name;}},['Laplaces-Acma']],
 			'God-of-Crypto':[10, 'MINOR', function(){return this.learned;},[]],//?
 			'GAN':[10, 'ML', function(pay){if(this.learned){return 2 * pay;} else{return pay;}},[]],
-			'Laplaces-Acma':[10, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},[]],
+			'Laplace-Acma':[10, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},[]],
 		};
 		// for (var i = 0; i < 5; i++){
 		var single_user_skill = {};

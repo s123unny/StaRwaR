@@ -436,9 +436,9 @@ img {
 	border-color: #142630; //11 28 36
 }
 
-/*#st:active{
+#st:active{
 	pointer-events: none;
-}*/
+}
 
 
 #confirmOverlay{
