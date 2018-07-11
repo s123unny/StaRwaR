@@ -99,7 +99,7 @@ Controller = function(io, model) {
 		if (star.num > 0) {
 			if (!star.found) {
 				star.found = true;
-				Update.Star(i);
+				Update.Star(id);
 				var msg = "新的礦場被發現了!";
 				Update.Chatting(msg, "SYSTEM");
 			}
@@ -154,7 +154,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 5;
+		var Time = 30;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp);
 		mytimer.tick();
 	}
@@ -224,7 +224,7 @@ Controller = function(io, model) {
 		// model.players[id].ships[0].num_of_miner = 2;
 		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 1) {
+		if (count == 3) {
 			day("Init", null);
 		}
 	}
