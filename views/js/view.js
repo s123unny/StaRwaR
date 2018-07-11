@@ -128,9 +128,8 @@ setInterval(function(){
 	// console.log("XDDDDDDDD");
 	var planet_name = ['#m0','#m1','#m2','#m3','#m4','#m5','#m6','#m7','#m8','#m9','#c0','#c1','#c2','#c3','#c4','#a0','#a1',"#a2","#a3","#a4","#a5","#a6",'#a7','#a8','#a9','#a10','#a11','#a12','#a13','#a14'];
 	for (var idx = 0; idx < planet_name.length; idx++){
-		var star = $(planet_name[idx]);
-		if ($star.is(":hover")){
-			console.log(star);
+		if ($(planet_name[idx]).is(":hover")){
+			console.log(planet_name[idx]);
 			// console.log()
 		}
 	}
