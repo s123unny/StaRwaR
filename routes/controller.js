@@ -154,7 +154,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 30;
+		var Time = 5;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp);
 		mytimer.tick();
 	}
@@ -225,12 +225,13 @@ Controller = function(io, model) {
 		// model.stars.m1.num = 2;
 		//-------------
 		if (count == 1) {
-			day();
+			day("Init", null);
 		}
 	}
 
 
 	function day(state, substate) {
+		console.log(state, substate);
 		switch(state) {
 		case "Init":
 			console.log("run day function");
@@ -481,7 +482,7 @@ Controller = function(io, model) {
 			}
 			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
 				console.log("AImodel event");
-				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下： Audio: "+ai_ratio[model.day][0]+"Image: "+ai_ratio[model.day][1]+"Text: "+ai_ratio[model.day][2]+;
+				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下： Audio: "+ai_ratio[model.day][0]+"Image: "+ai_ratio[model.day][1]+"Text: "+ai_ratio[model.day][2];
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
 				}
@@ -501,6 +502,7 @@ Controller = function(io, model) {
 			
 
 			//finish => start night
+			console.log("emit start button");
 			io.sockets.to(adminIO).emit("adminStartButton");
 			break;
 		}

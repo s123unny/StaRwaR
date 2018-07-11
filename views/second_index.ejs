@@ -133,7 +133,7 @@
 	</div>
 	
 	<% for (var i = 0; i < ships.length; i++) { -%>
-		<% if (ships[i].status() != "free") { -%>
+		<% if (ship_status[i] != "free") { -%>
 			<div class="Mission_Block">
 				<div class="slot_wrapper" id="going_mblock_slot<%=i%>">
 					<div id="ongoing_mblock_slot<%=i%>_type" class="content"><%= stars[ships[i].targetId].type %></div>
@@ -141,7 +141,7 @@
 					<div id="ongoing_mblock_slot<%=i%>_M" class="content"><%= ships[i].num_of_miner %></div>
 					<div id="ongoing_mblock_slot<%=i%>_T" class="content"><%= ships[i].num_of_trainer %></div>
 					<div id="ongoing_mblock_slot<%=i%>_H" class="content"><%= ships[i].num_of_haker %></div>
-					<div id="ongoing_mblock_slot<%=i%>_State" class="content"><%= ships[i].status() %></div>
+					<div id="ongoing_mblock_slot<%=i%>_State" class="content"><%= ship_status[i] %></div>
 					<div class="content">
 						<label class="rest">
 		  				<span class="submitter" onclick="comeback(<%=i%>)">Return</span>
@@ -167,7 +167,7 @@
 
 	<% for (var i = 0; i < ships.length; i++) { -%>
 
-		<% if (ships[i].status() == "free") { -%>
+		<% if (ship_status[i] == "free") { -%>
 			<div class="Mission_Block">
 				<div class="slot_wrapper" id="assign_mblock_slot<%=i%>">
 					<div class="content ">
