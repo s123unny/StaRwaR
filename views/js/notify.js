@@ -57,8 +57,8 @@
 })(jQuery);
 
 
-socket.on("adminStartButton", addNotifyAlert("Night is Coming"));
-socket.on('notify', (msg) => addNotifyAlert(msg));
+socket.on("adminStartButton", () => addNotifyAlert("Night is Coming"));
+socket.on('notify', (msg)  => addNotifyAlert(msg));
 function addNotifyAlert(msg) {
     console.log("enable start button");
 	$.confirm({

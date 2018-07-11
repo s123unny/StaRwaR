@@ -129,11 +129,11 @@ Controller = function(io, model) {
 		// for testing
 		//console.log(model.stars.m1);
 		//console.log(model.players[id]);
-		model.stars.m1.player_here[id] = 0;
-		model.players[id].ships[0].num_of_miner = 2;
-		model.stars.m1.num = 2;
+		// model.stars.m1.player_here[id] = 0;
+		// model.players[id].ships[0].num_of_miner = 2;
+		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 2) {
+		if (count == 1) {
 			day();
 		}
 	}
