@@ -1,4 +1,7 @@
 var socket = io();
+
+const name2id = {"&gamma;": "m0", "&lambda;": "m1", '&varrho;': "m2", '&psi;': "m3", '&omicron;': "m4", '&Omega;': "m5",'&varkappa;': "m6",'&rho;': "m7",'&alpha;': "m8",'&nu;': "m9", '&theta;':"a0",'&sigmaf;': "a1",'&tau;': "a2",'&chi;': "a3",'&beta;': "a4",'&epsilon;': "a5",'&omega;': "a6",'&delta;': "a7",'&iota;': "a8",'&mu;': "a9",'&xi;': "a10",'&backepsilon;': "a11",'&straightepsilon;': "a12",'&pi;': "a13",'&eta;': "a14",'&zeta;': "c0",'&omicron;': "c1",'&upsilon;': "c2",'&kappa;': "c3",'&phi;': "c4",'Base0': "b0",'Base1': "b1",'Base2': "b2",'Base3': "b3",'Base4': "b4"}
+
 socket.on('night_start', (player_id) => get_pannel(player_id));
 socket.on('nightTimeUp', () => collect_pannel());
 
@@ -18,8 +21,8 @@ workers: [num_of_miner, num_of_trainer, num_of_haker]
 hand_on_AImodel //填type 沒有填null
 */
 
-
 function collect_pannel() {
+  console.log("collect_pannel");
   var pid = Number($('#player_id').text());
   var money = Number($('#Money').text());
   var num_of_trainer = Number($('#standby_trainer_num').text()) + Number($('#working_trainer_num').text());
@@ -31,22 +34,27 @@ function collect_pannel() {
   for (var i = 0; i < 5; i++) {
     ships.push(get_ship_info(i));
   }
-  console.log(ships);
+  console.log(money, workers);
   
   socket.emit("collectData", pid, ships, money, workers, hand_on_AImodel);
 }
 
 function get_ship_info(sid) {
+  console.log("Get ship Info ")
   if($('#going_mblock_slot'+sid).length) {  // for ongoing ship
     //pending: 確定onging 船隻狀況
   } else if ($('#assign_mblock_slot'+sid).length) { // for standby ship
-    if ($('submitted'+sid).length) {
+    if ($('#submitted'+sid).length) {
     // if (sid == 1) {  // 測試用，把這行打開上面註解掉就可以看到有一艘船的回傳資料
       var miner = Number($('#assign_mblock_slot'+sid+'_M').val());
       var trainer = Number($('#assign_mblock_slot'+sid+'_T').val());
       var hacker = Number($('#assign_mblock_slot'+sid+'_H').val());
 
-      var targetId = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
+      var targetname = $('#assign_mblock_slot'+sid+'_target').find(":selected").text()
+      var targetId = name2id[targetname];
+      console.log("==================");
+      console.log(targetId);
+      console.log("==================");
       var datasetType = $('#assign_mblock_slot'+sid+'_carry').find(":selected").text()
       if (datasetType == "Nothing") {
         datasetType = null;

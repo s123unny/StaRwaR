@@ -1,23 +1,5 @@
 /* This file is for update mission block */
 
-var skill = {
-	skill1: {name:"old_king", state: "know"},
-	skill2: {name:"oil_gas", state: "know"},
-	skill3: {name:"ssh", state: "unknown"},
-	skill4: {name:"validation", state: "learnable"},
-	skill5: {name:"employment", state: "know"},
-	skill6: {name:"old_king", state: "know"},
-	skill7: {name:"old_king", state: "know"},
-	skill8: {name:"old_king", state: "know"},
-	skill9: {name:"old_king", state: "know"},
-	skill10: {name:"old_king", state: "know"},
-	skill11: {name:"old_king", state: "know"},
-	skill12: {name:"old_king", state: "know"},
-	skill13: {name:"old_king", state: "know"},
-	skill14: {name:"old_king", state: "know"},
-	skill14: {name:"old_king", state: "know"},
-}
-
 /* Learn the skill */
 function learn(name){
 	$('#'+name+'.skill').click();

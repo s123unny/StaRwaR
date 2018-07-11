@@ -136,11 +136,11 @@
 		<% if (ships[i].status() != "free") { -%>
 			<div class="Mission_Block">
 				<div class="slot_wrapper" id="going_mblock_slot<%=i%>">
-					<div id="ongoing_mblock_slot<%=i%>_type" class="content">Mine</div>
-					<div id="ongoing_mblock_slot<%=i%>_location" class="content">Alpha</div>
-					<div id="ongoing_mblock_slot<%=i%>_M" class="content">0</div>
-					<div id="ongoing_mblock_slot<%=i%>_T" class="content">0</div>
-					<div id="ongoing_mblock_slot<%=i%>_H" class="content">0</div>
+					<div id="ongoing_mblock_slot<%=i%>_type" class="content"><%= stars[ships[i].targetId].type %></div>
+					<div id="ongoing_mblock_slot<%=i%>_location" class="content"><%= ships[i].targetId %></div>
+					<div id="ongoing_mblock_slot<%=i%>_M" class="content"><%= ships[i].num_of_miner %></div>
+					<div id="ongoing_mblock_slot<%=i%>_T" class="content"><%= ships[i].num_of_trainer %></div>
+					<div id="ongoing_mblock_slot<%=i%>_H" class="content"><%= ships[i].num_of_haker %></div>
 					<div id="ongoing_mblock_slot<%=i%>_State" class="content"><%= ships[i].status() %></div>
 					<div class="content">
 						<label class="rest">
@@ -164,8 +164,10 @@
 		<div class="category">Carry Item</div>
 		<div class="category">Confirm</div>
 	</div>
+	<% var id2name = {m0: "&gamma;", m1:"&lambda;", m2:'&varrho;', m3:'&psi;', m4:'&omicron;', m5:'&Omega;', m6:'&varkappa;', m7:'&rho;', m8:'&alpha;', m9:'&nu;', a0: '&theta;', a1:'&sigmaf;', a2:'&tau;', a3:'&chi;', a4:'&beta;', a5:'&epsilon;', a6:'&omega;', a7:'&delta;', a8:'&iota;', a9:'&mu;', a10:'&xi;', a11:'&backepsilon;', a12:'&straightepsilon;', a13:'&pi;', a14:'&eta;', c0:'&zeta;', c1:'&omicron;', c2:'&upsilon;', c3:'&kappa;', c4:'&phi;', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'} -%>
 
 	<% for (var i = 0; i < ships.length; i++) { -%>
+
 		<% if (ships[i].status() == "free") { -%>
 			<div class="Mission_Block">
 				<div class="slot_wrapper" id="assign_mblock_slot<%=i%>">
@@ -185,16 +187,16 @@
 						<select id="assign_mblock_slot<%=i%>_target" class="choosetype" name="YourLocation" style="width: 67px">
 								<option value="None" class="none">None</option>
 							<% for (let j of mines) { -%>
-								<option value="<%= j %>" class="mine"><%= j %></option>
+								<option value="<%= j %>" class="mine"><%= id2name[j] %></option>
 							<% } -%>
 							<% for (let j of unknowns) { -%>
-								<option value="<%= j %>" class="unknown"><%= j %></option>
+								<option value="<%= j %>" class="unknown"><%= id2name[j] %></option>
 							<% } -%>
 							<% for (let j of computers) { -%>
-								<option value="<%= j %>" class="computer"><%= j %></option>
+								<option value="<%= j %>" class="computer"><%= id2name[j] %></option>
 							<% } -%>
 							<% for (let j of abandons) { -%>
-								<option value="<%= j %>" class="abandon"><%= j %></option>
+								<option value="<%= j %>" class="abandon"><%= id2name[j] %></option>
 							<% } -%>
 							<% for (var j in skill) { -%>
 								<% if (skill[j].learnable == true) { -%>
@@ -360,9 +362,9 @@
 </html>
 
 <script src="/socket.io/socket.io.js"></script>
+<script src="js/panel/control_pannel.js"></script>
 <script src="js/skillTree.js"></script>
 <script src="js/panel/day_process.js"></script>
-<script src="js/panel/control_pannel.js"></script>
 <script src="js/panel/update_worker.js"></script>
 <script src="js/panel/mission_worker.js"></script>
 <script src="js/panel/jquery.confirm.js"></script>

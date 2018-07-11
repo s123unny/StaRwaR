@@ -290,7 +290,7 @@ var skilltree = {
 	},
 	// Getting and evauluating complex dependency for obj's level.
 	getDependency: function (obj, level) {
-		console.log(">> " + obj.attr('dependency'));
+		// console.log(">> " + obj.attr('dependency'));
 		if (!obj.hasAttr('dependency'))
 			return false;
 		try {
@@ -312,7 +312,7 @@ var skilltree = {
 	},
 	// Getting and evauluating complex group dependency for obj's level.
 	getGroupDependency: function (obj, level) {
-		 console.log(obj);
+		// console.log(obj);
 		if (!obj.hasAttr('group_dependency'))
 			return false;
 		try {
@@ -387,12 +387,12 @@ var skilltree = {
 			return false;
 
 		var dep = this.getDependency(obj, forLevel);
-		console.log(dep);
+		// console.log(dep);
 		var mustHave = obj.attr('musthave');
-		console.log(forLevel);
-		console.log("------------------")
-		console.log(obj);
-		console.log(mustHave);
+		// console.log(forLevel);
+		// console.log("------------------")
+		// console.log(obj);
+		// console.log(mustHave);
 		var group_dep = this.getGroupDependency(obj, forLevel);
 		var mustNotHave = this.getMustNotHave(obj, forLevel);
 		
