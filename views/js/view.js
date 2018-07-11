@@ -87,6 +87,10 @@ function ship_mission(baseID,targetID){
 
 }
 
+function howhow(baseID){
+	$("#b" + baseID).switchClass('planet-base', 'planet-howhow');
+}
+
 function ship_back(baseID,targetID){
 	console.log("b"+baseID+"-"+targetID)
 	var x = document.getElementById("b"+baseID+"-"+targetID);
