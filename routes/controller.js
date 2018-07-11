@@ -108,8 +108,8 @@ Controller = function(io, model) {
 				} else if (player.ships[i].dayLeft == null) {
 					//caculate require day
 					//if (skill) todo
-					var distance = Math.abs(model.stars[player.ships[i].targetId].x_pos - model.player[id].x_pos);
-					distance += Math.abs(model.stars[player.ships[i].targetId].y_pos - model.player[id].y_pos);
+					var distance = Math.abs(model.stars[player.ships[i].targetId].x_pos - model.players[id].x_pos);
+					distance += Math.abs(model.stars[player.ships[i].targetId].y_pos - model.players[id].y_pos);
 					if (distance <= 3) {
 						player.ships[i].dayLeft = 1;
 					} else if (distance < 10) {
