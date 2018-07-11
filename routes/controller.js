@@ -424,10 +424,10 @@ Controller = function(io, model) {
 			/*pop box: event*/
 		}
 		for(var i = 0; i < 5; i++)
-			if(model.players[i].skill['Laplace-Acma'].method())
+			if(model.players[i].skill['Laplaces-Acma'].method())
 				Update.Notify(playerIO[i].first,"Day 53 BANG!");
 		for(var i = 0; i < 5; i++)
-			if(model.players[i].skill['Laplace-Acma'].method())
+			if(model.players[i].skill['Tax-Collector'].method())
 				model.players[i].money += 87;
 
 		//finish => start night
