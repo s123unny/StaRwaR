@@ -111,7 +111,7 @@ Controller = function(io, model) {
 				star.found = true;
 				Update.Star(id);
 				var msg = "新的礦場被發現了!";
-				Update.Chatting(msg, "SYSTEM");
+				Update.Chatting(msg, "SYSTEM","white");
 			}
 			var getRewardPlayer;
 			if (star.num <= 2) {
@@ -159,7 +159,7 @@ Controller = function(io, model) {
 					totalmoney += add;
 					/*chat message*/
 					var msg = "玩家" + model.players[j].name + "在"+id2name[id]+"挖礦獲得 " + add + "BTC";
-					Update.Chatting(msg, "SYSTEM");
+					Update.Chatting(msg, "SYSTEM","white");
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
 				}
@@ -288,7 +288,7 @@ Controller = function(io, model) {
 			if (model.day == 11 || model.day == 23 || model.day == 43) {
 				//message
 				var msg = "Event: " + mine_msg[model.day];
-				Update.Chatting(msg, "SYSTEM");
+				Update.Chatting(msg, "SYSTEM","white");
 				console.log("[Event] mine" + model.day);
 				for (let key in mine) {
 					model.stars[mine[key]].mine = mine_change[model.day][key]; 
@@ -310,7 +310,7 @@ Controller = function(io, model) {
 						star.found = true;
 						Update.Star(i);
 						var msg = "新的星球被發現了!";
-						Update.Chatting(msg, "SYSTEM");
+						Update.Chatting(msg, "SYSTEM","white");
 					}
 					var msg;
 					switch(i) {
@@ -335,7 +335,7 @@ Controller = function(io, model) {
 								Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 								//message
 								msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
-								Update.Chatting(msg, "SYSTEM");
+								Update.Chatting(msg, "SYSTEM","white");
 							}
 						}
 						//update map
@@ -345,7 +345,7 @@ Controller = function(io, model) {
 					case "a2":
 						//desert
 						msg = "邊緣星球感謝玩家拜訪";
-						Update.Chatting(msg, "SYSTEM");
+						Update.Chatting(msg, "SYSTEM","white");
 						//notify
 						for (j = 0; j < 5; j++) {
 							if (star.player_here[j] != null) {
@@ -456,7 +456,7 @@ Controller = function(io, model) {
 								totalmoney += randomMoney;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在命運星球抽到的命運是: " + randomMoney + "BTC";
-								Update.Chatting(msg, "SYSTEM");
+								Update.Chatting(msg, "SYSTEM","white");
 								//update player
 								Update.Money(playerIO[j].second, model.players[j].money);
 								//notify
@@ -487,7 +487,7 @@ Controller = function(io, model) {
 								model.players[j].dataset[starDatasetType[i]] += this_amount;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在廢棄星球收集到 "+ this_amount + " dataset";
-								Update.Chatting(msg, "SYSTEM");
+								Update.Chatting(msg, "SYSTEM","white");
 								//update player: bag
 								Update.Item(playerIO[j].second, "dataset", starDatasetType[i], this_amount);
 								//notify
@@ -510,7 +510,7 @@ Controller = function(io, model) {
 						star.found = true;
 						Update.Star(i);
 						var msg = "新的雲端運算中心被發現了!";
-						Update.Chatting(msg, "SYSTEM");
+						Update.Chatting(msg, "SYSTEM","white");
 					}
 					for (var j = 0; j < 5; j++) {
 						if (star.player_here[j] != null) {
@@ -555,7 +555,7 @@ Controller = function(io, model) {
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
 				}
-				Update.Chatting(msg, "SYSTEM");
+				Update.Chatting(msg, "SYSTEM","white");
 				ai_event_day = model.day;
 				/*pop box: event*/
 			}
@@ -571,7 +571,7 @@ Controller = function(io, model) {
 							Update.Money(playerIO[j].second, model.players[j].money);
 							model.players[i].AImodel[AImodel] = 0;
 							var msg = "玩家"+model.players[i].name+"繳交model獲得"+add+"BTC";
-							Update.Chatting(msg, "SYSTEM");
+							Update.Chatting(msg, "SYSTEM","white");
 							Update.Item(playerIO[i].second, "model", AImodel, 0);
 						}
 					}
@@ -590,7 +590,7 @@ Controller = function(io, model) {
 				if(model.players[i].skill['How-Universe'].method())
 					io.emit("howhow", String(i));	
 			for(var i = 0; i < 5; i++)
-				model.players[i].money+=model.players[i].skill['How-Universe'].method(totalmoney);
+				model.players[i].money+=model.players[i].skill['Centralize'].method(totalmoney);
 			skillid = [];
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['God-of-Crypto'].method())
