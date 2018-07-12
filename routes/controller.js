@@ -79,9 +79,9 @@ Controller = function(io, model) {
 					add = Math.round(add / total * star.mine);
 					add = Math.round(model.players[j].skill['GPU'].method(add));
 					model.players[j].money += add;
-					totalmomey += add;
+					totalmoney += add;
 					/*chat message*/
-					var msg = "玩家" + model.players[j].name + "挖礦獲得 " + add + "BTC";
+					var msg = "玩家" + model.players[j].name + "搶答成功 挖礦獲得 " + add + "BTC";
 					Update.Chatting(msg, "SYSTEM");
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
@@ -135,7 +135,7 @@ Controller = function(io, model) {
 				Question.Invoke(star.player_here, "Mine", id);
 				return;
 			}
-			var total = 0
+			var total = 0; //num <=2
 			for (var j = 0; j < 5; j++) {
 				if (getRewardPlayer[j] != null) {
 					total += model.players[j].ships[star.player_here[j]].num_of_miner;
@@ -268,7 +268,7 @@ Controller = function(io, model) {
 
 	function day(state, substate) {
 		console.log(state, substate);
-		sleep.sleep(1);
+		sleep.sleep(5);
 		switch(state) {
 		case "Init":
 			questionflag = false;

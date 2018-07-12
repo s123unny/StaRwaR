@@ -13,8 +13,10 @@ class questionevent{
 		this.callback=callback;
 	}
 
-	Invoke(arr,state,substate) {
+	Invoke(arr,statefrom,starid) {
 		array=arr;
+		state=statefrom;
+		substate=starid;
 		console.log("array ",array);
 		q=require("./questionlist.js")();
 		this.io.emit("needQuestion",q,array);
@@ -26,7 +28,7 @@ class questionevent{
 		for(var i=0;i<5;i++){
 			if(array[i]!=null){
 				totalcount++;
-				//console.log(i+" : totalcount++ = ",totalcount);
+				console.log("answer question "+q.id+" id = "+i+" : totalcount++ = ",totalcount);
 			}
 			returnArray[i]=null;
 		}
@@ -45,8 +47,8 @@ class questionevent{
 		}
 		console.log("Player " + id +" answer: " + ans);
 		count++;
+		if(count==1) console.log("totalcount= "+ totalcount);
 		console.log("count= "+ count);
-		console.log("totalcount= "+ totalcount);
 
 		if(correct||(count==totalcount)||(count==5)){ //count ==5 when time up or no body correct
 			
@@ -67,7 +69,7 @@ class questionevent{
 	needcloseQ(){
 		this.io.emit("closeQ");
 		questionflag = false;
-		//console.log("at back send closeQ");
+		console.log("at route/question.js send closeQ");
 	}
 
 	Init(player){
