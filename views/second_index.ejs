@@ -253,7 +253,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 2 -->
-		<div class="skill skill angel" current="<%= skill['Tax-Collector'].current %>" max="2" skillid="Tax-Collector" sprite="1x1" id="Tax-Collector" musthave="Legacy-of-Ancient-God" onclick="add_skill('Tax-Collector')">
+		<div class="skill skill angel" current="<%= skill['Tax-Collector'].current %>" max="2" skillid="Tax-Collector" sprite="1x1" id="Tax-Collector" <% if (!skill["Legacy-of-Ancient-God"].learned ) { -%> musthave="QQ" <% } -%> onclick="add_skill('Tax-Collector')">
 			<div>
 				<h3>Tax Collector</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Want more money?</p> <!-- discription name-->
@@ -262,7 +262,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 3 -->
-		<div class="skill skill angel" current="<%= skill['How-Universe'].current %>" max="2" skillid="How-Universe" sprite="1x1" id="How-Universe" musthave="Tax-Collector" onclick="add_skill('How-Universe')">
+		<div class="skill skill angel" current="<%= skill['How-Universe'].current %>" max="2" skillid="How-Universe" sprite="1x1" id="How-Universe" <% if (!skill["Tax-Collector"].learned ) { -%> musthave="QQ" <% } -%> onclick="add_skill('How-Universe')">
 			<div>
 				<h3>How-Universe</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: A chance to take adventure</p>
@@ -273,7 +273,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 4 -->
-		<div class="skill skill angel" current="<%= skill['GPU'].current %>" max="3" skillid="GPU" sprite="1x1" id="GPU" musthave="Legacy-of-Ancient-God" onclick="add_skill('GPU')">
+		<div class="skill skill angel" current="<%= skill['GPU'].current %>" max="3" skillid="GPU" sprite="1x1" id="GPU" <% if (!skill["Legacy-of-Ancient-God"].learned ) { -%> musthave="QQ" <% } -%>  onclick="add_skill('GPU')">
 			<div>
 				<h3>GPU</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Better performance on ...</p>
@@ -282,7 +282,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 5 -->
-		<div class="skill skill angel" current="<%= skill['Deep-Learning'].current %>" max="3" skillid="Deep-Learning" sprite="1x1" id="Deep-Learning" musthave="Tax-Collector" dependency="XD" onclick="add_skill('Deep-Learning')">
+		<div class="skill skill angel" current="<%= skill['Deep-Learning'].current %>" max="3" skillid="Deep-Learning" sprite="1x1" id="Deep-Learning" <% if (!skill["Tax-Collector"].learned && !skill["GPU"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Deep-Learning')">
 			<div>
 				<h3>Deep Learning</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: I think the hint is too much for you XD</p> 
@@ -291,7 +291,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 6 -->
-		<div class="skill skill angel" current="<%= skill['Rainbow'].current %>" max="3" skillid="Rainbow" sprite="1x1" id="Rainbow" musthave="How-Universe"onclick="add_skill('Rainbow')">
+		<div class="skill skill angel" current="<%= skill['Rainbow'].current %>" max="3" skillid="Rainbow" sprite="1x1" id="Rainbow" <% if (!skill["How-Universe"].learned && !skill["Deep-Learning"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Rainbow')">
 			<div>
 				<h3>Rainbow</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Colorful is powerful !</p>
@@ -302,7 +302,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 7 -->
-		<div class="skill skill angel" current="<%= skill['Centralize'].current %>" max="5" skillid="Centralize" sprite="1x1" id="Centralize" musthave="GPU" onclick="add_skill('Centralize')">
+		<div class="skill skill angel" current="<%= skill['Centralize'].current %>" max="5" skillid="Centralize" sprite="1x1" id="Centralize" <% if (!skill["GPU"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Centralize')">
 			<div>
 				<h3>Centralize</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Remember difference between centralize and decentrailize =) </p> 
@@ -311,7 +311,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 8 -->
-		<div class="skill skill angel" current="<%= skill['SSH'].current %>" max="5" skillid="SSH" sprite="1x1" id="SSH" musthave="Deep-Learning" onclick="add_skill('SSH')">
+		<div class="skill skill angel" current="<%= skill['SSH'].current %>" max="5" skillid="SSH" sprite="1x1" id="SSH" <% if (!skill["Deep-Learning"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('SSH')">
 			<div>
 				<h3>SSH</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Remotely control your computer</p> <!-- discription name-->
@@ -320,7 +320,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 9 -->
-		<div class="skill skill angel" current="<%= skill['Respectful-Player'].current %>" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" musthave="Rainbow" onclick="add_skill('Respectful-Player')">
+		<div class="skill skill angel" current="<%= skill['Respectful-Player'].current %>" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" <% if (!skill["Rainbow"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Respectful-Player')">
 			<div>
 				<h3>Respectful Player</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Sometimes you need another kind of reward</p> <!-- discription name-->
@@ -331,7 +331,7 @@
 		<div class="arrow down" style="left: -204px; top: 0px;"></div>
 		<div class="arrow down" style="left: -94px; top: 0px;"></div>
 		<!-- skill * 10 -->
-		<div class="skill skill angel" current="<%= skill['God-of-Crypto'].current %>" max="10" skillid="God-of-Crypto" sprite="1x1" id="God-of-Crypto" musthave="Centralize" onclick="add_skill('God-of-Crypto')">
+		<div class="skill skill angel" current="<%= skill['God-of-Crypto'].current %>" max="10" skillid="God-of-Crypto" sprite="1x1" id="God-of-Crypto" <% if (!skill["Centralize"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('God-of-Crypto')">
 			<div>
 				<h3>God of Crypto</h3>	<!-- skill name-->
 				<p style="color:red">Hint: I think it is interesting if one day you can control every ships ...</p> <!-- discription name-->
@@ -340,7 +340,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 11 -->
-		<div class="skill skill angel" current="<%= skill['GAN'].current %>" max="10" skillid="GAN" sprite="1x1" id="GAN" musthave="SSH" onclick="add_skill('GAN')">
+		<div class="skill skill angel" current="<%= skill['GAN'].current %>" max="10" skillid="GAN" sprite="1x1" id="GAN" <% if (!skill["SSH"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('GAN')">
 			<div>
 				<h3>GAN</h3>	<!-- skill name-->
 				<p style="color:red;">Hint: Need dataset ? Why not generate it by yourself ?</p> <!-- discription name-->
@@ -349,7 +349,7 @@
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
 		<!-- skill * 12 -->
-		<div class="skill skill angel" current="<%= skill['Laplaces-Acma'].current %>" max="10" skillid="Laplace-Acma" sprite="1x1" id="Laplaces-Acma"  musthave="Respectful-Player" onclick="add_skill('Laplaces-Acma')">
+		<div class="skill skill angel" current="<%= skill['Laplaces-Acma'].current %>" max="10" skillid="Laplace-Acma" sprite="1x1" id="Laplaces-Acma" <% if (!skill["Respectful-Player"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Laplaces-Acma')">
 			<div>
 				<h3>Laplace's Acma</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Want to know what will happen in the future =)</p>
