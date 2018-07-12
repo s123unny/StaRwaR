@@ -36,6 +36,7 @@ const pos = {
 	b4: {id: "b4", x_pos: 10, y_pos: 3}
 }
 
+const id2name = {m0: "s0", m1:"s25", m2:'s12', m3:'s21', m4:'s7', m5:'s6', m6:'s13', m7:'s22', m8:'s14', m9:'s1', a0: 's15', a1:'s2', a2:'s28', a3:'s26', a4:'s29', a5:'s5', a6:'s24', a7:'s23', a8:'s11', a9:'s17', a10:'s16', a11:'s18', a12:'s27', a13:'s20', a14:'s19', c0:'s10', c1:'s8', c2:'s3', c3:'s9', c4:'s4', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'}
 
 var socket = io();
 
@@ -121,79 +122,13 @@ function update_time(time){
 }
 
 function show_pos(id){
-	// $("#m0_pos").text("XDDDD");
-	console.log(id);
-	console.log(pos[id])
-	$("#"+id+"_pos").text("("+pos[id]['x_pos']+","+pos[id]['y_pos']+")");
+	$("#"+id+"_pos").text(id2name[id]+" : ("+pos[id]['x_pos']+","+pos[id]['y_pos']+")");
 	$("#"+id+"_pos").show();
 }
 
 function close_pos(id){
 	$("#"+id+"_pos").hide();
 }
-// $(document).ready(function(){
-// 	console.log("XD");
-// 	var show = [];
 
-// 	var planet_name = ['m0','m1','m2','m3','m4','m5','m6','m7','m8','m9','c0','c1','c2','c3','c4','a0','a1',"a2","a3","a4","a5","a6",'a7','a8','a9','a10','a11','a12','a13','a14', 'b0', 'b1', 'b2', 'b3', 'b4'];
-// 	$("#m0").bind("mousemove", function(e){
-// 		console.log("event");
-// 		var offset = $("#m0").offset();
-// 		var clickX=Math.abs(e.clientX - offset.left);
-// 		var clickY=Math.abs(e.clientY - offset.top);
-// 		console.log(clickX, clickY);
-// 		if (clickX < 30 && clickY < 30){
-// 			setInterval(show_pos, 2000)					
-// 		}
-// 		else{
-			
-			
-// 		// var markup = [
-// 		}
-//   //           '<div>',
-//   //           "XD",
-//   //           '</div>'
-//   //       ].join('');
-
-//   //       $(markup).hide().appendTo('body').fadeIn();
-
-// 	});
-// 	// for (var idx = 0; idx < planet_name.length; idx++){
-
-// 	// }
-// });
-
-// setInterval(function(){
-// 	console.log("I'm here");
-// 	$("#m0_pos").hide();
-// }, 3000);
-// setInterval(function(){
-// 	// console.log("XDDDDDDDD");
-// 	var planet_name = ['m0','m1','m2','m3','m4','m5','m6','m7','m8','m9','c0','c1','c2','c3','c4','a0','a1',"a2","a3","a4","a5","a6",'a7','a8','a9','a10','a11','a12','a13','a14', 'b0', 'b1', 'b2', 'b3', 'b4'];
-// 	// for (var idx = 0; idx < planet_name.length; idx++){
-// 	// 	var cur_id = "#"+planet_name[idx];
-// 	// 	if ($(cur_id).is(":hover")){
-// 	// 		console.log(planet_name[idx]);
-// 	// 		// console.log()
-// 	// 		var $show_star = $(cur_id);
-// 	// 		if ($show_star.is(":hover")){
-// 	// 			console.log(pos[planet_name[idx]]);
-// 	// 			// console.log($show_star.attr('class'));
-// 	// 			// console.log(pos[planet_name[idx]][x_pos], pos[planet_name[idx]][y_pos]);
-// 	// 		}
-// 	// 	}
-// 	// }
-// 	if ($("#m0").is(":hover")){
-// 		$("#m0_pos").text("XDDDDDD");
-// 		$("#m0_pos").show();
-// 	}
-//     // var $sample = $("#m0");
-//     // if($sample.is(":hover")) {
-//     //    $sample.css("background", "yellow");
-//     // }
-//     // else {
-//     //    $sample.css("background", "");
-//     // }
-// }, 200);
 
 

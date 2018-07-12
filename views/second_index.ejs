@@ -133,12 +133,14 @@
 		<div class="category">Return</div>
 	</div>
 	
+	<% const id2name = {m0: "s0", m1:"s25", m2:'s12', m3:'s21', m4:'s7', m5:'s6', m6:'s13', m7:'s22', m8:'s14', m9:'s1', a0: 's15', a1:'s2', a2:'s28', a3:'s26', a4:'s29', a5:'s5', a6:'s24', a7:'s23', a8:'s11', a9:'s17', a10:'s16', a11:'s18', a12:'s27', a13:'s20', a14:'s19', c0:'s10', c1:'s8', c2:'s3', c3:'s9', c4:'s4', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'} -%>
+
 	<% for (var i = 0; i < ships.length; i++) { -%>
 		<% if (ship_status[i] != "free") { -%>
 			<div class="Mission_Block">
 				<div class="slot_wrapper" id="going_mblock_slot<%=i%>">
 					<div id="ongoing_mblock_slot<%=i%>_type" class="content"><%= stars[ships[i].targetId].type %></div>
-					<div id="ongoing_mblock_slot<%=i%>_location" class="content"><%= ships[i].targetId %></div>
+					<div id="ongoing_mblock_slot<%=i%>_location" class="content"><%= id2name[ships[i].targetId] %></div>
 					<div id="ongoing_mblock_slot<%=i%>_M" class="content"><%= ships[i].num_of_miner %></div>
 					<div id="ongoing_mblock_slot<%=i%>_T" class="content"><%= ships[i].num_of_trainer %></div>
 					<div id="ongoing_mblock_slot<%=i%>_H" class="content"><%= ships[i].num_of_haker %></div>
@@ -166,7 +168,6 @@
 		<div class="category">Carry Item</div>
 		<div class="category">Confirm</div>
 	</div>
-	<% var id2name = {m0: "&gamma;", m1:"&lambda;", m2:'&varrho;', m3:'&psi;', m4:'&omicron;', m5:'&Omega;', m6:'&varkappa;', m7:'&rho;', m8:'&alpha;', m9:'&nu;', a0: '&theta;', a1:'&sigmaf;', a2:'&tau;', a3:'&chi;', a4:'&beta;', a5:'&epsilon;', a6:'&omega;', a7:'&delta;', a8:'&iota;', a9:'&mu;', a10:'&xi;', a11:'&backepsilon;', a12:'&straightepsilon;', a13:'&pi;', a14:'&eta;', c0:'&zeta;', c1:'&omicron;', c2:'&upsilon;', c3:'&kappa;', c4:'&phi;', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'} -%>
 
 	<% for (var i = 0; i < ships.length; i++) { -%>
 
@@ -256,7 +257,7 @@
 			<div>
 				<h3>Tax Collector</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: Want more money?</p> <!-- discription name-->
-				<p showlevel="2"><i>Get: 20% more bonus in one day</i></p>
+				<p showlevel="2"><i>Get: 50 BTC reward get</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -265,7 +266,7 @@
 			<div>
 				<h3>How-Universe</h3>	<!-- skill name-->
 				<p style="color: red;">Hint: A chance to take adventure</p>
-				<p showlevel="2"><i>Get: Chances to make money =)</i></p> 
+				<p showlevel="2"><i>Get: See your base =3 </i></p> 
 			</div>
 		</div>
 		<div class="arrow down" style="left: -315px; top: 0px;"></div>
@@ -304,8 +305,8 @@
 		<div class="skill skill angel" current="<%= skill['Centralize'].current %>" max="5" skillid="Centralize" sprite="1x1" id="Centralize" musthave="GPU" onclick="add_skill('Centralize')">
 			<div>
 				<h3>Centralize</h3>	<!-- skill name-->
-				<p>Hint: Fear the legendary DDOS. Have you heard of it?</p> <!-- discription name-->
-				<p showlevel="5"><i>Get: Choose one team and nake it unable to move.</i></p>
+				<p style="color:red;">Hint: Remember difference between centralize and decentrailize =) </p> 
+				<p showlevel="5"><i>Get: Obtain 5% transaction fee from now on</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -313,9 +314,8 @@
 		<div class="skill skill angel" current="<%= skill['SSH'].current %>" max="5" skillid="SSH" sprite="1x1" id="SSH" musthave="Deep-Learning" onclick="add_skill('SSH')">
 			<div>
 				<h3>SSH</h3>	<!-- skill name-->
-				<p>I think the hint is enough =)</p> <!-- discription name-->
-				<p showlevel="5"><i>Get: Choose one team and nake it unable to move.</i></p>
-				<!-- <p><i></i></p> -->
+				<p style="color:red;">Hint: Remotely control your computer</p> <!-- discription name-->
+				<p showlevel="5"><i>Get: One day to arrive AI center from now on</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -323,8 +323,8 @@
 		<div class="skill skill angel" current="<%= skill['Respectful-Player'].current %>" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" musthave="Rainbow" onclick="add_skill('Respectful-Player')">
 			<div>
 				<h3>Respectful Player</h3>	<!-- skill name-->
-				<p>Just Monika</p> <!-- discription name-->
-				<p showlevel="5"><i>Get: Choose one team and nake it unable to move.</i></p>
+				<p style="color:red;">Hint: Sometimes you need another kind of reward</p> <!-- discription name-->
+				<p showlevel="5"><i>Get: Add [尊貴的] to your name</i></p>
 			</div>
 		</div>
 		<div class="arrow down" style="left: -315px; top: 0px;"></div>
@@ -334,8 +334,8 @@
 		<div class="skill skill angel" current="<%= skill['God-of-Crypto'].current %>" max="10" skillid="God-of-Crypto" sprite="1x1" id="God-of-Crypto" musthave="Centralize" onclick="add_skill('God-of-Crypto')">
 			<div>
 				<h3>God of Crypto</h3>	<!-- skill name-->
-				<p>Forgive others is to be kind to yourself !</p> <!-- discription name-->
-				<p showlevel="10"><i>Get: Choose one team and nake it unable to move.</i></p>
+				<p style="color:red">Hint: I think it is interesting if one day you can control every ships ...</p> <!-- discription name-->
+				<p showlevel="10"><i>Get: All ships except yours are unable to move for one round.</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -343,8 +343,8 @@
 		<div class="skill skill angel" current="<%= skill['GAN'].current %>" max="10" skillid="GAN" sprite="1x1" id="GAN" musthave="SSH" onclick="add_skill('GAN')">
 			<div>
 				<h3>GAN</h3>	<!-- skill name-->
-				<p>Faster than light =) </p> <!-- discription name-->
-				<p showlevel="10"><i>Get: Choose one team and nake it unable to move.</i></p>
+				<p style="color:red;">Hint: Need dataset ? Why not generate it by yourself ?</p> <!-- discription name-->
+				<p showlevel="10"><i>Get: 200 % dataset when collect</i></p>
 			</div>
 		</div>
 		<div class="arrow right" style="left: 7px; top: -65px;"></div>
@@ -352,8 +352,8 @@
 		<div class="skill skill angel" current="<%= skill['Laplaces-Acma'].current %>" max="10" skillid="Laplace-Acma" sprite="1x1" id="Laplaces-Acma"  musthave="Respectful-Player" onclick="add_skill('Laplaces-Acma')">
 			<div>
 				<h3>Laplace's Acma</h3>	<!-- skill name-->
-				<p>No one can stand the mob. Not even Blockchains under 51% of angry nodes.</p>
-				<p showlevel="10"><i>Get: Choose one team and nake it unable to move.</i></p>
+				<p style="color: red;">Hint: Want to know what will happen in the future =)</p>
+				<p showlevel="10"><i>Get: I think you got it =) </i></p>
 			</div>
 		</div>		
 </div>

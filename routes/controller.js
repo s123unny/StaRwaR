@@ -20,9 +20,9 @@ var updateFunction = require("./update");
 var timer = require("./timer");
 var questionFuntion = require("./question");
 var Skill = require("../model/skill");
-var id2name = {m0: "&gamma;", m1:"&lambda;", m2:'&varrho;', m3:'&psi;', m4:'&omicron;', m5:'&Omega;', m6:'&varkappa;', m7:'&rho;', m8:'&alpha;', m9:'&nu;', a0: '&theta;', a1:'&sigmaf;', a2:'&tau;', a3:'&chi;', a4:'&beta;', a5:'&epsilon;', a6:'&omega;', a7:'&delta;', a8:'&iota;', a9:'&mu;', a10:'&xi;', a11:'&backepsilon;', a12:'&straightepsilon;', a13:'&pi;', a14:'&eta;', c0:'&zeta;', c1:'&omicron;', c2:'&upsilon;', c3:'&kappa;', c4:'&phi;', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'};
+// var id2name = {m0: "&gamma;", m1:"&lambda;", m2:'&varrho;', m3:'&psi;', m4:'&omicron;', m5:'&Omega;', m6:'&varkappa;', m7:'&rho;', m8:'&alpha;', m9:'&nu;', a0: '&theta;', a1:'&sigmaf;', a2:'&tau;', a3:'&chi;', a4:'&beta;', a5:'&epsilon;', a6:'&omega;', a7:'&delta;', a8:'&iota;', a9:'&mu;', a10:'&xi;', a11:'&backepsilon;', a12:'&straightepsilon;', a13:'&pi;', a14:'&eta;', c0:'&zeta;', c1:'&omicron;', c2:'&upsilon;', c3:'&kappa;', c4:'&phi;', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'};
 
-
+const id2name = {m0: "s0", m1:"s25", m2:'s12', m3:'s21', m4:'s7', m5:'s6', m6:'s13', m7:'s22', m8:'s14', m9:'s1', a0: 's15', a1:'s2', a2:'s28', a3:'s26', a4:'s29', a5:'s5', a6:'s24', a7:'s23', a8:'s11', a9:'s17', a10:'s16', a11:'s18', a12:'s27', a13:'s20', a14:'s19', c0:'s10', c1:'s8', c2:'s3', c3:'s9', c4:'s4', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'}
 //var Player_skill = new Skill.MakePlayerSkill();
 global.model = {
 	stars: stars,
@@ -258,7 +258,7 @@ Controller = function(io, model) {
 		// model.players[id].ships[0].num_of_miner = 2;
 		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 3) {
+		if (count == 1) {
 			day("Init", null);
 		}
 	}

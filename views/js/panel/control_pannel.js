@@ -1,6 +1,9 @@
 var socket = io();
 
-const name2id = {"&gamma;": "m0", "&lambda;": "m1", '&varrho;': "m2", '&psi;': "m3", '&omicron;': "m4", '&Omega;': "m5",'&varkappa;': "m6",'&rho;': "m7",'&alpha;': "m8",'&nu;': "m9", '&theta;':"a0",'&sigmaf;': "a1",'&tau;': "a2",'&chi;': "a3",'&beta;': "a4",'&epsilon;': "a5",'&omega;': "a6",'&delta;': "a7",'&iota;': "a8",'&mu;': "a9",'&xi;': "a10",'&backepsilon;': "a11",'&straightepsilon;': "a12",'&pi;': "a13",'&eta;': "a14",'&zeta;': "c0",'&omicron;': "c1",'&upsilon;': "c2",'&kappa;': "c3",'&phi;': "c4",'Base0': "b0",'Base1': "b1",'Base2': "b2",'Base3': "b3",'Base4': "b4"}
+// const name2id = {"&gamma;": "m0", "&lambda;": "m1", '&varrho;': "m2", '&psi;': "m3", '&omicron;': "m4", '&Omega;': "m5",'&varkappa;': "m6",'&rho;': "m7",'&alpha;': "m8",'&nu;': "m9", '&theta;':"a0",'&sigmaf;': "a1",'&tau;': "a2",'&chi;': "a3",'&beta;': "a4",'&epsilon;': "a5",'&omega;': "a6",'&delta;': "a7",'&iota;': "a8",'&mu;': "a9",'&xi;': "a10",'&backepsilon;': "a11",'&straightepsilon;': "a12",'&pi;': "a13",'&eta;': "a14",'&zeta;': "c0",'&omicron;': "c1",'&upsilon;': "c2",'&kappa;': "c3",'&phi;': "c4",'Base0': "b0",'Base1': "b1",'Base2': "b2",'Base3': "b3",'Base4': "b4"}
+
+const name2id = {s0:"m0", s1:"m9", s2:"a1", s3:"c2", s4:"c4", s5:"a5", s6:"m5", s7:"m4", s8:"c1", s9:"c3", s10:"c10", s11:"a8", s12:"m2", s13:"m6", s14:"m8", s15:"a0", s16:"a10", s17:"a9", s18:"a11", s19:"a14", s20:"a13", s21:"m3", s22:"m7", s23:"a7", s24:"a6", s25:"m1", s26:"a3", s27:"a12", s28:"a2", s29:"a4", 'Base0': "b0",'Base1': "b1",'Base2': "b2",'Base3': "b3",'Base4': "b4"};
+
 
 socket.on('night_start', (player_id) => get_pannel(player_id));
 socket.on('nightTimeUp', () => collect_pannel());

@@ -53,5 +53,12 @@ span.planet-unreached{
 span.pos{
 	position: fixed;
 	display: none;
-
+	color: white;
+	font-weight: 500;
+	font-size: 18px;
+	font-family: font-family: Consolas, monaco, monospace;
+/*	background-color: #142630;
+	opacity: .4;*/
+	border-width: 5px;
+	border-radius:12px;
 }
