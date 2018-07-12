@@ -123,16 +123,28 @@ Controller = function(io, model) {
 			if (star.num <= 2) {
 				getRewardPlayer = star.player_here;
 			} else {
-				/*pop box: question*/
-				for (var j = 0; j < 5; j++) {
-					if (star.player_here[j] != null) {
-						//Notify
-						var msg = "你在"+id2name[id]+"星球與別人發生衝突，請準備答題";
-						Update.Notify(playerIO[j].first, msg);
+				if (questionflag) {
+					if (!clearflag) {
+						intervalflag = setInterval(mine_process, 1000, id);
 					}
+					clearflag = true;
+				} else {
+					if (clearflag) {
+						clearInterval(intervalflag);
+						clearflag = false;
+					}
+					/*pop box: question*/
+					for (var j = 0; j < 5; j++) {
+						if (star.player_here[j] != null) {
+							//Notify
+							var msg = "你在"+id2name[id]+"星球與別人發生衝突，請準備答題";
+							Update.Notify(playerIO[j].first, msg);
+						}
+					}
+					//pop box: question
+					questionflag = true;
+					Question.Invoke(star.player_here, "Mine", id);
 				}
-				questionflag = true;
-				Question.Invoke(star.player_here, "Mine", id);
 				return;
 			}
 			var total = 0; //num <=2
@@ -415,17 +427,29 @@ Controller = function(io, model) {
 					case "a5":
 					case "a6":
 						//option
-						//notify: todo
-						for (var j = 0; j < 5; j++) {
-							if (star.player_here[j] != null) {
-								msg = "歡迎來到機會星球"+id2name[i]+"，請回答題目以獲得獎勵";
-								Update.Notify(playerIO[j], msg);
+						//notify
+						if (questionflag) {
+							if (!clearflag) {
+								intervalflag = setInterval(day, 1000, "Abandon", i);
+								break;
 							}
+							clearflag = true;
+						} else {
+							if (clearflag) {
+								clearInterval(intervalflag);
+								clearflag = false;
+							}
+							for (var j = 0; j < 5; j++) {
+								if (star.player_here[j] != null) {
+									msg = "歡迎來到機會星球"+id2name[i]+"，請回答題目以獲得獎勵";
+									Update.Notify(playerIO[j], msg);
+								}
+							}
+							//pop box: question
+							questionflag = true;
+							Question.Invoke(star.player_here, "Abandon", i);
 						}
-						//pop box: question
-						questionflag = true;
-						Question.Invoke(star.player_here, "Abandon", i);
-						break;
+						return;
 					case "a7":
 					case "a8":
 						//destiny
