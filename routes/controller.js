@@ -211,7 +211,6 @@ Controller = function(io, model) {
 				continue;
 			}
 			if (ships[i] != null) {
-				ships[i].status = player.ships[i].status;
 				player.ships[i] = ships[i];
 			}
 			if (player.ships[i].targetId != null) {

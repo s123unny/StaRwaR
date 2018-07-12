@@ -35,18 +35,20 @@ var stars = {
 	b3: {id: "b3", x_pos: 5, y_pos: 4, type: 'base'},
 	b4: {id: "b4", x_pos: 10, y_pos: 3, type: 'base'},
 	list_from_type: function(type, ships) {
+		var checklist = [];
+		for (var i = 0; i < 5; i++) {
+			checklist.push(ships[i].targetId);
+		}
 		var list = [];
 		if (type == "unknown") {
 			for (var id in this) {
 				if (this[id].found == false && this[id].id != undefined) {
-			 		list.push(id);
+					if (!checklist.includes(id)) {
+			 			list.push(id);
+					}
 				}
 			}
 		} else {
-			var checklist = [];
-			for (var i = 0; i < 5; i++) {
-				checklist.push(ships[i].targetId);
-			}
 			for (var id in this) {
 				if (this[id].type == type && this[id].found == true) {
 					if (!checklist.includes(id)) {
