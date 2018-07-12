@@ -76,7 +76,7 @@ Controller = function(io, model) {
 					totalmoney += add;
 					/*chat message*/
 					var msg = "玩家" + model.players[j].name + "搶答成功 挖礦獲得 " + add + "BTC";
-					Update.Chatting(msg, "SYSTEM");
+					Update.Chatting(msg, "SYSTEM","aqua");
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
 				}
@@ -95,7 +95,7 @@ Controller = function(io, model) {
 					model.players[j].money += optionReward;
 					totalmoney == optionReward;
 					msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+"BTC";
-					Update.Chatting(msg, "SYSTEM");
+					Update.Chatting(msg, "SYSTEM","aqua");
 					Update.Money(playerIO[j].second, model.players[j].money);
 				}
 			}
@@ -111,7 +111,7 @@ Controller = function(io, model) {
 				star.found = true;
 				Update.Star(id);
 				var msg = "新的礦場被發現了!";
-				Update.Chatting(msg, "SYSTEM","white");
+				Update.Chatting(msg, "SYSTEM","aqua");
 			}
 			var getRewardPlayer;
 			if (star.num <= 2) {
@@ -159,7 +159,7 @@ Controller = function(io, model) {
 					totalmoney += add;
 					/*chat message*/
 					var msg = "玩家" + model.players[j].name + "在"+id2name[id]+"挖礦獲得 " + add + "BTC";
-					Update.Chatting(msg, "SYSTEM","white");
+					Update.Chatting(msg, "SYSTEM","aqua");
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
 				}
@@ -288,7 +288,7 @@ Controller = function(io, model) {
 			if (model.day == 11 || model.day == 23 || model.day == 43) {
 				//message
 				var msg = "Event: " + mine_msg[model.day];
-				Update.Chatting(msg, "SYSTEM","white");
+				Update.Chatting(msg, "SYSTEM","aqua");
 				console.log("[Event] mine" + model.day);
 				for (let key in mine) {
 					model.stars[mine[key]].mine = mine_change[model.day][key]; 
@@ -310,7 +310,7 @@ Controller = function(io, model) {
 						star.found = true;
 						Update.Star(i);
 						var msg = "新的星球被發現了!";
-						Update.Chatting(msg, "SYSTEM","white");
+						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					var msg;
 					switch(i) {
@@ -335,7 +335,7 @@ Controller = function(io, model) {
 								Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 								//message
 								msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
-								Update.Chatting(msg, "SYSTEM","white");
+								Update.Chatting(msg, "SYSTEM","aqua");
 							}
 						}
 						//update map
@@ -345,7 +345,7 @@ Controller = function(io, model) {
 					case "a2":
 						//desert
 						msg = "邊緣星球感謝玩家拜訪";
-						Update.Chatting(msg, "SYSTEM","white");
+						Update.Chatting(msg, "SYSTEM","aqua");
 						//notify
 						for (j = 0; j < 5; j++) {
 							if (star.player_here[j] != null) {
@@ -456,7 +456,7 @@ Controller = function(io, model) {
 								totalmoney += randomMoney;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在命運星球抽到的命運是: " + randomMoney + "BTC";
-								Update.Chatting(msg, "SYSTEM","white");
+								Update.Chatting(msg, "SYSTEM","aqua");
 								//update player
 								Update.Money(playerIO[j].second, model.players[j].money);
 								//notify
@@ -487,7 +487,7 @@ Controller = function(io, model) {
 								model.players[j].dataset[starDatasetType[i]] += this_amount;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在廢棄星球收集到 "+ this_amount + " dataset";
-								Update.Chatting(msg, "SYSTEM","white");
+								Update.Chatting(msg, "SYSTEM","aqua");
 								//update player: bag
 								Update.Item(playerIO[j].second, "dataset", starDatasetType[i], this_amount);
 								//notify
@@ -510,7 +510,7 @@ Controller = function(io, model) {
 						star.found = true;
 						Update.Star(i);
 						var msg = "新的雲端運算中心被發現了!";
-						Update.Chatting(msg, "SYSTEM","white");
+						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					for (var j = 0; j < 5; j++) {
 						if (star.player_here[j] != null) {
@@ -555,7 +555,7 @@ Controller = function(io, model) {
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
 				}
-				Update.Chatting(msg, "SYSTEM","white");
+				Update.Chatting(msg, "SYSTEM","aqua");
 				ai_event_day = model.day;
 				/*pop box: event*/
 			}
@@ -571,7 +571,7 @@ Controller = function(io, model) {
 							Update.Money(playerIO[j].second, model.players[j].money);
 							model.players[i].AImodel[AImodel] = 0;
 							var msg = "玩家"+model.players[i].name+"繳交model獲得"+add+"BTC";
-							Update.Chatting(msg, "SYSTEM","white");
+							Update.Chatting(msg, "SYSTEM","aqua");
 							Update.Item(playerIO[i].second, "model", AImodel, 0);
 						}
 					}
@@ -640,7 +640,7 @@ Controller = function(io, model) {
 				model.players[id].name = name;
 				
 				var login_msg = "玩家" +name+"上線了，大家跟他打招呼吧!"
-				Update.Chatting(login_msg, "SYSTEM","red");
+				Update.Chatting(login_msg, "SYSTEM","aqua");
 				Update.Leaderboard(model.players);
 				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name),model.players[id].skill['Rainbow'].method(id))); // listen to chatting msg
 				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
@@ -652,7 +652,7 @@ Controller = function(io, model) {
 			else{	// admin on
 				player.on('adminSayStart', night);
 				player.on('adminDay', () => day("Init", null));
-				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM","red"));	// listen to chatting msg
+				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM","aqua"));	// listen to chatting msg
 				io.sockets.to(adminIO).emit("adminStartButton");
 				console.log("emit admin start button");
 				Question.Init(player);

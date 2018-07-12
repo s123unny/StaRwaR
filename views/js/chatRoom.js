@@ -17,6 +17,7 @@ $('#messageForm').keypress(function(e){
 var counter = -1;
 var chatbox = ["","","","","","","","","",""];
 var chatcolor = ["white", "white", "white", "white", "white", "white", "white", "white", "white", "white"]
+//var chatcolor = ["aqua", "yellow", "orange", "pink", "violet", "fuchsia", "lawngreen", "aqua", "cyan", "chartreuse"]
 function addMessage(inner,name,color){
 	counter += 1;
 	console.log("XD");
@@ -27,7 +28,7 @@ function addMessage(inner,name,color){
 		chatcolor[counter] = color;
 		console.log(chatbox[counter]);
 		var s = "<ul class= 'chatroom-text' id = 'chatroom-text-"+counter+"'"+">" + "["+name+"]"+inner+"</ul>";
-		// $('#chat_msg').prepend()
+		$('#chat_msg').prepend()
 		paragraph.innerHTML += s;
 		document.getElementById("chatroom-text-"+counter).style.color = chatcolor[counter];
 	}
