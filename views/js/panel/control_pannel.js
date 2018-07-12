@@ -56,7 +56,7 @@ function get_ship_info(sid) {
   console.log("Get ship Info ")
   if($('#going_mblock_slot'+sid).length) {  // for ongoing ship
     if ($('#returned'+sid).length) {
-      var targetId = $('#ongoing_mblock_slot'+sid+'_location').text();
+      var targetId = name2id[$('#ongoing_mblock_slot'+sid+'_location').text()];
       return ship(sid, -1, -1, -1, targetId, null);
     } else {
       return null;

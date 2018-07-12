@@ -3,10 +3,10 @@
     $.confirm = function(params){
 	console.log('?');
 
-        if($('#confirmOverlay').length){
+        //if($('#confirmOverlay').length){
             // A confirm is already shown on the page:
-            return false;
-        }
+        //    return false;
+        //}
 
         var buttonHTML = '';
         $.each(params.buttons,function(name,obj){
@@ -79,17 +79,15 @@ function addNotifyAlert(msg) {
 }
 
 function Admin_B(msg) {
-    console.log("enable start button");
+    console.log("enable day start button");
 	$.confirm({
 	    'message'   : msg,
 	    'buttons'   : {
 		'Start'    : {
 		    'class' : 'no_option',
 		    'action': function(){
-                if (msg == "Night is Coming"){
-                    socket.emit("adminDay");
-                    console.log('admin say start');
-                }
+                 console.log('admin say day start');
+                 socket.emit("adminDay");
 			}
 		}
 	    }

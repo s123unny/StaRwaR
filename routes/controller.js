@@ -14,6 +14,7 @@ var optionReward = 10;
 var password = ["meow", "beep", "wang", "woof", "oops"];
 var fs = require("fs");
 var url = require("url");
+var sleep = require("sleep");
 var player = require("../model/player.js");
 var stars = require("../model/stars.js");
 var updateFunction = require("./update");
@@ -267,6 +268,7 @@ Controller = function(io, model) {
 
 	function day(state, substate) {
 		console.log(state, substate);
+		sleep.sleep(1);
 		switch(state) {
 		case "Init":
 			questionflag = false;

@@ -36,7 +36,7 @@ function shipStatus(ships, id, stars, skillid) {
 	} else {
 		list = [false, false, false, false, false];
 		for (var i = 0; i < 5; i++) {
-			if (stars["c"+i].dayLeft[id] != null && stars["c"+i].dayLeft > 0) {
+			if (stars["c"+i].dayLeft[id] != null && stars["c"+i].dayLeft[id] > 0) {
 				list[ stars["c"+i].player_here[id] ] = true;
 			}
 		}

@@ -58,10 +58,11 @@ var stars = {
 		return list;
 	},
 	next: function(id) {
+		console.log(id);
 		var keys = Object.keys( this );
     	var	idIndex = keys.indexOf( id );
     	var nextIndex = idIndex += 1;
-		var nextKey = keys[ nextIndex ]
+		var nextKey = keys[ nextIndex ];
 		if (this[nextKey].type != this[id].type) {
 			return null;
 		} else {

@@ -117,7 +117,7 @@ function update_time(time){
 		return;
 	}
 	$("#Timer").show();
-	$("#tick").text(time+" second");
+	$("#tick").text(time+" Galaxy Standard Hour");
 	return;
 }
 
