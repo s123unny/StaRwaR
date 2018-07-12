@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var password = ["meow", "beep", "wang", "woof", "oops"];
 
 router.get('/:pwd', function(req, res) { //id = req.query.id
+  if (req.params.pwd != password[req.query.id]) {
+	res.send("Wrong id or password!");
+  }
   // console.log(model.stars.list_from_type("unknown"));
   // console.log("--------------------------------------");
   // console.log(model.players[req.query.id].skill)
