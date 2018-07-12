@@ -58,6 +58,7 @@
 
 
 socket.on("adminStartButton", () => addNotifyAlert("Night is Coming"));
+socket.on("adminDayButton", () => Admin_B("Start Day"));
 socket.on('notify', (msg)  => addNotifyAlert(msg));
 function addNotifyAlert(msg) {
     console.log("enable start button");
@@ -69,6 +70,24 @@ function addNotifyAlert(msg) {
 		    'action': function(){
                 if (msg == "Night is Coming"){
                     socket.emit("adminSayStart");
+                    console.log('admin say start');
+                }
+			}
+		}
+	    }
+	});
+}
+
+function Admin_B(msg) {
+    console.log("enable start button");
+	$.confirm({
+	    'message'   : msg,
+	    'buttons'   : {
+		'Start'    : {
+		    'class' : 'no_option',
+		    'action': function(){
+                if (msg == "Night is Coming"){
+                    socket.emit("adminDay");
                     console.log('admin say start');
                 }
 			}

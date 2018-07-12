@@ -182,6 +182,7 @@ Controller = function(io, model) {
 	function nightTimeUp() {
 		console.log("night time up");
 		io.emit("nightTimeUp");
+		io.sockets.to(adminIO).emit("adminDayButton");
 	}
 
 	function collectPlayerSetting(id, ships, money, workers, hand_on_AImodel) {
@@ -258,9 +259,9 @@ Controller = function(io, model) {
 		// model.players[id].ships[0].num_of_miner = 2;
 		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 3) {
-			day("Init", null);
-		}
+		//if (count == 3) {
+		//	day("Init", null);
+		//}
 	}
 
 
@@ -626,8 +627,9 @@ Controller = function(io, model) {
 				
 
 			}
-			else{
+			else{	// admin on
 				player.on('adminSayStart', night);
+				player.on('adminDay', () => day("Init", null));
 				player.on('chat_message', (msg) => Update.Chatting(msg,"SYSTEM","red"));	// listen to chatting msg
 				io.sockets.to(adminIO).emit("adminStartButton");
 				console.log("emit admin start button");
