@@ -62,7 +62,7 @@ var stars = {
     	var	idIndex = keys.indexOf( id );
     	var nextIndex = idIndex += 1;
 		var nextKey = keys[ nextIndex ]
-		if (this.nextKey.type != this.id.type) {
+		if (this[nextKey].type != this[id].type) {
 			return null;
 		} else {
 			return nextKey;

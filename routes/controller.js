@@ -175,7 +175,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 60;
+		var Time = 40;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp, adminIO);
 		mytimer.tick();
 	}
@@ -258,7 +258,7 @@ Controller = function(io, model) {
 		// model.players[id].ships[0].num_of_miner = 2;
 		// model.stars.m1.num = 2;
 		//-------------
-		if (count == 1) {
+		if (count == 3) {
 			day("Init", null);
 		}
 	}
