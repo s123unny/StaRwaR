@@ -161,7 +161,7 @@ module.exports = function(io) {
 				"機器學習",
 				"架設動態網站",
 				"自然語言處理",
-				"以上皆是"
+				"以上皆是",
 			],
 			"correct" : [ 4 ]
 		},
@@ -390,7 +390,7 @@ module.exports = function(io) {
 				"瑪莉亞",
 				"卡利亞",
 			],
-			"correct": [1]	
+			"correct": [2]	
 
 		}, 
 		{
