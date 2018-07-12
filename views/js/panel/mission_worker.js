@@ -36,28 +36,28 @@ function render_target(row){
 
 // upload model
 function submit_model(type){
-		try{
-			var check = $('#submit_confirm').attr('disabled');
-		}
-		catch{
-			var check = true;
-		}
-		if (check == "disabled"){
-			return;
-		}
-        $.confirm({
-	    'title'     : 'Assign Confirmation',
-	    'message'   : 'You are about to hand on trained AI model. <br />It cannot be modified further after comfirmation!',
-	    'buttons'   : {
+	try{
+		var check = $('#submit_confirm').attr('disabled');
+	}
+	catch{
+		var check = true;
+	}
+	if (check == "disabled"){
+		return;
+	}
+    $.confirm({
+    	'title'     : 'Assign Confirmation',
+    	'message'   : 'You are about to hand on trained AI model. <br />It cannot be modified further after comfirmation!',
+    	'buttons'   : {
 		'Yes'   : {
-		    'class' : 'yes_option',
-		    'action': function(){confirm_model(type);}
-		},
+	    	'class' : 'yes_option',
+	    	'action': function(){confirm_model(type);}
+			},
 		'No'    : {
-		    'class' : 'no_option',
-		    'action': function(){console.log('Cancel submission.');}
-		}
-	    }
+	    	'class' : 'no_option',
+	    	'action': function(){console.log('Cancel submission.');}
+			}
+    	}
 	});
 }
 
@@ -152,9 +152,16 @@ function freeze_submit_block(row){
 	}
 	var type_get = document.getElementById('assign_mblock_slot'+row+'_type');
 	var carry_get = document.getElementById('assign_mblock_slot'+row+'_carry');
+	var target_get = document.getElementById('assign_mblock_slot'+row+'_target');
 	var type = type_get.options[type_get.selectedIndex].value;
 	var carry = carry_get.options[carry_get.selectedIndex].value;
-
+	var target = target_get.options[target_get.selectedIndex].value;
+	// target == None => 擋住
+	if (target == "None"){
+		myalert("You can't choose None as target =) ");
+		return;
+	}
+	// 派出人數 > standby => 擋住
 	if (trainer > $('#standby_trainer_num').text()){
 		myalert("You don't have enough trainer !");
 		return;
@@ -167,6 +174,12 @@ function freeze_submit_block(row){
 		myalert("You don't have enough hacker !");
 		return;
 	}
+	// 有飛船沒人 => 擋住
+	if (trainer == 0 && miner == 0 && hacker == 0){
+		myalert("You can't assign mission without any workers !");
+		return;
+	}
+	// 去 AI Center 沒帶東西 => 卡掉
 	if (type == 'ai_center' && carry == 'nothing'){
 		myalert("Prepare some Datasets before training !");
 		return;

@@ -373,7 +373,10 @@ div.chatroom-text{
 }
 
 span.line{
-	background-image:url(../img/line.png);
+	/*background-image:url(../img/line.png);*/
+	/*background-color: gray;*/
+	border: yellow 2px dashed;
+	opacity: .5;
 	display: none;
 	background-size:contain;
 	background-repeat: repeat;
