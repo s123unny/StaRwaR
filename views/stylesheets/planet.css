@@ -48,6 +48,20 @@ span.planet-unreached{
 	height: 30px;
 	width: 30px;
 	position: fixed;
+	z-index: 2000;
+}
+
+span.line{
+	/*background-image:url(../img/line.png);*/
+	/*background-color: gray;*/
+	border-bottom: yellow 2px dashed;
+	opacity: .5;
+	display: none;
+	background-size:contain;
+	background-repeat: repeat;
+	position: fixed;
+  	height: 8px;
+  	z-index: 2;
 }
 
 span.pos{
@@ -55,10 +69,11 @@ span.pos{
 	display: none;
 	color: white;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 13px;
 	font-family: font-family: Consolas, monaco, monospace;
-/*	background-color: #142630;
-	opacity: .4;*/
+	padding: 2px;
+	background-color: #142630;
+	/*opacity: .4;*/
 	border-width: 5px;
-	border-radius:12px;
+	border-radius:5px;
 }
