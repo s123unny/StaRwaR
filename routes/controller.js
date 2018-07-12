@@ -71,9 +71,12 @@ Controller = function(io, model) {
 			}
 			for (var j = 0; j < 5; j++) {
 				if (getRewardPlayer[j] != null) {
+					if (total == 0) {
+						break;
+					}
 					var add = model.players[j].ships[star.player_here[j]].num_of_miner;
-					add = add / total * star.mine;
-					add = model.players[j].skill['GPU'].method(add);
+					add = Math.round(add / total * star.mine);
+					add = Math.round(model.players[j].skill['GPU'].method(add));
 					model.players[j].money += add;
 					totalmomey += add;
 					/*chat message*/
@@ -85,10 +88,10 @@ Controller = function(io, model) {
 			}
 			/*update board*/
 			Update.Leaderboard(model.players);
-			if (model.stars.next(id) == null) {
+			if (model.stars.next(substate) == null) {
 				day("Abandon", "a0");
 			} else {
-				mine_process(model.stars.next(id));
+				mine_process(model.stars.next(substate));
 			}
 		} else {//abandon 
 			for (var j = 0; j < 5; j++) {
@@ -102,7 +105,7 @@ Controller = function(io, model) {
 				}
 			}
 			Update.Leaderboard(model.players);
-			day("Abandon", "a8");
+			day("Abandon", model.stars.next(substate));
 		}
 	}
 	function mine_process(id) {
@@ -139,9 +142,12 @@ Controller = function(io, model) {
 			}
 			for (var j = 0; j < 5; j++) {
 				if (getRewardPlayer[j] != null) {
+					if (total == 0) {
+						break;
+					}
 					var add = model.players[j].ships[star.player_here[j]].num_of_miner;
 					add = add / total * star.mine;
-					add = model.players[j].skill['GPU'].method(add);
+					add = Math.round(model.players[j].skill['GPU'].method(add));
 					model.players[j].money += add;
 					totalmoney += add;
 					/*chat message*/
@@ -414,7 +420,7 @@ Controller = function(io, model) {
 						}
 						//pop box: question
 						questionflag = true;
-						Question.Invoke(star.player_here, "Abandon", "a7");
+						Question.Invoke(star.player_here, "Abandon", i);
 						break;
 					case "a7":
 					case "a8":
@@ -535,7 +541,7 @@ Controller = function(io, model) {
 					for (var i = 0; i < 5; i++) {
 						if (AImodel[i] != null) {
 							var add = time_ratio * ai_ratio[ai_event_day][AImodel] * model.players[i].AImodel[AImodel];
-							add = model.players[i].skill['Deep-Learning'].method(add);
+							add = Math.round(model.players[i].skill['Deep-Learning'].method(add));
 							model.players[i].money += add;
 							totalmoney += add;
 							Update.Money(playerIO[j].second, model.players[j].money);
