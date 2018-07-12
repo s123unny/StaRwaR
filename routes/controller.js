@@ -332,6 +332,8 @@ Controller = function(io, model) {
 								player.ships[star.player_here[j]].num_of_trainer = 0;
 								player.ships[star.player_here[j]].num_of_haker = 0;
 								player.ships[star.player_here[j]].targetId = null;
+								star.player_here[j] = null;
+								star.num -= 1;
 								//notify
 								msg = "你誤闖黑洞"+id2name[i]+"，船員們遇難了，飛船已修復好回到基地";
 								Update.Ship_back(j, i);
