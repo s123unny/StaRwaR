@@ -79,7 +79,7 @@ for (var id in stars) {
 	if (id == "a3" || id == "a4") {
 		node.trigger = [false, false, false, false, false];
 		if (id == "a3") {
-			node.cannotback = null;
+			node.cannotback = [null, null, null, null, null];
 		}
 	} else if (node.type == 'computer') {
 		node.dayLeft = [null, null, null, null, null];

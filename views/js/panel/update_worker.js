@@ -8,7 +8,7 @@ function add_trainer(){
 	var people_get = document.getElementById('standby_trainer_num').textContent;
 	var num = Number(people_get);
 	var money = document.getElementById('Money').textContent;
-	if (money > Hire['trainer']){
+	if (money >= Hire['trainer']){
 		num += 1;
 		money -= Hire['trainer'];
 		console.log(money);
@@ -44,7 +44,7 @@ function add_miner(){
 	var people_get = document.getElementById('standby_miner_num').textContent;
 	var num = Number(people_get);
 	var money = document.getElementById('Money').textContent;
-	if (money > Hire['miner']){
+	if (money >= Hire['miner']){
 		num += 1;
 		money -= Hire['miner'];
 		console.log(money);
@@ -80,7 +80,7 @@ function add_hacker(){
 	var people_get = document.getElementById('standby_hacker_num').textContent;
 	var num = Number(people_get);
 	var money = document.getElementById('Money').textContent;
-	if (money > Hire['hacker']){
+	if (money >= Hire['hacker']){
 		num += 1;
 		money -= Hire['hacker'];
 		console.log(money);

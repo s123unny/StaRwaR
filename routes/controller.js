@@ -176,7 +176,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
-		var Time = 40;
+		var Time = 60;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp, adminIO);
 		mytimer.tick();
 	}
@@ -212,7 +212,7 @@ Controller = function(io, model) {
 				if (player.ships[i].num_of_miner == -1) { //for returned ship
 					Update.Ship_back(id, player.ships[i].targetId);
 					if (model.stars[player.ships[i].targetId].type == "computer") {
-						model.stars[player.ships[i].targetId].dayLeft = null;
+						model.stars[player.ships[i].targetId].dayLeft[id] = null;
 					}
 					model.stars[player.ships[i].targetId].player_here[id] = null;
 					model.stars[player.ships[i].targetId].num -= 1;
@@ -239,7 +239,7 @@ Controller = function(io, model) {
 					}
 					if (player.ships[i].datasetType != null) {
 						player.ships[i].datasetAmount = player.dataset[player.ships[i].datasetType];
-						Update.Item(playerIO[id].second ,"dataset", player.ships[shipId].datasetType, 0);
+						Update.Item(playerIO[id].second ,"dataset", player.ships[i].datasetType, 0);
 						player.dataset[player.ships[i].datasetType] = 0;
 					}
 					Update.Ship_Mission(id, player.ships[i].targetId);
@@ -358,7 +358,7 @@ Controller = function(io, model) {
 										//notify
 										msg = "你未達成"+id2name[i]+"星球的觸發條件，將被扣留兩天XD";
 										Update.Notify(playerIO[j].first, msg);
-									} else if (star.cannotback > 0) {
+									} else if (star.cannotback[j] > 0) {
 										star.cannotback[j] -= 1;
 									} else {
 										star.cannotback[j] = null;
@@ -432,7 +432,7 @@ Controller = function(io, model) {
 						randomMoney = 10; //todo
 						for (var j = 0; j < 5; j++) {
 							if (star.player_here[j] != null) {
-								model.player[j].money += randomMoney;
+								model.players[j].money += randomMoney;
 								totalmoney += randomMoney;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在命運星球抽到的命運是: " + randomMoney + "BTC";

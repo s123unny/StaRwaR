@@ -26,6 +26,7 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
     skill: model.players[req.query.id].skill,
 	ship_status: ship_status,
 	available_ship: model.players[req.query.id].skill['Legacy-of-Ancient-God'].method() - not_free,
+	//available_ship: 5 - not_free,
   })
 });
 
