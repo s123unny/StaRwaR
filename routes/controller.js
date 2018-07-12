@@ -176,7 +176,7 @@ Controller = function(io, model) {
 			io.sockets.to(playerIO[i].second).emit("night_start", i);
 		}
 		var Time = 60;
-		var mytimer = new timer(Time * 1000, io, nightTimeUp);
+		var mytimer = new timer(Time * 1000, io, nightTimeUp, adminIO);
 		mytimer.tick();
 	}
 	function nightTimeUp() {
@@ -319,6 +319,7 @@ Controller = function(io, model) {
 								player.ships[star.player_here[j]].targetId = null;
 								//notify
 								msg = "你誤闖黑洞"+id2name[i]+"，船員們遇難了，飛船已修復好回到基地";
+								Update.Ship_back(j, i);
 								Update.Notify(playerIO[j].first, msg);
 								Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 								//message
@@ -631,6 +632,7 @@ Controller = function(io, model) {
 				io.sockets.to(adminIO).emit("adminStartButton");
 				console.log("emit admin start button");
 				Question.Init(player);
+				
 			}
 		});
 
