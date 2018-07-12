@@ -59,8 +59,9 @@ function showQuestion(questions,array){
 			clearInterval(timer);
 			$('#questionBox #timeLeft').hide();
 			$("#submitButton").hide();
-			socket.emit("answer_question",q, [],playerId);
-			if((array[playerId])){$('#answerResult .title').text("來不及了QQ");
+			if((array[playerId])){
+				socket.emit("answer_question",q, [],playerId);
+				$('#answerResult .title').text("來不及了QQ");
 			}
 			tmp=1;//clear timer
 		}

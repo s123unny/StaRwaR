@@ -50,7 +50,7 @@ class questionevent{
 		if(count==1) console.log("totalcount= "+ totalcount);
 		console.log("count= "+ count);
 
-		if(correct||(count==totalcount)||(count==5)){ //count ==5 when time up or no body correct
+		if((correct)||(count==totalcount)){ //count ==5 when time up or no body correct
 			
 			if(correct){
 				returnArray[id]=array[id]; //get the write ans
@@ -65,6 +65,8 @@ class questionevent{
 			this.io.emit("show_answer",q,returnArray,array);
 			count=totalcount=0;	
 		}
+		else 
+			console.log("wait for other answer");
 	}
 	needcloseQ(){
 		this.io.emit("closeQ");

@@ -268,7 +268,7 @@ Controller = function(io, model) {
 
 	function day(state, substate) {
 		console.log(state, substate);
-		sleep.sleep(5);
+		sleep.sleep(1);
 		switch(state) {
 		case "Init":
 			questionflag = false;
