@@ -12,24 +12,45 @@ function render_target(row){
 	var type = $('#assign_mblock_slot'+row+'_type').val();
 	
 	// hide and show option
-	for (var idx = 0; idx < all_type.length; idx++){
-		if (all_type[idx] != type){
-			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
-		}
-		else{
-			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+	if (type == "learn"){
+		for (var idx = all_type.length - 1; idx >= 0; idx--){
+			if (all_type[idx] != type){
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
+			}
+			else{
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+			}		
 		}		
+	}
+	else{
+		for (var idx = all_type.length - 1; idx >= 0; idx--){
+			if (all_type[idx] != type){
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
+			}
+			else{
+				$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+			}		
+		}
+		var div = document.querySelector("#assign_mblock_slot"+row+"_target"),
+        	para = document.querySelectorAll("#assign_mblock_slot"+row+"_target option");
+        var paraArr = [].slice.call(para).sort(function (a, b) {
+        	return Number(a.textContent.substring(1)) > Number(b.textContent.substring(1)) ? 1 : -1;
+    	});
+    	// console.log(paraArr);
+    	paraArr.forEach(function (p) {
+        	div.appendChild(p);
+    	});
 	}
 
-	// hide and show option
-	for (var idx = 0; idx < all_type.length; idx++){
-		if (all_type[idx] != type){
-			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
-		}
-		else{
-			$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
-		}		
-	}
+	// // hide and show option
+	// for (var idx = 0; idx < all_type.length; idx++){
+	// 	if (all_type[idx] != type){
+	// 		$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").hide();
+	// 	}
+	// 	else{
+	// 		$("#assign_mblock_slot"+row+"_target option[class="+all_type[idx]+"]").show();
+	// 	}		
+	// }
 
 	return;
 }
