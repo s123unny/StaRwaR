@@ -5,6 +5,7 @@
 	left: calc(50% - 400px);
 	top: calc(50% - 300px);
 	padding: 20px;
+	z-index: 100000;
 }
 #questionBox .qDes{
 	font-size:20px;
