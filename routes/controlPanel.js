@@ -28,9 +28,8 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
     computers: model.stars.list_from_type("computer", model.players[req.query.id].ships),
     abandons: model.stars.list_from_type("abandon", model.players[req.query.id].ships),
     skill: model.players[req.query.id].skill,
-	ship_status: ship_status,
-	available_ship: model.players[req.query.id].skill['Legacy-of-Ancient-God'].method() - not_free,
-	//available_ship: 5 - not_free,
+    ship_status: ship_status,
+    available_ship: model.players[req.query.id].skill['Legacy-of-Ancient-God'].method() - not_free,
   })
 });
 

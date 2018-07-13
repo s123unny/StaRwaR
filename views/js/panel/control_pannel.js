@@ -4,25 +4,14 @@ var socket = io();
 
 const name2id = {s0:"m0", s1:"m9", s2:"a1", s3:"c2", s4:"c4", s5:"a5", s6:"m5", s7:"m4", s8:"c1", s9:"c3", s10:"c0", s11:"a8", s12:"m2", s13:"m6", s14:"m8", s15:"a0", s16:"a10", s17:"a9", s18:"a11", s19:"a14", s20:"a13", s21:"m3", s22:"m7", s23:"a7", s24:"a6", s25:"m1", s26:"a3", s27:"a12", s28:"a2", s29:"a4", 'Base0': "b0",'Base1': "b1",'Base2': "b2",'Base3': "b3",'Base4': "b4"};
 
-
-socket.on('night_start', (player_id) => get_pannel(player_id));
+socket.on('reload', () => get_pannel());
+socket.on('night_start', () => get_pannel());
 socket.on('nightTimeUp', () => collect_pannel());
 
 function get_pannel() {
   console.log("get_pannel")
   window.location.reload();
 }
-
-/*return
-id
-ships[5]:
-  重新指派或叫回: call下面的function建一個 //叫回填false
-  維持不變就填null (render的時候應該可以用label之類的記ship Id吧)
-  沒有攜帶dataset Type就填null
-money
-workers: [num_of_miner, num_of_trainer, num_of_haker]
-hand_on_AImodel //填type 沒有填null
-*/
 
 function collect_pannel() {
   console.log("collect_pannel");
