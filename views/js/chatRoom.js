@@ -20,14 +20,13 @@ var chatcolor = ["white", "white", "white", "white", "white", "white", "white", 
 //var chatcolor = ["aqua", "yellow", "orange", "pink", "violet", "fuchsia", "lawngreen", "aqua", "cyan", "chartreuse"]
 function addMessage(inner,name,color){
 	counter += 1;
-	console.log("XD");
-	console.log(counter);
+	console.log(inner);
 	var paragraph = document.getElementById("chat_msg");
 	if(counter <= 9){
 		chatbox[counter] = "["+ name + "]" + inner;
 		chatcolor[counter] = color;
 		console.log(chatbox[counter]);
-		var s = "<ul class= 'chatroom-text' id = 'chatroom-text-"+counter+"'"+">" + "["+name+"]"+inner+"</ul>";
+		var s = "<ul class= 'chatroom-text' id = 'chatroom-text-"+counter+"'"+">" + "["+name+"] "+inner+"</ul>";
 		$('#chat_msg').prepend();
 		paragraph.innerHTML += s;
 		document.getElementById("chatroom-text-"+counter).style.color = chatcolor[counter];

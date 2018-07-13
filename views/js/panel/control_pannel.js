@@ -40,7 +40,7 @@ function collect_pannel() {
   console.log(money, workers);
   
   socket.emit("collectData", pid, ships, money, workers, hand_on_AImodel);
-  alert("時間到！請停止操作控制面板");
+  myalert("Times up");
   disable_pannel();
 }
 
@@ -108,4 +108,16 @@ function disable_pannel() {
   $(".add_minus_button").css("display", "none");
   $(".submitter").css("display", "none");
   $(".submit_model").css("display", "none");
+}
+
+function myalert(msg){
+        $.alert({
+      'message'   : msg,
+      'buttons'   : {
+    'Got It'   : {
+        'class' : 'alert_box',
+        'action': function(){}
+    }
+      }
+  });
 }

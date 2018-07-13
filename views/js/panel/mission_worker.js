@@ -178,7 +178,8 @@ function freeze_submit_block(row){
 	var carry = carry_get.options[carry_get.selectedIndex].value;
 	var target = target_get.options[target_get.selectedIndex].value;
 	// target == None => 擋住
-	if (target == "None"){
+	console.log(target);
+	if (target == "none"){
 		myalert("You can't choose None as target =) ");
 		return;
 	}
@@ -205,17 +206,44 @@ function freeze_submit_block(row){
 		myalert("Prepare some Datasets before training !");
 		return;
 	}
+	// 兩個 ship 去同一顆星球 => 卡掉
+	for (var i = 0; i < 5; i++){
+		console.log("row =", i);
+		if (i == row){
+			continue;
+		}
+		else if ($('assign_mblock_slot'+i+'_target') != null){
+			console.log(i);
+			console.log($('assign_mblock_slot'+i+'_target'));
+			var slot = name2id[$('#assign_mblock_slot'+i+'_target').find(":selected").text()];
+			if (slot == target){
+				myalert("One ship one star <3 !");
+				return;
+			}
+			// var other_row = document.getElementById('assign_mblock_slot'+i+'_target');
+			// if (other_row == null){
+			// 	continue;
+			// }
+			// else{
+			// 	var other_row_type = other_row.options[other_row.selectedIndex].value;
+			// 	console.log("type = ", other_row_type);
+			// 	if (other_row_type == type){
+			// 		myalert("One ship one star <3 !");
+			// 	}
+			// }
+		}
+	}
 
 	// update value / text
 	update_value(miner, trainer, hacker);	// carry item ?
 	// fixed 
 	$('#assign_mblock_slot'+row+'_submit').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_type').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_target').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_carry').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_M').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_T').attr('disabled', true);
-	$('#assign_mblock_slot'+row+'_H').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_type').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_target').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_carry').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_M').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_T').attr('disabled', true);
+	// $('#assign_mblock_slot'+row+'_H').attr('disabled', true);
 	// append block on it
 	var iDiv = document.createElement('div');
 	iDiv.id="submitted"+row;

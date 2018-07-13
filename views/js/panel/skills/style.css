@@ -109,7 +109,7 @@ the LESS CSSS preprocessor.
   background: none;
 }
 .skillHint {
-  font: normal 12px Arial, Helvetica, sans-serif;
+  font: normal 13px Arial, Helvetica, sans-serif;
   display: none;
   pointer-events: none;
   position: absolute;

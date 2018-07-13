@@ -103,6 +103,7 @@ div.main-window{
 	margin: 5px 10px 5px 10px;
 	padding: 2px;
 	color: white;
+	font-weight: 400;
 	/*background-color: #000000;*/
 	background-color: transparent;
 	top: -40px;

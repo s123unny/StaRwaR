@@ -188,7 +188,8 @@
 					</div>
 					<div class="content">
 						<select id="assign_mblock_slot<%=i%>_target" class="choosetype" name="YourLocation" style="width: 67px">
-								<option value="None" class="none">None</option>
+								<option value="none">None</option>
+
 							<% for (let j of mines) { -%>
 								<option value="<%= j %>" class="mine"><%= id2name[j] %></option>
 							<% } -%>
@@ -309,7 +310,7 @@
 				<p showlevel="5"><i>Get: Obtain 5% transaction fee from now on</i></p>
 			</div>
 		</div>
-		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<div class="arrow right" style="left: 7px; top: -65px; opacity: 0;"></div>
 		<!-- skill * 8 -->
 		<div class="skill skill angel" current="<%= skill['SSH'].current %>" max="5" skillid="SSH" sprite="1x1" id="SSH" <% if (!skill["Deep-Learning"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('SSH')">
 			<div>
@@ -318,7 +319,7 @@
 				<p showlevel="5"><i>Get: One day to arrive AI center from now on</i></p>
 			</div>
 		</div>
-		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<div class="arrow right" style="left: 7px; top: -65px; opacity: 0;"></div>
 		<!-- skill * 9 -->
 		<div class="skill skill angel" current="<%= skill['Respectful-Player'].current %>" max="5" skillid="Respectful-Player" sprite="1x1" id="Respectful-Player" <% if (!skill["Rainbow"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Respectful-Player')">
 			<div>
@@ -338,7 +339,7 @@
 				<p showlevel="10"><i>Get: All ships except yours are unable to move for one round.</i></p>
 			</div>
 		</div>
-		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<div class="arrow right" style="left: 7px; top: -65px; opacity: 0;"></div>
 		<!-- skill * 11 -->
 		<div class="skill skill angel" current="<%= skill['GAN'].current %>" max="10" skillid="GAN" sprite="1x1" id="GAN" <% if (!skill["SSH"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('GAN')">
 			<div>
@@ -347,7 +348,7 @@
 				<p showlevel="10"><i>Get: 200 % dataset when collect</i></p>
 			</div>
 		</div>
-		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<div class="arrow right" style="left: 7px; top: -65px; opacity: 0;"></div>
 		<!-- skill * 12 -->
 		<div class="skill skill angel" current="<%= skill['Laplaces-Acma'].current %>" max="10" skillid="Laplace-Acma" sprite="1x1" id="Laplaces-Acma" <% if (!skill["Respectful-Player"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Laplaces-Acma')">
 			<div>
