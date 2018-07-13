@@ -2,16 +2,19 @@ var have_ask=new Array(50);
 var totalask=0;
 
 module.exports = function(io) {
+	var luckynumber ;
+	luckynumber = Math.floor(Math.random() * 4);
+
 	var questions = [
 		{
 			"id": 0,
 			"multi" : false,
 			"subject" : "Python",
-			"description" : "在 Python 中，下列哪些資料結構是唯讀的？ (單選)",
+			"description" : "請問{'csie':[1,2,3],2: 4}是python中哪一種變數型態 (單選)",
 			"options" : [
-				"list",
-				"dict",
-				"tuple",
+				"string(字串)",
+				"list(序列)",
+				"dict(字典)",
 			],
 			"correct" : [ 2 ]
 		},
@@ -20,14 +23,14 @@ module.exports = function(io) {
 			"id": 1,
 			"multi" : false,
 			"subject" : "Secure",
-			"description" : "下列那一項情境在傳輸資料時，會將內容加密？ (單選)",
+			"description" : "講師曾建議應如何學習資安(單選)",
 			"options" : [
-				"瀏覽總統府網站 http://www.president.gov.tw/",
-				"上 Youtube 看實況 https://www.youtube.com/",
-				"用以明文傳輸的 telnet 上 PTT 八卦板",
-				"以上皆有將內容加密",
+				"學習如何攻擊",
+				"學習如何防禦",
+				"先學防禦後學攻擊",
+				"以攻擊者的角度來防禦",
 			],
-			"correct" : [ 1 ]
+			"correct" : [ 3 ]
 		},
 
 		{
@@ -35,14 +38,14 @@ module.exports = function(io) {
 			"id": 2,
 			"multi" : false,
 			"subject" : "Secure",
-			"description" : "2017 年 2 月，台灣有諸多證券商遭到駭客攻擊，駭客利用殭屍電腦發出大量封包，癱瘓目標網路，該攻擊稱為？ (單選)",
+			"description" : "資訊安全搶旗賽的縮寫為以下何者(單選)",
 			"options" : [
-				"雞雞攻擊 (chicken attack)",
-				"鯊魚海底電纜攻擊 (sharks attack on cables)",
-				"線路洪水攻擊 (link flooding attack, LFA)",
-				"分散式阻斷服務攻擊 (distributed denial-of-service attack, DDoS)",
+				"CSF",
+				"CTF",
+				"CSS",
+				"CYY",
 			],
-			"correct" : [ 3 ]
+			"correct" : [ 1 ]
 		},
 
 		{
@@ -87,7 +90,7 @@ module.exports = function(io) {
 				"運氣也是實力的一種呢",
 				"都說是運氣了,答案當然和選項無關",
 			],
-			"correct" : [ 1 ]
+			"correct" : [ luckynumber ]
 		},
 
 		{
@@ -110,7 +113,7 @@ module.exports = function(io) {
 			"id": 7,
 			"multi" : false,
 			"subject" : "小知識",
-			"description" : "工人們的名牌是以什麼為藍本? (單選)",
+			"description" : "本次資訊營中工人們的名牌是以什麼為藍本? (單選)",
 			"options" : [
 				"深情馬戲團",
 				"家事小浣熊",
@@ -201,14 +204,14 @@ module.exports = function(io) {
 			"id": 13,
 			"multi" : false,
 			"subject" : "Python",
-			"description" : "int 範圍最大到哪?(單選)",
+			"description" : "請問以下式子會印出什麼結果?(單選)\n	a=range(3,9,3)\n	b=list(a)\n	print(b)",
 			"options" : [
-				"2147483647",
-				"2147483648",
-				"2147483654",
-				"2147483658",
+				"[1,3,5]",
+				"[3,9,3]",
+				"[3,6,9]",
+				"[9,6,3]",
 			],
-			"correct" : [ 0 ]
+			"correct" : [ 2 ]
 		},
 
 		{
@@ -235,7 +238,7 @@ module.exports = function(io) {
 			"options" : [
 				"找到更多的訓練用的資料",
 				"「這一定是不夠深」，所以加強模型的能力(capability)",
-				"去找一些無關的資料且胡亂標上標籤，混淆視聽",
+				"買包綠色乖乖放在電腦旁，祈禱下一次會乖乖地跑出我們想要的結果",
 				"在電腦的兩側放上蠟燭，讓電腦相信你是虔誠的資料科學家",
 				"接受「你的模型跟你的人生一樣一無是處」的事實",
 			],
@@ -312,7 +315,7 @@ module.exports = function(io) {
 				"c = 2 + 2",
 				"s = 2 ** 2",
 				"i = 2 ^ 2",
-				"e = 2 * 2",
+				"e = 4 // 2",
 			],
 			"correct": [2]
 
@@ -338,15 +341,15 @@ module.exports = function(io) {
 			"id": 22,
 			"multi": false,
 			"subject": "Python",
-			"description" : "要怎麼修改tuple裡面的值？ (單選)",
+			"description" : "哪一種方式比較適合修改list裡面的值？ (單選)",
 			"options": [
 				"用索引值直接修改",
-				"建一個新的tuple蓋過去",
+				"建一個新的list蓋過去",
 				"把電腦重新開機",
 				"放下它，接受它，放棄它",
 				"rm -rf /",
 			],
-			"correct": [1] 
+			"correct": [0] 
 		},
 		{
 			
@@ -354,13 +357,13 @@ module.exports = function(io) {
 			"id": 23,
 			"multi": false,
 			"subject": "Python",
-			"description" : "要如何從s = \"2017臺大資訊營-你的程式\"中取出\"你的程式\"？ (單選)",
+			"description" : "要如何從s = \"2018臺大資訊營-遇見你資後\"中取出\"遇見你資後\"？ (單選)",
 			"options": [
 				"s[\"你的程式\"]",
-				"s[-4]",
-				"s[10 ~ 14]",
-				"s[10 : 14]",
-				"s[10 - 14]",
+				"s[-5]",
+				"s[10 ~ 15]",
+				"s[10 : 15]",
+				"s[10 - 15]",
 			],
 			"correct": [3]
 
@@ -424,8 +427,8 @@ module.exports = function(io) {
 			"options": [
 				"甲坐在戊旁邊",
 				"乙在甲的旁邊",
-				"丙坐在戊旁邊",
-				"丁不在乙旁邊",
+				"丙坐在甲旁邊",
+				"甲不在乙旁邊",
 			],
 			"correct": [2]
 
@@ -457,7 +460,82 @@ module.exports = function(io) {
 				"無限多個",
 			],
 			"correct": [3]
-		}
+		},
+		{
+			"id": 30 ,
+			"multi": true  ,
+			"subject": "Fintech-區塊鏈",
+			"description" : "請問區塊鏈的技術可以應用到哪些方面 (多選)",
+			"options": [
+				"醫療保健",
+				"金融服務",
+				"商品市場",
+				"慈善機構",
+				"政府"
+			],
+			"correct": [0,1,2,3,4]
+
+		},
+		{
+			"id": 31 ,
+			"multi": false  ,
+			"subject": "Fintech-區塊鏈",
+			"description" : "以下何者是區塊鏈的性質?(單選)",
+			"options": [
+				"中心化",
+				"中介化",
+				"透明、公開",
+				"可竄改",
+				"信任系統"
+			],
+			"correct": [2]
+
+		},	
+		{
+			"id":  32,
+			"multi": false  ,
+			"subject": "冷笑話",
+			"description" : "資工系很多大神們都會選擇雙主修，但是通常不會選擇哪一個科系做為第二主修?(單選)",
+			"options": [
+				"園藝系",
+				"數學系",
+				"機械系",
+				"昆蟲系",
+				"森林系"
+			],
+			"correct": [3]
+
+		},	
+		{
+			"id": 33 ,
+			"multi": false  ,
+			"subject": "時事",
+			"description" : "2018世足賽以下哪一個國家有進入準決賽(四強)?(單選)",
+			"options": [
+				"巴西",
+				"西班牙",
+				"阿根廷",
+				"英格蘭",
+				"俄羅斯"
+			],
+			"correct": [3]
+
+		},	
+		{
+			"id": 34 ,
+			"multi":  false ,
+			"subject": "觀察題",
+			"description" : "下午跑RPG時有在資工系館周圍看到哪一座雕塑品?",
+			"options": [
+				"讀書的小男孩",
+				"讀書的小女孩",
+				"畫畫的小男孩",
+				"畫畫的小女孩",
+				"睡覺的小女孩"
+			],
+			"correct": [1]
+
+		},	
 	];	
 
 	/* shuffle */
