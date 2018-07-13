@@ -1,7 +1,9 @@
+var have_ask[50];
+var totalask=0;
+
 module.exports = function(io) {
 	var questions = [
-		{
-			//"money": 5000,
+		{,
 			"id": 0,
 			"multi" : false,
 			"subject" : "Python",
@@ -9,13 +11,12 @@ module.exports = function(io) {
 			"options" : [
 				"list",
 				"dict",
-				"tuple"
+				"tuple",
 			],
 			"correct" : [ 2 ]
 		},
 
 		{
-			//"money": 3000,
 			"id": 1,
 			"multi" : false,
 			"subject" : "Secure",
@@ -24,7 +25,7 @@ module.exports = function(io) {
 				"瀏覽總統府網站 http://www.president.gov.tw/",
 				"上 Youtube 看實況 https://www.youtube.com/",
 				"用以明文傳輸的 telnet 上 PTT 八卦板",
-				"以上皆有將內容加密"
+				"以上皆有將內容加密",
 			],
 			"correct" : [ 1 ]
 		},
@@ -39,7 +40,7 @@ module.exports = function(io) {
 				"雞雞攻擊 (chicken attack)",
 				"鯊魚海底電纜攻擊 (sharks attack on cables)",
 				"線路洪水攻擊 (link flooding attack, LFA)",
-				"分散式阻斷服務攻擊 (distributed denial-of-service attack, DDoS)"
+				"分散式阻斷服務攻擊 (distributed denial-of-service attack, DDoS)",
 			],
 			"correct" : [ 3 ]
 		},
@@ -54,7 +55,7 @@ module.exports = function(io) {
 				"頻率分析：分析每個字出現的頻率",
 				"暴力窮舉法：直接暴力窮舉所有可能性",
 				"機器學習：透過非監督式的機器學習，以及強化學習加上回饋函數，讓電腦自動計算",
-				"以上皆無法破解"
+				"以上皆無法破解",
 			],
 			"correct" : [ 0 ]
 		},
@@ -69,7 +70,7 @@ module.exports = function(io) {
 				"XSS 跨網站指令碼攻擊",
 				"CSRF 跨站請求偽造攻擊",
 				"SQL Injection 資料庫隱碼/注入攻擊",
-				"Broken Authentication 身分驗證功能缺失"
+				"Broken Authentication 身分驗證功能缺失",
 			],
 			"correct" : [ 2 ]
 		},
@@ -83,8 +84,8 @@ module.exports = function(io) {
 			"options" : [
 				"老師說過，選項三短一長當然是要選最長的",
 				"擲個橡皮擦決定吧",
-				"當然是要選中間的",
-				"運氣也是實力的一種呢"
+				"運氣也是實力的一種呢",
+				"都說是運氣了,答案當然和選項無關",
 			],
 			"correct" : [ 1 ]
 		},
@@ -99,7 +100,7 @@ module.exports = function(io) {
 				"理學院",
 				"工學院",
 				"商學院",
-				"電資學院"
+				"以上皆非",
 			],
 			"correct" : [ 3 ]
 		},
@@ -122,32 +123,32 @@ module.exports = function(io) {
 			//"money": 5000,
 			"id": 8,
 			"multi" : false,
-			"subject" : "fintech",
-			"description" : " (單選)",
+			"subject" : "Fintech-區塊鏈",
+			"description" : " 比較Client-Server和P2P兩種溝通架構差異的敘述哪一個是錯的(單選)",
 			"options" : [
-				"",
-				"i am the correct ans",
-				"",
-				"",
-				""
+				"信任方式:間接 v.s.直接",
+				"溝通方式:通過第三方 v.s. 節點之間直接溝通",
+				"中心化程度:高 v.s. 低",
+				"額外成本:無 v.s. 可能需要手續費",
+				"舉例:銀行 v.s.面對面交易",
 			],
-			"correct" : [ 1 ]
+			"correct" : [ 3 ]
 		},
 
 		{
 			//"money": 5000,
 			"id": 9,
 			"multi" : true,
-			"subject" : "fintech",
-			"description" : " (多選)",
+			"subject" : "Fintech-區塊鏈",
+			"description" : " 區塊鏈的概念首次在2008年末由中本聰提出，因為認為現實世界存在了以下哪些問題(多選)",
 			"options" : [
-				"i am the correct ans",
-				"i am the correct ans",
+				"間接信任關係",
+				"直接信任關係",
+				"中間人&手續費",
+				"第三方",
 				"",
-				"",
-				""
 			],
-			"correct" : [ 0, 1 ]
+			"correct" : [ 0, 2, 3 ]
 		},
 
 		{
@@ -190,7 +191,7 @@ module.exports = function(io) {
 				"\"\"\"\"\"\"",
 				"#",
 				"//",
-				"''''''"
+				"''''''",
 			],
 			"correct" : [ 2 ]
 		},
@@ -205,7 +206,7 @@ module.exports = function(io) {
 				"2147483647",
 				"2147483648",
 				"2147483654",
-				"2147483658"
+				"2147483658",
 			],
 			"correct" : [ 0 ]
 		},
@@ -220,7 +221,7 @@ module.exports = function(io) {
 				"判斷一封電子郵件是不是垃圾信件",
 				"利用氣象台的觀測資料預測未來七天的天氣",
 				"利用數字的各種表示法(ex: 二進位、八進位)判斷輸入的數字是不是偶數",
-				"判斷照片中的人臉的年紀與性別"
+				"判斷照片中的人臉的年紀與性別",
 			],
 			"correct" : [ 2 ]
 		},
@@ -236,7 +237,7 @@ module.exports = function(io) {
 				"「這一定是不夠深」，所以加強模型的能力(capability)",
 				"去找一些無關的資料且胡亂標上標籤，混淆視聽",
 				"在電腦的兩側放上蠟燭，讓電腦相信你是虔誠的資料科學家",
-				"接受「你的模型跟你的人生一樣一無是處」的事實"
+				"接受「你的模型跟你的人生一樣一無是處」的事實",
 			],
 			"correct" : [ 0 ]
 		},
@@ -267,7 +268,7 @@ module.exports = function(io) {
 				"利用使用者過往點擊廣告的情形，預測使用者喜歡的廣告類型",
 				"利用一個人的身高與BMI值，預測他的體重",
 				"利用一個人的體脂肪、出生年月日、身高、體重，預測他的年齡",
-				"利用電子郵件中的文字，判斷這封信是不是垃圾郵件"
+				"利用電子郵件中的文字，判斷這封信是不是垃圾郵件",
 			],
 			"correct" : [ 1, 4 ]
 		},
@@ -283,7 +284,7 @@ module.exports = function(io) {
 				"iPhone的Siri將語音資料轉換成文字的過程",
 				"網路上流行一陣子的quick, draw!，讓機器人猜你現在畫的東西是什麼",
 				"自動駕駛車當中，試著判斷路上的物件的應用",
-				"贏過世界棋王的AlphaGO"
+				"贏過世界棋王的AlphaGO",
 			],
 			"correct" : [ 0 ]
 		},
@@ -468,8 +469,22 @@ module.exports = function(io) {
 		questions[j] = x;
 	}*/
 	i=questions.length;
-	j = Math.floor(Math.random() * i);
+	while(1){
+		j = Math.floor(Math.random() * i);
+		
+		if(have_ask[j]!=1){//not ask yet
+			have_ask[j]=1;
+			totalask++;
+			break;
+		}
+	}
+	if(totalask==i){
+		for(var x=0;x<i;x++)
+			have_ask[x]=0;
+	}
 	console.log("get a Question : " + questions[j].id);
+
+
 	return questions[j];
 	//console.log("end to get a question");
 //	io.emit("show_answer",questions[0],"1");
