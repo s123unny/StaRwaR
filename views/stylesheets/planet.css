@@ -54,7 +54,7 @@ span.planet-unreached{
 span.line{
 	/*background-image:url(../img/line.png);*/
 	/*background-color: gray;*/
-	border-bottom: yellow 2px dashed;
+	border-bottom: yellow 4px dashed;
 	opacity: .5;
 	display: none;
 	background-size:contain;

@@ -123,19 +123,20 @@ div.main-window{
 	position: relative;
 	display:inline-block;
 	margin: 0px 0px 0px 3px;
-
 	background-color: #000000;
 	color: white;
 	top: -2px;
 	left: 2px;
 
-	width: 50px;
-
+	width: 52px;
 	height: 40px;
+	padding-right: 1px;
+	font-size: 15px;
 	border-style: outset;
 	border-width: 5px;
 	border-radius:12px;
 	border-color: #000000; //11 28 36
+
 	text-align: center;
 }
 
@@ -163,7 +164,9 @@ div.main-window{
 .player-info{
 	position: relative;
 	margin: 0px 0px 0px 0px;
-	font-size: 12px;
+	font-size: 16px;
+	font-weight: 500;
+	height: 25px;
 	/*padding-top: 20px; */
 	
 	/*border: 10px black solid;*/

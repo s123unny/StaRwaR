@@ -38,19 +38,36 @@ const pos = {
 
 const id2name = {m0: "s0", m1:"s25", m2:'s12', m3:'s21', m4:'s7', m5:'s6', m6:'s13', m7:'s22', m8:'s14', m9:'s1', a0: 's15', a1:'s2', a2:'s28', a3:'s26', a4:'s29', a5:'s5', a6:'s24', a7:'s23', a8:'s11', a9:'s17', a10:'s16', a11:'s18', a12:'s27', a13:'s20', a14:'s19', c0:'s10', c1:'s8', c2:'s3', c3:'s9', c4:'s4', b0:'Base0', b1:'Base1', b2:'Base2', b3:'Base3', b4:'Base4'}
 
+const all_password = ["meow", "beep", "wang", "woof", "oops"];
+
 var socket = io();
 
 function login() {
-	playerId = Number( $('#teamID').val() );
+	playerId = Number( $('#teamID').val());
 	playerName = $('#teamName').val();
 	password = $('#teamPassword').val();
-	$('#login').hide();
+	
 	console.log(playerId, playerName, password);
 
-	socket.emit("login", playerId, playerName, password);
+	
 	if (playerId >= 0 && playerId < 5) {
-		var url = "/controlPanel/"+password+"?id="+playerId;
-		window.open(url);
+		if (password == all_password[playerId]){
+			$('#login').hide();
+			socket.emit("login", playerId, playerName, password);
+			var url = "/controlPanel/"+password+"?id="+playerId;
+			window.open(url);			
+		}
+		else{
+			Ret("Wrong password !");
+		}
+	}
+	else if (playerId == 87){
+		socket.emit("login", playerId, playerName, password);
+		$('#login').hide();
+	}
+	else{
+		Ret("You are in guest mode !");
+		$('#login').hide();
 	}
 }
 
@@ -130,5 +147,72 @@ function close_pos(id){
 	$("#"+id+"_pos").hide();
 }
 
+function Ret(msg) {
+	$.confirm({
+	    'message'   : msg,
+	    'buttons'   : {
+		'QAQ'    : {
+		    'class' : 'no_option',
+		    'action': function(){return;}
+			}
+	    }
+	});
+}
 
+(function($){
 
+    $.confirm = function(params){
+	console.log('?');
+
+        //if($('#confirmOverlay').length){
+            // A confirm is already shown on the page:
+        //    return false;
+        //}
+
+        var buttonHTML = '';
+        $.each(params.buttons,function(name,obj){
+
+            // Generating the markup for the buttons:
+
+            buttonHTML += '<a href="#" class="button '+obj['class']+'">'+name+'<span></span></a>';
+
+            if(!obj.action){
+                obj.action = function(){};
+            }
+        });
+
+        var markup = [
+            '<div id="confirmOverlay">',
+            '<div id="confirmBox">',
+            '<h1>',params.title,'</h1>',
+            '<p>',params.message,'</p>',
+            '<div id="confirmButtons">',
+            buttonHTML,
+            '</div></div></div>'
+        ].join('');
+
+        $(markup).hide().appendTo('body').fadeIn();
+
+        var buttons = $('#confirmBox .button'),
+            i = 0;
+
+        $.each(params.buttons,function(name,obj){
+            buttons.eq(i++).click(function(){
+
+                // Calling the action attribute when a
+                // click occurs, and hiding the confirm.
+
+                obj.action();
+                $.confirm.hide();
+                return false;
+            });
+        });
+    }
+
+    $.confirm.hide = function(){
+        $('#confirmOverlay').fadeOut(function(){
+            $(this).remove();
+        });
+    }
+
+})(jQuery);
