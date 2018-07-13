@@ -114,7 +114,7 @@ Controller = function(io, model) {
 			if (!star.found) {
 				star.found = true;
 				Update.Star(id);
-				var msg = "新的礦場"+id2name[id]+"被發現了!";
+				var msg = "新的礦場Mine "+id2name[id]+"被發現了!";
 				Update.Chatting(msg, "SYSTEM","aqua");
 			}
 			var getRewardPlayer;
@@ -316,7 +316,7 @@ Controller = function(io, model) {
 					if (!star.found) {
 						star.found = true;
 						Update.Star(i);
-						var msg = "新的廢棄星球"+id2name[i]+"被發現了!";
+						var msg = "新的廢棄星球Abandon "+id2name[i]+"被發現了!";
 						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					var msg;
@@ -361,7 +361,7 @@ Controller = function(io, model) {
 							if (star.player_here[j] != null) {
 								player = model.players[j];
 								if (player.ships[star.player_here[j]].num_of_miner < 4) {
-									if (star.cannotback == null) {
+									if (star.cannotback[j] == null) {
 										//ship cannot call back
 										star.cannotback[j] = 2;
 										msg = player.name+"未達成"+id2name[i]+"星球的觸發條件，將被扣留兩天XD";
@@ -375,7 +375,7 @@ Controller = function(io, model) {
 									if (!star.trigger[j]) {
 										player.money += 88;
 										totalmoney += 88;
-										star.trigger[j] == true;
+										star.trigger[j] = true;
 										msg = player.name+"觸發了 "+id2name[i]+"星球的特殊事件，恭喜獲得 88 BTC!";
 										Update.Chatting(msg, "SYSTEM", "aqua");
 										Update.Money(playerIO[j].second, model.players[j].money);
@@ -407,7 +407,7 @@ Controller = function(io, model) {
 										//event
 										player.num_of_haker += 1;
 										Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
-										star.trigger[j] == true;
+										star.trigger[j] = true;
 										//notify
 										msg = player.name+"觸發了"+id2name[i]+"星球的特殊事件，獲得一名Hacker!";
 										Update.Chatting(msg, "SYSTEM", "aqua");
@@ -513,7 +513,7 @@ Controller = function(io, model) {
 					if (!star.found) {
 						star.found = true;
 						Update.Star(i);
-						var msg = "新的雲端運算中心"+id2name[i]+"被發現了!";
+						var msg = "新的雲端運算中心Computer "+id2name[i]+"被發現了!";
 						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					for (var j = 0; j < 5; j++) {
@@ -522,7 +522,7 @@ Controller = function(io, model) {
 							shipId = star.player_here[j];
 							/*check with dataset*/
 							if (star.dayLeft[j] == null) {
-								if (player.ships[shipId].datasetType != null) {
+								if (player.ships[shipId].datasetType != null && player.ships[shipId].num_of_trainer > 0 && player.ships[shipId].datasetAmount > 0) {
 									star.dayLeft[j] = star.day;
 									//ship can not call back
 								}
@@ -574,10 +574,11 @@ Controller = function(io, model) {
 							model.players[i].money += add;
 							totalmoney += add;
 							Update.Money(playerIO[i].second, model.players[i].money);
-							model.players[i].AImodel[AImodel] = 0;
+							Update.Leaderboard(model.players);
+							model.players[i].AImodel[AImodel[i]] = 0;
 							var msg = "玩家"+model.players[i].name+"繳交model獲得"+add+"BTC";
 							Update.Chatting(msg, "SYSTEM","aqua");
-							Update.Item(playerIO[i].second, "model", AImodel, 0);
+							Update.Item(playerIO[i].second, "model", AImodel[i], 0);
 						}
 					}
 				} else {
@@ -595,13 +596,13 @@ Controller = function(io, model) {
 				if(model.players[i].skill['How-Universe'].method())
 					io.emit("howhow", String(i));	
 			for(var i = 0; i < 5; i++)
-				model.players[i].money+=model.players[i].skill['Centralize'].method(totalmoney);
+				model.players[i].money+=Math.round(model.players[i].skill['Centralize'].method(totalmoney));
 			skillid = [];
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['God-of-Crypto'].method()) {
 					skillid.push(i);
 					var msg = "玩家"+model.players[i].name+"啟用技能 God-of-Crypto: 其他玩家皆不能叫回飛船一天";
-					Update.Chatting(msg, "SYSTEM", "aquq");
+					Update.Chatting(msg, "SYSTEM", "aqua");
 				}
 			io.emit("reload");
 			day("Next", null);

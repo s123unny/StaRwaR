@@ -49,11 +49,11 @@ class Updateutil{
 		this.io.sockets.to(playerIO).emit("item", type, subtype, amount);	
 	}
 	Chatting(msg, name,color){
-		console.log(name, msg,"test");
+		console.log(name, msg,"chat");
 		this.io.emit('chatting', msg, name,color);
 	}
 	Notify(playerIO, msg) {
-		console.log(msg);
+		console.log(msg, "notify");
 		this.io.sockets.to(playerIO).emit("notify", msg);
 	}
 }
