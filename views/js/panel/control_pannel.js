@@ -78,7 +78,8 @@ function get_ship_info(sid) {
       console.log(targetId);
       console.log("==================");
 
-      var datasetType = $('#assign_mblock_slot'+sid+'_carry').find(":selected").text()
+      var datasetType = $('#assign_mblock_slot'+sid+'_carry').find(":selected").val();
+
       if (datasetType == "Nothing") {
         datasetType = null;
       }

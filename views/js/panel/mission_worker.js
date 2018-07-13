@@ -220,17 +220,6 @@ function freeze_submit_block(row){
 				myalert("One ship one star <3 !");
 				return;
 			}
-			// var other_row = document.getElementById('assign_mblock_slot'+i+'_target');
-			// if (other_row == null){
-			// 	continue;
-			// }
-			// else{
-			// 	var other_row_type = other_row.options[other_row.selectedIndex].value;
-			// 	console.log("type = ", other_row_type);
-			// 	if (other_row_type == type){
-			// 		myalert("One ship one star <3 !");
-			// 	}
-			// }
 		}
 	}
 
