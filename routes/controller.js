@@ -184,7 +184,7 @@ Controller = function(io, model) {
 			if (playerIO[i].second != undefined) {
 				console.log("emit", i);
 			}
-			io.sockets.to(playerIO[i].second).emit("night_start", i);
+			io.sockets.to(playerIO[i].second).emit("night_start");
 		}
 		var Time = 20;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp, adminIO);
@@ -599,6 +599,7 @@ Controller = function(io, model) {
 					var msg = "玩家"+model.players[i].name+"啟用技能 God-of-Crypto: 其他玩家皆不能叫回飛船一天";
 					Update.Chatting(msg, "SYSTEM", "aquq");
 				}
+			io.emit("reload");
 			day("Next", null);
 			break;
 		case "Next":
