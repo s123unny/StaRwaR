@@ -1,0 +1,85 @@
+#AdminOverlay{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.);
+    z-index:100000;
+}
+
+#AdminBox{
+    background-color: #142630;
+    border-style: solid;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #80f1dc;
+    width:260px;
+    position:fixed;
+    left:79%;
+    top:4%;
+    margin: 0px ;
+
+}
+
+#AdminBox h1,
+#AdminBox p{
+    font:26px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #80f1dc;
+    padding: 0px 0px;
+}
+
+#AdminBox h1{
+    letter-spacing:0.3px;
+    text-align:center;
+}
+
+#AdminBox p{
+    background:none;
+    font-size:16px;
+    line-height:1.4;
+    padding-top: 0px;
+    text-align:center;
+}
+
+#AdminButtons{
+    padding:0px 0 0px;
+    text-align:center;
+}
+
+#AdminBox .button{
+    display:inline-block;
+    background-color: #142630;
+    color:white;
+    position:relative;
+    height: 33px;
+
+    font:17px/33px 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+
+    margin-right: 15px;
+    padding: 0 35px 0 40px;
+    text-decoration:none;
+    border:none;
+}
+
+#AdminBox .button:last-child{ margin-right:0;}
+
+#AdminBox .button span{
+    position:absolute;
+    top:0;
+    right:-5px;
+    width:5px;
+    height:33px
+}
+
+#AdminBox .blue{              background-position:left top;text-shadow:1px 1px 0 #5889a2;}
+#AdminBox .blue span{         background-position:-195px 0;}
+#AdminBox .blue:hover{        background-position:left bottom;}
+#AdminBox .blue:hover span{   background-position:-195px bottom;}
+
+#AdminBox .gray{              background-position:-200px top;text-shadow:1px 1px 0 #707070;}
+#AdminBox .gray span{         background-position:-395px 0;}
+#AdminBox .gray:hover{        background-position:-200px bottom;}
+#AdminBox .gray:hover span{   background-position:-395px bottom;}
+
