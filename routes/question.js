@@ -17,7 +17,7 @@ class questionevent{
 		array=arr;
 		state=statefrom;
 		substate=starid;
-		console.log("array ",array);
+		console.log("player need question: ",array);
 		q=require("./questionlist.js")();
 		this.io.emit("needQuestion",q,array);
 
@@ -28,7 +28,7 @@ class questionevent{
 		for(var i=0;i<5;i++){
 			if(array[i]!=null){
 				totalcount++;
-				console.log("answer question "+q.id+" id = "+i+" : totalcount++ = ",totalcount);
+				console.log("id= "+i+" 需要回答問題: "+q.id+"  : totalcount++ = ",totalcount);
 			}
 			returnArray[i]=null;
 		}

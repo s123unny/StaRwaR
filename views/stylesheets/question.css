@@ -12,13 +12,21 @@
 	top:40px;
 	text-align: left;
 }
+#questionBox .qteam{
+	font-size:20px;
+	top:20px;
+	right:50px;
+	text-align:left;
+	color:aqua;
+
+}
 #questionBox form{
 	font-size:20px;
 	top:40px;
 	text-align: left;
 	margin 20,20,0,0;
 }
-#questionBox #answerResult {
+#questionBox #answerResult div{
 	top: 50px;
 	text-align: center;
 	font-size:23px;

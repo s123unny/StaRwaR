@@ -2,8 +2,8 @@ var q;
 var array;
 var tmp;
 //$('#questionBox').hide();
-function showQuestion(questions,array){
-	
+function showQuestion(questions,arr){
+	array=arr;
 	q=questions;
 	
 	console.log("Question: "+q.id);
@@ -13,14 +13,14 @@ function showQuestion(questions,array){
 	$('#questionBox #answerResult').hide();
 	$('#questionBox .questionTitle h1').text(q.subject);
 	$('#questionBox .qDes p').html(q.description);
-	//var teamid='搶答中的隊伍: ';
-	/*for(var t=0;t<5;t++){
+	/*var teamid='搶答中的隊伍: ';
+	for(var t=0;t<5;t++){
 		if(array[t]!=null){
 			teamid+=t;
 			teamid+=" ";
 		}
-	}*/
-	//$('#questionBox .qteam p').html(teamid);
+	}
+	$('#questionBox .qteam p').html("可以回答");*/
 
 	if(array[playerId]!=null){
 		$("#submitButton").show();
@@ -28,7 +28,7 @@ function showQuestion(questions,array){
 	}
 	else {
 		$("#submitButton").hide();
-		console.log("can not submit== "+playerId);
+		//console.log("can not submit== "+playerId);
 		
 	}
 
@@ -67,9 +67,10 @@ function showQuestion(questions,array){
 			clearInterval(timer);
 			$('#questionBox #timeLeft').hide();
 			$("#submitButton").hide();
-			if((array[playerId])){
+			if((array[playerId]!=null)){
 				socket.emit("answer_question",q, [],playerId);
 				$('#answerResult .title').text("來不及了QQ");
+				console.log("no time left for answer");
 			}
 			tmp=1;//clear timer
 		}
@@ -89,11 +90,13 @@ function submitAnswer() {
 		    ans.push( Number( $(this).val() ) );
 		});
 	}
-	console.log("player answer : "+ ans);
+	console.log("player submit answer : "+ ans);
 	$('#submitButton').hide();
 	socket.emit('answer_question',q, ans,playerId);
-	console.log("send answer and q: "+ q.id);
+	//console.log("send answer and q: "+ q.id);
+	
 	$('#answerResult  .questionTitle').text("waiting for others");
+	$('#answerResult  .questionTitle').show;
 	$('#questionBox form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 }
 
