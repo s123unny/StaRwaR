@@ -79,13 +79,12 @@
         });
 
         var markup = [
-            '<div id="AdminOverlay">',
             '<div id="AdminBox">',
             '<h1>',params.title,'</h1>',
             '<p>',params.message,'</p>',
             '<div id="AdminButtons">',
             buttonHTML,
-            '</div></div></div>'
+            '</div></div>'
         ].join('');
 
         $(markup).hide().appendTo('body').fadeIn();
@@ -107,7 +106,7 @@
     }
 
     $.notify.hide = function(){
-        $('#AdminOverlay').fadeOut(function(){
+        $('#AdminBox').fadeOut(function(){
             $(this).remove();
         });
     }

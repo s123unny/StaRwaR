@@ -6,7 +6,7 @@
     left:0;
     background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.);
     background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.);
-    z-index:100000;
+    z-index:-200;
 }
 
 #AdminBox{
@@ -20,6 +20,7 @@
     left:79%;
     top:4%;
     margin: 0px ;
+    z-index: 20000;
 
 }
 

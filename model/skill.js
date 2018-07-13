@@ -19,8 +19,8 @@ function MakePlayerSkill(){
 			'Legacy-of-Ancient-God':[1, 'General', function(){if(this.learned){return 5;}else{return 3}},['Tax-Collector','GPU']], 
 			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Deep-Learning','How-Universe']],
 			'How-Universe':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Rainbow']], //?
-			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Centralize']], 
-			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['SSH']], 
+			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Centralize','Deep-Learning']], 
+			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['SSH','Rainbow']], 
 			'Rainbow':[3, 'General', function(id){
 				if(this.learned){if(id == 0)return "orange";else if(id == 1)return "yellow";else if(id == 2)return "pink";else if(id == 3)return "violet";else if(id == 4)return "salmon";} 
 				else{return "white";}},['Respectful-Player']], 

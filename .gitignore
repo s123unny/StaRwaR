@@ -1,2 +1,3 @@
 node_modules/
 views/img_tmp
+*.DS_Store
