@@ -17,7 +17,7 @@ $('#messageForm').keypress(function(e){
 var counter = -1;
 var chatbox = ["","","","","","","","","",""];
 var chatcolor = ["white", "white", "white", "white", "white", "white", "white", "white", "white", "white"]
-//var chatcolor = ["aqua", "yellow", "orange", "pink", "violet", "fuchsia", "lawngreen", "aqua", "cyan", "chartreuse"]
+//var chatcolor = ["aqua", "yellow", "orange", "pink", "violet", "lime", "salmon", "lime", "cyan", "chartreuse"]
 function addMessage(inner,name,color){
 	counter += 1;
 	console.log(inner);

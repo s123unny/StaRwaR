@@ -13,7 +13,15 @@ function showQuestion(questions,array){
 	$('#questionBox #answerResult').hide();
 	$('#questionBox .questionTitle h1').text(q.subject);
 	$('#questionBox .qDes p').html(q.description);
-	
+	//var teamid='搶答中的隊伍: ';
+	/*for(var t=0;t<5;t++){
+		if(array[t]!=null){
+			teamid+=t;
+			teamid+=" ";
+		}
+	}*/
+	//$('#questionBox .qteam p').html(teamid);
+
 	if(array[playerId]!=null){
 		$("#submitButton").show();
 		console.log("can submit== "+playerId);
@@ -89,17 +97,24 @@ function submitAnswer() {
 	$('#questionBox form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 }
 
-function showAnswer( q,returnArray,array ) {
+function showAnswer( q,id ) {
 	
 	if(tmp==0){
 		clearInterval(timer);
 		$('#questionBox #timeLeft').hide();
 		$("#submitButton").hide();
 	}
-	if (returnArray[playerId]!=null) {
-		$('#answerResult  .questionTitle').text("搶答成功!");
+	var ansReport = '恭喜小隊';
+	ansReport+=id;
+	ansReport+=' 搶答成功'
+	if(id!=-1)
+		$('#answerResult  .questionTitle').text(ansReport);
+	else
+		$('#answerResult  .questionTitle').text("沒有小隊搶答正確QAQ");
+	/*if (playerId==id) {
+		$('#answerResult  .questionTitle').text("恭喜隊伍",id,"搶答成功!");
+
 		//$('#answerResult img').attr( 'src', "img/correct.png" );
-		console.log(playerId+" answer correct");
 	}
 	else if(array[playerId]!=null){
 		$('#answerResult  .questionTitle ').text("搶答失敗");
@@ -109,7 +124,7 @@ function showAnswer( q,returnArray,array ) {
 	else{
 		$('#answerResult .questionTitle ').text("搶答結束");
 		console.log(playerId+" no need answer");
-	}
+	}*/
 
 	var correctAns = '正確答案：';
 	console.log("correct ans # :"+ q.correct.length);
@@ -125,7 +140,7 @@ function showAnswer( q,returnArray,array ) {
 		$('#questionBox .closeButton').show();
 	$('#questionBox #answerResult').show();
 }
-socket.on('show_answer',(q,returnArray,array)=>showAnswer(q,returnArray,array));
+socket.on('show_answer',(q,id)=>showAnswer(q,id));
 
 function sendcloseQ(){
 	socket.emit("sendCloseQsig");
