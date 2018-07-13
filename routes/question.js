@@ -55,14 +55,15 @@ class questionevent{
 			if(correct){
 				returnArray[id]=array[id]; //get the write ans
 				console.log("player "+id+" answer correct");
+				this.io.emit("show_answer",q,id);
 			}
 			else{
 				console.log("nobody answer rightQQ");
+				this.io.emit("show_answer",q,-1);
 			}
 			
 			this.callback(returnArray,state,substate);
 			//console.log("arr=",array);//console.log("return arr=",returnArray);
-			this.io.emit("show_answer",q,returnArray,array);
 			count=totalcount=0;	
 		}
 		else 

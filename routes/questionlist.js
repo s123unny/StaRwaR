@@ -1,9 +1,9 @@
-var have_ask[50];
+var have_ask=new Array(50);
 var totalask=0;
 
 module.exports = function(io) {
 	var questions = [
-		{,
+		{
 			"id": 0,
 			"multi" : false,
 			"subject" : "Python",
@@ -146,7 +146,7 @@ module.exports = function(io) {
 				"直接信任關係",
 				"中間人&手續費",
 				"第三方",
-				"",
+				"以上皆是",
 			],
 			"correct" : [ 0, 2, 3 ]
 		},
