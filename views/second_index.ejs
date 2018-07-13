@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<div class="workers_type">Miner</div>
-				<button class="add_minus_button" onclick="minus_miner()">-</button>
+				<button class="add_minus_button" onclick="minus_miner()" style="opacity:0;">-</button>
 				<div class="Worker_num">
 					<div class="worker_num">Working :  <span id="working_miner_num"><%= player.num_of_working_miner() %></span></div>
 					<div class="worker_num">Standby :  <span id="standby_miner_num"><%= player.num_of_miner - player.num_of_working_miner() %></span></div>
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="workers_type">Trainer</div>
-				<button class="add_minus_button" onclick="minus_trainer()">-</button>
+				<button class="add_minus_button" onclick="minus_trainer()" style="opacity:0;">-</button>
 				<div class="Worker_num">
 					<div class="worker_num">Working : <span id="working_trainer_num"><%= player.num_of_working_trainer() %></span></div>
 					<div class="worker_num">Standby : <span id="standby_trainer_num"><%= player.num_of_trainer - player.num_of_working_trainer() %></span></div>
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<div class="workers_type">Hacker</div>
-				<button class="add_minus_button" onclick="minus_hacker()">-</button>
+				<button class="add_minus_button" onclick="minus_hacker()" style="opacity:0;">-</button>
 				<div class="Worker_num">
 					<div class="worker_num">Working : <span id="working_hacker_num"><%= player.num_of_working_haker() %></span></div>
 					<div class="worker_num">Standby : <span id="standby_hacker_num"><%= player.num_of_haker - player.num_of_working_haker() %></span></div>
