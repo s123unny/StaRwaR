@@ -46,7 +46,7 @@ function shipStatus(ships, id, stars, skillid) {
 			}
 		}
 	}
-	if (stars["a3"].cannotback != null) {
+	if (stars["a3"].cannotback[id] != null && stars["a3"].cannotback[id] > 0) {
 		list[ stars["a3"].player_here[id] ] = true;
 		day[ stars["a3"].player_here[id] ] = stars["a3"].cannotback[id];
 	}
