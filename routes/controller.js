@@ -436,6 +436,12 @@ Controller = function(io, model) {
 									chat_msg += model.players[j].name+" ";
 									msg = "歡迎來到機會星球"+id2name[i]+"，請回答題目以獲得獎勵";
 									Update.Notify(playerIO[j], msg);
+									player.ships[star.player_here[j]].num_of_miner = 0;
+									player.ships[star.player_here[j]].num_of_trainer = 0;
+									player.ships[star.player_here[j]].num_of_haker = 0;
+									player.ships[star.player_here[j]].targetId = null;
+									star.num -= 1;
+									Update.Ship_back(j, i);
 								}
 							}
 							chat_msg += "來到機會星球，請回答題目已獲得獎勵";
@@ -443,6 +449,7 @@ Controller = function(io, model) {
 							//pop box: question
 							questionflag = true;
 							Question.Invoke(star.player_here, "Abandon", i);
+							star.player_here = [null, null, null, null, null];
 						}
 						return;
 					case "a7":
@@ -546,6 +553,7 @@ Controller = function(io, model) {
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
 				}
+				Update.Notify(adminIO, msg);
 				Update.Chatting(msg, "SYSTEM","aqua");
 				ai_event_day = model.day;
 				/*pop box: event*/
@@ -586,8 +594,11 @@ Controller = function(io, model) {
 				model.players[i].money+=model.players[i].skill['Centralize'].method(totalmoney);
 			skillid = [];
 			for(var i = 0; i < 5; i++)
-				if(model.players[i].skill['God-of-Crypto'].method())
+				if(model.players[i].skill['God-of-Crypto'].method()) {
 					skillid.push(i);
+					var msg = "玩家"+model.players[i].name+"啟用技能 God-of-Crypto: 其他玩家皆不能叫回飛船一天";
+					Update.Chatting(msg, "SYSTEM", "aquq");
+				}
 			day("Next", null);
 			break;
 		case "Next":
