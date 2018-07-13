@@ -357,7 +357,7 @@ Controller = function(io, model) {
 							if (star.player_here[j] != null) {
 								player = model.players[j];
 								if (player.ships[star.player_here[j]].num_of_miner < 4) {
-									if (star.cannotback == null) {
+									if (star.cannotback[j] == null) {
 										//ship cannot call back
 										star.cannotback[j] = 2;
 										msg = player.name+"未達成"+id2name[i]+"星球的觸發條件，將被扣留兩天XD";
