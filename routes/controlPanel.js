@@ -35,7 +35,7 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
 });
 
 function shipStatus(ships, id, stars, skillid) {
-	var status_array = [], list = [];
+	var status_array = [], list = [], day = [0, 0, 0, 0, 0];
 	if (skillid.length && !skillid.includes(id)) {
 		list = [true, true, true, true, true];
 	} else {
@@ -43,11 +43,13 @@ function shipStatus(ships, id, stars, skillid) {
 		for (var i = 0; i < 5; i++) {
 			if (stars["c"+i].dayLeft[id] != null && stars["c"+i].dayLeft[id] > 0) {
 				list[ stars["c"+i].player_here[id] ] = true;
+				day[ stars["c"+i].player_here[id] ] = stars["c"+i].dayLeft[id];
 			}
 		}
 	}
 	if (stars["a3"].cannotback != null) {
 		list[ stars["a3"].player_here[id] ] = true;
+		day[ stars["a3"].player_here[id] ] = stars["a3"].cannotback[id];
 	}
 	for (var i = 0; i < 5; i++) {
 		if (ships[i].targetId == null) {
@@ -56,7 +58,11 @@ function shipStatus(ships, id, stars, skillid) {
 			status_array.push("going");
 		} else {
 			if (list[i]) {
-				status_array.push("suspend");
+				if (day[i] != 0) {
+					status_array.push("suspend "+day[i]+"d");
+				} else {
+					status_array.push("suspend");
+				}
 			} else {
 				status_array.push("arrive");
 			}

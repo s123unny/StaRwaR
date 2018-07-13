@@ -110,7 +110,7 @@ Controller = function(io, model) {
 			if (!star.found) {
 				star.found = true;
 				Update.Star(id);
-				var msg = "新的礦場被發現了!";
+				var msg = "新的礦場"+id2name[id]+"被發現了!";
 				Update.Chatting(msg, "SYSTEM","aqua");
 			}
 			var getRewardPlayer;
@@ -128,13 +128,17 @@ Controller = function(io, model) {
 						clearflag = false;
 					}
 					/*pop box: question*/
+					var chat_msg = "玩家 ";
 					for (var j = 0; j < 5; j++) {
 						if (star.player_here[j] != null) {
 							//Notify
+							chat_msg += model.players[j].name+" ";
 							var msg = "你在"+id2name[id]+"星球與別人發生衝突，請準備答題";
 							Update.Notify(playerIO[j].first, msg);
 						}
 					}
+					chat_msg += "在"+id2name[id]+"星球與別人發生衝突，請準備答題";
+					Update.Chatting(chat_msg, "SYSTEM", "aqua");
 					//pop box: question
 					questionflag = true;
 					Question.Invoke(star.player_here, "Mine", id);
@@ -288,7 +292,7 @@ Controller = function(io, model) {
 				//message
 				var msg = "Event: " + mine_msg[model.day];
 				Update.Chatting(msg, "SYSTEM","aqua");
-				console.log("[Event] mine" + model.day);
+				console.log(msg + model.day);
 				for (let key in mine) {
 					model.stars[mine[key]].mine = mine_change[model.day][key]; 
 				}
@@ -308,7 +312,7 @@ Controller = function(io, model) {
 					if (!star.found) {
 						star.found = true;
 						Update.Star(i);
-						var msg = "新的星球被發現了!";
+						var msg = "新的廢棄星球"+id2name[i]+"被發現了!";
 						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					var msg;
@@ -327,13 +331,10 @@ Controller = function(io, model) {
 								player.ships[star.player_here[j]].targetId = null;
 								star.player_here[j] = null;
 								star.num -= 1;
-								//notify
-								msg = "你誤闖黑洞"+id2name[i]+"，船員們遇難了，飛船已修復好回到基地";
 								Update.Ship_back(j, i);
-								Update.Notify(playerIO[j].first, msg);
 								Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 								//message
-								msg = "玩家"+ player.name + "誤入已成黑洞的星球，發生太空船難，船員無人生還QQ";
+								msg = "玩家"+ player.name + "誤入已成黑洞的星球"+id2name[i]+"，發生太空船難，船員無人生還QQ (飛船已修復好回到基地)";
 								Update.Chatting(msg, "SYSTEM","aqua");
 							}
 						}
@@ -343,13 +344,10 @@ Controller = function(io, model) {
 					case "a1":
 					case "a2":
 						//desert
-						msg = "邊緣星球感謝玩家拜訪";
-						Update.Chatting(msg, "SYSTEM","aqua");
-						//notify
 						for (j = 0; j < 5; j++) {
 							if (star.player_here[j] != null) {
-								msg = "邊緣星球"+id2name[i]+"感謝您的拜訪";
-								Update.Notify(playerIO[j].first, msg);
+								msg = "邊緣星球"+id2name[i]+"感謝"+model.players[j].name+"的拜訪";
+								Update.Chatting(msg, "SYSTEM", "aqua");
 							}
 						}
 						break;
@@ -362,9 +360,8 @@ Controller = function(io, model) {
 									if (star.cannotback == null) {
 										//ship cannot call back
 										star.cannotback[j] = 2;
-										//notify
-										msg = "你未達成"+id2name[i]+"星球的觸發條件，將被扣留兩天XD";
-										Update.Notify(playerIO[j].first, msg);
+										msg = player.name+"未達成"+id2name[i]+"星球的觸發條件，將被扣留兩天XD";
+										Update.Chatting(msg, "SYSTEM", "aqua");
 									} else if (star.cannotback[j] > 0) {
 										star.cannotback[j] -= 1;
 									} else {
@@ -372,17 +369,16 @@ Controller = function(io, model) {
 									}
 								} else {
 									if (!star.trigger[j]) {
-										player.money += 50;
-										totalmoney += 50;
+										player.money += 88;
+										totalmoney += 88;
 										star.trigger[j] == true;
-										//notify
-										msg = "你觸發了"+id2name[i]+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
-										Update.Notify(playerIO[j].first, msg);
+										msg = player.name+"觸發了 "+id2name[i]+"星球的特殊事件，恭喜獲得 88 BTC!";
+										Update.Chatting(msg, "SYSTEM", "aqua");
 										Update.Money(playerIO[j].second, model.players[j].money);
 										Update.Leaderboard(model.players);
 									 } else {
-										msg = "你已經觸發過"+id2name[i]+"星球事件囉";
-										Update.Notify(playerIO[j].first, msg);
+										msg = "小提醒: "+player.name+"已經觸發過"+id2name[i]+"星球事件囉";
+										Update.Chatting(msg, "SYSTEM", "aqua");
 									}
 								}
 							}
@@ -399,8 +395,8 @@ Controller = function(io, model) {
 									totalmoney -= 20;
 									Update.Money(playerIO[j].second, player.money);
 									//notify
-									msg = "你未達成"+id2name[i]+"星球的觸發條件，惡意程式已植入XD";
-									Update.Notify(playerIO[j].first, msg);
+									msg = player.name+"未達成"+id2name[i]+"星球的觸發條件，惡意程式已植入: 將被扣 20 BTC XD";
+									Update.Chatting(msg, "SYSTEM", "aqua");
 									Update.Leaderboard(model.players);
 								} else {
 									if (!star.trigger[j]) {
@@ -409,11 +405,11 @@ Controller = function(io, model) {
 										Update.Worker(playerIO[j].second, player.num_of_miner, player.num_of_trainer, player.num_of_haker);
 										star.trigger[j] == true;
 										//notify
-										msg = "你觸發了"+id2name[i]+"星球的特殊事件，小提醒: 每個玩家只能觸發一次喔";
-										Update.Notify(playerIO[j].first, msg);
+										msg = player.name+"觸發了"+id2name[i]+"星球的特殊事件，獲得一名Hacker!";
+										Update.Chatting(msg, "SYSTEM", "aqua");
 									} else {
-										msg = "你已經觸發過"+id2name[i]+"星球事件囉";
-										Update.Notify(playerIO[j].first, msg);
+										msg = "小提醒: "+player.name+"已經觸發過"+id2name[i]+"星球事件囉";
+										Update.Chatting(msg, "SYSTEM", "aqua");
 									}
 								}
 							}
@@ -434,12 +430,16 @@ Controller = function(io, model) {
 								clearInterval(intervalflag);
 								clearflag = false;
 							}
+							var chat_msg = "玩家 ";
 							for (var j = 0; j < 5; j++) {
 								if (star.player_here[j] != null) {
+									chat_msg += model.players[j].name+" ";
 									msg = "歡迎來到機會星球"+id2name[i]+"，請回答題目以獲得獎勵";
 									Update.Notify(playerIO[j], msg);
 								}
 							}
+							chat_msg += "來到機會星球，請回答題目已獲得獎勵";
+							Update.Chatting(msg, "SYSTEM", "aqua");
 							//pop box: question
 							questionflag = true;
 							Question.Invoke(star.player_here, "Abandon", i);
@@ -454,13 +454,10 @@ Controller = function(io, model) {
 								model.players[j].money += randomMoney;
 								totalmoney += randomMoney;
 								//chat message
-								msg = "玩家" + model.players[j].name + "在命運星球抽到的命運是: " + randomMoney + "BTC";
+								msg = "玩家" + model.players[j].name + "在命運星球"+id2name[i]+"抽到的命運是: " + randomMoney + "BTC";
 								Update.Chatting(msg, "SYSTEM","aqua");
 								//update player
 								Update.Money(playerIO[j].second, model.players[j].money);
-								//notify
-								msg = "你在" + id2name[i] + "觸發命運";
-								Update.Notify(playerIO[j].first, msg);
 							}
 						}
 						//update board
@@ -485,13 +482,10 @@ Controller = function(io, model) {
 								var this_amount = model.players[j].skill['GAN'].method(amount);
 								model.players[j].dataset[starDatasetType[i]] += this_amount;
 								//chat message
-								msg = "玩家" + model.players[j].name + "在廢棄星球收集到 "+ this_amount + " dataset";
+								msg = "玩家" + model.players[j].name + "在廢棄星球"+id2name[i]+"收集到 "+ this_amount + " dataset";
 								Update.Chatting(msg, "SYSTEM","aqua");
 								//update player: bag
 								Update.Item(playerIO[j].second, "dataset", starDatasetType[i], this_amount);
-								//notify
-								msg = "你在星球"+id2name[i]+"收集到"+this_amount+"dataset";
-								Update.Notify(playerIO[j], msg);
 							}
 						}
 						break;
@@ -508,7 +502,7 @@ Controller = function(io, model) {
 					if (!star.found) {
 						star.found = true;
 						Update.Star(i);
-						var msg = "新的雲端運算中心被發現了!";
+						var msg = "新的雲端運算中心"+id2name[i]+"被發現了!";
 						Update.Chatting(msg, "SYSTEM","aqua");
 					}
 					for (var j = 0; j < 5; j++) {
@@ -519,16 +513,14 @@ Controller = function(io, model) {
 							if (star.dayLeft[j] == null) {
 								if (player.ships[shipId].datasetType != null) {
 									star.dayLeft[j] = star.day;
-									var msg = "開始在"+id2name[i]+"訓練model: 需要"+star.day+"天";
-									console.log(msg);
-									Update.Notify(playerIO[j].first, msg);
 									//ship can not call back
 								}
 							} else if (star.dayLeft[j] == 1){
 								star.dayLeft[j] = 0;
-								var msg = id2name[i]+"星球上model訓練完成!";
-								var value = player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer);
-								if (player.AImodel[ player.ships[shipId].datasetType ] == null || value > player.AImodel[ player.ships[shipId].datasetType ]) {
+								var msg = player.name+"在"+id2name[i]+"星球上model訓練完成!";
+								var value = player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer + 1);
+								console.log(j, player.ships[shipId].datasetAmount, player.ships[shipId].datasetType, value);
+								if (value > player.AImodel[ player.ships[shipId].datasetType ]) {
 									//todo
 									player.AImodel[ player.ships[shipId].datasetType ] = value;
 									//update player: bag
@@ -537,7 +529,7 @@ Controller = function(io, model) {
 									msg += "但品質較差，因此不做更新";
 								}
 								console.log(msg);
-								Update.Notify(playerIO[j].first, msg);
+								Update.Chatting(msg, "SYSTEM", "aqua");
 								player.ships[shipId].datasetType = null;
 								player.ships[shipId].datasetAmount = 0;
 							} else {
@@ -549,7 +541,7 @@ Controller = function(io, model) {
 			}
 			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
 				console.log("AImodel event");
-				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下： Audio: "+ai_ratio[model.day].audio+"Image: "+ai_ratio[model.day].image+"Text: "+ai_ratio[model.day].text;
+				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" Image: "+ai_ratio[model.day].image+" Text: "+ai_ratio[model.day].text;
 				console.log(msg);
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
@@ -563,11 +555,13 @@ Controller = function(io, model) {
 					var time_ratio = (ai_day[ai_event_day] - model.day) / (ai_day[ai_event_day] - ai_event_day);
 					for (var i = 0; i < 5; i++) {
 						if (AImodel[i] != null) {
-							var add = time_ratio * ai_ratio[ai_event_day][AImodel] * model.players[i].AImodel[AImodel];
+							var add = time_ratio * ai_ratio[ai_event_day][AImodel[i]] * model.players[i].AImodel[AImodel[i]];
+							console.log(add, time_ratio);
 							add = Math.round(model.players[i].skill['Deep-Learning'].method(add));
+							console.log(add);
 							model.players[i].money += add;
 							totalmoney += add;
-							Update.Money(playerIO[j].second, model.players[j].money);
+							Update.Money(playerIO[i].second, model.players[i].money);
 							model.players[i].AImodel[AImodel] = 0;
 							var msg = "玩家"+model.players[i].name+"繳交model獲得"+add+"BTC";
 							Update.Chatting(msg, "SYSTEM","aqua");
