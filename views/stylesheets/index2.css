@@ -80,7 +80,7 @@ body {
 
 .workers_frame{
 	position: relative;
-	margin: 10px 0px 0px 100px;
+	margin: 10px 50px 0px 100px;
 	float: left;
 }
 
@@ -195,7 +195,7 @@ body {
 
 .workers_type {
 	position: relative;
-	margin: 10px 0px 0px 10px;
+	margin: 10px 10px 0px 10px;
 	color: white;
 	font-size: 25px;
 }

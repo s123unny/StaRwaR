@@ -94,7 +94,7 @@ function confirm_model(type){
 	for (var i = 0; i < all_type.length; i++){
 		if (all_type[i] == type){
 			console.log(type);
-			$("#submit_"+type).text("Confirm");			
+			$("#submit_"+type).text("Done");			
 		}
 		else{
 			$("#submit_"+all_type[i]).hide();

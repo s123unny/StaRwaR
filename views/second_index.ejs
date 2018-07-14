@@ -73,19 +73,19 @@
 					<div class="items_img">
 						<img class="worker_png" src="./pic/audio.png" width="30" height="30"></img>
 					</div>
-					<div class="items_type">Phoney Tunes &nbsp  <span id="audio_num"><%=player.dataset["audio"]%></span></div>
+					<div class="items_type">Audio Dataset &nbsp&nbsp  <span id="audio_num"><%=player.dataset["audio"]%></span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/image.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Alien Drawings&nbsp <span id="image_num"><%=player.dataset["image"]%></span></div>
+					<div class="items_type">Image Dataset &nbsp <span id="image_num"><%=player.dataset["image"]%></span></div>
 				</div>
 				<div class="items_frame">
 					<div class="items_img">
 						<img class="worker_png" src="./pic/text.png" width="42" height="42"></img>
 					</div>
-					<div class="items_type">Forged Notes &nbsp&nbsp <span id="text_num"><%=player.dataset["text"]%></span></div>
+					<div class="items_type">Text Dataset &nbsp&nbsp &nbsp <span id="text_num"><%=player.dataset["text"]%></span></div>
 				</div>
 			</div>
 			<div class="model_block" id="model_big_block">
@@ -94,7 +94,7 @@
 						<img class="worker_png" src="./pic/audio_m.png" width="40" height="40"></img>
 					</div>
 					<div class="items_type">
-						Endearing Flutesong &nbsp<span id="audioM_num"><%=player.AImodel["audio"]%></span>
+						Audio AI Model &nbsp&nbsp&nbsp<span id="audioM_num"><%=player.AImodel["audio"]%>&nbsp&nbsp</span>
 						<span class="submit_model" onclick="submit_model('audio')" id="submit_audio">Submit</span>
 					</div>
 				</div>
@@ -103,7 +103,7 @@
 						<img class="worker_png" src="./pic/image_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">
-						Surreal Landscape &nbsp&nbsp <span id="imageM_num"><%=player.AImodel["image"]%></span>
+					    Image AI Model &nbsp <span id="imageM_num"><%=player.AImodel["image"]%>&nbsp&nbsp</span>
 						<span class="submit_model" onclick="submit_model('image')" id="submit_image">Submit</span>
 					</div>
 				</div>
@@ -112,7 +112,7 @@
 						<img class="worker_png" src="./pic/text_m.png" width="42" height="42"></img>
 					</div>
 					<div class="items_type">
-						Sentimental Letter &nbsp&nbsp <span id="textM_num"><%=player.AImodel["text"]%></span>
+						Text AI Model &nbsp&nbsp&nbsp&nbsp <span id="textM_num"><%=player.AImodel["text"]%>&nbsp&nbsp</span>
 						<span class="submit_model" onclick="submit_model('text')" id="submit_text">Submit</span>
 					</div>
 				</div>
@@ -223,9 +223,9 @@
 						<form >
 							<select id="assign_mblock_slot<%=i%>_carry" class="choosetype" name="YourItem" style="width: 81px";>
 								<option value="nothing">Nothing</option>
-								<option value="audio">Phoney Tunes</option>
-								<option value="image">Alien Drawings</option>
-								<option value="text">Forged Notes</option>						
+								<option value="audio">Audio Dataset</option>
+								<option value="image">Image Dataset</option>
+								<option value="text">Text Dataset</option>						
 							</select>
 						</form>
 					</div>
@@ -252,7 +252,7 @@
 				<p><i showlevel="1">Get: Obtain five ship in the begining !</i></p>
 			</div>
 		</div>
-		<div class="arrow up" style="left: 7px; top: -65px;"></div>
+		<div class="arrow up" style="left: 13px; top: -65px;"></div>
 		<!-- skill * 2 -->
 		<div class="skill skill angel" current="<%= skill['Tax-Collector'].current %>" max="2" skillid="Tax-Collector" sprite="1x1" id="Tax-Collector" <% if (!skill["Legacy-of-Ancient-God"].learned ) { -%> musthave="QQ" <% } -%> onclick="add_skill('Tax-Collector')">
 			<div>
@@ -281,7 +281,7 @@
 				<p showlevel="3"><i>Get: Minor working power from 8 to 10</i></p> 
 			</div>
 		</div>
-		<div class="arrow right" style="left: 7px; top: -65px;"></div>
+		<div class="arrow up" style="left: 13px; top: -65px;"></div>
 		<!-- skill * 5 -->
 		<div class="skill skill angel" current="<%= skill['Rainbow'].current %>" max="3" skillid="Rainbow" sprite="1x1" id="Rainbow" <% if (!skill["GPU"].learned && !skill["Tax-Collector"].learned) { -%> musthave="QQ" <% } -%> onclick="add_skill('Rainbow')">
 			<div>
