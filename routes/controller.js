@@ -142,7 +142,7 @@ Controller = function(io, model) {
 						}
 					}
 					chat_msg += "在"+id2name[id]+"星球與別人發生衝突，請準備答題";
-					Update.Chatting(chat_msg, "SYSTEM", "aqua");
+					Update.Chatting(chat_msg, "SYSTEM", "lime");
 					//pop box: question
 					questionflag = true;
 					Question.Invoke(star.player_here, "Mine", id);
@@ -449,7 +449,7 @@ Controller = function(io, model) {
 								}
 							}
 							chat_msg += "來到機會星球，請回答題目已獲得獎勵";
-							Update.Chatting(msg, "SYSTEM", "aqua");
+							Update.Chatting(msg, "SYSTEM", "lime");
 							//pop box: question
 							questionflag = true;
 							Question.Invoke(star.player_here, "Abandon", i);
