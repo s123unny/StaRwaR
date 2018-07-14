@@ -75,7 +75,7 @@ Controller = function(io, model) {
 					}
 					var add = model.players[j].ships[star.player_here[j]].num_of_miner;
 					add = Math.round(add / total * star.mine);
-					add = Math.round(model.players[j].skill['GPU'].method(add));
+					add = Math.round(model.players[j].skill['GPU'].method(add, model.players[j].ships[ star.player_here[j] ].num_of_miner ));
 					model.players[j].money += add;
 					totalmoney += add;
 					/*chat message*/
@@ -162,7 +162,7 @@ Controller = function(io, model) {
 					}
 					var add = model.players[j].ships[star.player_here[j]].num_of_miner;
 					add = add / total * star.mine;
-					add = Math.round(model.players[j].skill['GPU'].method(add));
+					add = Math.round(model.players[j].skill['GPU'].method(add, model.players[j].ships[ star.player_here[j] ].num_of_miner ));
 					model.players[j].money += add;
 					totalmoney += add;
 					/*chat message*/
