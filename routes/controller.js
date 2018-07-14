@@ -3,14 +3,14 @@ MAX_PLAYER = 5;
 /* Define game state. */
 /*ai event*/
 var ai_day = {7:17, 23:28, 31:37, };
-var ai_ratio = {7:{audio:10,image:10,text:15}, 23:{audio:15,image:30,text:25}, 31:{audio:40,image:30,text:20}};
+var ai_ratio = {7:{audio:15,image:15,text:20}, 23:{audio:20,image:30,text:15}, 31:{audio:40,image:20,text:30}};
 /*mine event*/
 // [5, 5, 5,10,10,10,20,20,20,40]
-// [5,20,40,10,10,20,10,5 ,20,5]
+// [5,10,15,10,15,20,20,25,30,40]
 // [5,40,60,10,40,20,10,15,20,10]
 // [5, 0, 0,10, 0,20,10,15,20,10]
-var mine_msg = {11:"蟲洞出現，部分礦場利潤互換",18:"技術革新，部分礦場產量暴增",28:"金融海嘯發生，部分礦場無預警崩盤倒閉"};
-var mine_change = {11:[0,5,5,5,10,10,10,20,20,40], 18:[0,5,5,5,10,10,20,40,40,80], 28:[0,5,5,5,10,10,20,0,0,0]};
+var mine_msg = {11:"技術革新，部分礦場產量暴增", 18:"蟲洞出現，部分礦場利潤互換，出現60的礦場",28:"金融海嘯發生，部分礦場無預警崩盤倒閉"};
+var mine_change = {11:[5,10,15,10,15,20,20,25,30,40], 18:[5,40,60,10,40,20,10,15,20,10], 28:[5, 0, 0,10, 0,20,10,15,20,10]};
 /*dataset amount*/
 var datasetAmount = {11:60, 5:30, 1:5};
 var optionReward = 10;
@@ -481,15 +481,16 @@ Controller = function(io, model) {
 					case "a13":
 					case "a14":
 						//dataset
-						if (model.day % 11 == 0) {
-							amount = datasetAmount[11];
-						} else if (model.day % 5 == 0) {
-							amount = datasetAmount[5];
-						} else {
-							amount = datasetAmount[1];
-						}
+						// if (model.day % 11 == 0) {
+						// 	amount = datasetAmount[11];
+						// } else if (model.day % 5 == 0) {
+						// 	amount = datasetAmount[5];
+						// } else {
+						// 	amount = datasetAmount[1];
+						// }
 						for (var j = 0; j < 5; j++) {
 							if (star.player_here[j] != null && model.players[j].ships[ star.player_here[j] ].num_of_trainer > 0) {
+								var amount = model.players[j].ships[ star.player_here[j] ].num_of_trainer;
 								var this_amount = model.players[j].skill['GAN'].method(amount);
 								model.players[j].dataset[starDatasetType[i]] += this_amount;
 								//chat message
@@ -531,14 +532,12 @@ Controller = function(io, model) {
 								var msg = player.name+"在"+id2name[i]+"星球上model訓練完成!";
 								var value = player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer + 1);
 								console.log(j, player.ships[shipId].datasetAmount, player.ships[shipId].datasetType, value);
-								if (value > player.AImodel[ player.ships[shipId].datasetType ]) {
+								if (value > 0) {
 									//todo
-									player.AImodel[ player.ships[shipId].datasetType ] = value;
+									player.AImodel[ player.ships[shipId].datasetType ] += value;
 									//update player: bag
 									Update.Item(playerIO[j].second ,"model", player.ships[shipId].datasetType, value);
-								} else {
-									msg += "但品質較差，因此不做更新";
-								}
+								} 
 								console.log(msg);
 								Update.Chatting(msg, "SYSTEM", "aqua");
 								player.ships[shipId].datasetType = null;
@@ -552,7 +551,7 @@ Controller = function(io, model) {
 			}
 			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
 				console.log("AImodel event");
-				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" Image: "+ai_ratio[model.day].image+" Text: "+ai_ratio[model.day].text;
+				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
 				console.log(msg);
 				for (var i = 0; i < 5; i++) {
 					Update.Notify(playerIO[i].first, msg);
@@ -565,9 +564,10 @@ Controller = function(io, model) {
 			if (ai_event_day != null) {
 				if (ai_day[ai_event_day] >= model.day) {
 					var time_ratio = (ai_day[ai_event_day] - model.day) / (ai_day[ai_event_day] - ai_event_day);
+					var true_ratio = -0.5 * (1 - time_ratio) * (1 - time_ratio) + 1;	// -0.5 x^2 + 1
 					for (var i = 0; i < 5; i++) {
 						if (AImodel[i] != null) {
-							var add = time_ratio * ai_ratio[ai_event_day][AImodel[i]] * model.players[i].AImodel[AImodel[i]];
+							var add = true_ratio * ai_ratio[ai_event_day][AImodel[i]] * model.players[i].AImodel[AImodel[i]];
 							console.log(add, time_ratio);
 							add = Math.round(model.players[i].skill['Deep-Learning'].method(add));
 							console.log(add);
@@ -591,7 +591,7 @@ Controller = function(io, model) {
 					Update.Notify(playerIO[i].first,"Day 53 BANG!");
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['Tax-Collector'].method())
-					model.players[i].money += 50;
+					model.players[i].money += 40;
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['How-Universe'].method())
 					io.emit("howhow", String(i));	
