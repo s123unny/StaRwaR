@@ -668,6 +668,15 @@ Controller = function(io, model) {
 				Question.Init(player);
 				
 			}
+
+			//for reconnection
+			var starkey = Object.keys(model.stars);
+			for (let i of starkey) {
+				console.log(i);
+				if (stars[i].found == true) {
+					Update.Star(i);
+				}
+			}
 		});
 
 		var connectUrl = url.parse(player.handshake.headers.referer);
