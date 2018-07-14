@@ -16,14 +16,13 @@ class Skill{
 function MakePlayerSkill(){
 		// var Player_skill = [];
 		var Skill_ability = {
-			'Legacy-of-Ancient-God':[1, 'General', function(){if(this.learned){return 5;}else{return 3}},['Tax-Collector','GPU']], 
-			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['GAN','Rainbow']],
+			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['GPU']],
+			'Legacy-of-Ancient-God':[1, 'General', function(){if(this.learned){return 5;}else{return 3}},['Tax-Collector','GAN','Rainbow']], 
 			'GAN':[10, 'ML', function(pay){if(this.learned){return 1.5 * pay;} else{return pay;}},['Deep-Learning']],
-			
-			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Rainbow','How-Universe']], 
+			'GPU':[3, 'MINOR', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['How-Universe']], 
 			'Rainbow':[3, 'General', function(id){
 				if(this.learned){if(id == 0)return "orange";else if(id == 1)return "yellow";else if(id == 2)return "pink";else if(id == 3)return "violet";else if(id == 4)return "salmon";} 
-				else{return "white";}},['God-of-Crypto','Deep-Learning']], 
+				else{return "white";}},['God-of-Crypto','Deep-Learning','GPU']], 
 			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Respectful-Player']], 
 			'How-Universe':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['SSH']], //?
 			
