@@ -426,7 +426,6 @@ Controller = function(io, model) {
 						if (questionflag) {
 							if (!clearflag) {
 								intervalflag = setInterval(day, 1000, "Abandon", i);
-								break;
 							}
 							clearflag = true;
 						} else {
@@ -449,7 +448,7 @@ Controller = function(io, model) {
 								}
 							}
 							chat_msg += "來到機會星球，請回答題目已獲得獎勵";
-							Update.Chatting(msg, "SYSTEM", "lime");
+							Update.Chatting(chat_msg, "SYSTEM", "lime");
 							//pop box: question
 							questionflag = true;
 							Question.Invoke(star.player_here, "Abandon", i);
