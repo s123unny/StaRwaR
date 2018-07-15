@@ -190,7 +190,7 @@ Controller = function(io, model) {
 			}
 			io.sockets.to(playerIO[i].second).emit("night_start");
 		}
-		var Time = 20;
+		var Time = 60;
 		var mytimer = new timer(Time * 1000, io, nightTimeUp, adminIO);
 		mytimer.tick();
 	}
