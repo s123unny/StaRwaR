@@ -295,7 +295,7 @@ Controller = function(io, model) {
 			if (model.day == 11 || model.day == 23 || model.day == 43) {
 				//message
 				var msg = "Event: " + mine_msg[model.day];
-				Update.Chatting(msg, "SYSTEM","aqua");
+				Update.Chatting(msg, "SYSTEM","lime");
 				console.log(msg + model.day);
 				for (let key in mine) {
 					model.stars[mine[key]].mine = mine_change[model.day][key]; 
@@ -551,13 +551,11 @@ Controller = function(io, model) {
 			}
 			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
 				console.log("AImodel event");
-				var msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
+				var msg = "大會通知：<br>現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
+				var chat_msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下: Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
 				console.log(msg);
-				for (var i = 0; i < 5; i++) {
-					Update.Notify(playerIO[i].first, msg);
-				}
 				Update.Notify(adminIO, msg);
-				Update.Chatting(msg, "SYSTEM","aqua");
+				Update.Chatting(chat_msg, "SYSTEM","lime");
 				ai_event_day = model.day;
 				/*pop box: event*/
 			}
