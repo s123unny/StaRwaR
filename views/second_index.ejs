@@ -32,8 +32,10 @@
 				<div class="workers_type">Miner</div>
 				<button class="add_minus_button" onclick="minus_miner()" style="opacity:0;">-</button>
 				<div class="Worker_num">
+
 					<div class="worker_num">Working :  <span id="working_miner_num"><%= player.num_of_working_miner() %></span></div>
 					<div class="worker_num">Standby :  <span id="standby_miner_num"><%= player.num_of_miner - player.num_of_working_miner() %></span></div>
+					<div class="worker_num">Need : <span >20 BTC</span></div>
 				</div>
 				<button class="add_minus_button" onclick="add_miner()">+</button>
 			</div>
@@ -46,8 +48,10 @@
 				<div class="workers_type">Trainer</div>
 				<button class="add_minus_button" onclick="minus_trainer()" style="opacity:0;">-</button>
 				<div class="Worker_num">
+					
 					<div class="worker_num">Working : <span id="working_trainer_num"><%= player.num_of_working_trainer() %></span></div>
 					<div class="worker_num">Standby : <span id="standby_trainer_num"><%= player.num_of_trainer - player.num_of_working_trainer() %></span></div>
+					<div class="worker_num">Need : <span >30 BTC</span></div>
 				</div>
 				<button class="add_minus_button" onclick="add_trainer()">+</button>
 			</div>
@@ -63,6 +67,7 @@
 				<div class="Worker_num">
 					<div class="worker_num">Working : <span id="working_hacker_num"><%= player.num_of_working_haker() %></span></div>
 					<div class="worker_num">Standby : <span id="standby_hacker_num"><%= player.num_of_haker - player.num_of_working_haker() %></span></div>
+					<div class="worker_num">Need : <span >80 BTC</span></div>
 				</div>
 				<button class="add_minus_button" onclick="add_hacker()">+</button>
 			</div>
