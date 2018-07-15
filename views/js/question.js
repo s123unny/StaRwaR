@@ -13,15 +13,18 @@ function showQuestion(questions,arr){
 	$('#questionBox #answerResult').hide();
 	$('#questionBox .questionTitle h1').text(q.subject);
 	$('#questionBox .qDes p').html(q.description);
-	/*var teamid='搶答中的隊伍: ';
+	var teamid='要回答的隊伍ID : ';
 	for(var t=0;t<5;t++){
 		if(array[t]!=null){
 			teamid+=t;
 			teamid+=" ";
 		}
 	}
-	$('#questionBox .qteam p').html("可以回答");*/
-
+	console.log("teamid = ", teamid);
+	$('#questionBox .qteam p').text(teamid);
+	if(playerId==87)//admin
+		$('#questionBox .closeButton').show();
+	
 	if(array[playerId]!=null){
 		$("#submitButton").show();
 		console.log("can submit== "+playerId);
@@ -139,8 +142,7 @@ function showAnswer( q,id ) {
 
 	$('#questionBox #answerResult p').text(correctAns);
 	//$('#questionBox form').hide();
-	if(playerId==87)//admin
-		$('#questionBox .closeButton').show();
+	
 	$('#questionBox #answerResult').show();
 }
 socket.on('show_answer',(q,id)=>showAnswer(q,id));

@@ -14,10 +14,12 @@
 }
 #questionBox .qteam{
 	font-size:20px;
+	font-weight: 500;
 	top:20px;
 	right:50px;
 	text-align:left;
-	color:aqua;
+	color: red;
+	/*color:aqua;*/
 
 }
 #questionBox form{
