@@ -137,8 +137,6 @@ Controller = function(io, model) {
 						if (star.player_here[j] != null) {
 							//Notify
 							chat_msg += model.players[j].name+" ";
-							var msg = "你在"+id2name[id]+"星球與別人發生衝突，請準備答題";
-							Update.Notify(playerIO[j].first, msg);
 						}
 					}
 					chat_msg += "在"+id2name[id]+"星球與別人發生衝突，請準備答題";
@@ -439,15 +437,14 @@ Controller = function(io, model) {
 							var chat_msg = "玩家 ";
 							for (var j = 0; j < 5; j++) {
 								if (star.player_here[j] != null) {
-									chat_msg += model.players[j].name+" ";
-									msg = "歡迎來到機會星球"+id2name[i]+"，請回答題目以獲得獎勵";
-									Update.Notify(playerIO[j], msg);
-									player.ships[star.player_here[j]].num_of_miner = 0;
-									player.ships[star.player_here[j]].num_of_trainer = 0;
-									player.ships[star.player_here[j]].num_of_haker = 0;
-									player.ships[star.player_here[j]].targetId = null;
-									player.ships[star.player_here[j]].dayLeft = null;
-									player.ships[star.player_here[j]].datasetType = null;
+									console.log(j + "on notify star");
+									chat_msg += (model.players[j].name+" ");
+									model.players[j].ships[star.player_here[j]].num_of_miner = 0;
+									model.players[j].ships[star.player_here[j]].num_of_trainer = 0;
+									model.players[j].ships[star.player_here[j]].num_of_haker = 0;
+									model.players[j].ships[star.player_here[j]].targetId = null;
+									model.players[j].ships[star.player_here[j]].dayLeft = null;
+									model.players[j].ships[star.player_here[j]].datasetType = null;
 									star.num -= 1;
 									Update.Ship_back(j, i);
 								}
@@ -468,12 +465,12 @@ Controller = function(io, model) {
 							if (star.player_here[j] != null) {
 								model.players[j].money += randomMoney;
 								totalmoney += randomMoney;
-								player.ships[star.player_here[j]].num_of_miner = 0;
-								player.ships[star.player_here[j]].num_of_trainer = 0;
-								player.ships[star.player_here[j]].num_of_haker = 0;
-								player.ships[star.player_here[j]].targetId = null;
-								player.ships[star.player_here[j]].dayLeft = null;
-								player.ships[star.player_here[j]].datasetType = null;
+								model.players[j].ships[star.player_here[j]].num_of_miner = 0;
+								model.players[j].ships[star.player_here[j]].num_of_trainer = 0;
+								model.players[j].ships[star.player_here[j]].num_of_haker = 0;
+								model.players[j].ships[star.player_here[j]].targetId = null;
+								model.players[j].ships[star.player_here[j]].dayLeft = null;
+								model.players[j].ships[star.player_here[j]].datasetType = null;
 								star.player_here[j] = null;
 								star.num -= 1;
 								Update.Ship_back(j, i);
@@ -690,7 +687,7 @@ Controller = function(io, model) {
 			for (var i = 0; i < 5; i++) {
 				for (var j = 0; j < 5; j++) {
 					if (model.players[i].ships[j].targetId != null) {
-						Update.Ship_mission(i, model.players[i].ships[j].targetId);
+						Update.Ship_Mission(i, model.players[i].ships[j].targetId);
 					}
 				}
 			}
