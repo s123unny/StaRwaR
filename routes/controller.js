@@ -345,6 +345,7 @@ Controller = function(io, model) {
 						}
 						//update map
 						io.emit("blackHole");
+						star.blackhole = true;
 						break;
 					case "a1":
 					case "a2":

@@ -14,7 +14,7 @@ var stars = {
 	c2: {id: "c2", x_pos: 2, y_pos: 1, type: 'computer', day: 2},
 	c3: {id: "c3", x_pos: 9, y_pos: 3, type: 'computer', day: 2},
 	c4: {id: "c4", x_pos: 3, y_pos: 9, type: 'computer', day: 1},
-	a0: {id: "a0", x_pos: 10, y_pos: 1, type: 'abandon', subtype: 'black'},
+	a0: {id: "a0", x_pos: 10, y_pos: 1, type: 'abandon', subtype: 'black', blackhole: false},
 	a1: {id: "a1", x_pos: 8, y_pos: 3, type: 'abandon', subtype: 'desert'},
 	a2: {id: "a2", x_pos: 5, y_pos: 1, type: 'abandon', subtype: 'desert'},
 	a3: {id: "a3", x_pos: 9, y_pos: 5, type: 'abandon', subtype: 'MINE'},
@@ -52,7 +52,11 @@ var stars = {
 			for (var id in this) {
 				if (this[id].type == type && this[id].found == true) {
 					if (!checklist.includes(id)) {
-						list.push(id);
+						if (id == "a0")
+							if (this[id].blackhole == false)
+								list.push(id);
+						else
+							list.push(id);
 					}
 				}
 			}
