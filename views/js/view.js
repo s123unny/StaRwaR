@@ -85,13 +85,19 @@ socket.on("ship_back", (baseID, targetID) => ship_back(baseID, targetID));
 socket.on("leaderboard", (username, money) => update_rank(username,money));
 socket.on("new_day", (day) => update_day(day));
 socket.on("leftTime", (time) => update_time(time));
-socket.on("howhow",(ooooooo) => howhow(ooooooo));
+socket.on("blackHole", () => blackhole_fade_out());
+socket.on("howhow",(howhow) => howhow(howhow));
 // call me with a number and a planet ID
 function ship_mission(baseID,targetID){
 	console.log("b"+baseID+"-"+targetID)
 	var x = document.getElementById("b"+baseID+"-"+targetID);   // Get the element with id="demo"
 	x.style.display = 'block';
 
+}
+
+function blackhole_fade_out(){
+	$("#a0").hide();
+	$("a0_pos").hide();
 }
 
 function howhow(baseID){
