@@ -96,8 +96,7 @@ function ship_mission(baseID,targetID){
 }
 
 function blackhole_fade_out(){
-	$("#a0").hide();
-	$("a0_pos").hide();
+	$("#a0").css('color', 'black');
 }
 
 function howhow(baseID){
