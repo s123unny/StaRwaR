@@ -310,12 +310,12 @@ module.exports = function(io) {
 			"id": 20,
 			"multi": false,
 			"subject": "Python",
-			"description" : "下列c、s、i、e哪一個的值跟其他三個不一樣？ (單選)",
+			"description" : "根據python的語法，下列c、s、i、e哪一個的值跟其他三個不一樣？ (單選)",
 			"options": [
 				"c = 2 + 2",
 				"s = 2 ** 2",
 				"i = 2 ^ 2",
-				"e = 4 // 2",
+				"e = 8 // 2",
 			],
 			"correct": [2]
 
