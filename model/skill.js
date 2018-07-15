@@ -18,21 +18,21 @@ function MakePlayerSkill(){
 		var Skill_ability = {
 			'Tax-Collector':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['GPU']],
 			'Legacy-of-Ancient-God':[1, 'General', function(){if(this.learned){return 5;}else{return 3}},['Tax-Collector','GAN','Rainbow']], 
-			'GAN':[10, 'ML', function(pay){if(this.learned){return 1.5 * pay;} else{return pay;}},['Deep-Learning']],
+			'GAN':[2, 'ML', function(pay){if(this.learned){return 1.5 * pay;} else{return pay;}},['Deep-Learning']],
 			'GPU':[3, 'MINOR', function(pay,minor){if(this.learned){if(pay > 10 * minor) return 10 * minor; else return pay;} else{if(pay > 8 * minor) return 8*minor; else return pay;}},['How-Universe']], 
 			'Rainbow':[3, 'General', function(id){
 				if(this.learned){if(id == 0)return "orange";else if(id == 1)return "yellow";else if(id == 2)return "pink";else if(id == 3)return "violet";else if(id == 4)return "salmon";} 
 				else{return "white";}},['God-of-Crypto','Deep-Learning','GPU']], 
 			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Respectful-Player']], 
-			'How-Universe':[2, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['SSH']], //?
+			'How-Universe':[5, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['SSH']], //?
 			
-			'God-of-Crypto':[10, 'MINOR', function(){return this.learned;},['Centralize']],//?
+			'God-of-Crypto':[5, 'MINOR', function(){return this.learned;},['Centralize']],//?
 
 			'Respectful-Player':[5, 'General', function(name){if(this.learned){return "尊貴的"+name;} else{return name;}},['Laplaces-Acma']],
 			
 			
-			'SSH':[5, 'ML', function(hacker){if(this.learned && hacker > 0) return true;else{return false;}},[]],//?
-			'Centralize':[5,'MINOR', function(pay){if(this.learned){return 0.05 * pay;} else{return 0;}},[]], 
+			'SSH':[10, 'ML', function(hacker){if(this.learned && hacker > 0) return true;else{return false;}},[]],//?
+			'Centralize':[10,'MINOR', function(pay){if(this.learned){return 0.05 * pay;} else{return 0;}},[]], 
 			
 			'Laplaces-Acma':[10, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},[]],
 		};
