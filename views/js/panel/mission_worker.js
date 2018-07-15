@@ -179,8 +179,8 @@ function freeze_submit_block(row){
 	var target = target_get.options[target_get.selectedIndex].value;
 	// target == None => 擋住
 	console.log(target);
-	if (target == "none"){
-		myalert("You can't choose None as target =) ");
+	if (target == "none" || type == "none"){
+		myalert("You can't choose None as type / target =) ");
 		return;
 	}
 	// 派出人數 > standby => 擋住
