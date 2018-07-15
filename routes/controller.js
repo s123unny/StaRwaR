@@ -234,6 +234,7 @@ Controller = function(io, model) {
 					player.ships[i].num_of_miner = 0;
 					player.ships[i].num_of_trainer = 0;
 					player.ships[i].num_of_haker = 0;
+					player.ships[i].datasetType = null;
 				} else if (player.ships[i].dayLeft == null) {
 					//caculate require day
 					var distance;
@@ -333,6 +334,8 @@ Controller = function(io, model) {
 								player.ships[star.player_here[j]].num_of_trainer = 0;
 								player.ships[star.player_here[j]].num_of_haker = 0;
 								player.ships[star.player_here[j]].targetId = null;
+								player.ships[star.player_here[j]].dayLeft = null;
+								player.ships[star.player_here[j]].datasetType = null;
 								star.player_here[j] = null;
 								star.num -= 1;
 								Update.Ship_back(j, i);
@@ -443,6 +446,8 @@ Controller = function(io, model) {
 									player.ships[star.player_here[j]].num_of_trainer = 0;
 									player.ships[star.player_here[j]].num_of_haker = 0;
 									player.ships[star.player_here[j]].targetId = null;
+									player.ships[star.player_here[j]].dayLeft = null;
+									player.ships[star.player_here[j]].datasetType = null;
 									star.num -= 1;
 									Update.Ship_back(j, i);
 								}
@@ -463,6 +468,15 @@ Controller = function(io, model) {
 							if (star.player_here[j] != null) {
 								model.players[j].money += randomMoney;
 								totalmoney += randomMoney;
+								player.ships[star.player_here[j]].num_of_miner = 0;
+								player.ships[star.player_here[j]].num_of_trainer = 0;
+								player.ships[star.player_here[j]].num_of_haker = 0;
+								player.ships[star.player_here[j]].targetId = null;
+								player.ships[star.player_here[j]].dayLeft = null;
+								player.ships[star.player_here[j]].datasetType = null;
+								star.player_here[j] = null;
+								star.num -= 1;
+								Update.Ship_back(j, i);
 								//chat message
 								msg = "玩家" + model.players[j].name + "在命運星球"+id2name[i]+"抽到的命運是: " + randomMoney + "BTC";
 								Update.Chatting(msg, "SYSTEM","aqua");
