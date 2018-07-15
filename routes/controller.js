@@ -670,9 +670,15 @@ Controller = function(io, model) {
 			//for reconnection
 			var starkey = Object.keys(model.stars);
 			for (let i of starkey) {
-				console.log(i);
 				if (stars[i].found == true) {
 					Update.Star(i);
+				}
+			}
+			for (var i = 0; i < 5; i++) {
+				for (var j = 0; j < 5; j++) {
+					if (model.players[i].ships[j].targetId != null) {
+						Update.Ship_mission(i, model.players[i].ships[j].targetId);
+					}
 				}
 			}
 		});
