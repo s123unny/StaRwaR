@@ -50,9 +50,15 @@ class Updateutil{
 	Item(playerIO, type, subtype, amount) { 
 		this.io.sockets.to(playerIO).emit("item", type, subtype, amount);	
 	}
-	Chatting(msg, name,color){
+	Chatting(msg, name,color,playerIO,id){
 		console.log(name, msg,"chat");
-		this.io.emit('chatting', msg, name,color);
+		for (var i = 0; i < 5; i++) {
+			if(i==id)
+				this.io.sockets.to(playerIO[i].first).emit("chatting", msg, name, "red");
+			else
+				this.io.sockets.to(playerIO[i].first).emit("chatting", msg, name, color);
+		}
+		//this.io.emit('chatting', msg, name,color);
 	}
 	Notify(playerIO, msg) {
 		console.log(msg, "notify");
