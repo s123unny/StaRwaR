@@ -86,7 +86,7 @@ socket.on("leaderboard", (username, money) => update_rank(username,money));
 socket.on("new_day", (day) => update_day(day));
 socket.on("leftTime", (time) => update_time(time));
 socket.on("blackHole", () => blackhole_fade_out());
-socket.on("howhow",(howhow) => howhow(howhow));
+socket.on("howhow",(baseID) => howhow(baseID));
 // call me with a number and a planet ID
 function ship_mission(baseID,targetID){
 	console.log("b"+baseID+"-"+targetID)
@@ -96,7 +96,7 @@ function ship_mission(baseID,targetID){
 }
 
 function blackhole_fade_out(){
-	$("#a0").css('color', 'black');
+	$("#a0").css('background-color', '#444444');
 }
 
 function howhow(baseID){
