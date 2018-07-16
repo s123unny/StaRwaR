@@ -598,7 +598,7 @@ Controller = function(io, model) {
 			AImodel = [null, null, null, null, null];
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['Laplaces-Acma'].method())
-					Update.Notify(playerIO[i].first,"Day 53 BANG!");
+					Update.Notify(playerIO[i].first,"注意，Day 28 發生金融海嘯，部分礦場倒閉！！！");
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['Tax-Collector'].method())
 					model.players[i].money += 40;
