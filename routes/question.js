@@ -11,9 +11,11 @@ class questionevent{
 	constructor(io,callback){
 		this.io=io;	
 		this.callback=callback;
+		this.flag=false;
 	}
 
 	Invoke(arr,statefrom,starid) {
+		this.flag=true;
 		array=arr;
 		state=statefrom;
 		substate=starid;
@@ -61,7 +63,7 @@ class questionevent{
 				console.log("nobody answer rightQQ");
 				this.io.emit("show_answer",q,-1);
 			}
-			
+			this.flag=false;
 			this.callback(returnArray,state,substate);
 			//console.log("arr=",array);//console.log("return arr=",returnArray);
 			count=totalcount=0;	
@@ -73,6 +75,11 @@ class questionevent{
 		this.io.emit("closeQ");
 		questionflag = false;
 		console.log("at route/question.js send closeQ");
+		if (this.flag) {
+			console.log("force next part");
+			this.flag=false;
+			arrayQQ = [null,null,null,null,null];
+			this.callback(arrayQQ, state, substate);
 	}
 
 	Init(player){
