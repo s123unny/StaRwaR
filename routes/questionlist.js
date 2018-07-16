@@ -612,6 +612,22 @@ module.exports = function(io) {
 			],
 			"correct" : [ 1 ]
 		},
+		{
+			//"money": 3000,
+			"id": 40,
+			"multi" : false,
+			"subject" : "資訊營",
+			"description" : "資訊營中學術部工人的名牌上是哪一隻角落小夥伴?(單選)",
+			"options" : [
+				"北極熊",
+				"貓咪",
+				"恐龍",
+				"企鵝",
+				"炸豬排",
+			],
+			"correct" : [ 2 ]
+		},
+
 
 
 	];	
