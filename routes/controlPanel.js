@@ -35,7 +35,7 @@ router.get('/:pwd', function(req, res) { //id = req.query.id
 
 function shipStatus(ships, id, stars, skillid) {
 	var status_array = [], list = [], day = [0, 0, 0, 0, 0];
-	if (skillid.length && !skillid.includes(id)) {
+	if (skillid.length && !skillid.includes(Number(id))) {
 		list = [true, true, true, true, true];
 	} else {
 		list = [false, false, false, false, false];

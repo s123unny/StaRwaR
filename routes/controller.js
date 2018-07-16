@@ -502,7 +502,7 @@ Controller = function(io, model) {
 						for (var j = 0; j < 5; j++) {
 							if (star.player_here[j] != null && model.players[j].ships[ star.player_here[j] ].num_of_trainer > 0) {
 								var amount = model.players[j].ships[ star.player_here[j] ].num_of_trainer;
-								var this_amount = model.players[j].skill['GAN'].method(amount);
+								var this_amount = Math.round(model.players[j].skill['GAN'].method(amount));
 								model.players[j].dataset[starDatasetType[i]] += this_amount;
 								//chat message
 								msg = "玩家" + model.players[j].name + "在廢棄星球"+id2name[i]+"收集到 "+ this_amount + " dataset";
@@ -541,7 +541,7 @@ Controller = function(io, model) {
 							} else if (star.dayLeft[j] == 1){
 								star.dayLeft[j] = 0;
 								var msg = player.name+"在"+id2name[i]+"星球上model訓練完成!";
-								var value = player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer + 1);
+								var value = Math.round(player.ships[shipId].datasetAmount * Math.log2(player.ships[shipId].num_of_trainer + 1));
 								console.log(j, player.ships[shipId].datasetAmount, player.ships[shipId].datasetType, value);
 								if (value > 0) {
 									//todo
@@ -610,7 +610,7 @@ Controller = function(io, model) {
 			for(var i = 0; i < 5; i++)
 				if(model.players[i].skill['God-of-Crypto'].method()) {
 					skillid.push(i);
-					var msg = "玩家"+model.players[i].name+"啟用技能 God-of-Crypto: 其他玩家皆不能叫回飛船一天";
+					var msg = "玩家"+model.players[i].name+"啟用技能 Time Traveler: 其他玩家皆不能叫回飛船一天";
 					Update.Chatting(msg, "SYSTEM", "aqua");
 				}
 			io.emit("reload");
