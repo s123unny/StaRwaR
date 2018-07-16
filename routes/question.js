@@ -78,8 +78,9 @@ class questionevent{
 		if (this.flag) {
 			console.log("force next part");
 			this.flag=false;
-			arrayQQ = [null,null,null,null,null];
+			var arrayQQ = [null,null,null,null,null];
 			this.callback(arrayQQ, state, substate);
+		}
 	}
 
 	Init(player){
