@@ -13,7 +13,7 @@ class Updateutil{
 		console.log(money)
 		this.io.emit('leaderboard', username, money);
 	}
-	Skill(skillname, Player_skill){
+	Skill(skillname, Player_skill,playerIO,name){
 		if(Player_skill[skillname].learned)
 			return Player_skill;
 		if(!Player_skill[skillname].learnable)
@@ -22,11 +22,13 @@ class Updateutil{
 		if(Player_skill[skillname].current == Player_skill[skillname].required)
 		{	
 			Player_skill[skillname].learnable = false;
+			var msg = name+" learned "+skillname;
+			this.io.sockets.to(playerIO).emit("chatting", msg, "SYSTEM", "gold");
 			for (var i = 0; i < Player_skill[skillname].next.length; i++)
 				Player_skill[Player_skill[skillname].next[i]].learnable = true;
 			Player_skill[skillname].learned = true;
 			Player_skill[skillname].usable = true;
-			//console.log(skillname+"fuck")
+			console.log(msg);
 		}
 		return Player_skill;
 	}

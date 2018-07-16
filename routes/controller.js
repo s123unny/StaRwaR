@@ -212,7 +212,7 @@ Controller = function(io, model) {
 		for (var i = 0; i < 5; i++) {
 			if(ships[i]!=null && ships[i].missionType == "Learn Skill"){
 				for(var j = 0; j < ships[i].num_of_haker; j++){
-					model.players[id].skill=Update.Skill(ships[i].targetId,model.players[id].skill);
+					model.players[id].skill=Update.Skill(ships[i].targetId,model.players[id].skill,playerIO[id].first,model.players[id].name);
 				}
 				continue;
 			}
