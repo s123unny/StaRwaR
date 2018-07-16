@@ -52,11 +52,7 @@ var stars = {
 			for (var id in this) {
 				if (this[id].type == type && this[id].found == true) {
 					if (!checklist.includes(id)) {
-						if (id == "a0")
-							if (this[id].blackhole == false)
-								list.push(id);
-						else
-							list.push(id);
+						list.push(id);
 					}
 				}
 			}
@@ -64,7 +60,6 @@ var stars = {
 		return list;
 	},
 	next: function(id) {
-		console.log(id);
 		var keys = Object.keys( this );
     	var	idIndex = keys.indexOf( id );
     	var nextIndex = idIndex += 1;

@@ -291,7 +291,7 @@ Controller = function(io, model) {
 			model.day += 1;
 			io.emit('new_day', model.day);
 			//mine event
-			if (model.day == 11 || model.day == 23 || model.day == 43) {
+			if (model.day == 11 || model.day == 18 || model.day == 28) {
 				//message
 				var msg = "Event: " + mine_msg[model.day];
 				Update.Chatting(msg, "SYSTEM","lime");
@@ -560,7 +560,7 @@ Controller = function(io, model) {
 					}
 				}
 			}
-			if (model.day == 7 || model.day == 19 || model.day == 31 || model.day == 53) {
+			if (model.day == 7 || model.day == 23 || model.day == 31) {
 				console.log("AImodel event");
 				var msg = "大會通知：<br>現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下：<br> Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
 				var chat_msg = "大會通知：現在開始徵求model．在第"+ai_day[model.day]+"天之前繳交可以獲得報酬，目前報酬的行情倍率如下: Audio: "+ai_ratio[model.day].audio+" / Image: "+ai_ratio[model.day].image+" / Text: "+ai_ratio[model.day].text;
