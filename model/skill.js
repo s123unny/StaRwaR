@@ -26,7 +26,7 @@ function MakePlayerSkill(){
 			'Deep-Learning':[3, 'ML', function(pay){if(this.learned){return 1.2 * pay;} else{return pay;}},['Respectful-Player']], 
 			'How-Universe':[5, 'General', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['SSH']], //?
 			
-			'God-of-Crypto':[5, 'MINOR', function(){return this.learned;},['Centralize']],//?
+			'God-of-Crypto':[5, 'MINOR', function(){if(this.learned && this.usable){this.usable = false;return true;} else{return false;}},['Centralize']],//?
 
 			'Respectful-Player':[5, 'General', function(name){if(this.learned){return "尊貴的"+name;} else{return name;}},['Laplaces-Acma']],
 			
