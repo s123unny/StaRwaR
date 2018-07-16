@@ -45,6 +45,7 @@ span.planet-blackhole{
 	background-repeat: no-repeat; 
 	height: 50px;
 	width: 50px;
+	border-radius: 50px; 
 	position: fixed;
 }
 span.planet-unreached{
