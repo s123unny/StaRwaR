@@ -54,11 +54,11 @@ class Updateutil{
 		console.log(name, msg,"chat");
 		for (var i = 0; i < 5; i++) {
 			if(i==id)
-				this.io.sockets.to(playerIO[i].first).emit("chatting", msg, name, "red");
+				this.io.sockets.to(playerIO[i].first).emit("chatting", msg, name, "deeppink");
 			else
 				this.io.sockets.to(playerIO[i].first).emit("chatting", msg, name, color);
 		}
-		//this.io.emit('chatting', msg, name,color);
+		this.io.sockets.to(global.adminIO).emit('chatting', msg, name,color);
 	}
 	Notify(playerIO, msg) {
 		console.log(msg, "notify");
