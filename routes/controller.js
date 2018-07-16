@@ -36,11 +36,11 @@ global.model = {
 };
 global.skillid = [];
 global.questionflag = false;
+global.adminIO;
 
 Controller = function(io, model) {
 	var io = io;
 	var playerIO = [{},{},{},{},{}];
-	var adminIO;
 	var mine = ["m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9"];
 	var abandon = ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14"];
 	var starDatasetType = {a9: "image", a10: "image", a11: "text", a12: "text", a13: "audio", a14: "audio"};
@@ -79,7 +79,7 @@ Controller = function(io, model) {
 					model.players[j].money += add;
 					totalmoney += add;
 					/*chat message*/
-					var msg = "玩家" + model.players[j].name + "搶答成功 挖礦獲得 " + add + "BTC";
+					var msg = "玩家" + model.players[j].name + "搶答成功 挖礦獲得 " + add + " BTC";
 					Update.Chatting(msg, "SYSTEM","aqua", playerIO, j);
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
@@ -98,7 +98,7 @@ Controller = function(io, model) {
 					//todo
 					model.players[j].money += optionReward;
 					totalmoney == optionReward;
-					msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+"BTC";
+					msg = "恭喜玩家"+model.players[j].name +"答對題目，獲得"+optionReward+" BTC";
 					Update.Chatting(msg, "SYSTEM","aqua", playerIO, j);
 					Update.Money(playerIO[j].second, model.players[j].money);
 				}
@@ -164,7 +164,7 @@ Controller = function(io, model) {
 					model.players[j].money += add;
 					totalmoney += add;
 					/*chat message*/
-					var msg = "玩家" + model.players[j].name + "在"+id2name[id]+"挖礦獲得 " + add + "BTC";
+					var msg = "玩家" + model.players[j].name + "在"+id2name[id]+"挖礦獲得 " + add + " BTC";
 					Update.Chatting(msg, "SYSTEM","aqua", playerIO, j);
 					/*update player*/
 					Update.Money(playerIO[j].second, model.players[j].money);
@@ -461,7 +461,8 @@ Controller = function(io, model) {
 					case "a7":
 					case "a8":
 						//destiny
-						randomMoney = 10; //todo
+						randomMoney = -8; //todo
+						randomMoney += Math.floor(Math.random() * 19);
 						for (var j = 0; j < 5; j++) {
 							if (star.player_here[j] != null) {
 								model.players[j].money += randomMoney;
@@ -476,7 +477,7 @@ Controller = function(io, model) {
 								star.num -= 1;
 								Update.Ship_back(j, i);
 								//chat message
-								msg = "玩家" + model.players[j].name + "在命運星球"+id2name[i]+"抽到的命運是: " + randomMoney + "BTC";
+								msg = "玩家" + model.players[j].name + "在命運星球"+id2name[i]+"抽到的命運是: " + randomMoney + " BTC";
 								Update.Chatting(msg, "SYSTEM","aqua", playerIO, j);
 								//update player
 								Update.Money(playerIO[j].second, model.players[j].money);
@@ -585,7 +586,7 @@ Controller = function(io, model) {
 							Update.Money(playerIO[i].second, model.players[i].money);
 							Update.Leaderboard(model.players);
 							model.players[i].AImodel[AImodel[i]] = 0;
-							var msg = "玩家"+model.players[i].name+"繳交model獲得"+add+"BTC";
+							var msg = "玩家"+model.players[i].name+"繳交model獲得 "+add+" BTC";
 							Update.Chatting(msg, "SYSTEM","aqua", playerIO, i);
 							Update.Item(playerIO[i].second, "model", AImodel[i], 0);
 						}
