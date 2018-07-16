@@ -662,7 +662,7 @@ Controller = function(io, model) {
 				Update.Chatting(login_msg, "SYSTEM","aqua");
 				Update.Leaderboard(model.players);
 				player.on('chat_message', (msg) => Update.Chatting(msg, model.players[id].skill['Respectful-Player'].method(name),model.players[id].skill['Rainbow'].method(id))); // listen to chatting msg
-				player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
+				// player.on('skill', (skillname) => Player_skill[id]=Update.Skill(skillname, playerid[id],Player_skill[id]));
 				
 				Question.Init(player);
 				
