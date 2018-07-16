@@ -166,8 +166,10 @@ function freeze_submit_block(row){
 	var trainer = Number($('#assign_mblock_slot'+row+'_T').val());
 	var hacker = Number($('#assign_mblock_slot'+row+'_H').val());
 	// invalid request
-	
-	if (miner < 0 || hacker < 0 || trainer < 0){
+	console.log(Number.isInteger(0.2));
+	console.log(Number.isInteger(miner));
+
+	if (miner < 0 || hacker < 0 || trainer < 0 || !Number.isInteger(miner) || !Number.isInteger(hacker) || !Number.isInteger(trainer)){
 		myalert("This is feature <3 ");
 		return;
 	}
@@ -176,12 +178,12 @@ function freeze_submit_block(row){
 	var target_get = document.getElementById('assign_mblock_slot'+row+'_target');
 
 	var type = type_get.options[type_get.selectedIndex].value;
-	var target_type = target_get.options[target_get.selectedIndex].class;
+	var target_type = target_get.options[target_get.selectedIndex].className;
 
 	var carry = carry_get.options[carry_get.selectedIndex].value;
 	var target = target_get.options[target_get.selectedIndex].value;
 	// target == None => 擋住
-	console.log(target);
+	console.log(target_type);
 	if (target == "none" || type == "none"){
 		myalert("You can't choose None as type / target =) ");
 		return;
