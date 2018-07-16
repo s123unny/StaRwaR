@@ -38,6 +38,15 @@ span.planet-howhow{
 	width: 50px;
 	position: fixed;
 }
+span.planet-blackhole{
+	/*background-image:url(../img/base.png);*/
+	background-color: #444444;
+	background-size:contain;
+	background-repeat: no-repeat; 
+	height: 50px;
+	width: 50px;
+	position: fixed;
+}
 span.planet-unreached{
 	background-color:#FFF;
 	opacity:0.75;

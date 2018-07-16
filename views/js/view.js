@@ -97,7 +97,8 @@ function ship_mission(baseID,targetID){
 
 function blackhole_fade_out(){
 	console.log("blackHole event");
-	$("#a0").css('background-color', '#444444');
+	$("#a0").switchClass('planet-a', 'planet-blackhole')
+	// $("#a0").css('background-color', '#444444');
 }
 
 function howhow(baseID){
