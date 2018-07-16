@@ -174,7 +174,10 @@ function freeze_submit_block(row){
 	var type_get = document.getElementById('assign_mblock_slot'+row+'_type');
 	var carry_get = document.getElementById('assign_mblock_slot'+row+'_carry');
 	var target_get = document.getElementById('assign_mblock_slot'+row+'_target');
+
 	var type = type_get.options[type_get.selectedIndex].value;
+	var target_type = target_get.options[target_get.selectedIndex].class;
+
 	var carry = carry_get.options[carry_get.selectedIndex].value;
 	var target = target_get.options[target_get.selectedIndex].value;
 	// target == None => 擋住
@@ -182,6 +185,12 @@ function freeze_submit_block(row){
 	if (target == "none" || type == "none"){
 		myalert("You can't choose None as type / target =) ");
 		return;
+	}
+	// not the same
+	console.log(target_type);
+	if (target_type != type){
+		myalert("Type Wrong !");
+		return;		
 	}
 	// 派出人數 > standby => 擋住
 	if (trainer > $('#standby_trainer_num').text()){
