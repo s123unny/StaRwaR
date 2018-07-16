@@ -1,4 +1,4 @@
-var have_ask=new Array(50);
+var have_ask=new Array(65);
 var totalask=0;
 
 module.exports = function(io) {
@@ -83,7 +83,7 @@ module.exports = function(io) {
 			"id": 5,
 			"multi" : false,
 			"subject" : "放鬆一下",
-			"description" : "考驗運氣與直覺的時候XD (單選)",
+			"description" : "考驗運氣的時候XD (單選)",
 			"options" : [
 				"老師說過，選項三短一長當然是要選最長的",
 				"擲個橡皮擦決定吧",
@@ -524,7 +524,7 @@ module.exports = function(io) {
 		{
 			"id": 34 ,
 			"multi":  false ,
-			"subject": "觀察題",
+			"subject": "資工小知識",
 			"description" : "下午跑RPG時有在資工系館周圍看到哪一座雕塑品?",
 			"options": [
 				"讀書的小男孩",
@@ -536,6 +536,84 @@ module.exports = function(io) {
 			"correct": [1]
 
 		},	
+		
+		{
+			//"money": 3000,
+			"id": 35,
+			"multi" : false,
+			"subject" : "資工小知識",
+			"description" : " 請問一下台大資工系目前約成立了幾年?(單選)",
+			"options" : [
+				"20年",
+				"30年",
+				"40年",
+				"50年",
+				"60年",
+			],
+			"correct" : [ 2 ]
+		},
+
+		{
+			//"money": 3000,
+			"id": 36,
+			"multi" : false,
+			"subject" : "資訊營",
+			"description" : "本屆資訊營總召是哪一位?(單選)",
+			"options" : [
+				"阿甯",
+				"AC女神",
+				"不明生物",
+				"派派",
+			],
+			"correct" : [ 0 ]
+		},
+		
+		{
+			//"money": 3000,
+			"id": 37,
+			"multi" : false,
+			"subject" : "資工小知識",
+			"description" : "請問台大資工英文縮寫為何?(單選)",
+			"options" : [
+				"CSAE",
+				"CSIE",
+				"CSTE",
+				"CSEE",
+			],
+			"correct" : [ 1 ]
+		},
+
+		{
+			//"money": 3000,
+			"id": 38,
+			"multi" : false,
+			"subject" : "資訊營",
+			"description" : "請問阿甯學姊的\"甯\"怎麼唸?(單選)",
+			"options" : [
+				"ㄋㄧㄥ",
+				"ㄋㄧㄥˊ",
+				"ㄋㄧㄥˇ",
+				"ㄋㄧㄥˋ",
+			],
+			"correct" : [ 3 ]
+		},
+
+		{
+			//"money": 3000,
+			"id": 39,
+			"multi" : false,
+			"subject" : "時事",
+			"description" : "2018世足賽冠軍是由哪一個國家獲得?(單選)",
+			"options" : [
+				"克羅埃西亞",
+				"法國",
+				"比利時",
+				"英格蘭",
+			],
+			"correct" : [ 1 ]
+		},
+
+
 	];	
 
 	/* shuffle */
